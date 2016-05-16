@@ -7,10 +7,12 @@
 
 {% include 'header.html' %}
 
-<div id='gloss-page' class='page container'>
-
-{{ rendered_gloss|safe }}
-
+<div id='glosses-page' class='page container'>
+<ul class='list-unstyled'>
+{% for gloss in glosses %}
+    <li>{{ gloss.id }}</li>
+{% endfor %}
+</ul>
 </div>
 
 {% include 'footer.html' %}
