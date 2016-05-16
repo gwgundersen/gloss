@@ -1,0 +1,9 @@
+*.swp
+*.swo
+.DS_Store
+db.conf
+venv/
+glossary/config.ini
+*.pyc
+info.log
+.idea/

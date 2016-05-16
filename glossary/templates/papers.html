@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='paper-page' class='page container'>
+
+    <h1>Papers</h1>
+
+    {% for paper in papers %}
+        <table class='table'>
+            <tr>
+                <td>{{ paper.title }}</td>
+                <td>{{ paper.first_author.first_name }} {{ paper.first_author.last_name }}</td>
+                <td>
+                    <ul class='list-unstyled'>
+                    {% for gloss in paper.glosses %}
+                        <li><a href='{{ gloss.endpoint }}/{{ gloss.id }}'>{{ gloss.type_|capitalize }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                {% for label in paper.labels %}
+                    <a href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
+                {% endfor %}
+                </td>
+            </tr>
+        </table>
+    {% endfor %}
+
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
