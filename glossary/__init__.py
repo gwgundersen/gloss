@@ -53,6 +53,7 @@ app.register_blueprint(endpoints.gloss_blueprint)
 app.register_blueprint(endpoints.index_blueprint)
 app.register_blueprint(endpoints.label_blueprint)
 app.register_blueprint(endpoints.paper_blueprint)
+app.register_blueprint(endpoints.book_blueprint)
 
 
 # Login session management

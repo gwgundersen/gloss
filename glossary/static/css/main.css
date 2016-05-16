@@ -40,6 +40,9 @@ table {
 #header {
   background-color: black;
 }
+#header .container {
+  width: 600px;
+}
 #header h1 {
   margin: 5px 0;
 }
@@ -56,6 +59,7 @@ table {
 }
 .page {
   margin-top: 20px;
+  width: 600px;
 }
 .page h1 {
   margin-top: 0;

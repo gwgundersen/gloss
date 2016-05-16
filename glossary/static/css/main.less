@@ -6,6 +6,7 @@
 @font-size-base: 13px;
 
 @dim-footer-height: 50px;
+@dim-page-width: 600px;
 
 @background-transition: background-color 200ms linear;
 
@@ -54,6 +55,9 @@ table {
  * ------------------ */
 #header {
   background-color: black;
+  .container {
+    width: @dim-page-width;
+  }
   h1 {
     margin: 5px 0;
     a {
@@ -73,6 +77,7 @@ table {
 
 .page {
   margin-top: 20px;
+  width: @dim-page-width;
   h1 {
     margin-top: 0;
     font-size: 18px;

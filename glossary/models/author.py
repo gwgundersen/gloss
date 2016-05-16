@@ -11,6 +11,8 @@ class Author(db.Model):
     last_name = db.Column(db.String(255))
     papers = db.relationship('Paper', backref='authors',
                              secondary='author_to_paper')
+    books = db.relationship('Book', backref='authors',
+                            secondary='author_to_book')
 
     def __init__(self):
         pass
