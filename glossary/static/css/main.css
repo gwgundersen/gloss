@@ -35,13 +35,19 @@ a:hover {
 table {
   font-size: 13px;
 }
-/* Element selectors.
- * ------------------ */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+/* Primary elements.
+ * ----------------- */
 #header {
   background-color: black;
 }
 #header .container {
-  width: 600px;
+  width: 700px;
 }
 #header h1 {
   margin: 5px 0;
@@ -59,11 +65,12 @@ table {
 }
 .page {
   margin-top: 20px;
-  width: 600px;
+  width: 700px;
 }
 .page h1 {
   margin-top: 0;
   font-size: 20px;
+  font-style: italic;
 }
 .page h2 {
   font-size: 18px;
@@ -75,20 +82,22 @@ table {
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
 }
-#search {
+/* Pages.
+ * ------ */
+#index-page #search {
   margin: 50px 0;
 }
-#search ul {
+#index-page #search ul {
   margin-top: 20px;
 }
-#search ul li {
+#index-page #search ul li {
   border-top: 1px solid #eee;
   margin-top: 5px;
   padding-top: 5px;
 }
-#search .ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
+#index-page #search input {
+  border-radius: 0;
+}
+#gloss-page .metadata-table {
+  background-color: #f9f9f9;
 }

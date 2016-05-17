@@ -15,7 +15,7 @@
     <div>
         <h2>Books</h2>
         {% with books = author.books %}
-            {% include 'partials/books_partial.html' %}
+            {% include 'partials/book_list.html' %}
         {% endwith %}
     </div>
     {% endif %}
@@ -24,7 +24,7 @@
     <div>
         <h2>Papers</h2>
         {% with papers = author.papers %}
-            {% include 'partials/papers_partial.html' %}
+            {% include 'partials/paper_list.html' %}
         {% endwith %}
     </div>
     {% endif %}

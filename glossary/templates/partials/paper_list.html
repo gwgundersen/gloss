@@ -4,17 +4,17 @@
         <td>{{ paper.title }}</td>
         <td>
             {% with authors = paper.authors %}
-                {% include 'partials/authors_partial.html' %}
+                {% include 'partials/author_list.html' %}
             {% endwith %}
         </td>
         <td>
             {% with glosses = paper.glosses %}
-                {% include 'partials/glosses_partial.html' %}
+                {% include 'partials/gloss_list.html' %}
             {% endwith %}
         </td>
         <td>
             {% with labels = paper.labels %}
-                {% include 'partials/labels_partial.html' %}
+                {% include 'partials/label_list.html' %}
             {% endwith %}
         </td>
     </tr>

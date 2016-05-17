@@ -6,7 +6,7 @@
 @font-size-base: 13px;
 
 @dim-footer-height: 50px;
-@dim-page-width: 600px;
+@dim-page-width: 700px;
 
 @background-transition: background-color 200ms linear;
 
@@ -51,8 +51,15 @@ table {
   font-size: 13px;
 }
 
-/* Element selectors.
- * ------------------ */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+/* Primary elements.
+ * ----------------- */
 #header {
   background-color: black;
   .container {
@@ -81,6 +88,7 @@ table {
   h1 {
     margin-top: 0;
     font-size: 20px;
+    font-style: italic;
   }
   h2 {
     font-size: 18px;
@@ -95,20 +103,27 @@ table {
   border-top: 1px solid #eee;
 }
 
-#search {
-  margin: 50px 0;
-  ul {
-    margin-top: 20px;
-    li {
-      border-top: 1px solid #eee;
-      margin-top: 5px;
-      padding-top: 5px;
+/* Pages.
+ * ------ */
+#index-page {
+  #search {
+    margin: 50px 0;
+    ul {
+      margin-top: 20px;
+      li {
+        border-top: 1px solid #eee;
+        margin-top: 5px;
+        padding-top: 5px;
+      }
+    }
+    input {
+      border-radius: 0;
     }
   }
-  .ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
+}
+
+#gloss-page {
+  .metadata-table {
+    background-color: #f9f9f9;
   }
 }

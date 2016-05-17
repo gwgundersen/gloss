@@ -7,14 +7,12 @@
 
 {% include 'header.html' %}
 
-<div id='gloss-page' class='page container'>
-
+<div id='book-page' class='page container'>
     <table class='table metadata-table'>
-        {% include 'partials/%s_metadata.html' % entity.type_ %}
+        {% with entity = book %}
+            {% include 'partials/book_metadata.html' %}
+        {% endwith %}
     </table>
-    <div class='markdown'>
-        {{ rendered_gloss|safe }}
-    </div>
 </div>
 
 {% include 'footer.html' %}
