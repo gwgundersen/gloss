@@ -19,5 +19,11 @@ def render_all_with_label(label_name):
         .join(models.Label, models.Paper.labels)\
         .filter(models.Label._name == label_name)\
         .all()
-    return render_template('papers.html',
+    books = db.session.query(models.Book)\
+        .join(models.Label, models.Book.labels)\
+        .filter(models.Label._name == label_name)\
+        .all()
+    return render_template('label.html',
+                           label_name=label_name,
+                           books=books,
                            papers=papers)

@@ -1,0 +1,7 @@
+<ul class='list-unstyled'>
+{% for label in labels %}
+    <li>
+        <a href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
+    </li>
+{% endfor %}
+</ul>

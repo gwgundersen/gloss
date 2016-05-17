@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='paper-page' class='page container'>
+    <h1>{{ label_name|upper }}</h1>
+    <div>
+        <h2>Books</h2>
+         {% include 'partials/books_partial.html' %}
+    </div>
+    <div>
+        <h2>Papers</h2>
+         {% include 'partials/papers_partial.html' %}
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

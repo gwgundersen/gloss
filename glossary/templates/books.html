@@ -8,30 +8,8 @@
 {% include 'header.html' %}
 
 <div id='book-page' class='page container'>
-
     <h1>Books</h1>
-
-    {% for book in books %}
-        <table class='table'>
-            <tr>
-                <td>{{ book.title }}</td>
-                <td>{{ book.author_info }}</td>
-                <td>
-                    <ul class='list-unstyled'>
-                    {% for gloss in book.glosses %}
-                        <li><a href='{{ gloss.endpoint }}/{{ gloss.id }}'>{{ gloss.type_|capitalize }}</a></li>
-                    {% endfor %}
-                    </ul>
-                </td>
-                <td>
-                {% for label in book.labels %}
-                    <a href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
-                {% endfor %}
-                </td>
-            </tr>
-        </table>
-    {% endfor %}
-
+    {% include 'partials/books_partial.html' %}
 </div>
 
 {% include 'footer.html' %}

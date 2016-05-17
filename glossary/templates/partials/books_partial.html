@@ -1,0 +1,22 @@
+<table class='table'>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>
+            {% for author in book.authors %}
+                <li><a href='{{ author.endpoint }}/{{ author.name_as_url }}'>{{ author.full_name }}</a></li>
+            {% endfor %}
+        </td>
+        <td>
+            {% with glosses = books.glosses %}
+                {% include 'partials/glosses_partial.html' %}
+            {% endwith %}
+        </td>
+        <td>
+            {% with labels = book.labels %}
+                {% include 'partials/labels_partial.html' %}
+            {% endwith %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>

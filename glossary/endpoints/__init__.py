@@ -5,3 +5,4 @@ from paper import paper_blueprint
 from book import book_blueprint
 from gloss import gloss_blueprint
 from label import label_blueprint
+from author import author_blueprint

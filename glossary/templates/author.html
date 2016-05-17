@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='book-page' class='page container'>
+
+    <h1>{{ author.full_name }}</h1>
+
+    {% if author.books|length > 0 %}
+    <div>
+        <h2>Books</h2>
+        {% with books = author.books %}
+            {% include 'partials/books_partial.html' %}
+        {% endwith %}
+    </div>
+    {% endif %}
+
+    {% if author.papers|length > 0 %}
+    <div>
+        <h2>Papers</h2>
+        {% with papers = author.papers %}
+            {% include 'partials/papers_partial.html' %}
+        {% endwith %}
+    </div>
+    {% endif %}
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
