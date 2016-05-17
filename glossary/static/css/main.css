@@ -68,7 +68,27 @@ table {
 .page h2 {
   font-size: 18px;
 }
+.page h2:first-child {
+  margin-top: 0;
+}
 #footer {
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
+}
+#search {
+  margin: 50px 0;
+}
+#search ul {
+  margin-top: 20px;
+}
+#search ul li {
+  border-top: 1px solid #eee;
+  margin-top: 5px;
+  padding-top: 5px;
+}
+#search .ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }

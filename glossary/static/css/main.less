@@ -84,10 +84,31 @@ table {
   }
   h2 {
     font-size: 18px;
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 
 #footer {
   background-color: #f9f9f9;
   border-top: 1px solid #eee;
+}
+
+#search {
+  margin: 50px 0;
+  ul {
+    margin-top: 20px;
+    li {
+      border-top: 1px solid #eee;
+      margin-top: 5px;
+      padding-top: 5px;
+    }
+  }
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+  }
 }

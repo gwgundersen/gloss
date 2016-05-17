@@ -3,9 +3,9 @@
     <tr>
         <td>{{ book.title }}</td>
         <td>
-            {% for author in book.authors %}
-                <li><a href='{{ author.endpoint }}/{{ author.name_as_url }}'>{{ author.full_name }}</a></li>
-            {% endfor %}
+            {% with authors = book.authors %}
+                {% include 'partials/authors_partial.html' %}
+            {% endwith %}
         </td>
         <td>
             {% with glosses = books.glosses %}
