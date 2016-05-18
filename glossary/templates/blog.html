@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='label-page' class='page container'>
+    <h1>Blog</h1>
+    <div>
+        {% for entry in entries %}
+            {{  entry.title or entry.name }}
+        {% endfor %}
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

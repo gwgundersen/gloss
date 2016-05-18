@@ -14,6 +14,10 @@ label_blueprint = Blueprint('label',
 @label_blueprint.route('/<string:label_name>', methods=['GET'])
 def render_all_with_label(label_name):
     """Render all entities and glosses with label."""
+
+    # if label_name == 'blog':
+    #     return render_blog()
+
     label_name = label_name.lower()
     papers = db.session.query(models.Paper)\
         .join(models.Label, models.Paper.labels)\
@@ -27,3 +31,13 @@ def render_all_with_label(label_name):
                            label_name=label_name,
                            books=books,
                            papers=papers)
+
+
+# def render_blog():
+#     """Renders glosses for blog."""
+#     entries = db.session.query(models.Gloss)\
+#         .join(models.Label, models.Gloss.labels)\
+#         .filter(models.Label.name == 'blog')\
+#         .all()
+#     entries.sort(key=lambda gloss: gloss.timestamp)
+#     return render_template('blog.html', entries=entries)

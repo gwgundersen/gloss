@@ -33,6 +33,15 @@
         {% endwith %}
     </div>
     {% endif %}
+
+    {% if author.talks|length > 0 %}
+    <div>
+        <h2>Talks</h2>
+        {% with entities = author.talks %}
+            {% include 'partials/talk_list.html' %}
+        {% endwith %}
+    </div>
+    {% endif %}
 </div>
 
 {% include 'footer.html' %}

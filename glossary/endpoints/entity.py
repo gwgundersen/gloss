@@ -13,8 +13,9 @@ entity_blueprint = Blueprint('entity',
 
 type_to_class = {
     'book': models.Book,
+    'idea': models.Idea,
     'paper': models.Paper,
-    'idea': models.Idea
+    'talk': models.Talk
 }
 
 

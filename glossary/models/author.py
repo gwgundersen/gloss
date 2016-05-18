@@ -10,10 +10,13 @@ class Author(db.Model):
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
     bio_link = db.Column(db.String(255))
-    papers = db.relationship('Paper', backref='authors',
-                             secondary='author_to_paper')
+
     books = db.relationship('Book', backref='authors',
                             secondary='author_to_book')
+    papers = db.relationship('Paper', backref='authors',
+                             secondary='author_to_paper')
+    talks = db.relationship('Talk', backref='authors',
+                             secondary='author_to_talk')
 
     @property
     def endpoint(self):

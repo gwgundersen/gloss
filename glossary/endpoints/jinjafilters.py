@@ -8,8 +8,6 @@ import pypandoc
 jinjafilters = Blueprint('filters', __name__)
 
 
-# Data filters
-# ----------------------------------------------------------------------------
 @jinja2.contextfilter
 @jinjafilters.app_template_filter('markdown')
 def to_markdown(context, value):
@@ -17,3 +15,19 @@ def to_markdown(context, value):
                             to='html5',
                             format='md',
                             extra_args=['--mathjax'])
+
+
+@jinja2.contextfilter
+@jinjafilters.app_template_filter('date_str')
+def to_date_str(context, value):
+    if not value:
+        return ''
+    return ' - ' + value.strftime('%Y-%m-%d')
+
+
+@jinja2.contextfilter
+@jinjafilters.app_template_filter('datetime_str')
+def to_datetime_str(context, value):
+    if not value:
+        return ''
+    return str(value)
