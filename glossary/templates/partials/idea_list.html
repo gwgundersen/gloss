@@ -1,0 +1,16 @@
+<table class='table'>
+    {% for idea in entities %}
+    <tr>
+        <td>
+            <a href='{{ idea.endpoint }}/{{ idea.id }}'>
+                {{ idea.name }}
+            </a>
+        </td>
+        <td>
+            {% with labels = idea.labels %}
+                {% include 'partials/label_list.html' %}
+            {% endwith %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>

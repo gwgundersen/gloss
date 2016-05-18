@@ -87,6 +87,11 @@ table {
 }
 /* Content that spans pages.
  * ------------------------- */
+blockquote {
+  background-color: #FFF8DC;
+  border-left: 2px solid #ffeb8e;
+  font-size: 13px;
+}
 .metadata-table {
   background-color: #f9f9f9;
   border: 1px solid #ddd;

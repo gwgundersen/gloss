@@ -1,6 +1,8 @@
 /* Colors
  * ------ */
 @color-blue: blue;
+@color-yellow: #ffeb8e;
+@color-yellow-light: #FFF8DC;
 
 @font-family-base: arial, sans-serif;
 @font-size-base: 13px;
@@ -108,6 +110,12 @@ table {
 
 /* Content that spans pages.
  * ------------------------- */
+blockquote {
+  background-color: @color-yellow-light;
+  border-left: 2px solid @color-yellow;
+  font-size: 13px;
+}
+
 .metadata-table {
   background-color: #f9f9f9;
   border: 1px solid #ddd;  /* Matches Bootstrap. */
