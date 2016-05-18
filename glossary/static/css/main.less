@@ -58,8 +58,8 @@ table {
   -o-text-overflow: ellipsis;
 }
 
-/* Primary elements.
- * ----------------- */
+/* Structural elements.
+ * -------------------- */
 #header {
   background-color: black;
   .container {
@@ -103,6 +103,37 @@ table {
   border-top: 1px solid #eee;
 }
 
+/* Content that spans pages.
+ * ------------------------- */
+.metadata-table {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;  /* Matches Bootstrap. */
+}
+
+.author-list {
+  margin-bottom: 0;
+}
+
+.author-bio-link {
+  font-size: 11px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+#glosses {
+  .gloss {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 10px;
+    &.idea {
+      border-color: green;
+    }
+    &.summary {
+      border-color: #aaa;
+    }
+  }
+}
+
 /* Pages.
  * ------ */
 #index-page {
@@ -119,11 +150,5 @@ table {
     input {
       border-radius: 0;
     }
-  }
-}
-
-#gloss-page {
-  .metadata-table {
-    background-color: #f9f9f9;
   }
 }

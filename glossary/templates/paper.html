@@ -7,14 +7,14 @@
 
 {% include 'header.html' %}
 
-<div id='book-page' class='page container'>
+<div id='paper-page' class='page container'>
     <table class='table metadata-table'>
-    {% with entity = book %}
-        {% include 'partials/book_metadata.html' %}
+    {% with entity = paper %}
+        {% include 'partials/paper_metadata.html' %}
     {% endwith %}
     </table>
     <div id='glosses'>
-    {% for gloss in book.glosses %}
+    {% for gloss in paper.glosses %}
         <div class='gloss {{ gloss.type_ }}'>
             {{ gloss.text_|markdown|safe }}
         </div>

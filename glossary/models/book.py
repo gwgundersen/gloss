@@ -13,6 +13,7 @@ class Book(Entity):
     finished    = db.Column(db.Boolean)
     pages_read  = db.Column(db.Integer)
     year        = db.Column(db.Integer)
+    genre       = db.Column(db.String(255))
     started     = db.Column(db.Date)
     ended       = db.Column(db.Date)
     format      = db.Column(db.String(255))

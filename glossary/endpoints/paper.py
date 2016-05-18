@@ -17,3 +17,11 @@ def render_all_papers():
     papers = db.session.query(models.Paper)
     return render_template('papers.html',
                            papers=papers)
+
+
+@paper_blueprint.route('/<int:paper_id>', methods=['GET'])
+def render_paper_by_id(paper_id):
+    """Render paper by ID."""
+    paper = db.session.query(models.Paper).get(paper_id)
+    return render_template('paper.html',
+                           paper=paper)

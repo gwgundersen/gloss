@@ -12,11 +12,6 @@
             {% endwith %}
         </td>
         <td>
-            {% with glosses = book.glosses %}
-                {% include 'partials/gloss_list.html' %}
-            {% endwith %}
-        </td>
-        <td>
             {% with labels = book.labels %}
                 {% include 'partials/label_list.html' %}
             {% endwith %}

@@ -22,7 +22,7 @@ def render_all_books():
 
 @book_blueprint.route('/<int:book_id>', methods=['GET'])
 def render_book_by_id(book_id):
-    """Render book by idea."""
+    """Render book by ID."""
     book = db.session.query(models.Book).get(book_id)
     return render_template('book.html',
                            book=book)

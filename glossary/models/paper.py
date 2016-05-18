@@ -26,3 +26,7 @@ class Paper(Entity):
     @property
     def last_author(self):
         return self.authors[-1]
+
+    @property
+    def endpoint(self):
+        return 'paper'

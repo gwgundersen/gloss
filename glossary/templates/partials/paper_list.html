@@ -1,15 +1,14 @@
 <table class='table'>
 {% for paper in papers %}
     <tr>
-        <td>{{ paper.title }}</td>
+        <td>
+            <a href='{{ paper.endpoint }}/{{ paper.id }}'>
+                {{ paper.title }}
+            </a>
+        </td>
         <td>
             {% with authors = paper.authors %}
                 {% include 'partials/author_list.html' %}
-            {% endwith %}
-        </td>
-        <td>
-            {% with glosses = paper.glosses %}
-                {% include 'partials/gloss_list.html' %}
             {% endwith %}
         </td>
         <td>
