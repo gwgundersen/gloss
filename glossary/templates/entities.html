@@ -7,9 +7,9 @@
 
 {% include 'header.html' %}
 
-<div id='book-page' class='page container'>
-    <h1>Books</h1>
-    {% include 'partials/book_list.html' %}
+<div id='{{ type_ }}-page' class='page container'>
+    <h1>{{ type_|capitalize }}</h1>
+    {% include 'partials/%s_list.html' % type_ %}
 </div>
 
 {% include 'footer.html' %}

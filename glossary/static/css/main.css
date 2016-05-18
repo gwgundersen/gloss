@@ -102,6 +102,10 @@ table {
   border: 1px solid #eee;
   padding: 10px;
 }
+#glosses .gloss .type {
+  margin: 0 0 10px 0;
+  font-style: italic;
+}
 #glosses .gloss.idea {
   border-color: green;
 }

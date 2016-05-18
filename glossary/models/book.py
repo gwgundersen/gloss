@@ -42,4 +42,4 @@ class Book(Entity):
 
     @property
     def endpoint(self):
-        return 'book'
+        return 'entity/book'

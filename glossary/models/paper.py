@@ -7,10 +7,15 @@ from entity import Entity
 class Paper(Entity):
 
     __tablename__ = 'paper'
-    id = db.Column(db.Integer, db.ForeignKey('entity.id'), primary_key=True)
-    title = db.Column(db.String(255))
-    labels = db.relationship('Label', backref='papers',
-                             secondary='label_to_paper')
+    id           = db.Column(db.Integer, db.ForeignKey('entity.id'), primary_key=True)
+    title        = db.Column(db.String(255))
+    reason       = db.Column(db.String(255))
+    date_read    = db.Column(db.Date)
+    depth        = db.Column(db.Integer)
+    year         = db.Column(db.Integer)
+    min_required = db.Column(db.Float)
+    labels       = db.relationship('Label', backref='papers',
+                                   secondary='label_to_paper')
 
     __mapper_args__ = {
         'polymorphic_identity': 'paper',
@@ -29,4 +34,4 @@ class Paper(Entity):
 
     @property
     def endpoint(self):
-        return 'paper'
+        return 'entity/paper'

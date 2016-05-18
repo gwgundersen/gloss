@@ -16,7 +16,7 @@ gloss_blueprint = Blueprint('gloss',
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    pdoc_args = ['--mathjax']
+    pdoc_args = ['--mathjax',]
     output = pypandoc.convert(gloss.text_,
                               to='html5',
                               format='md',

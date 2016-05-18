@@ -2,3 +2,25 @@
     <td>Title</td>
     <td>{{ entity.title }}</td>
 </tr>
+<tr>
+    <td>Reason</td>
+    <td>{{ entity.reason }}</td>
+</tr>
+<tr>
+    <td>Date Read</td>
+    <td>{{ entity.date_read }}</td>
+</tr>
+<tr>
+    <td>Depth (1-3)</td>
+    <td>{{ entity.depth }}</td>
+</tr>
+<tr>
+    <td>Year</td>
+    <td>{{ entity.year }}</td>
+</tr>
+{% if entity.min_required %}
+    <tr>
+        <td>Minutes Required</td>
+        <td>{{ entity.min_required }}</td>
+    </tr>
+{% endif %}
