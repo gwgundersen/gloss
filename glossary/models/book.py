@@ -7,7 +7,8 @@ from entity import Entity
 class Book(Entity):
 
     __tablename__ = 'book'
-    id          = db.Column(db.Integer, db.ForeignKey('entity.id'), primary_key=True)
+    entity_fk   = db.Column(db.Integer, db.ForeignKey('entity.id'),
+                            primary_key=True)
     title       = db.Column(db.String(255))
     reason      = db.Column(db.String(255))
     finished    = db.Column(db.Boolean)

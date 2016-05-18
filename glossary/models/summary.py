@@ -1,6 +1,5 @@
 """Represent a summary gloss such as quotes, paraphrases, and outlines."""
 
-from glossary import db
 from gloss import Gloss
 
 

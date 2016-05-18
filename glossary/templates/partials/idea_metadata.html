@@ -1,0 +1,14 @@
+<tr>
+    <td>Name</td>
+    <td>{{ entity.name }}</td>
+</tr>
+{% if entity.url %}
+<tr>
+    <td>URL</td>
+    <td>
+        <a href='{{ entity.url }}' target='_blank'>
+            {{ entity.url }}
+        </a>
+    </td>
+</tr>
+{% endif %}

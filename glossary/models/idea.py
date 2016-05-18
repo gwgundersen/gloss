@@ -1,11 +1,18 @@
-"""Represent an idea gloss."""
+"""Represent an idea entity."""
 
 from glossary import db
-from gloss import Gloss
+from entity import Entity
 
 
-class Idea(Gloss):
+class Idea(Entity):
+
+    __tablename__ = 'idea'
 
     __mapper_args__ = {
         'polymorphic_identity': 'idea',
     }
+
+    entity_fk = db.Column(db.Integer, db.ForeignKey('entity.id'),
+                          primary_key=True)
+    name      = db.Column(db.String(255))
+    url       = db.Column(db.String(255))

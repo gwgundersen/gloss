@@ -13,7 +13,8 @@ entity_blueprint = Blueprint('entity',
 
 type_to_class = {
     'book': models.Book,
-    'paper': models.Paper
+    'paper': models.Paper,
+    'idea': models.Idea
 }
 
 
@@ -22,8 +23,6 @@ def render_entities(type_):
     """Render entity by ID."""
     model = type_to_class[type_]
     entities = db.session.query(model).all()
-    print(entities)
-    print(type_)
     return render_template('entities.html',
                            type_=type_,
                            entities=entities)

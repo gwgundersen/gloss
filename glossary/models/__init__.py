@@ -2,8 +2,13 @@
 
 from entity import Entity
 from label import Label
+
+# Glosses
 from gloss import Gloss
 from summary import Summary
+from thought import Thought
+
+# Entities
 from idea import Idea
 from paper import Paper
 from book import Book
