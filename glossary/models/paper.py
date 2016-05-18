@@ -16,13 +16,12 @@ class Paper(Entity):
     min_required = db.Column(db.Float)
     labels       = db.relationship('Label', backref='papers',
                                    secondary='label_to_paper')
+    journal_fk   = db.Column('journal_fk', db.Integer, db.ForeignKey('journal.id'))
+    journal      = db.relationship('Journal', backref='papers')
 
     __mapper_args__ = {
         'polymorphic_identity': 'paper',
     }
-
-    def __init__(self):
-        pass
 
     @property
     def first_author(self):

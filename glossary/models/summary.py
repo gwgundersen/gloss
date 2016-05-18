@@ -9,6 +9,3 @@ class Summary(Gloss):
     __mapper_args__ = {
         'polymorphic_identity': 'summary',
     }
-
-    def __init__(self):
-        pass

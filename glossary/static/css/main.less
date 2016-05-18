@@ -45,6 +45,9 @@ a {
     color: @color-blue;
     text-decoration: underline;
   }
+  &.label {
+    background-color: @color-blue;
+  }
 }
 
 table {
@@ -118,6 +121,13 @@ table {
   font-size: 11px;
   display: inline-block;
   margin-left: 5px;
+}
+
+.list-inline.label-list {
+  margin-bottom: 20px;
+  li {
+    padding-right: 0;  /* Tight up Bootstrap's inline list for labels. */
+  }
 }
 
 #glosses {

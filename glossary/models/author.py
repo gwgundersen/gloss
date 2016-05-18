@@ -15,16 +15,13 @@ class Author(db.Model):
     books = db.relationship('Book', backref='authors',
                             secondary='author_to_book')
 
-    def __init__(self):
-        pass
+    @property
+    def endpoint(self):
+        return 'author'
 
     @property
     def name_as_url(self):
         return '%s_%s' % (self.first_name, self.last_name)
-
-    @property
-    def endpoint(self):
-        return 'author'
 
     @property
     def full_name(self):

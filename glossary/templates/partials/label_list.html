@@ -1,7 +1,8 @@
-<ul class='list-unstyled'>
+<ul class='list-inline label-list'>
 {% for label in labels %}
     <li>
-        <a href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
+        <a class='label'
+           href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
     </li>
 {% endfor %}
 </ul>

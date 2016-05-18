@@ -14,6 +14,3 @@ class Entity(db.Model):
         'polymorphic_identity': 'entity',
         'polymorphic_on': type_
     }
-
-    def __init__(self):
-        pass

@@ -9,6 +9,3 @@ class Idea(Gloss):
     __mapper_args__ = {
         'polymorphic_identity': 'idea',
     }
-
-    def __init__(self):
-        pass

@@ -17,11 +17,11 @@ def render_all_with_label(label_name):
     label_name = label_name.lower()
     papers = db.session.query(models.Paper)\
         .join(models.Label, models.Paper.labels)\
-        .filter(models.Label._name == label_name)\
+        .filter(models.Label.name == label_name)\
         .all()
     books = db.session.query(models.Book)\
         .join(models.Label, models.Book.labels)\
-        .filter(models.Label._name == label_name)\
+        .filter(models.Label.name == label_name)\
         .all()
     return render_template('label.html',
                            label_name=label_name,

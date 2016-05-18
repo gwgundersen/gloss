@@ -19,7 +19,7 @@
     {% if author.books|length > 0 %}
     <div>
         <h2>Books</h2>
-        {% with books = author.books %}
+        {% with entities = author.books %}
             {% include 'partials/book_list.html' %}
         {% endwith %}
     </div>
@@ -28,7 +28,7 @@
     {% if author.papers|length > 0 %}
     <div>
         <h2>Papers</h2>
-        {% with papers = author.papers %}
+        {% with entities = author.papers %}
             {% include 'partials/paper_list.html' %}
         {% endwith %}
     </div>

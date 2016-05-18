@@ -30,9 +30,6 @@ class Book(Entity):
         'polymorphic_identity': 'book',
     }
 
-    def __init__(self):
-        pass
-
     @property
     def author_info(self):
         a = self.authors[0]

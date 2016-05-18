@@ -8,9 +8,12 @@
 {% include 'header.html' %}
 
 <div id='{{ entity.type_ }}-page' class='page container'>
+    {% with labels = entity.labels %}
+        {% include 'partials/label_list.html' %}
+    {% endwith %}
     <table class='table metadata-table'>
     {% with entity = entity %}
-        {% include 'partials/paper_metadata.html' %}
+        {% include 'partials/%s_metadata.html' % entity.type_ %}
     {% endwith %}
     </table>
     <div id='glosses'>

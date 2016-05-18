@@ -7,15 +7,18 @@
 
 {% include 'header.html' %}
 
-<div id='paper-page' class='page container'>
-    <h1>{{ label_name|upper }}</h1>
+<div id='label-page' class='page container'>
     <div>
         <h2>Books</h2>
-         {% include 'partials/book_list.html' %}
+        {% with entities = books %}
+            {% include 'partials/book_list.html' %}
+        {% endwith %}
     </div>
     <div>
         <h2>Papers</h2>
-         {% include 'partials/paper_list.html' %}
+        {% with entities = papers %}
+            {% include 'partials/paper_list.html' %}
+        {% endwith %}
     </div>
 </div>
 

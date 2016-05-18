@@ -32,6 +32,9 @@ a:hover {
   color: blue;
   text-decoration: underline;
 }
+a.label {
+  background-color: blue;
+}
 table {
   font-size: 13px;
 }
@@ -96,6 +99,13 @@ table {
   font-size: 11px;
   display: inline-block;
   margin-left: 5px;
+}
+.list-inline.label-list {
+  margin-bottom: 20px;
+}
+.list-inline.label-list li {
+  padding-right: 0;
+  /* Tight up Bootstrap's inline list for labels. */
 }
 #glosses .gloss {
   margin-bottom: 20px;

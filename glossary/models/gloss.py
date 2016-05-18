@@ -17,6 +17,3 @@ class Gloss(db.Model):
         'polymorphic_identity': 'gloss',
         'polymorphic_on': type_
     }
-
-    def __init__(self):
-        pass
