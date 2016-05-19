@@ -1,4 +1,12 @@
 <tr>
+    <td>Authors</td>
+    <td>
+    {% with authors = entity.authors %}
+        {% include 'partials/author_list.html' %}
+    {% endwith %}
+    </td>
+</tr>
+<tr>
     <td>Title</td>
     <td>{{ entity.title }}</td>
 </tr>

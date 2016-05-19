@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='gloss-page' class='page container'>
+    {% if entity.type_ %}
+        <p class='entity-link'>
+            <a href='entity/{{ entity.type_ }}/{{ entity.id }}'>{{ entity.title or entity.name }}</a>
+        </p>
+    {% endif %}
+    <div class='markdown'>
+        {{ rendered_gloss|safe }}
+    </div>
+    <div class='gloss-controls'>
+        <form action='gloss/delete/{{ gloss_id }}' method='post'
+              onclick='return confirm("Are you sure you want to delete this item?");'>
+            <input type='submit' class='btn btn-danger' value='Delete'/>
+        </form>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

@@ -73,7 +73,6 @@ table {
 .page h1 {
   margin-top: 0;
   font-size: 20px;
-  font-style: italic;
 }
 .page h2 {
   font-size: 18px;
@@ -129,17 +128,24 @@ blockquote {
 }
 /* Pages.
  * ------ */
-#index-page #search {
-  margin: 50px 0;
+#index-page li {
+  margin-bottom: 10px;
 }
-#index-page #search ul {
-  margin-top: 20px;
-}
-#index-page #search ul li {
-  border-top: 1px solid #eee;
+#glosses-page ul li {
+  border-bottom: 1px solid #eee;
   margin-top: 5px;
   padding-top: 5px;
 }
-#index-page #search input {
-  border-radius: 0;
+#gloss-page .entity-link {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+#gloss-page .gloss-controls {
+  margin-top: 100px;
+}
+#gloss-add-page textarea {
+  height: 300px;
+}
+#entity-types-page li {
+  margin-bottom: 10px;
 }

@@ -16,7 +16,7 @@ def render_all_with_label(label_name):
     """Render all entities and glosses with label."""
 
     # if label_name == 'blog':
-    #     return render_blog()
+    #      return render_blog()
 
     label_name = label_name.lower()
     papers = db.session.query(models.Paper)\

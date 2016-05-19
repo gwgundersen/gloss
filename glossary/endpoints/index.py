@@ -1,4 +1,4 @@
-"""Render index page."""
+"""Render landing page."""
 
 from flask import Blueprint, render_template
 

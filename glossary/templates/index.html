@@ -8,25 +8,21 @@
 {% include 'header.html' %}
 
 <div id='index-page' class='page container'>
-    <div>
-        <h2>Entities</h2>
-        <ul class='list-unstyled'>
-            <li><a href="entity/book">Books</a></li>
-            <li><a href="entity/idea">Ideas</a></li>
-            <li><a href="entity/paper">Papers</a></li>
-            <li><a href="entity/talk">Talks</a></li>
-        </ul>
-    </div>
-    <div id='search'>
-        <h2>Search</h2>
-        <div class='form-group'>
-            <input type='text' class='form-control' placeholder='Search gloss'/>
-        </div>
-        <div id='results'></div>
-    </div>
+    <ul class='list-unstyled'>
+        <li>
+            <a href='entity' class='btn btn-primary'>View entities</a>
+        </li>
+        <li>
+            <a href='gloss' class='btn btn-primary'>View glosses</a>
+        </li>
+        <li>
+            <a href='entity/add' class='btn btn-warning'>Add entity</a>
+        </li>
+        <li>
+            <a href='gloss/add' class='btn btn-warning'>Add gloss</a>
+        </li>
+    </ul>
 </div>
-
-<script src='static/js/search.js'></script>
 
 {% include 'footer.html' %}
 

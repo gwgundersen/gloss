@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='glosses-page' class='page container'>
+    <h1>Glosses</h1>
+    <div id='search'>
+        <div class='form-group'>
+            <input type='text' class='form-control' placeholder='Search gloss'/>
+        </div>
+    </div>
+    <ul class='list-unstyled' id='results'>
+    {% for gloss in glosses %}
+        <li class='ellipsis'>
+            <a href='gloss/{{ gloss.id }}'>
+                {{ gloss.text_ }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
+<script src='static/js/search.js'></script>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

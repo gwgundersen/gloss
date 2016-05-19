@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='entity-types-page' class='page container'>
+    <h1>Entity types</h1>
+    <ul class='list-unstyled'>
+        <li>
+            <a href='entity/book/add' class='btn btn-warning'>Books</a>
+        </li>
+        <li>
+            <a href='entity/idea/add' class='btn btn-warning'>Ideas</a>
+        </li>
+        <li>
+            <a href='entity/paper/add' class='btn btn-warning'>Papers</a>
+        </li>
+        <li>
+            <a href='entity/talk/add' class='btn btn-warning'>Talks</a>
+        </li>
+    </ul>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

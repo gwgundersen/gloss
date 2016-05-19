@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='gloss-add-page' class='page container'>
+    <h1>Add gloss</h1>
+    <form action='gloss/add' method='post'>
+        <select name='entity_id' class='form-group'>
+        {% for entity in entities %}
+            <option value='{{ entity.id }}' class='form-control'>
+                {{ entity.title or entity.name }}
+            </option>
+        {% endfor %}
+        </select>
+        <div class='form-group'>
+            <textarea type='text' name='text_' class='form-control'></textarea>
+        </div>
+        <button type='submit' class='btn btn-warning'>Add gloss</button>
+    </form>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
