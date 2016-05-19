@@ -16,6 +16,12 @@
                 <input type='text' name='authors' class='form-control'/>
             </div>
         {% endif %}
+        {% if type_ == 'paper' %}
+            <div class='form-group'>
+                <label>journal</label>
+                <input type='text' name='journal' class='form-control'/>
+            </div>
+        {% endif %}
         <div class='form-group'>
             <label>labels, comma-separated</label>
             <input type='text' name='labels' class='form-control'/>

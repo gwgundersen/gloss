@@ -8,18 +8,38 @@
 {% include 'header.html' %}
 
 <div id='label-page' class='page container'>
-    <div>
-        <h2>Books</h2>
-        {% with entities = books %}
-            {% include 'partials/book_list.html' %}
-        {% endwith %}
-    </div>
-    <div>
-        <h2>Papers</h2>
-        {% with entities = papers %}
-            {% include 'partials/paper_list.html' %}
-        {% endwith %}
-    </div>
+    {% if books %}
+        <div>
+            <h2>Books</h2>
+            {% with entities = books %}
+                {% include 'partials/book_list.html' %}
+            {% endwith %}
+        </div>
+    {% endif %}
+    {% if ideas %}
+        <div>
+            <h2>Ideas</h2>
+            {% with entities = ideas %}
+                {% include 'partials/idea_list.html' %}
+            {% endwith %}
+        </div>
+    {% if papers %}
+    {% endif %}
+        <div>
+            <h2>Papers</h2>
+            {% with entities = papers %}
+                {% include 'partials/paper_list.html' %}
+            {% endwith %}
+        </div>
+    {% endif %}
+    {% if talks %}
+        <div>
+            <h2>Talks</h2>
+            {% with entities = talks %}
+                {% include 'partials/paper_list.html' %}
+            {% endwith %}
+        </div>
+    {% endif %}
 </div>
 
 {% include 'footer.html' %}

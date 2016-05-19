@@ -73,26 +73,51 @@ def render_add_specific_entity_page(type_):
 def add_entity(type_):
     """Add entity to database."""
     model = type_to_class[type_]
-    args = _remove_authors_and_labels(**request.form)
+    args = _process_arguments(**request.form)
     instance = model(**args)
+    instance = _get_or_create_authors(instance)
+    instance = _get_or_create_labels(instance)
+    instance = _get_or_create_journal(instance)
+    db.session.add(instance)
+    db.session.commit()
+    return redirect(url_for('gloss.render_add_gloss_page',
+                            entity_id=instance.id))
+
+
+def _get_or_create_authors(instance):
+    """Get or create authors and attach to instance if necesary."""
     if 'authors' in request.form:
         authors = []
         for a in request.form.get('authors').split(','):
             t = a.strip().split(' ')
-            author = _get_or_create(models.Author, first_name=t[0].capitalize(),
-                                    last_name=t[1].capitalize())
+            fn = t[0].capitalize()
+            ln = t[1].capitalize()
+            author = _get_or_create(models.Author, first_name=fn,
+                                    last_name=ln)
             authors.append(author)
-            instance.authors = authors
+        instance.authors = authors
+    return instance
+
+
+def _get_or_create_labels(instance):
+    """Get or create labels and attach to instance if necessary."""
     if 'labels' in request.form:
         labels = []
         for l in request.form.get('labels').split(','):
             label = _get_or_create(models.Label, name=l.strip())
             labels.append(label)
-            instance.labels = labels
-    db.session.add(instance)
-    db.session.commit()
-    return redirect(url_for('gloss.render_add_gloss_page',
-                            entity_id=instance.id))
+        instance.labels = labels
+    return instance
+
+
+def _get_or_create_journal(instance):
+    """Create journal and attach to instance if necessary."""
+    if 'journal' in request.form:
+        j = request.form.get('journal')
+        j = j.strip().capitalize()
+        journal = _get_or_create(models.Journal, name=j)
+        instance.journal = journal
+    return instance
 
 
 def _get_or_create(model, **kwargs):
@@ -107,10 +132,27 @@ def _get_or_create(model, **kwargs):
         return instance
 
 
-def _remove_authors_and_labels(**kwargs):
-    """Remove authors and label arguments."""
+def _process_arguments(**kwargs):
+    """Process arguments in preparation to be used to create model."""
+    # Remove attributes that will be created as separate objects and added
+    # via the ORM.
     if 'authors' in kwargs:
         del kwargs['authors']
     if 'labels' in kwargs:
         del kwargs['labels']
+    if 'journal' in kwargs:
+        del kwargs['journal']
+    # Convert plain text to keywords.
+    for a in kwargs:
+        v = kwargs[a]
+        # Not sure why, but the form sends the attributes as lists.
+        if type(v) == list:
+            kwargs[a] = v[0]
+        v = kwargs[a]
+        if v == 'true':
+            kwargs[a] = True
+        if v == 'false':
+            kwargs[a] = False
+        if v == 'null':
+            kwargs[a] = None
     return kwargs

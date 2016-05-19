@@ -13,7 +13,7 @@
         <select name='entity_id' class='form-group'>
         {% for entity in entities %}
             <option value='{{ entity.id }}' class='form-control'>
-                {{ entity.title or entity.name }}
+                {{ entity.title }}
             </option>
         {% endfor %}
         </select>

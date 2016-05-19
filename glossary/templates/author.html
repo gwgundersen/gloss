@@ -11,9 +11,11 @@
 
     <h1>
         {{ author.full_name }}
-        <span class='author-bio-link'>
-            <a href='{{ author.bio_link }}' target='_blank'>bio</a>
-        </span>
+        {% if author.bio_link %}
+            <span class='author-bio-link'>
+                <a href='{{ author.bio_link }}' target='_blank'>bio</a>
+            </span>
+        {% endif %}
     </h1>
 
     {% if author.books|length > 0 %}
