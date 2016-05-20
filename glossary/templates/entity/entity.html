@@ -21,7 +21,7 @@
         <div class='gloss {{ gloss.type_ }}'>
             <h5 class='type'>{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h5>
             <div>{{ gloss.text_|markdown|safe }}</div>
-            <a href='gloss/{{ gloss.id }}' class='btn btn-primary'>View</a>
+            <a href='gloss/{{ gloss.id }}'>&raquo;</a>
         </div>
     {% endfor %}
     </div>

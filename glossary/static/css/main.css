@@ -26,14 +26,15 @@ body {
 /* Tag and general class selectors.
  * -------------------------------- */
 a {
-  color: blue;
+  color: black;
 }
 a:hover {
-  color: blue;
+  color: #d5364a;
   text-decoration: underline;
 }
-a.label {
-  background-color: blue;
+input,
+textarea {
+  border-radius: 0 !important;
 }
 table {
   font-size: 13px;
@@ -44,23 +45,81 @@ table {
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
+.btn {
+  background-color: #f9f9f9;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  color: black;
+  font-family: Georgia, serif;
+  font-style: italic;
+  padding: 2px 5px;
+  text-align: left;
+  width: 100%;
+}
+.btn.btn-primary {
+  box-shadow: none !important;
+}
+.btn.btn-primary:active,
+.btn.btn-primary:focus,
+.btn.btn-primary:hover {
+  background-color: #d5364a;
+  color: white;
+  border-bottom: 1px solid #d5364a;
+}
+.btn.btn-warning {
+  border-bottom: 1px solid #d5364a;
+  color: #d5364a;
+}
+.btn.btn-warning:active,
+.btn.btn-warning:focus,
+.btn.btn-warning:hover {
+  background-color: #d5364a;
+  color: white;
+  border-bottom: 1px solid #d5364a;
+}
+.btn.btn-danger {
+  background-color: #d5364a;
+  border-bottom: 1px solid #d5364a;
+  color: white;
+}
+.btn.btn-danger:hover {
+  border-color: black;
+  background-color: black;
+}
+.label {
+  background-color: transparent;
+  border: 1px solid #d5364a;
+  border-radius: 0;
+  color: black;
+  font-size: 12px;
+  padding: 2px 6px;
+}
+.label:hover {
+  background-color: #d5364a;
+}
 /* Structural elements.
  * -------------------- */
 #header {
   background-color: black;
+  border-bottom: 1px solid black;
+  font-family: arial, sans-serif;
+}
+#header h1 {
+  margin: 6px 0 4px 0;
+}
+#header h1 a {
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#header h1 a:hover {
+  opacity: .8;
+  text-decoration: none;
 }
 #header .container {
   width: 700px;
-}
-#header h1 {
-  margin: 5px 0;
-}
-#header h1 a {
-  font-size: 13px;
-  color: white;
-}
-#header h1 a:hover {
-  text-decoration: none;
 }
 #container {
   height: 1000px;
@@ -68,11 +127,13 @@ table {
 }
 .page {
   margin-top: 20px;
-  width: 700px;
+  max-width: 700px;
 }
 .page h1 {
-  margin-top: 0;
+  border-bottom: 1px solid black;
   font-size: 20px;
+  font-style: italic;
+  margin-top: 0;
 }
 .page h2 {
   font-size: 18px;
@@ -116,6 +177,9 @@ blockquote {
   border: 1px solid #eee;
   padding: 10px;
 }
+#glosses .gloss .btn {
+  width: 100px;
+}
 #glosses .gloss .type {
   margin: 0 0 10px 0;
   font-style: italic;
@@ -131,12 +195,11 @@ blockquote {
 #index-page li {
   margin-bottom: 10px;
 }
-#index-page li a {
-  width: 200px;
+#glosses-page h1 {
+  margin-bottom: 20px;
 }
-#index-page #gloss-list {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 10px;
+#glosses-page ul {
+  margin-top: 20px;
 }
 #glosses-page ul li {
   border-bottom: 1px solid #eee;
@@ -145,6 +208,7 @@ blockquote {
 }
 #gloss-page .entity-link {
   border-bottom: 1px solid #eee;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 #gloss-page .gloss-controls {
@@ -162,6 +226,6 @@ blockquote {
 #entity-types-page li {
   margin-bottom: 10px;
 }
-#entity-types-page li a {
-  width: 200px;
+#labels-page ul li {
+  margin-bottom: 7px;
 }

@@ -1,10 +1,12 @@
 /* Colors
  * ------ */
+@color-primary-red: #d5364a;
 @color-blue: blue;
 @color-yellow: #ffeb8e;
 @color-yellow-light: #FFF8DC;
 
 @font-family-base: arial, sans-serif;
+@font-family-serif: Georgia, serif;
 @font-size-base: 13px;
 
 @dim-footer-height: 50px;
@@ -42,14 +44,16 @@ body {
 /* Tag and general class selectors.
  * -------------------------------- */
 a {
-  color: @color-blue;
+  color: black;
   &:hover {
-    color: @color-blue;
+    color: @color-primary-red;
     text-decoration: underline;
   }
-  &.label {
-    background-color: @color-blue;
-  }
+}
+
+input,
+textarea {
+  border-radius: 0 !important;
 }
 
 table {
@@ -63,22 +67,92 @@ table {
   -o-text-overflow: ellipsis;
 }
 
+.btn {
+  background-color: #f9f9f9;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 0;
+  color: black;
+  font-family: @font-family-serif;
+  font-style: italic;
+  padding: 2px 5px;
+  text-align: left;
+  width: 100%;
+
+  &.btn-primary {
+    box-shadow: none !important;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: @color-primary-red;
+      color: white;
+      border-bottom: 1px solid @color-primary-red;
+    }
+  }
+
+  &.btn-warning {
+    //background-color: black;
+    border-bottom: 1px solid @color-primary-red;
+    color: @color-primary-red;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: @color-primary-red;
+      color: white;
+      border-bottom: 1px solid @color-primary-red;
+    }
+  }
+
+  &.btn-danger {
+    background-color: @color-primary-red;
+    border-bottom: 1px solid @color-primary-red;
+    color: white;
+
+    &:hover {
+      border-color: black;
+      background-color: black;
+    }
+  }
+}
+
+.label {
+  background-color: transparent;
+  border: 1px solid @color-primary-red;
+  border-radius: 0;
+  color: black;
+  font-size: 12px;
+  padding: 2px 6px;
+
+  &:hover {
+    background-color: @color-primary-red;
+  }
+}
+
 /* Structural elements.
  * -------------------- */
 #header {
   background-color: black;
-  .container {
-    width: @dim-page-width;
-  }
+  border-bottom: 1px solid black;
+  font-family: @font-family-base;
+
   h1 {
-    margin: 5px 0;
+    margin: 6px 0 4px 0;
+
     a {
-      font-size: 13px;
       color: white;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
       &:hover {
+        opacity: .8;
         text-decoration: none;
       }
     }
+  }
+  .container {
+    width: @dim-page-width;
   }
 }
 
@@ -89,13 +163,17 @@ table {
 
 .page {
   margin-top: 20px;
-  width: @dim-page-width;
+  max-width: @dim-page-width;
+
   h1 {
-    margin-top: 0;
+    border-bottom: 1px solid black;
     font-size: 20px;
+    font-style: italic;
+    margin-top: 0;
   }
   h2 {
     font-size: 18px;
+
     &:first-child {
       margin-top: 0;
     }
@@ -142,6 +220,10 @@ blockquote {
     margin-bottom: 20px;
     border: 1px solid #eee;
     padding: 10px;
+
+    .btn {
+      width: 100px;
+    }
     .type {
       margin: 0 0 10px 0;
       font-style: italic;
@@ -160,18 +242,16 @@ blockquote {
 #index-page {
   li {
     margin-bottom: 10px;
-    a {
-      width: 200px;
-    }
-  }
-  #gloss-list {
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
   }
 }
 
 #glosses-page {
+  h1 {
+    margin-bottom: 20px;
+  }
   ul {
+    margin-top: 20px;
+
     li {
       border-bottom: 1px solid #eee;
       margin-top: 5px;
@@ -183,6 +263,7 @@ blockquote {
 #gloss-page {
   .entity-link {
     border-bottom: 1px solid #eee;
+    font-weight: bold;
     margin-bottom: 20px;
   }
   .gloss-controls {
@@ -205,8 +286,13 @@ blockquote {
 #entity-types-page {
   li {
     margin-bottom: 10px;
-    a {
-      width: 200px;
+  }
+}
+
+#labels-page {
+  ul {
+    li {
+      margin-bottom: 7px;
     }
   }
 }
