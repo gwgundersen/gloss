@@ -51,6 +51,8 @@ def render_add_gloss_page(entity_id):
         return render_template('gloss/add_to_specific_entity.html',
                                entity=entity)
     entities = db.session.query(models.Entity).all()
+    for e in entities:
+        print(e.title)
     return render_template('gloss/add.html',
                            entities=entities)
 
@@ -78,3 +80,16 @@ def delete_gloss(gloss_id):
     db.session.delete(gloss)
     db.session.commit()
     return redirect(url_for('gloss.render_all_glosses'))
+
+
+@gloss_blueprint.route('/edit/<int:gloss_id>', methods=['GET', 'POST'])
+def edit_gloss(gloss_id):
+    """Edit gloss."""
+    gloss = db.session.query(models.Gloss).get(gloss_id)
+    if request.method == 'GET':
+        return render_template('gloss/edit.html', gloss=gloss)
+    else:
+        gloss.text_= request.form.get('text_')
+        db.session.merge(gloss)
+        db.session.commit()
+        return redirect(url_for('gloss.render_gloss', gloss_id=gloss_id))

@@ -141,9 +141,15 @@ blockquote {
   margin-bottom: 20px;
 }
 #gloss-page .gloss-controls {
+  border-top: 1px solid #eee;
   margin-top: 100px;
+  padding-top: 20px;
 }
-#gloss-add-page textarea {
+#gloss-page .gloss-controls a {
+  margin-bottom: 5px;
+}
+#gloss-add-page textarea,
+#gloss-edit-page textarea {
   height: 300px;
 }
 #entity-types-page li {

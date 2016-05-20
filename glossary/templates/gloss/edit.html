@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC=''>
+<html>
+
+{% include 'head.html' %}
+
+<body>
+
+{% include 'header.html' %}
+
+<div id='gloss-edit-page' class='page container'>
+    <h1>Edit gloss</h1>
+    <form action='gloss/edit/{{ gloss.id }}' method='post'>
+        <div class='form-group'>
+            <textarea type='text' name='text_' class='form-control'>{{ gloss.text_ }}</textarea>
+        </div>
+        <button type='submit' class='btn btn-warning'>Edit gloss</button>
+    </form>
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>
