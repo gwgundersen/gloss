@@ -7,29 +7,16 @@ body {
   margin: 0;
   font-size: 13px;
 }
-/* Sticky Footer. Do not change.
- * ----------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  margin-bottom: 50px;
-}
-#footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
-}
 /* Tag and general class selectors.
  * -------------------------------- */
+body {
+  font-family: arial, sans-serif;
+}
 a {
-  color: black;
+  color: #1a0dab;
 }
 a:hover {
-  color: #d5364a;
+  color: #1a0dab;
   text-decoration: underline;
 }
 input,
@@ -45,13 +32,17 @@ table {
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
 }
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
 .btn {
   background-color: #f9f9f9;
   border: none;
   border-bottom: 1px solid black;
   border-radius: 0;
   color: black;
-  font-family: Georgia, serif;
+  font-family: arial, sans-serif;
   font-style: italic;
   padding: 2px 5px;
   text-align: left;
@@ -104,14 +95,17 @@ table {
   background-color: black;
   border-bottom: 1px solid black;
   font-family: arial, sans-serif;
+  height: 25px;
 }
 #header h1 {
-  margin: 6px 0 4px 0;
+  margin: 0;
+  padding-left: 20px;
 }
 #header h1 a {
   color: white;
   font-size: 13px;
   font-weight: bold;
+  text-decoration: none;
   text-transform: uppercase;
 }
 #header h1 a:hover {
@@ -121,13 +115,66 @@ table {
 #header .container {
   width: 700px;
 }
+#menu {
+  background-color: #f9f9f9;
+  float: left;
+  height: 100%;
+  width: 150px;
+}
+#menu ul {
+  margin: 0;
+}
+#menu ul .btn-menu {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  height: 40px;
+}
+#menu ul .btn-menu a {
+  color: black;
+  display: block;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+  width: 100%;
+}
+#menu ul .btn-menu a span {
+  display: inline-block;
+  padding-left: 20px;
+  padding-top: 10px;
+}
+#menu ul .btn-menu:hover {
+  background-color: red;
+}
+#menu ul h2 {
+  font-size: 16px;
+  padding-left: 20px;
+}
+#menu ul #search {
+  background-color: #aaa;
+  border-bottom: 1px solid #aaa;
+  height: 40px;
+}
+#menu ul #search div {
+  padding: 5px;
+}
+#menu ul #search div input {
+  border: none;
+  font-size: 14px;
+  height: 30px;
+  padding: 5px;
+  width: 100%;
+}
 #container {
   height: 1000px;
   width: 1000px;
 }
 .page {
+  float: left;
   margin-top: 20px;
   max-width: 700px;
+  padding-left: 20px;
+  width: 100%;
 }
 .page h1 {
   border-bottom: 1px solid black;
@@ -192,9 +239,6 @@ blockquote {
 }
 /* Pages.
  * ------ */
-#index-page li {
-  margin-bottom: 10px;
-}
 #glosses-page h1 {
   margin-bottom: 20px;
 }

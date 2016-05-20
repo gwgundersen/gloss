@@ -8,14 +8,14 @@
         </td>
         <td>
         {% with authors = paper.authors %}
-            {% include 'partials/author_list.html' %}
+            {% include 'entity_partials/author_list.html' %}
         {% endwith %}
         </td>
         <td>{{ paper.date_read }}</td>
         <td>{{ paper.year }}</td>
         <td>
         {% with labels = paper.labels %}
-            {% include 'partials/label_list.html' %}
+            {% include 'entity_partials/label_list.html' %}
         {% endwith %}
         </td>
     </tr>

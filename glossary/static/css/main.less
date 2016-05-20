@@ -1,12 +1,13 @@
 /* Colors
  * ------ */
 @color-primary-red: #d5364a;
-@color-blue: blue;
+@color-blue: #1a0dab;
 @color-yellow: #ffeb8e;
 @color-yellow-light: #FFF8DC;
 
+@color-menu-gray: #f9f9f9;
+
 @font-family-base: arial, sans-serif;
-@font-family-serif: Georgia, serif;
 @font-size-base: 13px;
 
 @dim-footer-height: 50px;
@@ -22,31 +23,16 @@ body {
   font-size: @font-size-base;
 }
 
-/* Sticky Footer. Do not change.
- * ----------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: @dim-footer-height;
-}
-
-#footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: @dim-footer-height;
-  width: 100%;
-}
-
 /* Tag and general class selectors.
  * -------------------------------- */
+body {
+  font-family: @font-family-base;
+}
+
 a {
-  color: black;
+  color: @color-blue;
   &:hover {
-    color: @color-primary-red;
+    color: @color-blue;
     text-decoration: underline;
   }
 }
@@ -67,13 +53,18 @@ table {
   -o-text-overflow: ellipsis;
 }
 
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+
 .btn {
   background-color: #f9f9f9;
   border: none;
   border-bottom: 1px solid black;
   border-radius: 0;
   color: black;
-  font-family: @font-family-serif;
+  font-family: @font-family-base;
   font-style: italic;
   padding: 2px 5px;
   text-align: left;
@@ -136,15 +127,19 @@ table {
   background-color: black;
   border-bottom: 1px solid black;
   font-family: @font-family-base;
+  height: 25px;
 
   h1 {
-    margin: 6px 0 4px 0;
+    margin: 0;
+    padding-left: 20px;
 
     a {
       color: white;
       font-size: 13px;
       font-weight: bold;
+      text-decoration: none;
       text-transform: uppercase;
+
       &:hover {
         opacity: .8;
         text-decoration: none;
@@ -156,14 +151,77 @@ table {
   }
 }
 
+#menu {
+  background-color: @color-menu-gray;
+  float: left;
+  height: 100%;
+  width: 150px;
+
+  ul {
+    margin: 0;
+
+    .btn-menu {
+      background-color: @color-menu-gray;
+      border-bottom: 1px solid #eee;
+      height: 40px;
+
+      a {
+        color: black;
+        display: block;
+        font-family: @font-family-base;
+        font-size: 16px;
+        font-weight: bold;
+        height: 100%;
+        width: 100%;
+
+        span {
+          display: inline-block;
+          padding-left: 20px;
+          padding-top: 10px;
+        }
+      }
+
+      &:hover {
+        background-color: red;
+      }
+    }
+
+    h2 {
+      font-size: 16px;
+      padding-left: 20px;
+    }
+
+    #search {
+      background-color: #aaa;
+      border-bottom: 1px solid #aaa;
+      height: 40px;
+
+      div {
+        padding: 5px;
+
+        input {
+          border: none;
+          font-size: 14px;
+          height: 30px;
+          padding: 5px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 #container {
   height: 1000px;
   width: 1000px;
 }
 
 .page {
+  float: left;
   margin-top: 20px;
   max-width: @dim-page-width;
+  padding-left: 20px;
+  width: 100%;
 
   h1 {
     border-bottom: 1px solid black;
@@ -239,12 +297,6 @@ blockquote {
 
 /* Pages.
  * ------ */
-#index-page {
-  li {
-    margin-bottom: 10px;
-  }
-}
-
 #glosses-page {
   h1 {
     margin-bottom: 20px;

@@ -1,19 +1,21 @@
 <!DOCTYPE HTML PUBLIC=''>
 <html>
 
-{% include 'head.html' %}
+{% include 'structural_partials/head.html' %}
 
 <body>
 
-{% include 'header.html' %}
+{% include 'structural_partials/header.html' %}
+
+{% include 'structural_partials/menu.html' %}
 
 <div id='{{ entity.type_ }}-page' class='page container'>
     {% with labels = entity.labels %}
-        {% include 'partials/label_list.html' %}
+        {% include 'entity_partials/label_list.html' %}
     {% endwith %}
     <table class='table metadata-table'>
     {% with entity = entity %}
-        {% include 'partials/%s_metadata.html' % entity.type_ %}
+        {% include 'entity_partials/%s_metadata.html' % entity.type_ %}
     {% endwith %}
     </table>
     <div id='glosses'>
@@ -26,8 +28,6 @@
     {% endfor %}
     </div>
 </div>
-
-{% include 'footer.html' %}
 
 </body>
 </html>

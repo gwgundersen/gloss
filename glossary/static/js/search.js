@@ -7,7 +7,7 @@ $(function() {
             $.each(data.results, function(idx, text) {
                 li_str += '<li class="ellipsis"><a href="/glossary/gloss/' + idx + '">' + text + '</a></li>';
             });
-            $('#results').html('<ul class="list-unstyled">' + li_str + '</ul>');
+            $('.page').html('<ul class="list-unstyled">' + li_str + '</ul>');
         });
     });
 });

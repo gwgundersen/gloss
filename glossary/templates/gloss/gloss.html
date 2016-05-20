@@ -1,13 +1,15 @@
 <!DOCTYPE HTML PUBLIC=''>
 <html>
 
-{% include 'head.html' %}
+{% include 'structural_partials/head.html' %}
 
 <body>
 
-{% include 'header.html' %}
+{% include 'structural_partials/header.html' %}
 
-<div id='gloss-page' class='page container'>
+{% include 'structural_partials/menu.html' %}
+
+<div id='gloss-page' class='page'>
     {% if entity.type_ %}
         <p class='entity-link'>
             <a href='entity/{{ entity.type_ }}/{{ entity.id }}'>{{ entity.title }}</a>
@@ -24,8 +26,6 @@
         </form>
     </div>
 </div>
-
-{% include 'footer.html' %}
 
 </body>
 </html>

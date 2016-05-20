@@ -1,11 +1,11 @@
 <!DOCTYPE HTML PUBLIC=''>
 <html>
 
-{% include 'head.html' %}
+{% include 'structural_partials/head.html' %}
 
 <body>
 
-{% include 'header.html' %}
+{% include 'structural_partials/header.html' %}
 
 <div id='book-page' class='page container'>
 
@@ -22,7 +22,7 @@
     <div>
         <h2>Books</h2>
         {% with entities = author.books %}
-            {% include 'partials/book_list.html' %}
+            {% include 'entity_partials/book_list.html' %}
         {% endwith %}
     </div>
     {% endif %}
@@ -31,7 +31,7 @@
     <div>
         <h2>Papers</h2>
         {% with entities = author.papers %}
-            {% include 'partials/paper_list.html' %}
+            {% include 'entity_partials/paper_list.html' %}
         {% endwith %}
     </div>
     {% endif %}
@@ -40,13 +40,13 @@
     <div>
         <h2>Talks</h2>
         {% with entities = author.talks %}
-            {% include 'partials/talk_list.html' %}
+            {% include 'entity_partials/talk_list.html' %}
         {% endwith %}
     </div>
     {% endif %}
 </div>
 
-{% include 'footer.html' %}
+{% include 'structural_partials/footer.html' %}
 
 </body>
 </html>

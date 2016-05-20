@@ -8,12 +8,12 @@
         </td>
         <td>
             {% with authors = book.authors %}
-                {% include 'partials/author_list.html' %}
+                {% include 'entity_partials/author_list.html' %}
             {% endwith %}
         </td>
         <td>
             {% with labels = book.labels %}
-                {% include 'partials/label_list.html' %}
+                {% include 'entity_partials/label_list.html' %}
             {% endwith %}
         </td>
     </tr>

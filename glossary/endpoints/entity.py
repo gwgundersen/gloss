@@ -19,12 +19,6 @@ type_to_class = {
 }
 
 
-@entity_blueprint.route('/', methods=['GET'])
-def render_entity_types():
-    """Render entity types."""
-    return render_template('entity/entity_types.html')
-
-
 @entity_blueprint.route('/<string:type_>', methods=['GET'])
 def render_entities(type_):
     """Render entity by ID."""
