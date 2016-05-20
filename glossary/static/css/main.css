@@ -131,6 +131,13 @@ blockquote {
 #index-page li {
   margin-bottom: 10px;
 }
+#index-page li a {
+  width: 200px;
+}
+#index-page #gloss-list {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
 #glosses-page ul li {
   border-bottom: 1px solid #eee;
   margin-top: 5px;
@@ -154,4 +161,7 @@ blockquote {
 }
 #entity-types-page li {
   margin-bottom: 10px;
+}
+#entity-types-page li a {
+  width: 200px;
 }

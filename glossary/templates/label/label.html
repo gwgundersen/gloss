@@ -23,8 +23,8 @@
                 {% include 'partials/idea_list.html' %}
             {% endwith %}
         </div>
-    {% if papers %}
     {% endif %}
+    {% if papers %}
         <div>
             <h2>Papers</h2>
             {% with entities = papers %}
@@ -36,7 +36,7 @@
         <div>
             <h2>Talks</h2>
             {% with entities = talks %}
-                {% include 'partials/paper_list.html' %}
+                {% include 'partials/talk_list.html' %}
             {% endwith %}
         </div>
     {% endif %}

@@ -11,6 +11,13 @@ label_blueprint = Blueprint('label',
                             url_prefix='%s/label' % config.get('url', 'base'))
 
 
+@label_blueprint.route('/', methods=['GET'])
+def render_labels():
+    labels = db.session.query(models.Label).all()
+    return render_template('label/labels.html',
+                           labels=labels)
+
+
 @label_blueprint.route('/<string:label_name>', methods=['GET'])
 def render_all_with_label(label_name):
     """Render all entities and glosses with label."""
@@ -35,7 +42,7 @@ def render_all_with_label(label_name):
         .join(models.Label, models.Talk.labels)\
         .filter(models.Label.name == label_name)\
         .all()
-    return render_template('label.html', label_name=label_name, books=books,
+    return render_template('label/label.html', label_name=label_name, books=books,
                            ideas=ideas, papers=papers, talks=talks)
 
 
