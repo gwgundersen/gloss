@@ -7,7 +7,9 @@
 
 {% include 'structural_partials/header.html' %}
 
-<div id='book-page' class='page container'>
+{% include 'structural_partials/menu.html' %}
+
+<div id='book-page' class='page'>
 
     <h1>
         {{ author.full_name }}
@@ -45,8 +47,6 @@
     </div>
     {% endif %}
 </div>
-
-{% include 'structural_partials/footer.html' %}
 
 </body>
 </html>

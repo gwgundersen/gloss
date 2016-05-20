@@ -40,12 +40,6 @@ def render_entity_by_id(type_, entity_id):
                            entity=entity)
 
 
-@entity_blueprint.route('/add', methods=['GET'])
-def render_add_entity_page():
-    """Render page with list of available entities."""
-    return render_template('entity/add_entity_types.html')
-
-
 @entity_blueprint.route('/<string:type_>/add', methods=['GET'])
 def render_add_specific_entity_page(type_):
     """Render page for adding a specific entity, e.g. Idea versus Book."""

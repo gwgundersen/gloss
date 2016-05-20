@@ -7,7 +7,9 @@
 
 {% include 'structural_partials/header.html' %}
 
-<div id='label-page' class='page container'>
+{% include 'structural_partials/menu.html' %}
+
+<div id='label-page' class='page'>
     {% if books %}
         <div>
             <h2>Books</h2>
@@ -41,8 +43,6 @@
         </div>
     {% endif %}
 </div>
-
-{% include 'structural_partials/footer.html' %}
 
 </body>
 </html>

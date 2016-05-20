@@ -14,6 +14,7 @@ body {
 }
 a {
   color: #1a0dab;
+  text-decoration: none;
 }
 a:hover {
   color: #1a0dab;
@@ -79,15 +80,60 @@ table {
   background-color: black;
 }
 .label {
-  background-color: transparent;
-  border: 1px solid #d5364a;
+  display: inline-block;
+  margin: 2px 0;
+  background-color: #ccc;
   border-radius: 0;
   color: black;
   font-size: 12px;
-  padding: 2px 6px;
+  padding: 3px 6px;
 }
 .label:hover {
-  background-color: #d5364a;
+  background-color: #aaa;
+  color: black;
+  text-decoration: none;
+}
+ul,
+ol {
+  margin-top: 0;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-bottom: 0;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 5px;
+  vertical-align: middle;
+  border-top: 1px solid #eee;
+}
+.table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #aaa;
+}
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+.table > tbody + tbody {
+  border-top: 2px solid #aaa;
+}
+.table .table {
+  background-color: white;
 }
 /* Structural elements.
  * -------------------- */
@@ -100,6 +146,8 @@ table {
 #header h1 {
   margin: 0;
   padding-left: 20px;
+  position: relative;
+  top: 5px;
 }
 #header h1 a {
   color: white;
@@ -144,22 +192,21 @@ table {
   padding-top: 10px;
 }
 #menu ul .btn-menu:hover {
-  background-color: red;
+  background-color: #eee;
 }
 #menu ul h2 {
   font-size: 16px;
   padding-left: 20px;
 }
 #menu ul #search {
-  background-color: #aaa;
-  border-bottom: 1px solid #aaa;
+  background-color: #bbb;
   height: 40px;
 }
 #menu ul #search div {
   padding: 5px;
 }
 #menu ul #search div input {
-  border: none;
+  border: 1px solid #aaa;
   font-size: 14px;
   height: 30px;
   padding: 5px;
@@ -212,12 +259,9 @@ blockquote {
   display: inline-block;
   margin-left: 5px;
 }
-.list-inline.label-list {
-  margin-bottom: 20px;
-}
-.list-inline.label-list li {
-  padding-right: 0;
-  /* Tight up Bootstrap's inline list for labels. */
+.list-inline {
+  padding-left: 0;
+  list-style: none;
 }
 #glosses .gloss {
   margin-bottom: 20px;
@@ -266,6 +310,7 @@ blockquote {
 #gloss-add-page textarea,
 #gloss-edit-page textarea {
   height: 300px;
+  width: 100%;
 }
 #entity-types-page li {
   margin-bottom: 10px;

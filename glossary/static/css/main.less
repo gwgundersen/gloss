@@ -6,6 +6,7 @@
 @color-yellow-light: #FFF8DC;
 
 @color-menu-gray: #f9f9f9;
+@color-menu-pressed: #eee;
 
 @font-family-base: arial, sans-serif;
 @font-size-base: 13px;
@@ -31,6 +32,8 @@ body {
 
 a {
   color: @color-blue;
+  text-decoration: none;
+
   &:hover {
     color: @color-blue;
     text-decoration: underline;
@@ -109,15 +112,71 @@ table {
 }
 
 .label {
-  background-color: transparent;
-  border: 1px solid @color-primary-red;
+  display: inline-block;
+  margin: 2px 0;
+  background-color: #ccc;
   border-radius: 0;
   color: black;
   font-size: 12px;
-  padding: 2px 6px;
+  padding: 3px 6px;
 
   &:hover {
-    background-color: @color-primary-red;
+    background-color: #aaa;
+    color: black;
+    text-decoration: none;
+  }
+}
+
+ul,
+ol {
+  margin-top: 0;
+
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  //margin-bottom: 10px;
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: 5px;
+        vertical-align: middle;
+        border-top: 1px solid #eee;
+      }
+    }
+  }
+
+  > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #aaa;
+  }
+
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+
+  > tbody + tbody {
+    border-top: 2px solid #aaa;
+  }
+
+  .table {
+    background-color: white;
   }
 }
 
@@ -132,6 +191,8 @@ table {
   h1 {
     margin: 0;
     padding-left: 20px;
+    position: relative;
+    top: 5px;
 
     a {
       color: white;
@@ -182,7 +243,7 @@ table {
       }
 
       &:hover {
-        background-color: red;
+        background-color: @color-menu-pressed;
       }
     }
 
@@ -192,15 +253,14 @@ table {
     }
 
     #search {
-      background-color: #aaa;
-      border-bottom: 1px solid #aaa;
+      background-color: #bbb;
       height: 40px;
 
       div {
         padding: 5px;
 
         input {
-          border: none;
+          border: 1px solid #aaa;
           font-size: 14px;
           height: 30px;
           padding: 5px;
@@ -266,11 +326,9 @@ blockquote {
   margin-left: 5px;
 }
 
-.list-inline.label-list {
-  margin-bottom: 20px;
-  li {
-    padding-right: 0;  /* Tight up Bootstrap's inline list for labels. */
-  }
+.list-inline {
+  padding-left: 0;
+  list-style: none;
 }
 
 #glosses {
@@ -332,6 +390,7 @@ blockquote {
 #gloss-edit-page {
   textarea {
     height: 300px;
+    width: 100%;
   }
 }
 
