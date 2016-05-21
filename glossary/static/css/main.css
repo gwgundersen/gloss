@@ -318,3 +318,12 @@ blockquote {
 #label-page table {
   margin-bottom: 40px;
 }
+#entity-add-page .form-group {
+  padding: 5px 0 10px 0;
+}
+#entity-add-page .form-group input {
+  font-size: 13px;
+  height: 25px;
+  padding: 5px;
+  width: 100%;
+}

@@ -12,13 +12,14 @@
 <div id='gloss-add-page' class='page container'>
     <h1>Add gloss</h1>
     <form action='gloss/add' method='post'>
-        <label>Entity</label>
+
         <select name='entity_id'>
-        {% for entity in entities %}
+            <option value=''>(Select)</option>
+            {% for entity in entities %}
             <option value='{{ entity.id }}'>
                 {{ entity.title }}
             </option>
-        {% endfor %}
+            {% endfor %}
         </select>
         <textarea type='text' name='text_'></textarea>
         <button type='submit' class='btn btn-warning'>Add gloss</button>

@@ -40,9 +40,12 @@ def render_entity_by_id(type_, entity_id):
                            entity=entity)
 
 
+@entity_blueprint.route('/add', defaults={'type_': None}, methods=['GET'])
 @entity_blueprint.route('/<string:type_>/add', methods=['GET'])
 def render_add_specific_entity_page(type_):
     """Render page for adding a specific entity, e.g. Idea versus Book."""
+    if not type_:
+        return render_template('entity/add_menu.html')
     Class_ = type_to_class[type_]
     attrs = []
     for c in Class_.__table__.columns:

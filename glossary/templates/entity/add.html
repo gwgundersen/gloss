@@ -9,32 +9,32 @@
 
 {% include 'structural_partials/menu.html' %}
 
-<div id='add-page' class='page container'>
+<div id='entity-add-page' class='page container'>
     <h1>Add {{ type_ }}</h1>
     <form action='entity/{{ type_ }}/add' method='post'>
         {% if type_ != 'idea' %}
             <div class='form-group'>
                 <label>authors, comma-separated</label>
-                <input type='text' name='authors' class='form-control'/>
+                <input type='text' name='authors'/>
             </div>
         {% endif %}
         {% if type_ == 'paper' %}
             <div class='form-group'>
                 <label>journal</label>
-                <input type='text' name='journal' class='form-control'/>
+                <input type='text' name='journal'/>
             </div>
         {% endif %}
         <div class='form-group'>
             <label>labels, comma-separated</label>
-            <input type='text' name='labels' class='form-control'/>
+            <input type='text' name='labels'/>
         </div>
         {% for attr in attrs %}
         <div class='form-group'>
             <label>{{ attr.name }} - {{ attr.type_ }}</label>
-            <input type='text' name='{{ attr.name }}' class='form-control'/>
+            <input type='text' name='{{ attr.name }}'/>
         </div>
         {% endfor %}
-        <button type='submit' class='btn btn-warning'>Add entity</button>
+        <button type='submit' class='btn'>Add entity</button>
     </form>
 </div>
 

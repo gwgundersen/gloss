@@ -44,7 +44,7 @@ textarea {
 }
 
 table {
-  font-size: 13px;
+  font-size: @font-size-base;
 }
 
 .ellipsis {
@@ -65,7 +65,7 @@ table {
   border-radius: 2px;
   color: white;
   font-family: @font-family-base;
-  font-size: 13px;
+  font-size: @font-size-base;
   padding: 4px 6px;
   text-align: left;
 
@@ -188,7 +188,7 @@ ol {
   #search {
     input {
       border: 1px solid #bbb;
-      font-size: 13px;
+      font-size: @font-size-base;
       height: 30px;
       padding: 5px;
       position: relative;
@@ -277,7 +277,7 @@ ol {
 blockquote {
   background-color: @color-yellow-light;
   border-left: 2px solid @color-yellow;
-  font-size: 13px;
+  font-size: @font-size-base;
 }
 
 .metadata-tabletable {
@@ -375,7 +375,7 @@ blockquote {
 #gloss-edit-page {
   textarea {
     border: 1px solid #ddd;
-    font-size: 13px;
+    font-size: @font-size-base;
     height: 300px;
     padding: 10px;
     width: 100%;
@@ -396,5 +396,17 @@ blockquote {
   }
   table {
     margin-bottom: 40px;
+  }
+}
+
+#entity-add-page {
+  .form-group {
+    padding: 5px 0 10px 0;
+    input {
+      font-size: @font-size-base;
+      height: 25px;
+      padding: 5px;
+      width: 100%;
+    }
   }
 }
