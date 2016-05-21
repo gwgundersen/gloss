@@ -11,7 +11,7 @@
     {% include 'structural_partials/menu.html' %}
 {% endwith %}
 
-<div id='{{ entity.type_ }}-page' class='page container'>
+<div id='{{ entity.type_ }}-page' class='page entity-page'>
     {% with labels = entity.labels %}
         {% include 'entity_partials/label_list.html' %}
     {% endwith %}
@@ -23,9 +23,9 @@
     <div id='glosses'>
     {% for gloss in entity.glosses %}
         <div class='gloss {{ gloss.type_ }}'>
-            <h5 class='type'>{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h5>
+            <h3 class='type'>{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
             <div>{{ gloss.text_|markdown|safe }}</div>
-            <a href='gloss/{{ gloss.id }}'>&raquo;</a>
+            <a class='btn-edit' href='gloss/{{ gloss.id }}'>&raquo;</a>
         </div>
     {% endfor %}
     </div>

@@ -1,21 +1,21 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/header.html' %}
+{% include "structural_partials/header.html" %}
 
-{% include 'structural_partials/menu.html' %}
+{% include "structural_partials/menu.html" %}
 
-<div id='book-page' class='page'>
+<div id="author-page" class="page">
 
     <h1>
         {{ author.full_name }}
         {% if author.bio_link %}
-            <span class='author-bio-link'>
-                <a href='{{ author.bio_link }}' target='_blank'>bio</a>
+            <span class="author-bio-link">
+                <a href="{{ author.bio_link }}" target="_blank">bio</a>
             </span>
         {% endif %}
     </h1>
@@ -24,7 +24,7 @@
     <div>
         <h2>Books</h2>
         {% with entities = author.books %}
-            {% include 'entity_partials/book_list.html' %}
+            {% include "entity_partials/book_list.html" %}
         {% endwith %}
     </div>
     {% endif %}
@@ -33,7 +33,7 @@
     <div>
         <h2>Papers</h2>
         {% with entities = author.papers %}
-            {% include 'entity_partials/paper_list.html' %}
+            {% include "entity_partials/paper_list.html" %}
         {% endwith %}
     </div>
     {% endif %}
@@ -42,7 +42,7 @@
     <div>
         <h2>Talks</h2>
         {% with entities = author.talks %}
-            {% include 'entity_partials/talk_list.html' %}
+            {% include "entity_partials/talk_list.html" %}
         {% endwith %}
     </div>
     {% endif %}

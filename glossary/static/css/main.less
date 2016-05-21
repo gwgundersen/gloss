@@ -264,6 +264,7 @@ ol {
     margin-top: 0;
   }
   h2 {
+    color: @color-charcoal;
     font-size: 18px;
 
     &:first-child {
@@ -285,42 +286,10 @@ blockquote {
   border: 1px solid #ddd;  /* Matches Bootstrap. */
 }
 
-.author-list {
-  margin-bottom: 0;
-}
-
-.author-bio-link {
-  font-size: 11px;
-  display: inline-block;
-  margin-left: 5px;
-}
-
 .list-unstyled {
   list-style: none;
   margin: 0;
   padding-left: 0;
-}
-
-#glosses {
-  .gloss {
-    margin-bottom: 20px;
-    border: 1px solid #eee;
-    padding: 10px;
-
-    .btn {
-      width: 100px;
-    }
-    .type {
-      margin: 0 0 10px 0;
-      font-style: italic;
-    }
-    &.idea {
-      border-color: green;
-    }
-    &.summary {
-      border-color: #aaa;
-    }
-  }
 }
 
 #gloss-search-results {
@@ -387,6 +356,9 @@ blockquote {
   textarea {
     margin-top: 10px;
   }
+  #type-select {
+    margin-top: 5px;
+  }
 }
 
 #label-page {
@@ -399,6 +371,55 @@ blockquote {
   }
 }
 
+.entity-page {
+  .list-labels {
+    margin-bottom: 10px;
+    padding-left: 0;
+    list-style: none;
+
+    > li {
+      display: inline-block;
+      padding-right: 5px;
+    }
+  }
+  #glosses {
+    margin-top: 10px;
+
+    .gloss {
+      padding: 10px;
+      background-color: #f9f9f9;
+      margin-bottom: 10px;
+      border-left: 2px solid #eee;
+
+      h3 {
+        margin: 0;
+      }
+      .btn-edit {
+        color: black;
+        display: inline-block;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    }
+    .question {
+      background-color: #f1ebf3;
+      border-left: 2px solid #875F9A;
+    }
+    .thought {
+      background-color: #d5f3fe;
+      border-left: 2px solid #044F67;
+    }
+    .todo {
+      background-color: #fff1ee;
+      border-left: 2px solid #FF4E20;
+    }
+    .summary {
+      background-color: #f9f0d8;
+      border-left: 2px solid #E2B13C;
+    }
+  }
+}
+
 #entity-add-page {
   .form-group {
     padding: 5px 0 10px 0;
@@ -408,5 +429,20 @@ blockquote {
       padding: 5px;
       width: 100%;
     }
+  }
+}
+
+#author-page {
+  h2 {
+    font-size: 16px;
+  }
+
+  .author-list {
+    margin-bottom: 0;
+  }
+  .author-bio-link {
+    font-size: 11px;
+    display: inline-block;
+    margin-left: 5px;
   }
 }

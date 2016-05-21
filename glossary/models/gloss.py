@@ -21,3 +21,31 @@ class Gloss(db.Model):
     @property
     def endpoint(self):
         return 'gloss'
+
+
+class Question(Gloss):
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'question',
+    }
+
+
+class Summary(Gloss):
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'summary',
+    }
+
+
+class Thought(Gloss):
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'thought',
+    }
+
+
+class Todo(Gloss):
+
+    __mapper_args__ = {
+        'polymorphic_identity': 'todo',
+    }

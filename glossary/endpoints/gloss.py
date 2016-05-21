@@ -61,10 +61,11 @@ def render_add_gloss_page(entity_id):
 def add_gloss():
     """Add new gloss."""
     entity_id = int(request.form.get('entity_id'))
-    text_ = request.form.get('text_')
+    text_ = request.form.get('text_', '')
+    type_ = request.form.get('type_', 'thought')
     entity = db.session.query(models.Entity).get(entity_id)
     now = datetime.now()
-    gloss = models.Gloss(text_=text_, type_='thought', timestamp=now)
+    gloss = models.Gloss(text_=text_, type_=type_, timestamp=now)
     entity.glosses.append(gloss)
     db.session.merge(entity)
     db.session.commit()

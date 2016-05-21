@@ -4,9 +4,7 @@ from entity import Entity
 from label import Label
 
 # Glosses
-from gloss import Gloss
-from summary import Summary
-from thought import Thought
+from glossary.models.gloss import Gloss
 
 # Entities
 from idea import Idea

@@ -213,6 +213,7 @@ ol ol {
   margin-top: 0;
 }
 .page h2 {
+  color: #444;
   font-size: 18px;
 }
 .page h2:first-child {
@@ -230,36 +231,10 @@ blockquote {
   border: 1px solid #ddd;
   /* Matches Bootstrap. */
 }
-.author-list {
-  margin-bottom: 0;
-}
-.author-bio-link {
-  font-size: 11px;
-  display: inline-block;
-  margin-left: 5px;
-}
 .list-unstyled {
   list-style: none;
   margin: 0;
   padding-left: 0;
-}
-#glosses .gloss {
-  margin-bottom: 20px;
-  border: 1px solid #eee;
-  padding: 10px;
-}
-#glosses .gloss .btn {
-  width: 100px;
-}
-#glosses .gloss .type {
-  margin: 0 0 10px 0;
-  font-style: italic;
-}
-#glosses .gloss.idea {
-  border-color: green;
-}
-#glosses .gloss.summary {
-  border-color: #aaa;
 }
 #gloss-search-results li {
   border-bottom: 1px solid #eee;
@@ -311,12 +286,58 @@ blockquote {
 #gloss-add-page textarea {
   margin-top: 10px;
 }
+#gloss-add-page #type-select {
+  margin-top: 5px;
+}
 #label-page h2 {
   border-bottom: 1px solid #ddd;
   margin-bottom: 2px;
 }
 #label-page table {
   margin-bottom: 40px;
+}
+.entity-page .list-labels {
+  margin-bottom: 10px;
+  padding-left: 0;
+  list-style: none;
+}
+.entity-page .list-labels > li {
+  display: inline-block;
+  padding-right: 5px;
+}
+.entity-page #glosses {
+  margin-top: 10px;
+}
+.entity-page #glosses .gloss {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  border-left: 2px solid #eee;
+}
+.entity-page #glosses .gloss h3 {
+  margin: 0;
+}
+.entity-page #glosses .gloss .btn-edit {
+  color: black;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.entity-page #glosses .question {
+  background-color: #f1ebf3;
+  border-left: 2px solid #875F9A;
+}
+.entity-page #glosses .thought {
+  background-color: #d5f3fe;
+  border-left: 2px solid #044F67;
+}
+.entity-page #glosses .todo {
+  background-color: #fff1ee;
+  border-left: 2px solid #FF4E20;
+}
+.entity-page #glosses .summary {
+  background-color: #f9f0d8;
+  border-left: 2px solid #E2B13C;
 }
 #entity-add-page .form-group {
   padding: 5px 0 10px 0;
@@ -326,4 +347,15 @@ blockquote {
   height: 25px;
   padding: 5px;
   width: 100%;
+}
+#author-page h2 {
+  font-size: 16px;
+}
+#author-page .author-list {
+  margin-bottom: 0;
+}
+#author-page .author-bio-link {
+  font-size: 11px;
+  display: inline-block;
+  margin-left: 5px;
 }
