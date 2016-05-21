@@ -1,22 +1,30 @@
 <table class='table'>
-{% for paper in entities %}
-    <tr>
-        <td>
-            <a href='{{ paper.endpoint }}/{{ paper.id }}'>
-                {{ paper.title }}
-            </a>
-        </td>
-        <td>
-        {% with authors = paper.authors %}
-            {% include 'entity_partials/author_list.html' %}
-        {% endwith %}
-        </td>
-        <td>{{ paper.year }}</td>
-        <td>
-        {% with labels = paper.labels %}
-            {% include 'entity_partials/label_list.html' %}
-        {% endwith %}
-        </td>
-    </tr>
-{% endfor %}
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Year</th>
+            <th>Labels</th>
+        </tr>
+    </thead>
+    {% for paper in entities %}
+        <tr>
+            <td>
+                <a href='{{ paper.endpoint }}/{{ paper.id }}'>
+                    {{ paper.title }}
+                </a>
+            </td>
+            <td>
+            {% with authors = paper.authors %}
+                {% include 'entity_partials/author_list.html' %}
+            {% endwith %}
+            </td>
+            <td>{{ paper.year }}</td>
+            <td>
+            {% with labels = paper.labels %}
+                {% include 'entity_partials/label_list.html' %}
+            {% endwith %}
+            </td>
+        </tr>
+    {% endfor %}
 </table>

@@ -104,8 +104,11 @@ ol ol {
   margin-bottom: 0;
 }
 .table {
+  border-spacing: 0;
+  border-collapse: collapse;
   width: 100%;
   max-width: 100%;
+  cell-padding: none;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -118,8 +121,9 @@ ol ol {
   border-top: 1px solid #eee;
 }
 .table > thead > tr > th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #aaa;
+  vertical-align: middle;
+  text-align: left;
+  border-bottom: 2px solid #eee;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -206,6 +210,10 @@ ol ol {
   padding-left: 20px;
   padding-top: 12px;
 }
+#menu ul .btn-menu a span.highlight {
+  color: #d5364a;
+  font-weight: bold;
+}
 #menu ul .btn-menu:hover {
   background-color: #eee;
 }
@@ -242,7 +250,7 @@ blockquote {
   border-left: 2px solid #ffeb8e;
   font-size: 13px;
 }
-.metadata-table {
+.metadata-tabletable {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   /* Matches Bootstrap. */
@@ -255,9 +263,10 @@ blockquote {
   display: inline-block;
   margin-left: 5px;
 }
-.list-inline {
-  padding-left: 0;
+.list-unstyled {
   list-style: none;
+  margin: 0;
+  padding-left: 0;
 }
 #glosses .gloss {
   margin-bottom: 20px;
