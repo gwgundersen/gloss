@@ -13,11 +13,11 @@ body {
   font-family: arial, sans-serif;
 }
 a {
-  color: #1a0dab;
+  color: #003171;
   text-decoration: none;
 }
 a:hover {
-  color: #1a0dab;
+  color: #003171;
   text-decoration: underline;
 }
 input,
@@ -38,7 +38,7 @@ table {
   padding: 0;
 }
 .btn {
-  background-color: #d5364a;
+  background-color: #C93756;
   border: none;
   border-radius: 2px;
   color: white;
@@ -186,11 +186,14 @@ ol ol {
   padding-top: 12px;
 }
 #menu ul .btn-menu a span.highlight {
-  color: #d5364a;
+  color: #C93756;
   font-weight: bold;
 }
 #menu ul .btn-menu:hover {
   background-color: #eee;
+}
+#menu ul .btn-menu.section-start {
+  border-top: 2px solid #ddd;
 }
 #menu ul h2 {
   font-size: 16px;
@@ -222,9 +225,12 @@ ol ol {
 /* Content that spans pages.
  * ------------------------- */
 blockquote {
-  background-color: #FFF8DC;
-  border-left: 2px solid #ffeb8e;
-  font-size: 13px;
+  background-color: #f9f9f9;
+  border-left: 2px solid #aaa;
+  font-family: serif;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px;
 }
 .metadata-tabletable {
   background-color: #f9f9f9;
@@ -246,17 +252,6 @@ blockquote {
 }
 /* Pages.
  * ------ */
-#glosses-page h1 {
-  margin-bottom: 20px;
-}
-#glosses-page ul {
-  margin-top: 20px;
-}
-#glosses-page ul li {
-  border-bottom: 1px solid #eee;
-  margin-top: 5px;
-  padding-top: 5px;
-}
 #gloss-page .entity-link {
   border-bottom: 1px solid #eee;
   font-weight: bold;
@@ -264,7 +259,6 @@ blockquote {
 }
 #gloss-page .gloss-controls {
   border-top: 1px solid #eee;
-  margin-top: 100px;
   padding-top: 20px;
 }
 #gloss-page .gloss-controls a {
@@ -308,37 +302,6 @@ blockquote {
 .entity-page #glosses {
   margin-top: 10px;
 }
-.entity-page #glosses .gloss {
-  padding: 10px;
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-  border-left: 2px solid #eee;
-}
-.entity-page #glosses .gloss h3 {
-  margin: 0;
-}
-.entity-page #glosses .gloss .btn-edit {
-  color: black;
-  display: inline-block;
-  font-weight: bold;
-  margin-top: 20px;
-}
-.entity-page #glosses .question {
-  background-color: #f1ebf3;
-  border-left: 2px solid #875F9A;
-}
-.entity-page #glosses .thought {
-  background-color: #d5f3fe;
-  border-left: 2px solid #044F67;
-}
-.entity-page #glosses .todo {
-  background-color: #fff1ee;
-  border-left: 2px solid #FF4E20;
-}
-.entity-page #glosses .summary {
-  background-color: #f9f0d8;
-  border-left: 2px solid #E2B13C;
-}
 #entity-add-page .form-group {
   padding: 5px 0 10px 0;
 }
@@ -358,4 +321,41 @@ blockquote {
   font-size: 11px;
   display: inline-block;
   margin-left: 5px;
+}
+.gloss {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin-bottom: 10px;
+  border-left: 2px solid #eee;
+}
+.gloss h3 {
+  margin: 0;
+}
+.gloss h4 {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+  margin: 2px 0 0 0;
+}
+.gloss .btn-edit {
+  color: black;
+  display: inline-block;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.gloss.question {
+  background-color: #f9f7fb;
+  border-left: 2px solid #875F9A;
+}
+.gloss.thought {
+  background-color: #eefaff;
+  border-left: 2px solid #044F67;
+}
+.gloss.todo {
+  background-color: #fff1ee;
+  border-left: 2px solid #FF4E20;
+}
+.gloss.summary {
+  background-color: #fcf9ee;
+  border-left: 2px solid #E2B13C;
 }

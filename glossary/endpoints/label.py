@@ -52,5 +52,4 @@ def render_all_with_label(label_name):
 #         .join(models.Label, models.Gloss.labels)\
 #         .filter(models.Label.name == 'blog')\
 #         .all()
-#     entries.sort(key=lambda gloss: gloss.timestamp)
 #     return render_template('blog.html', entries=entries)

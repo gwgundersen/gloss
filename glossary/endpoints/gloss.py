@@ -30,15 +30,17 @@ def render_gloss(gloss_id):
                               to='html5',
                               format='md',
                               extra_args=pdoc_args)
-    return render_template('gloss/gloss.html', gloss_id=gloss_id,
-                           entity=gloss.entity,
+    return render_template('gloss/gloss.html', gloss=gloss,
                            rendered_gloss=output)
 
 
 @gloss_blueprint.route('/<string:gloss_type>', methods=['GET'])
 def render_gloss_type(gloss_type):
     """Render all glosses of a type."""
-    glosses = db.session.query(models.Gloss).filter_by(type_=gloss_type).all()
+    glosses = db.session.query(models.Gloss)\
+        .filter_by(type_=gloss_type)\
+        .order_by(models.Gloss.timestamp.desc())\
+        .all()
     return render_template('gloss/glosses.html', glosses=glosses)
 
 

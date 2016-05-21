@@ -11,15 +11,16 @@
 
 <div id='glosses-page' class='page'>
     <h1>Glosses</h1>
-    <ul class='list-unstyled' id='results'>
-    {% for gloss in glosses %}
-        <li class='ellipsis'>
-            <a href='gloss/{{ gloss.id }}'>
-                {{ gloss.text_ }}
-            </a>
-        </li>
-    {% endfor %}
-    </ul>
+    <div>
+        {% for gloss in glosses %}
+            <div class='gloss {{ gloss.type_ }}'>
+                <h3 class='type'>{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
+                <h4>{{ gloss.entity.title }}</h4>
+                <div>{{ gloss.text_|markdown|safe }}</div>
+                <a class='btn-edit' href='gloss/{{ gloss.id }}'>&raquo;</a>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
 
