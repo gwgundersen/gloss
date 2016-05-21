@@ -11,18 +11,10 @@ entity_blueprint = Blueprint('entity',
                              url_prefix='%s/entity' % config.get('url', 'base'))
 
 
-type_to_class = {
-    'book': models.Book,
-    'idea': models.Idea,
-    'paper': models.Paper,
-    'talk': models.Talk
-}
-
-
 @entity_blueprint.route('/<string:type_>', methods=['GET'])
 def render_entities(type_):
     """Render entity by ID."""
-    Class_ = type_to_class[type_]
+    Class_ = models.type_to_class[type_]
     entities = db.session.query(Class_).all()
     return render_template('entity/entities.html',
                            type_=type_,
@@ -32,7 +24,7 @@ def render_entities(type_):
 @entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])
 def render_entity_by_id(type_, entity_id):
     """Render entity by ID."""
-    Class_ = type_to_class[type_]
+    Class_ = models.type_to_class[type_]
     entity = db.session.query(Class_).get(entity_id)
     if not entity:
         return redirect('404.html')
@@ -46,7 +38,7 @@ def render_add_specific_entity_page(type_):
     """Render page for adding a specific entity, e.g. Idea versus Book."""
     if not type_:
         return render_template('entity/add_menu.html')
-    Class_ = type_to_class[type_]
+    Class_ = models.type_to_class[type_]
     attrs = []
     for c in Class_.__table__.columns:
         if c.name == 'id' or c.name.endswith('_fk'):
@@ -63,7 +55,7 @@ def render_add_specific_entity_page(type_):
 @entity_blueprint.route('/<string:type_>/add', methods=['POST'])
 def add_entity(type_):
     """Add entity to database."""
-    model = type_to_class[type_]
+    model = models.type_to_class[type_]
     args = _process_arguments(**request.form)
     instance = model(**args)
     instance = _get_or_create_authors(instance)

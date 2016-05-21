@@ -27,3 +27,10 @@ from label_to_book import label_to_book
 from label_to_idea import label_to_idea
 from label_to_paper import label_to_paper
 from label_to_talk import label_to_talk
+
+type_to_class = {
+    'book': Book,
+    'idea': Idea,
+    'paper': Paper,
+    'talk': Talk
+}

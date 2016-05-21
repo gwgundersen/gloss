@@ -15,27 +15,51 @@ search_blueprint = Blueprint('search',
 
 @search_blueprint.route('/', methods=['GET'], defaults={'keyword': None})
 @search_blueprint.route('/<string:keyword>', methods=['GET'])
-def search_based_on_keyword(keyword):
+def search_by_keyword(keyword):
     """Search all glosses based on keyword."""
     if not keyword:
         glosses = db.session.query(models.Gloss).all()
-        results = [{'id': g.id,
-                    'type_': g.type_,
-                    'text_': g.text_,
-                    'has_entity': (g.entity is not None)} for g in glosses]
+        results = [{'id': g.id, 'type_': 'gloss', 'text_': g.text_}
+                   for g in glosses]
     else:
-        sql = 'SELECT id, type_, text_, entity_fk FROM gloss WHERE MATCH (text_) AGAINST (:keyword)'
-        conn = db.engine.connect()
-        try:
-            t = conn.execute(text(sql), keyword=keyword)
-            results = [{'id': g[0],
-                        'type_': g[1],
-                        'text_': g[2],
-                        'has_entity': g[3] is not None} for g in t]
-        except SQLAlchemyError:
-            results = []
-        finally:
-            conn.close()
+        results = _get_glosses_by_keyword(keyword)
+        results += _get_entity_by_keyword('idea', keyword)
+        results += _get_entity_by_keyword('paper', keyword)
+        results += _get_entity_by_keyword('book', keyword)
+        results += _get_entity_by_keyword('talk', keyword)
     return jsonify({
         'results': results
     })
+
+
+def _get_glosses_by_keyword(keyword):
+    """Return glosses based on keyword matches in text."""
+    sql = 'SELECT id, text_ FROM gloss WHERE MATCH (text_) AGAINST (:keyword)'
+    conn = db.engine.connect()
+    try:
+        t = conn.execute(text(sql), keyword=keyword)
+        results = [{'id': g[0], 'text_': g[1], 'type_': 'gloss'} for g in t]
+    except SQLAlchemyError:
+        results = []
+    finally:
+        conn.close()
+    return results
+
+
+def _get_entity_by_keyword(type_, keyword):
+    """Return entity based on type and keyword."""
+    model = models.type_to_class[type_]
+    sql = 'SELECT entity_fk, title FROM %s WHERE MATCH (title) AGAINST ' \
+          '(:keyword)' % str(model.__table__)
+    conn = db.engine.connect()
+    try:
+        t = conn.execute(text(sql), keyword=keyword)
+        results = [{'id': e[0], 'text_': e[1], 'type_': type_} for e in t]
+        print('results')
+        print(results)
+    except SQLAlchemyError as e:
+        print(e)
+        results = []
+    finally:
+        conn.close()
+    return results
