@@ -9,5 +9,12 @@
 
 {% include 'structural_partials/menu.html' %}
 
+<!-- Need this in case the user searches glosses. -->
+<div class="page">
+    {% for gloss in glosses %}
+        {{ gloss.id }}
+    {% endfor %}
+</div>
+
 </body>
 </html>

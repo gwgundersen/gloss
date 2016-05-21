@@ -14,7 +14,6 @@ index_blueprint = Blueprint('index',
 @index_blueprint.route('/', methods=['GET'])
 def render_index_page():
     """Render index page."""
-    papers = db.session.query(models.Paper)
-    print(papers[0].title)
+    glosses = db.session.query(models.Gloss)
     return render_template('index.html',
-                           papers=papers)
+                           glosses=glosses)

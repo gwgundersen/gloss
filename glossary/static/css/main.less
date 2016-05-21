@@ -4,6 +4,7 @@
 @color-blue: #1a0dab;
 @color-yellow: #ffeb8e;
 @color-yellow-light: #FFF8DC;
+@color-charcoal: #444;
 
 @color-menu-gray: #f9f9f9;
 @color-menu-pressed: #eee;
@@ -11,10 +12,7 @@
 @font-family-base: arial, sans-serif;
 @font-size-base: 13px;
 
-@dim-footer-height: 50px;
-@dim-page-width: 700px;
-
-@background-transition: background-color 200ms linear;
+@dim-page-width: 800px;
 
 /* Reset
  * ----- */
@@ -183,23 +181,30 @@ ol {
 /* Structural elements.
  * -------------------- */
 #header {
-  background-color: black;
-  border-bottom: 1px solid black;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0 2px 4px rgba(0,0,0,.2);
+  clear: both;
   font-family: @font-family-base;
-  height: 25px;
+  height: 45px;
+  /* z-index only works with certain positions:
+   * http://stackoverflow.com/a/3259067
+   */
+  position: relative;
+  z-index: 999;
 
   h1 {
+    float: left;
     margin: 0;
     padding-left: 20px;
     position: relative;
-    top: 5px;
+    top: 12px;
 
     a {
-      color: white;
-      font-size: 13px;
+      color: @color-charcoal;
+      font-size: 18px;
       font-weight: bold;
       text-decoration: none;
-      text-transform: uppercase;
 
       &:hover {
         opacity: .8;
@@ -207,13 +212,24 @@ ol {
       }
     }
   }
-  .container {
-    width: @dim-page-width;
+
+  #search {
+    input {
+      border: 1px solid #bbb;
+      font-size: 13px;
+      height: 30px;
+      padding: 5px;
+      position: relative;
+      top: 8px;
+      left: 51px;
+      width: 200px;
+    }
   }
 }
 
 #menu {
   background-color: @color-menu-gray;
+  border-right: 1px solid #f1f1f1;
   float: left;
   height: 100%;
   width: 150px;
@@ -227,18 +243,18 @@ ol {
       height: 40px;
 
       a {
-        color: black;
+        color: @color-charcoal;
         display: block;
         font-family: @font-family-base;
-        font-size: 16px;
-        font-weight: bold;
+        font-size: 14px;
         height: 100%;
         width: 100%;
 
+        /* Little weird, but this allows the menu buttons to be full-width. */
         span {
           display: inline-block;
           padding-left: 20px;
-          padding-top: 10px;
+          padding-top: 12px;
         }
       }
 
@@ -250,23 +266,6 @@ ol {
     h2 {
       font-size: 16px;
       padding-left: 20px;
-    }
-
-    #search {
-      background-color: #bbb;
-      height: 40px;
-
-      div {
-        padding: 5px;
-
-        input {
-          border: 1px solid #aaa;
-          font-size: 14px;
-          height: 30px;
-          padding: 5px;
-          width: 100%;
-        }
-      }
     }
   }
 }
@@ -284,9 +283,8 @@ ol {
   width: 100%;
 
   h1 {
-    border-bottom: 1px solid black;
+    color: @color-charcoal;
     font-size: 20px;
-    font-style: italic;
     margin-top: 0;
   }
   h2 {
@@ -296,11 +294,6 @@ ol {
       margin-top: 0;
     }
   }
-}
-
-#footer {
-  background-color: #f9f9f9;
-  border-top: 1px solid #eee;
 }
 
 /* Content that spans pages.
