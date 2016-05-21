@@ -255,16 +255,19 @@ blockquote {
 #gloss-page .entity-link {
   border-bottom: 1px solid #eee;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-#gloss-page .gloss-controls {
+#gloss-page .crud-controls,
+.entity-page .crud-controls {
   border-top: 1px solid #eee;
   padding-top: 20px;
 }
-#gloss-page .gloss-controls a {
+#gloss-page .crud-controls a,
+.entity-page .crud-controls a {
   margin-bottom: 5px;
 }
-#gloss-page .gloss-controls input {
+#gloss-page .crud-controls input,
+.entity-page .crud-controls input {
   border-radius: 2px;
   margin-top: 10px;
 }
@@ -329,19 +332,19 @@ blockquote {
   border-left: 2px solid #eee;
 }
 .gloss h3 {
-  margin: 0;
+  margin: 0 0 10px 0;
+  font-size: 10px;
 }
 .gloss h4 {
   font-size: 12px;
   font-style: italic;
   font-weight: normal;
-  margin: 2px 0 0 0;
+  margin: 2px 0 10px 0;
 }
 .gloss .btn-edit {
   color: black;
   display: inline-block;
   font-weight: bold;
-  margin-top: 20px;
 }
 .gloss.question {
   background-color: #f9f7fb;

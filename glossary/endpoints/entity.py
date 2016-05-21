@@ -67,6 +67,15 @@ def add_entity(type_):
                             entity_id=instance.id))
 
 
+@entity_blueprint.route('/delete/<entity_id>', methods=['POST'])
+def delete_entity(entity_id):
+    """Deletes entity from database."""
+    entity = db.session.query(models.Entity).get(entity_id)
+    db.session.delete(entity)
+    db.session.commit()
+    return redirect(url_for('index.render_index_page'))
+
+
 def _get_or_create_authors(instance):
     """Get or create authors and attach to instance if necesary."""
     if 'authors' in request.form:

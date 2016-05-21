@@ -1,33 +1,40 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/header.html' %}
+{% include "structural_partials/header.html" %}
 
 {% with page = entity.type_ %}
-    {% include 'structural_partials/menu.html' %}
+    {% include "structural_partials/menu.html" %}
 {% endwith %}
 
-<div id='{{ entity.type_ }}-page' class='page entity-page'>
+<div id="{{ entity.type_ }}-page" class="page entity-page">
     {% with labels = entity.labels %}
-        {% include 'entity_partials/label_list.html' %}
+        {% include "entity_partials/label_list.html" %}
     {% endwith %}
-    <table class='table metadata-table'>
+    <table class="table metadata-table">
     {% with entity = entity %}
-        {% include 'entity_partials/%s_metadata.html' % entity.type_ %}
+        {% include "entity_partials/%s_metadata.html" % entity.type_ %}
     {% endwith %}
     </table>
-    <div id='glosses'>
+    <div id="glosses">
     {% for gloss in entity.glosses %}
-        <div class='gloss {{ gloss.type_ }}'>
-            <h3 class='type'>{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
+        <div class="gloss {{ gloss.type_ }}">
+            <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
             <div>{{ gloss.text_|markdown|safe }}</div>
-            <a class='btn-edit' href='gloss/{{ gloss.id }}'>&raquo;</a>
+            <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
         </div>
     {% endfor %}
+    </div>
+    <div class="crud-controls">
+{#        <a class="btn" href="entity/edit/{{ gloss.id }}">Edit</a>#}
+        <form action="entity/delete/{{ entity.id }}" method="post">
+            <input type="submit" class="btn" value="Delete"
+                   onclick="return confirm('Are you sure you want to delete this item?');"/>
+        </form>
     </div>
 </div>
 

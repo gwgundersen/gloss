@@ -25,13 +25,7 @@ def render_all_glosses():
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    pdoc_args = ['--mathjax',]
-    output = pypandoc.convert(gloss.text_,
-                              to='html5',
-                              format='md',
-                              extra_args=pdoc_args)
-    return render_template('gloss/gloss.html', gloss=gloss,
-                           rendered_gloss=output)
+    return render_template('gloss/gloss.html', gloss=gloss)
 
 
 @gloss_blueprint.route('/<string:gloss_type>', methods=['GET'])
@@ -41,7 +35,8 @@ def render_gloss_type(gloss_type):
         .filter_by(type_=gloss_type)\
         .order_by(models.Gloss.timestamp.desc())\
         .all()
-    return render_template('gloss/glosses.html', glosses=glosses)
+    return render_template('gloss/glosses.html', glosses=glosses,
+                           type_=gloss_type)
 
 
 @gloss_blueprint.route('/add', defaults={'entity_id': None}, methods=['GET'])

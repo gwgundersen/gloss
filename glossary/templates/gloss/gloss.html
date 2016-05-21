@@ -16,9 +16,9 @@
         </p>
     {% endif %}
     <div class="gloss {{ gloss.type_ }}">
-        {{ rendered_gloss|safe }}
+        {{ gloss.text_|markdown|safe }}
     </div>
-    <div class="gloss-controls">
+    <div class="crud-controls">
         <a class="btn" href="gloss/edit/{{ gloss.id }}">Edit</a>
         <form action="gloss/delete/{{ gloss.id }}" method="post">
             <input type="submit" class="btn" value="Delete"
