@@ -1,28 +1,28 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/header.html' %}
+{% include "structural_partials/header.html" %}
 
-{% include 'structural_partials/menu.html' %}
+{% include "structural_partials/menu.html" %}
 
-<div id='gloss-page' class='page'>
+<div id="gloss-page" class="page">
     {% if entity.type_ %}
-        <p class='entity-link'>
-            <a href='entity/{{ entity.type_ }}/{{ entity.id }}'>{{ entity.title }}</a>
+        <p class="entity-link">
+            <a href="entity/{{ entity.type_ }}/{{ entity.id }}">{{ entity.title }}</a>
         </p>
     {% endif %}
-    <div class='markdown'>
+    <div class="markdown">
         {{ rendered_gloss|safe }}
     </div>
-    <div class='gloss-controls'>
-        <a href='gloss/edit/{{ gloss_id }}' class='btn btn-warning'>Edit</a>
-        <form action='gloss/delete/{{ gloss_id }}' method='post'>
-            <input type='submit' class='btn btn-danger' value='Delete'
-                   onclick='return confirm("Are you sure you want to delete this item?");'/>
+    <div class="gloss-controls">
+        <a class="btn" href="gloss/edit/{{ gloss_id }}">Edit</a>
+        <form action="gloss/delete/{{ gloss_id }}" method="post">
+            <input type="submit" class="btn" value="Delete"
+                   onclick="return confirm('Are you sure you want to delete this item?');"/>
         </form>
     </div>
 </div>

@@ -4,10 +4,15 @@ $(function() {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    function remove_menu_highlighting() {
+        $('#menu li span').removeClass('highlight');
+    }
+
     $('#search input').on('input', function(evt) {
         var term = $(this).val(),
             url = '/glossary/search/' + term,
             li_str = '';
+        remove_menu_highlighting();
         $.get(url, {}, function(data) {
             $.each(data.results, function(idx, obj) {
                 var type_ = capitalize(obj.type_),

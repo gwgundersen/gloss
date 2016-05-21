@@ -22,7 +22,7 @@ a:hover {
 }
 input,
 textarea {
-  border-radius: 0 !important;
+  border-radius: 0;
 }
 table {
   font-size: 13px;
@@ -38,46 +38,22 @@ table {
   padding: 0;
 }
 .btn {
-  background-color: #f9f9f9;
+  background-color: #d5364a;
   border: none;
-  border-bottom: 1px solid black;
-  border-radius: 0;
-  color: black;
+  border-radius: 2px;
+  color: white;
   font-family: arial, sans-serif;
-  font-style: italic;
-  padding: 2px 5px;
+  font-size: 13px;
+  padding: 4px 6px;
   text-align: left;
-  width: 100%;
 }
-.btn.btn-primary {
-  box-shadow: none !important;
-}
-.btn.btn-primary:active,
-.btn.btn-primary:focus,
-.btn.btn-primary:hover {
-  background-color: #d5364a;
+.btn:active,
+.btn:focus,
+.btn:hover {
+  background-color: #BF3042;
   color: white;
-  border-bottom: 1px solid #d5364a;
-}
-.btn.btn-warning {
-  border-bottom: 1px solid #d5364a;
-  color: #d5364a;
-}
-.btn.btn-warning:active,
-.btn.btn-warning:focus,
-.btn.btn-warning:hover {
-  background-color: #d5364a;
-  color: white;
-  border-bottom: 1px solid #d5364a;
-}
-.btn.btn-danger {
-  background-color: #d5364a;
-  border-bottom: 1px solid #d5364a;
-  color: white;
-}
-.btn.btn-danger:hover {
-  border-color: black;
-  background-color: black;
+  cursor: pointer;
+  text-decoration: none;
 }
 .label {
   display: inline-block;
@@ -319,14 +295,26 @@ blockquote {
 #gloss-page .gloss-controls a {
   margin-bottom: 5px;
 }
+#gloss-page .gloss-controls input {
+  border-radius: 2px;
+  margin-top: 10px;
+}
 #gloss-add-page textarea,
 #gloss-edit-page textarea {
+  border: 1px solid #ddd;
+  font-size: 13px;
   height: 300px;
+  padding: 10px;
   width: 100%;
-}
-#entity-types-page li {
   margin-bottom: 10px;
 }
-#labels-page ul li {
-  margin-bottom: 7px;
+#gloss-add-page textarea {
+  margin-top: 10px;
+}
+#label-page h2 {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2px;
+}
+#label-page table {
+  margin-bottom: 40px;
 }
