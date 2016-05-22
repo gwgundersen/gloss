@@ -11,26 +11,6 @@
             </a>
         </li>
         <li class="btn-menu section-start">
-            <a href="gloss/question">
-                <span class="{{ 'active' if page == 'question' else '' }}">Question</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="gloss/todo">
-                <span class="{{ 'active' if page == 'todo' else '' }}">Todo</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="gloss/thought">
-                <span class="{{ 'active' if page == 'thought' else '' }}">Thought</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="gloss/summary">
-                <span class="{{ 'active' if page == 'summary' else '' }}">Summary</span>
-            </a>
-        </li>
-        <li class="btn-menu section-start">
             <a href="entity/idea">
                 <span class="{{ 'active' if page == 'idea' else '' }}">Ideas</span>
             </a>
@@ -55,5 +35,12 @@
                 <span>Blog</span>
             </a>
         </li>
+        {% for label in labels %}
+            <li class="btn-menu {{ 'section-start' if loop.first else '' }}">
+                <a href="label/{{ label.name }}">
+                    <span>{{ label.name }}</span>
+                </a>
+            </li>
+        {% endfor %}
     </ul>
 </div>

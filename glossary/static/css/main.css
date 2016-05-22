@@ -158,6 +158,11 @@ ol ol {
   left: 52px;
   width: 200px;
 }
+#nav #header #search button {
+  position: relative;
+  left: 55px;
+  top: 7px;
+}
 #nav #controls {
   border-bottom: 1px solid #eee;
   height: 30px;
@@ -215,14 +220,10 @@ ol ol {
   font-size: 16px;
   padding-left: 20px;
 }
-#container {
-  height: 1000px;
-  width: 1000px;
-}
 .page {
   float: left;
   margin-top: 20px;
-  max-width: 900px;
+  max-width: 1000px;
   padding-left: 20px;
   width: 100%;
 }
@@ -269,6 +270,10 @@ blockquote {
 }
 /* Pages.
  * ------ */
+#index-page {
+  margin: 0;
+  padding: 0;
+}
 #gloss-page .entity-link {
   border-bottom: 1px solid #eee;
   font-weight: bold;
@@ -319,7 +324,7 @@ blockquote {
   display: inline-block;
   padding-right: 5px;
 }
-.entity-page #glosses {
+.entity-page .gloss-list {
   margin-top: 10px;
 }
 #entity-add-page .form-group {
@@ -342,40 +347,46 @@ blockquote {
   display: inline-block;
   margin-left: 5px;
 }
-.gloss {
+.gloss.question {
+  background-color: #f9f7fb !important;
+  border-left: 2px solid #875F9A !important;
+}
+.gloss.thought {
+  background-color: #eefaff !important;
+  border-left: 2px solid #044F67 !important;
+}
+.gloss.todo {
+  background-color: #fff1ee !important;
+  border-left: 2px solid #FF4E20 !important;
+}
+.gloss.summary {
+  background-color: #fcf9ee !important;
+  border-left: 2px solid #E2B13C !important;
+}
+.gloss-list .gloss {
   padding: 10px;
   background-color: #f9f9f9;
   margin-bottom: 10px;
   border-left: 2px solid #eee;
 }
-.gloss h3 {
+.gloss-list .gloss h3 {
   margin: 0 0 10px 0;
   font-size: 10px;
 }
-.gloss h4 {
+.gloss-list .gloss h4 {
   font-size: 12px;
   font-style: italic;
   font-weight: normal;
   margin: 2px 0 10px 0;
 }
-.gloss .btn-edit {
+.gloss-list .gloss .btn-edit {
   color: black;
   display: inline-block;
   font-weight: bold;
 }
-.gloss.question {
-  background-color: #f9f7fb;
-  border-left: 2px solid #875F9A;
+#glossary .gloss {
+  padding: 4px;
 }
-.gloss.thought {
-  background-color: #eefaff;
-  border-left: 2px solid #044F67;
-}
-.gloss.todo {
-  background-color: #fff1ee;
-  border-left: 2px solid #FF4E20;
-}
-.gloss.summary {
-  background-color: #fcf9ee;
-  border-left: 2px solid #E2B13C;
+#glossary table tr:first-child td {
+  border-top: none;
 }

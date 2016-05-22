@@ -10,18 +10,20 @@
 {% include "structural_partials/menu.html" %}
 
 <!-- Need this in case the user searches glosses. -->
-<div class="page">
+<div id="index-page" class="page">
     <div id="glossary">
         <table class="table">
         {% for gloss in glosses %}
             <tr>
                 <td><input type="checkbox" name="{{ gloss.id }}"/></td>
-                <td>{{ gloss.type_|capitalize }}</td>
+                <td><a href="gloss/{{ gloss.type_ }}">{{ gloss.type_|capitalize }}</a></td>
                 <td class="ellipsis">
                     {% with labels = gloss.labels %}
                         {% include 'entity_partials/label_list.html' %}
                     {% endwith %}
-                    <a href="/glossary/gloss/{{ gloss.id }}">{{ gloss.text_ }}</a>
+                    <div class="gloss {{ gloss.type_ }}">
+                        <a href="/glossary/gloss/{{ gloss.id }}">{{ gloss.text_ }}</a>
+                    </div>
                 </td>
             </tr>
         {% endfor %}

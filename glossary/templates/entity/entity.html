@@ -20,7 +20,7 @@
         {% include "entity_partials/%s_metadata.html" % entity.type_ %}
     {% endwith %}
     </table>
-    <div id="glosses">
+    <div class="gloss-list">
     {% for gloss in entity.glosses %}
         <div class="gloss {{ gloss.type_ }}">
             <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>

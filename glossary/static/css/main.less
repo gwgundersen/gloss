@@ -10,7 +10,7 @@
 @font-family-base: arial, sans-serif;
 @font-size-base: 13px;
 
-@dim-page-width: 900px;
+@dim-page-width: 1000px;
 @dim-menu-width: 150px;
 
 /* Reset
@@ -199,6 +199,11 @@ ol {
         left: 52px;
         width: 200px;
       }
+      button {
+        position: relative;
+        left: 55px;
+        top: 7px;
+      }
     }
   }
 
@@ -272,11 +277,6 @@ ol {
   }
 }
 
-#container {
-  height: 1000px;
-  width: 1000px;
-}
-
 .page {
   float: left;
   margin-top: 20px;
@@ -326,7 +326,7 @@ blockquote {
 
   .list-labels {
     margin-bottom: 2px;
-    
+
     li {
       display: inline;
     }
@@ -335,6 +335,11 @@ blockquote {
 
 /* Pages.
  * ------ */
+#index-page {
+  margin: 0;
+  padding: 0;
+}
+
 #gloss-page {
   .entity-link {
     border-bottom: 1px solid #eee;
@@ -400,7 +405,7 @@ blockquote {
       padding-right: 5px;
     }
   }
-  #glosses {
+  .gloss-list {
     margin-top: 10px;
   }
 }
@@ -433,40 +438,58 @@ blockquote {
 }
 
 .gloss {
-  padding: 10px;
-  background-color: #f9f9f9;
-  margin-bottom: 10px;
-  border-left: 2px solid #eee;
-
-  h3 {
-    margin: 0 0 10px 0;
-    font-size: 10px;
-  }
-  h4 {
-    font-size: 12px;
-    font-style: italic;
-    font-weight: normal;
-    margin: 2px 0 10px 0;
-  }
-  .btn-edit {
-    color: black;
-    display: inline-block;
-    font-weight: bold;
-  }
   &.question {
-    background-color: #f9f7fb;
-    border-left: 2px solid #875F9A;
+    background-color: #f9f7fb !important;
+    border-left: 2px solid #875F9A !important;
   }
   &.thought {
-    background-color: #eefaff;
-    border-left: 2px solid #044F67;
+    background-color: #eefaff !important;
+    border-left: 2px solid #044F67 !important;
   }
   &.todo {
-    background-color: #fff1ee;
-    border-left: 2px solid #FF4E20;
+    background-color: #fff1ee !important;
+    border-left: 2px solid #FF4E20 !important;
   }
   &.summary {
-    background-color: #fcf9ee;
-    border-left: 2px solid #E2B13C;
+    background-color: #fcf9ee !important;
+    border-left: 2px solid #E2B13C !important;
+  }
+}
+
+.gloss-list {
+  .gloss {
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-left: 2px solid #eee;
+
+    h3 {
+      margin: 0 0 10px 0;
+      font-size: 10px;
+    }
+    h4 {
+      font-size: 12px;
+      font-style: italic;
+      font-weight: normal;
+      margin: 2px 0 10px 0;
+    }
+    .btn-edit {
+      color: black;
+      display: inline-block;
+      font-weight: bold;
+    }
+  }
+}
+
+#glossary {
+  .gloss {
+    padding: 4px;
+  }
+  table {
+    tr:first-child {
+      td {
+        border-top: none;
+      }
+    }
   }
 }

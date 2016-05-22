@@ -37,13 +37,10 @@ $(function() {
     }
 
     function search() {
-        $('#search input').on('input', function(evt) {
-            var term = $(this).val(),
-                url = '/glossary/search/' + term;
-            remove_menu_highlighting();
-            $.get(url, {}, function(data) {
-                render_search_results(data);
-            });
+        $('#search button').click(function(evt) {
+            evt.preventDefault();
+            var term = $(this).parent().find('input').val();
+            window.location.replace(window.location.href + term);
         });
     }
 

@@ -1,29 +1,29 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/nav.html' %}
+{% include "structural_partials/nav.html" %}
 
 {% if type_ %}
     {% with page = type_ %}
-        {% include 'structural_partials/menu.html' %}
+        {% include "structural_partials/menu.html" %}
     {% endwith %}
 {% else %}
-    {% include 'structural_partials/menu.html' %}
+    {% include "structural_partials/menu.html" %}
 {% endif %}
 
-<div id='glosses-page' class='page'>
+<div id="glosses-page" class="page">
     <h1>Glosses</h1>
-    <div>
+    <div class="gloss-list">
         {% for gloss in glosses %}
-            <div class='gloss {{ gloss.type_ }}'>
-                <h3 class='type'>{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
+            <div class="gloss {{ gloss.type_ }}">
+                <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
                 <h4>{{ gloss.entity.title }}</h4>
                 <div>{{ gloss.text_|markdown|safe }}</div>
-                <a class='btn-edit' href='gloss/{{ gloss.id }}'>&raquo;</a>
+                <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
             </div>
         {% endfor %}
     </div>

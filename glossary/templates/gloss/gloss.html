@@ -9,7 +9,7 @@
 
 {% include "structural_partials/menu.html" %}
 
-<div id="gloss-page" class="page">
+<div id="gloss-page" class="page gloss-list">
     {% if gloss.entity.type_ %}
         <p class="entity-link">
             <a href="entity/{{ gloss.entity.type_ }}/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a>
