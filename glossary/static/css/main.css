@@ -27,6 +27,9 @@ textarea {
 table {
   font-size: 13px;
 }
+.clear {
+  clear: both;
+}
 .ellipsis {
   white-space: nowrap;
   overflow: hidden;
@@ -116,37 +119,36 @@ ol ol {
 }
 /* Structural elements.
  * -------------------- */
-#header {
+#nav #header {
   background-color: #f1f1f1;
   border-bottom: 1px solid #e5e5e5;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  clear: both;
   font-family: arial, sans-serif;
   height: 45px;
   /* z-index only works with certain positions:
-   * http://stackoverflow.com/a/3259067
-   */
+     * http://stackoverflow.com/a/3259067
+     */
   position: relative;
   z-index: 999;
 }
-#header h1 {
+#nav #header h1 {
   float: left;
   margin: 0;
   padding-left: 20px;
   position: relative;
   top: 12px;
 }
-#header h1 a {
+#nav #header h1 a {
   color: #444;
   font-size: 18px;
   font-weight: bold;
   text-decoration: none;
 }
-#header h1 a:hover {
+#nav #header h1 a:hover {
   opacity: .8;
   text-decoration: none;
 }
-#header #search input {
+#nav #header #search input {
   border: 1px solid #bbb;
   font-size: 13px;
   height: 30px;
@@ -155,6 +157,17 @@ ol ol {
   top: 8px;
   left: 52px;
   width: 200px;
+}
+#nav #controls {
+  border-bottom: 1px solid #eee;
+  height: 30px;
+  padding-left: 150px;
+}
+#nav #controls .control {
+  float: left;
+  margin-right: 10px;
+  position: relative;
+  top: 7px;
 }
 #menu {
   background-color: #f9f9f9;
@@ -185,8 +198,11 @@ ol ol {
   padding-left: 20px;
   padding-top: 12px;
 }
-#menu ul .btn-menu a span.highlight {
+#menu ul .btn-menu a span.active {
   color: #C93756;
+  font-weight: bold;
+}
+#menu ul .btn-menu a span.highlight {
   font-weight: bold;
 }
 #menu ul .btn-menu:hover {
@@ -206,7 +222,7 @@ ol ol {
 .page {
   float: left;
   margin-top: 20px;
-  max-width: 800px;
+  max-width: 900px;
   padding-left: 20px;
   width: 100%;
 }
@@ -242,13 +258,14 @@ blockquote {
   margin: 0;
   padding-left: 0;
 }
-#gloss-search-results li {
-  border-bottom: 1px solid #eee;
-  margin-top: 5px;
-  padding-top: 5px;
+#glossary {
+  overflow: hidden;
 }
-#gloss-search-results li span {
-  font-weight: bold;
+#glossary .list-labels {
+  margin-bottom: 2px;
+}
+#glossary .list-labels li {
+  display: inline;
 }
 /* Pages.
  * ------ */

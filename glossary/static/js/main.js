@@ -1,7 +1,33 @@
 $(function() {
 
+    glossary();
     search();
     add_entity_select();
+
+    function glossary() {
+        $('#nav #controls button#archive-action').click(function() {
+            var gloss_ids = get_checked_gloss_ids();
+            $.post('/glossary/archive', { gloss_ids: gloss_ids }, function(data) {
+                if (data.status == 'success') {
+                    window.location.reload();
+                } else {
+                    alert('Unknown error.');
+                }
+            });
+        });
+
+        $('#nav #controls button#label-action').click(function() {
+            var gloss_ids = get_checked_gloss_ids(),
+                label_id = $('#nav #controls select#label').val();
+            $.post('/glossary/label', { gloss_ids: gloss_ids, label_id: label_id }, function(data) {
+                if (data.status == 'success') {
+                    window.location.reload();
+                } else {
+                    alert('Unknown error.');
+                }
+            });
+        });
+    }
 
     function add_entity_select() {
         $('#entity-add-menu-page select').change(function(evt) {
@@ -36,7 +62,7 @@ $(function() {
                 '   <a href="' + path + '/' + obj.idx + '">' + obj.text_ + '</a>' +
                 '</li>';
         });
-        $('.page').html('<ul id="gloss-search-results" class="list-unstyled">' + li_str + '</ul>');
+        $('.page').html('<ul id="glossary" class="list-unstyled">' + li_str + '</ul>');
     }
 
     function capitalize(string) {
@@ -44,6 +70,14 @@ $(function() {
     }
 
     function remove_menu_highlighting() {
-        $('#menu li span').removeClass('highlight');
+        $('#menu li span').removeClass('active');
+    }
+
+    function get_checked_gloss_ids() {
+        var gloss_ids = [];
+        $('#glossary input:checked').each(function() {
+            gloss_ids.push($(this).attr('name'));
+        });
+        return gloss_ids;
     }
 });

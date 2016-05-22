@@ -12,6 +12,9 @@ class Gloss(db.Model):
                           nullable=True)
     text_     = db.Column(db.Text)
     timestamp = db.Column(db.DateTime)
+    archive   = db.Column(db.Boolean)
+    labels    = db.relationship('Label', backref='glosses',
+                                secondary='label_to_gloss')
 
     __mapper_args__ = {
         'polymorphic_identity': 'gloss',

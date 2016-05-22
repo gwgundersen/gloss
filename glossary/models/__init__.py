@@ -26,6 +26,8 @@ from label_to_idea import label_to_idea
 from label_to_paper import label_to_paper
 from label_to_talk import label_to_talk
 
+from label_to_gloss import label_to_gloss
+
 type_to_class = {
     'book': Book,
     'idea': Idea,

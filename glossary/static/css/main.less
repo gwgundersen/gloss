@@ -10,7 +10,8 @@
 @font-family-base: arial, sans-serif;
 @font-size-base: 13px;
 
-@dim-page-width: 800px;
+@dim-page-width: 900px;
+@dim-menu-width: 150px;
 
 /* Reset
  * ----- */
@@ -43,6 +44,10 @@ textarea {
 
 table {
   font-size: @font-size-base;
+}
+
+.clear {
+  clear: both;
 }
 
 .ellipsis {
@@ -150,49 +155,63 @@ ol {
 
 /* Structural elements.
  * -------------------- */
-#header {
-  background-color: #f1f1f1;
-  border-bottom: 1px solid #e5e5e5;
-  box-shadow: 0 2px 4px rgba(0,0,0,.2);
-  clear: both;
-  font-family: @font-family-base;
-  height: 45px;
-  /* z-index only works with certain positions:
-   * http://stackoverflow.com/a/3259067
-   */
-  position: relative;
-  z-index: 999;
-
-  h1 {
-    float: left;
-    margin: 0;
-    padding-left: 20px;
+#nav {
+  #header {
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    font-family: @font-family-base;
+    height: 45px;
+    /* z-index only works with certain positions:
+     * http://stackoverflow.com/a/3259067
+     */
     position: relative;
-    top: 12px;
+    z-index: 999;
 
-    a {
-      color: @color-charcoal;
-      font-size: 18px;
-      font-weight: bold;
-      text-decoration: none;
+    h1 {
+      float: left;
+      margin: 0;
+      padding-left: 20px;
+      position: relative;
+      top: 12px;
 
-      &:hover {
-        opacity: .8;
+      a {
+        color: @color-charcoal;
+        font-size: 18px;
+        font-weight: bold;
         text-decoration: none;
+
+        &:hover {
+          opacity: .8;
+          text-decoration: none;
+        }
+      }
+    }
+
+    #search {
+      input {
+        border: 1px solid #bbb;
+        font-size: @font-size-base;
+        height: 30px;
+        padding: 5px;
+        position: relative;
+        top: 8px;
+        left: 52px;
+        width: 200px;
       }
     }
   }
 
-  #search {
-    input {
-      border: 1px solid #bbb;
-      font-size: @font-size-base;
-      height: 30px;
-      padding: 5px;
+  #controls {
+    border-bottom: 1px solid @color-menu-pressed;
+    height: 30px;
+    padding-left: @dim-menu-width;
+
+    .control {
+      float: left;
+      margin-right: 10px;
       position: relative;
-      top: 8px;
-      left: 52px;
-      width: 200px;
+      top: 7px;
     }
   }
 }
@@ -202,7 +221,7 @@ ol {
   border-right: 1px solid #f1f1f1;
   float: left;
   height: 100%;
-  width: 150px;
+  width: @dim-menu-width;
 
   ul {
     margin: 0;
@@ -225,8 +244,13 @@ ol {
           display: inline-block;
           padding-left: 20px;
           padding-top: 12px;
-          &.highlight {
+          &.active {
             color: @color-red;
+            font-weight: bold;
+          }
+          &.highlight {
+            //background-color: @color-red;
+            //color: white;
             font-weight: bold;
           }
         }
@@ -297,13 +321,14 @@ blockquote {
   padding-left: 0;
 }
 
-#gloss-search-results {
-  li {
-    border-bottom: 1px solid #eee;
-    margin-top: 5px;
-    padding-top: 5px;
-    span {
-      font-weight: bold;
+#glossary {
+  overflow: hidden;
+
+  .list-labels {
+    margin-bottom: 2px;
+    
+    li {
+      display: inline;
     }
   }
 }

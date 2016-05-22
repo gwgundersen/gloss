@@ -1,0 +1,22 @@
+<div id="nav">
+    <div id="header">
+        <div>
+            <h1><a href="">Glossary</a></h1>
+            <div id="search">
+                <input type="text" class="form-control" placeholder="Search..."/>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    {% if is_glossary %}
+        <div id="controls">
+            <button class="control" id="archive-action">Archive</button>
+            <button class="control" id="label-action">Label</button>
+            <select class="control" id="label">
+                {% for label in labels %}
+                    <option value="{{ label.id }}">{{ label.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    {% endif %}
+</div>

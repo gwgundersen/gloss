@@ -5,20 +5,28 @@
 
 <body>
 
-{% include "structural_partials/header.html" %}
+{% include "structural_partials/nav.html" %}
 
 {% include "structural_partials/menu.html" %}
 
 <!-- Need this in case the user searches glosses. -->
 <div class="page">
-    <ul id="gloss-search-results" class="list-unstyled">
+    <div id="glossary">
+        <table class="table">
         {% for gloss in glosses %}
-            <li class="ellipsis">
-                <span>{{ gloss.type_|capitalize }}{{ '' if gloss.entity_fk else ' [Dangling]' }}: </span>
-                <a href="/glossary/gloss/{{ gloss.id }}">{{ gloss.text_ }}</a>
-            </li>
+            <tr>
+                <td><input type="checkbox" name="{{ gloss.id }}"/></td>
+                <td>{{ gloss.type_|capitalize }}</td>
+                <td class="ellipsis">
+                    {% with labels = gloss.labels %}
+                        {% include 'entity_partials/label_list.html' %}
+                    {% endwith %}
+                    <a href="/glossary/gloss/{{ gloss.id }}">{{ gloss.text_ }}</a>
+                </td>
+            </tr>
         {% endfor %}
-    <ul>
+        <table>
+    </div>
 </div>
 
 </body>
