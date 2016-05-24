@@ -60,17 +60,47 @@ table {
 }
 .label {
   display: inline-block;
-  margin: 2px 0;
-  background-color: #ccc;
-  border-radius: 0;
-  color: black;
-  font-size: 12px;
+}
+.label a,
+.label input {
+  height: 12px;
   padding: 3px 6px;
 }
-.label:hover {
+.label input {
+  background-color: transparent;
+}
+.label a,
+.label form {
+  background-color: #ccc;
+  float: left;
+  margin: 0;
+}
+.label a,
+.label input {
+  padding: 3px 6px;
+}
+.label a {
+  color: black;
+  font-size: 12px;
+}
+.label a:hover {
   background-color: #aaa;
   color: black;
   text-decoration: none;
+}
+.label form:hover,
+.label input:hover {
+  background-color: #C93756;
+  cursor: pointer;
+}
+.label form {
+  /* 12px + 6px padding */
+  height: 18px;
+}
+.label form input {
+  border: none;
+  font-size: 10px;
+  height: 100%;
 }
 ul,
 ol {
@@ -259,14 +289,12 @@ blockquote {
   margin: 0;
   padding-left: 0;
 }
+.list-labels {
+  height: 18px;
+  margin-bottom: 4px;
+}
 #glossary {
   overflow: hidden;
-}
-#glossary .list-labels {
-  margin-bottom: 2px;
-}
-#glossary .list-labels li {
-  display: inline;
 }
 /* Pages.
  * ------ */
@@ -366,7 +394,7 @@ blockquote {
 .gloss-list .gloss {
   padding: 10px;
   background-color: #f9f9f9;
-  margin-bottom: 10px;
+  margin: 5px 0;
   border-left: 2px solid #eee;
 }
 .gloss-list .gloss h3 {

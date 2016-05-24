@@ -46,6 +46,19 @@ def render_all_with_label(label_name):
                            ideas=ideas, papers=papers, talks=talks)
 
 
+@label_blueprint.route('/delete/<int:label_id>/<string:type_>/<int:type_id>', methods=['GET'])
+def delete_label_on_entity_or_gloss(label_id, type_, type_id):
+    """."""
+    if type_ == 'gloss':
+        model = models.Gloss
+    else:
+        model = models.type_to_class[type_]
+    instance = db.session.query(model).get(type_id)
+    labels = db.session.query(models.Label).all()
+    return render_template('label/labels.html',
+                           labels=labels)
+
+
 # def render_blog():
 #     """Renders glosses for blog."""
 #     entries = db.session.query(models.Gloss)\

@@ -10,11 +10,17 @@
 {% include "structural_partials/menu.html" %}
 
 <div id="gloss-page" class="page gloss-list">
+
     {% if gloss.entity.type_ %}
         <p class="entity-link">
             <a href="entity/{{ gloss.entity.type_ }}/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a>
         </p>
     {% endif %}
+
+    {% with labels = gloss.labels, type_ = 'gloss', id_ = gloss.id %}
+        {% include 'entity_partials/label_list.html' %}
+    {% endwith %}
+
     <div class="gloss {{ gloss.type_ }}">
         {{ gloss.text_|markdown|safe }}
     </div>

@@ -12,14 +12,17 @@
 {% endwith %}
 
 <div id="{{ entity.type_ }}-page" class="page entity-page">
-    {% with labels = entity.labels %}
+
+    {% with labels = entity.labels, type_ = entity.type_, id_ = entity.id %}
         {% include "entity_partials/label_list.html" %}
     {% endwith %}
+
     <table class="table metadata-table">
     {% with entity = entity %}
         {% include "entity_partials/%s_metadata.html" % entity.type_ %}
     {% endwith %}
     </table>
+
     <div class="gloss-list">
     {% for gloss in entity.glosses %}
         <div class="gloss {{ gloss.type_ }}">

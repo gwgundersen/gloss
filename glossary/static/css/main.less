@@ -3,6 +3,7 @@
 @color-red: #C93756;
 @color-blue: #003171;
 @color-charcoal: #444;
+@color-labels: #ccc;
 
 @color-menu-gray: #f9f9f9;
 @color-menu-pressed: #eee;
@@ -84,17 +85,51 @@ table {
 
 .label {
   display: inline-block;
-  margin: 2px 0;
-  background-color: #ccc;
-  border-radius: 0;
-  color: black;
-  font-size: 12px;
-  padding: 3px 6px;
 
-  &:hover {
-    background-color: #aaa;
+  a,
+  input {
+    height: 12px;
+    padding: 3px 6px;
+  }
+  input {
+    background-color: transparent;
+  }
+  a,
+  form {
+    background-color: @color-labels;
+    float: left;
+    margin: 0;
+  }
+  a,
+  input {
+    padding: 3px 6px;
+  }
+  a {
     color: black;
-    text-decoration: none;
+    font-size: 12px;
+
+    &:hover {
+      background-color: #aaa;
+      color: black;
+      text-decoration: none;
+    }
+  }
+  form,
+  input {
+    &:hover {
+      background-color: @color-red;
+      cursor: pointer;
+    }
+  }
+  form {
+    /* 12px + 6px padding */
+    height: 18px;
+
+    input {
+      border: none;
+      font-size: 10px;
+      height: 100%;
+    }
   }
 }
 
@@ -321,16 +356,13 @@ blockquote {
   padding-left: 0;
 }
 
+.list-labels {
+  height: 18px;
+  margin-bottom: 4px;
+}
+
 #glossary {
   overflow: hidden;
-
-  .list-labels {
-    margin-bottom: 2px;
-
-    li {
-      display: inline;
-    }
-  }
 }
 
 /* Pages.
@@ -426,7 +458,6 @@ blockquote {
   h2 {
     font-size: 16px;
   }
-
   .author-list {
     margin-bottom: 0;
   }
@@ -460,7 +491,7 @@ blockquote {
   .gloss {
     padding: 10px;
     background-color: #f9f9f9;
-    margin-bottom: 10px;
+    margin: 5px 0;
     border-left: 2px solid #eee;
 
     h3 {

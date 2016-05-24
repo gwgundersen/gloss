@@ -39,35 +39,12 @@ $(function() {
     function search() {
         $('#search button').click(function(evt) {
             evt.preventDefault();
-            var term = $(this).parent().find('input').val();
-            window.location.replace(window.location.href + term);
+            var term = $(this).parent().find('input').val(),
+                // We don't just use window.location.href in case the user searches
+                // while already on a search results page.
+                url = window.location.origin + '/glossary?q=' + term;
+            window.location.replace(url);
         });
-    }
-
-    function render_search_results(data) {
-        var li_str = '';
-        $.each(data.results, function(idx, obj) {
-            var path = '';
-            if (obj.type_ != 'gloss') {
-                path = '/glossary/entity/' + obj.type_;
-            } else {
-                path = '/glossary/gloss';
-            }
-            li_str += '' +
-                '<li class="ellipsis">' +
-                '   <span>' + capitalize(obj.type_) + ': </span>' +
-                '   <a href="' + path + '/' + obj.idx + '">' + obj.text_ + '</a>' +
-                '</li>';
-        });
-        $('.page').html('<ul id="glossary" class="list-unstyled">' + li_str + '</ul>');
-    }
-
-    function capitalize(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-    function remove_menu_highlighting() {
-        $('#menu li span').removeClass('active');
     }
 
     function get_checked_gloss_ids() {

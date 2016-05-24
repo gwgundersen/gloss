@@ -13,11 +13,10 @@ index_blueprint = Blueprint('index',
                             url_prefix=config.get('url', 'base'))
 
 
-
-@index_blueprint.route('/', methods=['GET'], defaults={'keyword': None})
-@index_blueprint.route('/<string:keyword>', methods=['GET'])
-def render_index_page(keyword):
+@index_blueprint.route('/', methods=['GET'])
+def render_index_page():
     """Render index page."""
+    keyword = request.args.get('q')
     labels = db.session.query(models.Label).all()
     if not keyword:
         glosses = db.session.query(models.Gloss)\

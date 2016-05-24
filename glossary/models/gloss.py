@@ -12,7 +12,7 @@ class Gloss(db.Model):
                           nullable=True)
     text_     = db.Column(db.Text)
     timestamp = db.Column(db.DateTime)
-    archive   = db.Column(db.Boolean)
+    archive   = db.Column(db.Boolean, nullable=False, default=False)
     labels    = db.relationship('Label', backref='glosses',
                                 secondary='label_to_gloss')
 

@@ -1,8 +1,13 @@
-<ul class='list-unstyled list-labels'>
-{% for label in labels %}
-    <li>
-        <a class='label'
-           href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
-    </li>
-{% endfor %}
-</ul>
+{% if labels|length > 0 %}
+    <ul class="list-unstyled list-labels">
+    {% for label in labels %}
+        <li class="label">
+            <a href="{{ label.endpoint }}/{{ label.name }}">{{ label.name }}</a>
+            <form action="label/delete/{{ label.id }}/{{ type_ }}/{{ id_ }}" method="post">
+                <input type="submit" value="x"/>
+            </form>
+            <div class="clear"></div>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

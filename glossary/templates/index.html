@@ -18,7 +18,7 @@
                 <td><input type="checkbox" name="{{ gloss.id }}"/></td>
                 <td><a href="gloss/{{ gloss.type_ }}">{{ gloss.type_|capitalize }}</a></td>
                 <td class="ellipsis">
-                    {% with labels = gloss.labels %}
+                    {% with labels = gloss.labels, type_ = 'gloss', id_ = gloss.id %}
                         {% include 'entity_partials/label_list.html' %}
                     {% endwith %}
                     <div class="gloss {{ gloss.type_ }}">
