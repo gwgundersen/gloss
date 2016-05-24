@@ -2,7 +2,6 @@
 
 from datetime import datetime
 from flask import Blueprint, redirect, request, render_template, url_for
-import pypandoc
 
 from glossary import db, models
 from glossary.config import config
