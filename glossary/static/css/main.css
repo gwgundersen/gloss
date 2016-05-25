@@ -1,5 +1,3 @@
-/* Colors
- * ------ */
 /* Reset
  * ----- */
 html,
@@ -170,8 +168,9 @@ ol ol {
 }
 #nav #header h1 a {
   color: #444;
+  font-family: 'Roboto';
   font-size: 18px;
-  font-weight: bold;
+  font-weight: 300;
   text-decoration: none;
 }
 #nav #header h1 a:hover {
@@ -301,9 +300,16 @@ blockquote {
 }
 /* Pages.
  * ------ */
-#index-page {
+#index-private-page {
   margin: 0;
   padding: 0;
+}
+#index-public-page ul li {
+  height: 30px;
+}
+#index-public-page ul li a {
+  font-family: 'Roboto';
+  font-size: 16px;
 }
 #gloss-page .entity-link {
   font-weight: bold;

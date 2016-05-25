@@ -9,8 +9,7 @@
 
 {% include "structural_partials/menu.html" %}
 
-<!-- Need this in case the user searches glosses. -->
-<div id="index-page" class="page">
+<div id="index-private-page" class="page">
     <div id="glossary">
         <table class="table">
         {% for gloss in glosses %}
@@ -22,7 +21,7 @@
                         {% include 'entity_partials/label_list.html' %}
                     {% endwith %}
                     <div class="gloss {{ gloss.type_ }}">
-                        <a href="/glossary/gloss/{{ gloss.id }}">{{ gloss.text_ }}</a>
+                        <a href="/glossary/gloss/{{ gloss.id }}">{{ gloss.text }}</a>
                     </div>
                 </td>
             </tr>

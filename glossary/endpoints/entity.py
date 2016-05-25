@@ -1,6 +1,7 @@
 """Render individual entity-related pages."""
 
 from flask import Blueprint, request, render_template, redirect, url_for
+from flask.ext.login import current_user, login_required
 
 from glossary import db, models
 from glossary.config import config
@@ -15,6 +16,8 @@ entity_blueprint = Blueprint('entity',
 @entity_blueprint.route('/<string:type_>', methods=['GET'])
 def render_entities(type_):
     """Render entity by ID."""
+    if not current_user.is_authenticated and type_ == 'idea':
+        return redirect(url_for('index.render_index_page'))
     Class_ = models.type_to_class[type_]
     entities = db.session.query(Class_).all()
     return render_template('entity/entities.html',
@@ -35,6 +38,7 @@ def render_entity_by_id(type_, entity_id):
 
 @entity_blueprint.route('/create', defaults={'type_': None}, methods=['GET'])
 @entity_blueprint.route('/create/<string:type_>', methods=['GET'])
+@login_required
 def render_add_specific_entity_page(type_):
     """Render page for adding a specific entity, e.g. Idea versus Book."""
     if not type_:
@@ -54,6 +58,7 @@ def render_add_specific_entity_page(type_):
 
 
 @entity_blueprint.route('/create/<string:type_>', methods=['POST'])
+@login_required
 def create_entity(type_):
     """Add entity to database."""
     model = models.type_to_class[type_]
@@ -68,6 +73,7 @@ def create_entity(type_):
 
 
 @entity_blueprint.route('/delete/<entity_id>', methods=['POST'])
+@login_required
 def delete_entity(entity_id):
     """Deletes entity from database."""
     entity = db.session.query(models.Entity).get(entity_id)

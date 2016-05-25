@@ -1,6 +1,7 @@
 """Render label-related pages."""
 
-from flask import Blueprint, jsonify, redirect, request, render_template
+from flask import Blueprint, jsonify, redirect, request, render_template, url_for
+from flask.ext.login import current_user, login_required
 
 from glossary import db, models
 from glossary.config import config
@@ -13,6 +14,7 @@ label_blueprint = Blueprint('label',
 
 
 @label_blueprint.route('/', methods=['GET'])
+@login_required
 def render_labels():
     labels = db.session.query(models.Label).all()
     return render_template('label/labels.html',
@@ -24,6 +26,8 @@ def render_all_with_label(label_name):
     """Render all entities and glosses with label."""
     if label_name == 'blog':
         return render_blog()
+    if not current_user.is_authenticated:
+        return redirect(url_for('index.render_index_page'))
     label_name = label_name.lower()
     glosses = db.session.query(models.Gloss)\
         .join(models.Label, models.Gloss.labels)\
@@ -34,6 +38,7 @@ def render_all_with_label(label_name):
 
 
 @label_blueprint.route('/delete', methods=['POST'])
+@login_required
 def delete_label_on_gloss():
     """Deletes a label for a specific gloss."""
     gloss_id = request.form.get('gloss_id')
@@ -50,6 +55,7 @@ def delete_label_on_gloss():
 
 
 @label_blueprint.route('/add', methods=['POST'])
+@login_required
 def label_glosses():
     """Add label to selected gloss(es) or create new label."""
     gloss_ids = request.form.getlist('gloss_ids[]')
@@ -70,6 +76,7 @@ def label_glosses():
 
 
 @label_blueprint.route('/create', methods=['POST'])
+@login_required
 def create_label():
     """Create new label."""
     dbutils.get_or_create_labels(request)

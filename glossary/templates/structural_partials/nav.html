@@ -1,32 +1,40 @@
-<div id="nav">
-    <div id="header">
-        <div>
-            <h1><a href="">Glossary</a></h1>
-            <form id="search">
-                <input type="text" class="form-control" placeholder="Search..."/>
-                <button type="submit" class="control" id="search-action">Go</button>
-            </form>
+{% if g.user.is_authenticated %}
+    <div id="nav">
+        <div id="header">
+            <div>
+                <h1><a href="">Glossary</a></h1>
+                <form id="search">
+                    <input type="text" class="form-control" placeholder="Search..."/>
+                    <button type="submit" class="control" id="search-action">Go</button>
+                </form>
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
+        {% if is_index_page %}
+            <div id="controls">
+                <button class="control" id="archive-action">Archive</button>
+                <select class="control" id="label">
+                    {% for label in labels %}
+                        <option value="{{ label.id }}">{{ label.name }}</option>
+                    {% endfor %}
+                </select>
+                <button class="control" id="label-action">Label</button>
+            </div>
+        {% elif is_gloss_page %}
+            <div id="controls">
+                <select class="control" id="label">
+                    {% for label in labels %}
+                        <option value="{{ label.id }}">{{ label.name }}</option>
+                    {% endfor %}
+                </select>
+                <button class="control" id="label-action">Label</button>
+            </div>
+        {% endif %}
     </div>
-    {% if is_index_page %}
-        <div id="controls">
-            <button class="control" id="archive-action">Archive</button>
-            <select class="control" id="label">
-                {% for label in labels %}
-                    <option value="{{ label.id }}">{{ label.name }}</option>
-                {% endfor %}
-            </select>
-            <button class="control" id="label-action">Label</button>
+{% else %}
+    <div id="nav">
+        <div id="header">
+            <h1><a href="">Glossary</a></h1>
         </div>
-    {% elif is_gloss_page %}
-        <div id="controls">
-            <select class="control" id="label">
-                {% for label in labels %}
-                    <option value="{{ label.id }}">{{ label.name }}</option>
-                {% endfor %}
-            </select>
-            <button class="control" id="label-action">Label</button>
-        </div>
-    {% endif %}
-</div>
+    </div>
+{% endif %}

@@ -1,4 +1,4 @@
-{% if labels|length > 0 %}
+{% if g.user.is_authenticated and labels|length > 0 %}
     <ul class="list-unstyled list-labels">
     {% for label in labels %}
         <li class="label">

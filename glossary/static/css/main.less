@@ -1,21 +1,4 @@
-/* Colors
- * ------ */
-@color-medium-crimson: #C93756;
-@color-cochineal: #9D2933;
-
-@color-navy-blue: #003171;
-@color-charcoal: #444;
-@color-bellflower: #5D3F6A;
-@color-bellflower-hover: #3A243B;
-
-@color-menu-gray: #f9f9f9;
-@color-menu-pressed: #eee;
-
-@font-family-base: arial, sans-serif;
-@font-size-base: 13px;
-
-@dim-page-width: 1000px;
-@dim-menu-width: 150px;
+@import 'variables.less';
 
 /* Reset
  * ----- */
@@ -215,8 +198,9 @@ ol {
 
       a {
         color: @color-charcoal;
+        font-family: @font-family-accent;
         font-size: 18px;
-        font-weight: bold;
+        font-weight: 300;
         text-decoration: none;
 
         &:hover {
@@ -372,9 +356,21 @@ blockquote {
 
 /* Pages.
  * ------ */
-#index-page {
+#index-private-page {
   margin: 0;
   padding: 0;
+}
+
+#index-public-page {
+  ul {
+    li {
+      height: 30px;
+      a {
+        font-family: @font-family-accent;
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 #gloss-page {

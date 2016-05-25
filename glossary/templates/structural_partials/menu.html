@@ -1,51 +1,57 @@
-<div id="menu">
-    <ul class="list-unstyled">
-        {% if g.user.is_authenticated %}
-            <li class="btn-menu" >
-                <a href="gloss/create">
-                    <span class="">Add gloss</span>
+{% if g.user.is_authenticated %}
+    <div id="menu">
+        <ul class="list-unstyled">
+            {% if g.user.is_authenticated %}
+                <li class="btn-menu" >
+                    <a href="gloss/create">
+                        <span class="">Add gloss</span>
+                    </a>
+                </li>
+                <li class="btn-menu">
+                    <a href="entity/create">
+                        <span class="">Add entity</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="btn-menu section-start">
+                <a href="gloss">
+                    <span class="">Glosses</span>
+                </a>
+            </li>
+            {% if g.user.is_authenticated %}
+                <li class="btn-menu">
+                    <a href="label">
+                        <span class="">Labels</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="btn-menu section-start">
+                <a href="entity/book">
+                    <span class="{{ 'active' if page == 'book' else '' }}">Books</span>
                 </a>
             </li>
             <li class="btn-menu">
-                <a href="entity/create">
-                    <span class="">Add entity</span>
+                <a href="entity/paper">
+                    <span class="{{ 'active' if page == 'paper' else '' }}">Papers</span>
                 </a>
             </li>
-        {% endif %}
-        <li class="btn-menu section-start">
-            <a href="gloss">
-                <span class="">Glosses</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="label">
-                <span class="">Labels</span>
-            </a>
-        </li>
-        <li class="btn-menu section-start">
-            <a href="entity/idea">
-                <span class="{{ 'active' if page == 'idea' else '' }}">Ideas</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="entity/paper">
-                <span class="{{ 'active' if page == 'paper' else '' }}">Papers</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="entity/book">
-                <span class="{{ 'active' if page == 'book' else '' }}">Books</span>
-            </a>
-        </li>
-        <li class="btn-menu">
-            <a href="entity/talk">
-                <span class="{{ 'active' if page == 'talk' else '' }}">Talks</span>
-            </a>
-        </li>
-        <li class="btn-menu section-start">
-            <a href="label/blog">
-                <span>Blog</span>
-            </a>
-        </li>
-    </ul>
-</div>
+            {% if g.user.is_authenticated %}
+                <li class="btn-menu">
+                    <a href="entity/idea">
+                        <span class="{{ 'active' if page == 'idea' else '' }}">Ideas</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="btn-menu">
+                <a href="entity/talk">
+                    <span class="{{ 'active' if page == 'talk' else '' }}">Talks</span>
+                </a>
+            </li>
+            <li class="btn-menu section-start">
+                <a href="label/blog">
+                    <span>Blog</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endif %}

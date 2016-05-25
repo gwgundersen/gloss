@@ -18,31 +18,31 @@ db = SQLAlchemy()
 from glossary import models
 
 app = Flask(__name__,
-            static_url_path='%s/static' % config.get('url', 'base'),
-            static_folder='static')
+            static_url_path="%s/static" % config.get("url", "base"),
+            static_folder="static")
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://%s:%s@%s:3306/%s' % (
-    config.get('db', 'user'),
-    config.get('db', 'passwd'),
-    config.get('db', 'host'),
-    config.get('db', 'db')
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://%s:%s@%s:3306/%s" % (
+    config.get("db", "user"),
+    config.get("db", "passwd"),
+    config.get("db", "host"),
+    config.get("db", "db")
 )
-app.config['SQLALCHEMY_POOL_RECYCLE'] = 1800  # Recycle every 30 min.
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 1800  # Recycle every 30 min.
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
 with app.app_context():
     db.create_all()
     db.session.commit()
 
-if config.getboolean('mode', 'debug'):
+if config.getboolean("mode", "debug"):
     # Add a trailing slash, so the base tag URL will be "/glossary/"
-    app.config.base_tag_url = '%s/' % config.get('url', 'base')
+    app.config.base_tag_url = "%s/" % config.get("url", "base")
 else:
-    # Manually set the base tag URL to "/glossary/". Why can't we use the config
+    # Manually set the base tag URL to "/glossary/". Why can"t we use the config
     # value? Because in production, the application runs on the server in the
     # `glossary` directory and the config value is consequently "/".
-    app.config.base_tag_url = '/glossary/'
+    app.config.base_tag_url = "/glossary/"
 
 
 # Server endpoints
@@ -54,18 +54,17 @@ app.register_blueprint(endpoints.index_blueprint)
 app.register_blueprint(endpoints.label_blueprint)
 app.register_blueprint(endpoints.author_blueprint)
 app.register_blueprint(endpoints.entity_blueprint)
-app.register_blueprint(endpoints.search_blueprint)
 app.register_blueprint(endpoints.auth_blueprint)
 
 
 # Login session management
 # ----------------------------------------------------------------------------
 # Change this key to force all users to re-authenticate.
-app.secret_key = config.get('cookies', 'secret_key')
+app.secret_key = config.get("cookies", "secret_key")
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-login_manager.login_view = 'auth.login'
+login_manager.login_view = "auth.login"
 
 
 @app.before_request
@@ -82,7 +81,7 @@ def load_user(user_id):
 
 @app.before_request
 def make_session_permanent():
-    """Sets Flask session to 'permanent', meaning 31 days."""
+    """Sets Flask session to "permanent", meaning 31 days."""
     flask_session.permanent = True
 
 
@@ -91,10 +90,17 @@ def make_session_permanent():
 @app.errorhandler(404)
 def page_not_found(e):
     """Handles all 404 requests."""
-    return render_template('404.html')
+    return render_template("error/404.html")
+
+
+@app.errorhandler(405)
+def method_not_allowed(e):
+    """Handles all 405 requests."""
+    return render_template("error/405.html")
 
 
 # Set binary location for pandoc. This is important because Flask and Apache
 # both run as special users and cannot find the binaries otherwise.
 # ----------------------------------------------------------------------------
-os.environ.setdefault('PYPANDOC_PANDOC', '/usr/local/bin/pandoc')
+# TODO: Read from config since this will be different in production.
+os.environ.setdefault("PYPANDOC_PANDOC", "/usr/local/bin/pandoc")

@@ -13,7 +13,7 @@ $(function() {
     function index_page() {
         $('#nav #controls button#archive-action').click(function() {
             var gloss_ids = get_checked_gloss_ids();
-            $.post('/glossary/archive', { gloss_ids: gloss_ids }, function(data) {
+            $.post('/glossary/gloss/archive', { gloss_ids: gloss_ids }, function(data) {
                 if (data.status == 'success') {
                     window.location.reload();
                 } else {

@@ -26,13 +26,16 @@
             {{ gloss.text_|markdown|safe }}
         </div>
     </div>
-    <div class="crud-controls">
-        <a class="btn" href="gloss/edit/{{ gloss.id }}">Edit</a>
-        <form action="gloss/delete/{{ gloss.id }}" method="post">
-            <input type="submit" class="btn" value="Delete"
-                   onclick="return confirm('Are you sure you want to delete this item?');"/>
-        </form>
-    </div>
+
+    {% if g.user.is_authenticated %}
+        <div class="crud-controls">
+            <a class="btn" href="gloss/edit/{{ gloss.id }}">Edit</a>
+            <form action="gloss/delete/{{ gloss.id }}" method="post">
+                <input type="submit" class="btn" value="Delete"
+                       onclick="return confirm('Are you sure you want to delete this item?');"/>
+            </form>
+        </div>
+    {% endif %}
 </div>
 
 </body>
