@@ -13,10 +13,6 @@
 
 <div id="{{ entity.type_ }}-page" class="page entity-page">
 
-    {% with labels = entity.labels, type_ = entity.type_, id_ = entity.id %}
-        {% include "entity_partials/label_list.html" %}
-    {% endwith %}
-
     <table class="table metadata-table">
     {% with entity = entity %}
         {% include "entity_partials/%s_metadata.html" % entity.type_ %}
@@ -27,6 +23,9 @@
     {% for gloss in entity.glosses %}
         <div class="gloss {{ gloss.type_ }}">
             <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
+            {% with labels = gloss.labels, gloss_id = gloss.id %}
+                {% include "entity_partials/label_list.html" %}
+            {% endwith %}
             <div>{{ gloss.text_|markdown|safe }}</div>
             <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
         </div>
@@ -35,7 +34,7 @@
     <div class="crud-controls">
 {#        <a class="btn" href="entity/edit/{{ gloss.id }}">Edit</a>#}
         <form action="entity/delete/{{ entity.id }}" method="post">
-            <input type="submit" class="btn" value="Delete"
+            <input type="submit" class="btn" value="Delete {{ entity.type_ }}"
                    onclick="return confirm('Are you sure you want to delete this item?');"/>
         </form>
     </div>

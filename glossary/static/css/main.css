@@ -53,7 +53,7 @@ table {
 .btn:active,
 .btn:focus,
 .btn:hover {
-  background-color: #BF3042;
+  background-color: #9D2933;
   color: white;
   cursor: pointer;
   text-decoration: none;
@@ -63,6 +63,7 @@ table {
 }
 .label a,
 .label input {
+  color: white;
   height: 12px;
   padding: 3px 6px;
 }
@@ -71,7 +72,7 @@ table {
 }
 .label a,
 .label form {
-  background-color: #ccc;
+  background-color: #5D3F6A;
   float: left;
   margin: 0;
 }
@@ -80,12 +81,11 @@ table {
   padding: 3px 6px;
 }
 .label a {
-  color: black;
   font-size: 12px;
 }
 .label a:hover {
-  background-color: #aaa;
-  color: black;
+  background-color: #3A243B;
+  color: white;
   text-decoration: none;
 }
 .label form:hover,
@@ -204,6 +204,9 @@ ol ol {
   position: relative;
   top: 7px;
 }
+#nav #controls #archive-action {
+  margin-right: 30px;
+}
 #menu {
   background-color: #f9f9f9;
   border-right: 1px solid #f1f1f1;
@@ -303,14 +306,18 @@ blockquote {
   padding: 0;
 }
 #gloss-page .entity-link {
-  border-bottom: 1px solid #eee;
   font-weight: bold;
   margin-bottom: 10px;
 }
+#gloss-page .gloss-wrapper {
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
+  padding: 5px 0;
+  margin: 10px 0;
+}
 #gloss-page .crud-controls,
 .entity-page .crud-controls {
-  border-top: 1px solid #eee;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 #gloss-page .crud-controls a,
 .entity-page .crud-controls a {
@@ -333,6 +340,7 @@ blockquote {
 #gloss-add-page textarea {
   margin-top: 10px;
 }
+#gloss-add-page #labels,
 #gloss-add-page #type-select {
   margin-top: 5px;
 }
@@ -356,12 +364,11 @@ blockquote {
   margin-top: 10px;
 }
 #entity-add-page .form-group {
-  padding: 5px 0 10px 0;
+  padding: 5px 0;
 }
 #entity-add-page .form-group input {
   font-size: 13px;
   height: 25px;
-  padding: 5px;
   width: 100%;
 }
 #author-page h2 {
@@ -417,4 +424,12 @@ blockquote {
 }
 #glossary table tr:first-child td {
   border-top: none;
+}
+#labels-page #create-labels-form {
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+#labels-page #create-labels-form button {
+  margin-top: 10px;
 }

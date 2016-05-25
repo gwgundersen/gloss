@@ -12,7 +12,7 @@
 <div id='gloss-add-page' class='page container'>
     <h1>Add gloss to:</h1>
     <p>{{ entity.title }}</p>
-    <form action='gloss/add' method='post'>
+    <form action='gloss/create' method='post'>
         <input type='hidden' name='entity_id' class='form-group' value='{{ entity.id }}'/>
         <div class='form-group'>
             <textarea type='text' name='text_' class='form-control'></textarea>

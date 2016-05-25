@@ -15,9 +15,8 @@ class Paper(Entity):
     depth        = db.Column(db.Integer)
     year         = db.Column(db.Integer)
     min_required = db.Column(db.Float)
-    labels       = db.relationship('Label', backref='papers',
-                                   secondary='label_to_paper')
     journal_fk   = db.Column('journal_fk', db.Integer, db.ForeignKey('journal.id'))
+
     journal      = db.relationship('Journal', backref='papers')
 
     __mapper_args__ = {

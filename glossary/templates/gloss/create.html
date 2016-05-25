@@ -11,7 +11,7 @@
 
 <div id='gloss-add-page' class='page container'>
     <h1>Add gloss</h1>
-    <form action='gloss/add' method='post'>
+    <form action='gloss/create' method='post'>
         <div>
             <select name='entity_id'>
                 <option value=''>(Select entity)</option>
@@ -32,8 +32,12 @@
                 <option value='blog'>Blog</option>
             </select>
         </div>
+        <div id="labels">
+            <label>Labels, comma-separated</label>
+            <input type='text' name='labels'/>
+        </div>
         <textarea type='text' name='text_'></textarea>
-        <button type='submit' class='btn btn-warning'>Add gloss</button>
+        <button type='submit' class='btn'>Add gloss</button>
     </form>
 </div>
 

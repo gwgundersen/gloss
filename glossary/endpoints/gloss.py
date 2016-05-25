@@ -5,6 +5,7 @@ from flask import Blueprint, redirect, request, render_template, url_for
 
 from glossary import db, models
 from glossary.config import config
+from glossary import dbutils
 
 
 gloss_blueprint = Blueprint('gloss',
@@ -15,16 +16,20 @@ gloss_blueprint = Blueprint('gloss',
 @gloss_blueprint.route('/', methods=['GET'])
 def render_all_glosses():
     """Render all glosses."""
+
     glosses = db.session.query(models.Gloss).all()
-    return render_template('gloss/glosses.html',
-                           glosses=glosses)
+    labels = db.session.query(models.Label).all()
+    return render_template('/index.html', glosses=glosses, labels=labels,
+                           is_index_page=True)
 
 
 @gloss_blueprint.route('/<int:gloss_id>', methods=['GET'])
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    return render_template('gloss/gloss.html', gloss=gloss)
+    labels = db.session.query(models.Label).all()
+    return render_template('gloss/gloss.html', gloss=gloss, is_gloss_page=True,
+                           labels=labels)
 
 
 @gloss_blueprint.route('/<string:gloss_type>', methods=['GET'])
@@ -38,8 +43,8 @@ def render_gloss_type(gloss_type):
                            type_=gloss_type)
 
 
-@gloss_blueprint.route('/add', defaults={'entity_id': None}, methods=['GET'])
-@gloss_blueprint.route('/add/<int:entity_id>', methods=['GET'])
+@gloss_blueprint.route('/create', defaults={'entity_id': None}, methods=['GET'])
+@gloss_blueprint.route('/create/<int:entity_id>', methods=['GET'])
 def render_add_gloss_page(entity_id):
     """Render page to add gloss."""
     if entity_id:
@@ -49,11 +54,11 @@ def render_add_gloss_page(entity_id):
     entities = db.session.query(models.Entity).all()
     for e in entities:
         print(e.title)
-    return render_template('gloss/add.html',
+    return render_template('gloss/create.html',
                            entities=entities)
 
 
-@gloss_blueprint.route('/add', methods=['POST'])
+@gloss_blueprint.route('/create', methods=['POST'])
 def add_gloss():
     """Add new gloss."""
     entity_id = int(request.form.get('entity_id'))
@@ -62,6 +67,7 @@ def add_gloss():
     entity = db.session.query(models.Entity).get(entity_id)
     now = datetime.now()
     gloss = models.Gloss(text_=text_, type_=type_, timestamp=now)
+    dbutils.get_or_create_labels(request, gloss)
     entity.glosses.append(gloss)
     db.session.merge(entity)
     db.session.commit()
@@ -76,7 +82,7 @@ def delete_gloss(gloss_id):
     gloss = db.session.query(models.Gloss).get(gloss_id)
     db.session.delete(gloss)
     db.session.commit()
-    return redirect(url_for('gloss.render_all_glosses'))
+    return redirect(url_for('index.render_index_page'))
 
 
 @gloss_blueprint.route('/edit/<int:gloss_id>', methods=['GET', 'POST'])

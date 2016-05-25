@@ -1,9 +1,12 @@
 /* Colors
  * ------ */
-@color-red: #C93756;
-@color-blue: #003171;
+@color-medium-crimson: #C93756;
+@color-cochineal: #9D2933;
+
+@color-navy-blue: #003171;
 @color-charcoal: #444;
-@color-labels: #ccc;
+@color-bellflower: #5D3F6A;
+@color-bellflower-hover: #3A243B;
 
 @color-menu-gray: #f9f9f9;
 @color-menu-pressed: #eee;
@@ -29,11 +32,11 @@ body {
 }
 
 a {
-  color: @color-blue;
+  color: @color-navy-blue;
   text-decoration: none;
 
   &:hover {
-    color: @color-blue;
+    color: @color-navy-blue;
     text-decoration: underline;
   }
 }
@@ -64,7 +67,7 @@ table {
 }
 
 .btn {
-  background-color: @color-red;
+  background-color: @color-medium-crimson;
   border: none;
   border-radius: 2px;
   color: white;
@@ -76,7 +79,7 @@ table {
   &:active,
   &:focus,
   &:hover {
-    background-color: #BF3042;
+    background-color: @color-cochineal;
     color: white;
     cursor: pointer;
     text-decoration: none;
@@ -88,6 +91,7 @@ table {
 
   a,
   input {
+    color: white;
     height: 12px;
     padding: 3px 6px;
   }
@@ -96,7 +100,7 @@ table {
   }
   a,
   form {
-    background-color: @color-labels;
+    background-color: @color-bellflower;
     float: left;
     margin: 0;
   }
@@ -105,19 +109,18 @@ table {
     padding: 3px 6px;
   }
   a {
-    color: black;
     font-size: 12px;
 
     &:hover {
-      background-color: #aaa;
-      color: black;
+      background-color: @color-bellflower-hover;
+      color: white;
       text-decoration: none;
     }
   }
   form,
   input {
     &:hover {
-      background-color: @color-red;
+      background-color: @color-medium-crimson;
       cursor: pointer;
     }
   }
@@ -253,6 +256,10 @@ ol {
       position: relative;
       top: 7px;
     }
+
+    #archive-action {
+      margin-right: 30px;
+    }
   }
 }
 
@@ -285,12 +292,10 @@ ol {
           padding-left: 20px;
           padding-top: 12px;
           &.active {
-            color: @color-red;
+            color: @color-medium-crimson;
             font-weight: bold;
           }
           &.highlight {
-            //background-color: @color-red;
-            //color: white;
             font-weight: bold;
           }
         }
@@ -374,17 +379,21 @@ blockquote {
 
 #gloss-page {
   .entity-link {
-    border-bottom: 1px solid #eee;
     font-weight: bold;
     margin-bottom: 10px;
+  }
+  .gloss-wrapper {
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    padding: 5px 0;
+    margin: 10px 0;
   }
 }
 
 #gloss-page,
 .entity-page {
   .crud-controls {
-    border-top: 1px solid #eee;
-    padding-top: 20px;
+    padding-top: 10px;
     a {
       margin-bottom: 5px;
     }
@@ -411,6 +420,7 @@ blockquote {
   textarea {
     margin-top: 10px;
   }
+  #labels,
   #type-select {
     margin-top: 5px;
   }
@@ -444,11 +454,10 @@ blockquote {
 
 #entity-add-page {
   .form-group {
-    padding: 5px 0 10px 0;
+    padding: 5px 0;
     input {
       font-size: @font-size-base;
       height: 25px;
-      padding: 5px;
       width: 100%;
     }
   }
@@ -521,6 +530,17 @@ blockquote {
       td {
         border-top: none;
       }
+    }
+  }
+}
+
+#labels-page {
+  #create-labels-form {
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    padding-top: 10px;
+    button {
+      margin-top: 10px;
     }
   }
 }

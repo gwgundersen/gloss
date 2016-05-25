@@ -24,9 +24,6 @@ class Book(Entity):
     buy         = db.Column(db.Boolean)
     nationality = db.Column(db.String(255))
 
-    labels = db.relationship('Label', backref='books',
-                             secondary='label_to_book')
-
     __mapper_args__ = {
         'polymorphic_identity': 'book',
     }

@@ -2,16 +2,14 @@
     {% for talk in entities %}
     <tr>
         <td>
+            {% with labels = talk.labels %}
+                {% include 'entity_partials/label_list.html' %}
+            {% endwith %}
             <a href='{{ talk.endpoint }}/{{ talk.id }}'>
                 {{ talk.title }}
             </a>
         </td>
         <td>{{ talk.timestamp|datetime_str }}</td>
-        <td>
-            {% with labels = talk.labels %}
-                {% include 'entity_partials/label_list.html' %}
-            {% endwith %}
-        </td>
     </tr>
     {% endfor %}
 </table>

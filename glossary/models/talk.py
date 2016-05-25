@@ -12,8 +12,6 @@ class Talk(Entity):
     title     = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime)
     location  = db.Column(db.String(255))
-    labels    = db.relationship('Label', backref='talks',
-                                secondary='label_to_talk')
 
     __mapper_args__ = {
         'polymorphic_identity': 'talk',

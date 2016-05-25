@@ -16,8 +16,6 @@ class Idea(Entity):
                           primary_key=True)
     title     = db.Column(db.String(255))
     url       = db.Column(db.String(255))
-    labels    = db.relationship('Label', backref='ideas',
-                                secondary='label_to_idea')
 
     @property
     def endpoint(self):

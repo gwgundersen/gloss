@@ -12,17 +12,19 @@
 <div id="gloss-page" class="page gloss-list">
 
     {% if gloss.entity.type_ %}
-        <p class="entity-link">
+        <h1 class="entity-link">
             <a href="entity/{{ gloss.entity.type_ }}/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a>
-        </p>
+        </h1>
     {% endif %}
 
-    {% with labels = gloss.labels, type_ = 'gloss', id_ = gloss.id %}
+    {% with labels = gloss.labels, gloss_id = gloss.id %}
         {% include 'entity_partials/label_list.html' %}
     {% endwith %}
 
-    <div class="gloss {{ gloss.type_ }}">
-        {{ gloss.text_|markdown|safe }}
+    <div class="gloss-wrapper">
+        <div class="gloss {{ gloss.type_ }}">
+            {{ gloss.text_|markdown|safe }}
+        </div>
     </div>
     <div class="crud-controls">
         <a class="btn" href="gloss/edit/{{ gloss.id }}">Edit</a>

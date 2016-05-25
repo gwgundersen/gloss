@@ -34,4 +34,4 @@ def to_date_str(context, value):
 def to_datetime_str(context, value):
     if not value:
         return ''
-    return str(value)
+    return value.strftime('%d %b %Y, %a, %H:%M')

@@ -4,6 +4,7 @@ from flask import Blueprint, request, render_template, redirect, url_for
 
 from glossary import db, models
 from glossary.config import config
+from glossary.dbutils import get_or_create
 
 
 entity_blueprint = Blueprint('entity',
@@ -32,12 +33,12 @@ def render_entity_by_id(type_, entity_id):
                            entity=entity)
 
 
-@entity_blueprint.route('/add', defaults={'type_': None}, methods=['GET'])
-@entity_blueprint.route('/<string:type_>/add', methods=['GET'])
+@entity_blueprint.route('/create', defaults={'type_': None}, methods=['GET'])
+@entity_blueprint.route('/create/<string:type_>', methods=['GET'])
 def render_add_specific_entity_page(type_):
     """Render page for adding a specific entity, e.g. Idea versus Book."""
     if not type_:
-        return render_template('entity/add_menu.html')
+        return render_template('entity/create_menu.html')
     Class_ = models.type_to_class[type_]
     attrs = []
     for c in Class_.__table__.columns:
@@ -47,13 +48,13 @@ def render_add_specific_entity_page(type_):
             'name': c.name,
             'type_': c.type
         })
-    return render_template('entity/add.html',
+    return render_template('entity/create.html',
                            type_=type_,
                            attrs=attrs)
 
 
-@entity_blueprint.route('/<string:type_>/add', methods=['POST'])
-def add_entity(type_):
+@entity_blueprint.route('/create/<string:type_>', methods=['POST'])
+def create_entity(type_):
     """Add entity to database."""
     model = models.type_to_class[type_]
     args = _process_arguments(**request.form)
@@ -84,8 +85,8 @@ def _get_or_create_authors(instance):
             t = a.strip().split(' ')
             fn = t[0].capitalize()
             ln = t[1].capitalize()
-            author = _get_or_create(models.Author, first_name=fn,
-                                    last_name=ln)
+            author = get_or_create(models.Author, first_name=fn,
+                                   last_name=ln)
             authors.append(author)
         instance.authors = authors
     return instance
@@ -96,7 +97,7 @@ def _get_or_create_labels(instance):
     if 'labels' in request.form:
         labels = []
         for l in request.form.get('labels').split(','):
-            label = _get_or_create(models.Label, name=l.strip())
+            label = get_or_create(models.Label, name=l.strip())
             labels.append(label)
         instance.labels = labels
     return instance
@@ -107,21 +108,9 @@ def _get_or_create_journal(instance):
     if 'journal' in request.form:
         j = request.form.get('journal')
         j = j.strip().capitalize()
-        journal = _get_or_create(models.Journal, name=j)
+        journal = get_or_create(models.Journal, name=j)
         instance.journal = journal
     return instance
-
-
-def _get_or_create(model, **kwargs):
-    """Return instance if it exists, create it otherwise."""
-    instance = db.session.query(model).filter_by(**kwargs).first()
-    if instance:
-        return instance
-    else:
-        instance = model(**kwargs)
-        db.session.add(instance)
-        db.session.commit()
-        return instance
 
 
 def _process_arguments(**kwargs):

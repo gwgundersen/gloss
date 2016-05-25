@@ -10,38 +10,17 @@
 {% include 'structural_partials/menu.html' %}
 
 <div id='label-page' class='page'>
-    {% if books %}
-        <div>
-            <h2>Books</h2>
-            {% with entities = books %}
-                {% include 'entity_partials/book_list.html' %}
-            {% endwith %}
-        </div>
-    {% endif %}
-    {% if ideas %}
-        <div>
-            <h2>Ideas</h2>
-            {% with entities = ideas %}
-                {% include 'entity_partials/idea_list.html' %}
-            {% endwith %}
-        </div>
-    {% endif %}
-    {% if papers %}
-        <div>
-            <h2>Papers</h2>
-            {% with entities = papers %}
-                {% include 'entity_partials/paper_list.html' %}
-            {% endwith %}
-        </div>
-    {% endif %}
-    {% if talks %}
-        <div>
-            <h2>Talks</h2>
-            {% with entities = talks %}
-                {% include 'entity_partials/talk_list.html' %}
-            {% endwith %}
-        </div>
-    {% endif %}
+    <h1>{{ label_name }}</h1>
+    <div class="gloss-list">
+        {% for gloss in glosses %}
+            <div class="gloss {{ gloss.type_ }}">
+                <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
+                <h4>{{ gloss.entity.title }}</h4>
+                <div>{{ gloss.text_|markdown|safe }}</div>
+                <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
+            </div>
+        {% endfor %}
+    </div>
 </div>
 
 </body>

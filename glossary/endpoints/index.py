@@ -23,7 +23,7 @@ def render_index_page():
             .filter_by(archive=False)\
             .order_by(models.Gloss.timestamp.desc())
         return render_template('index.html', glosses=glosses,
-                               is_glossary=True, labels=labels)
+                               is_index_page=True, labels=labels)
     else:
         results = _get_glosses_by_keyword(keyword)
         #results += _get_entity_by_keyword('idea', keyword)
@@ -31,7 +31,7 @@ def render_index_page():
         #results += _get_entity_by_keyword('book', keyword)
         #results += _get_entity_by_keyword('talk', keyword)
         return render_template('index.html', glosses=results,
-                               is_glossary=True, labels=labels)
+                               is_index_page=True, labels=labels)
 
 
 @index_blueprint.route('/archive', methods=['POST'])
@@ -46,23 +46,6 @@ def archive_glosses():
     return jsonify({
         'status': 'success'
     })
-
-
-@index_blueprint.route('/label', methods=['POST'])
-def label_glosses():
-    gloss_ids = request.form.getlist('gloss_ids[]')
-    label_id = request.form.get('label_id')
-    label = db.session.query(models.Label).get(label_id)
-    for id_ in gloss_ids:
-        id_ = int(id_)
-        gloss = db.session.query(models.Gloss).get(id_)
-        gloss.labels.append(label)
-        db.session.merge(gloss)
-        db.session.commit()
-    return jsonify({
-        'status': 'success'
-    })
-
 
 
 def _get_glosses_by_keyword(keyword):

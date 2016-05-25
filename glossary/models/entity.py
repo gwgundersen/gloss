@@ -15,3 +15,15 @@ class Entity(db.Model):
         'polymorphic_identity': 'entity',
         'polymorphic_on': type_
     }
+
+    @property
+    def labels(self):
+        label_names = []
+        _labels = []
+        for gloss in self.glosses:
+            for label in gloss.labels:
+                if label.name in label_names:
+                    continue
+                label_names.append(label.name)
+                _labels.append(label)
+        return _labels

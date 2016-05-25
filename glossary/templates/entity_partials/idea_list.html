@@ -2,20 +2,17 @@
     <thead>
         <tr>
             <th>Idea</th>
-            <th>Labels</th>
         </tr>
     </thead>
     {% for idea in entities %}
     <tr>
         <td>
-            <a href='{{ idea.endpoint }}/{{ idea.id }}'>
-                {{ idea.title }}
-            </a>
-        </td>
-        <td>
             {% with labels = idea.labels %}
                 {% include 'entity_partials/label_list.html' %}
             {% endwith %}
+            <a href='{{ idea.endpoint }}/{{ idea.id }}'>
+                {{ idea.title }}
+            </a>
         </td>
     </tr>
     {% endfor %}

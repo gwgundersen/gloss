@@ -4,12 +4,14 @@
             <th>Title</th>
             <th>Authors</th>
             <th>Year</th>
-            <th>Labels</th>
         </tr>
     </thead>
     {% for paper in entities %}
         <tr>
             <td>
+                {% with labels = paper.labels %}
+                    {% include 'entity_partials/label_list.html' %}
+                {% endwith %}
                 <a href='{{ paper.endpoint }}/{{ paper.id }}'>
                     {{ paper.title }}
                 </a>
@@ -20,11 +22,6 @@
             {% endwith %}
             </td>
             <td>{{ paper.year }}</td>
-            <td>
-            {% with labels = paper.labels %}
-                {% include 'entity_partials/label_list.html' %}
-            {% endwith %}
-            </td>
         </tr>
     {% endfor %}
 </table>
