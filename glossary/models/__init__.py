@@ -15,6 +15,7 @@ from talk import Talk
 # Misc
 from author import Author
 from journal import Journal
+from user import User
 
 # Joins
 from author_to_book import author_to_book

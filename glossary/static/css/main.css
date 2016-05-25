@@ -433,3 +433,13 @@ blockquote {
 #labels-page #create-labels-form button {
   margin-top: 10px;
 }
+#auth-page input {
+  border: 1px solid #eee;
+  padding: 5px;
+  margin: 5px 0;
+}
+#auth-page #logout-section {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 100px;
+}

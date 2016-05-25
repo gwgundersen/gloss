@@ -41,10 +41,9 @@ if config.getboolean('mode', 'debug'):
 else:
     # Manually set the base tag URL to "/glossary/". Why can't we use the config
     # value? Because in production, the application runs on the server in the
-    # `glossary` directory. To the application in production, "/" is this
-    # directory, so "/glossary" would result in a URL mapping to "/glossary/glossary".
-    # Yes, this is annoying.
+    # `glossary` directory and the config value is consequently "/".
     app.config.base_tag_url = '/glossary/'
+
 
 # Server endpoints
 # ----------------------------------------------------------------------------
@@ -56,6 +55,7 @@ app.register_blueprint(endpoints.label_blueprint)
 app.register_blueprint(endpoints.author_blueprint)
 app.register_blueprint(endpoints.entity_blueprint)
 app.register_blueprint(endpoints.search_blueprint)
+app.register_blueprint(endpoints.auth_blueprint)
 
 
 # Login session management
@@ -71,7 +71,6 @@ login_manager.login_view = 'auth.login'
 @app.before_request
 def before_request():
     """Set current user, if available, to be globally available."""
-    # TODO: It seems like this should not be necessary?
     g.user = current_user
 
 

@@ -7,3 +7,4 @@ from author import author_blueprint
 from search import search_blueprint
 from jinjafilters import jinjafilters
 from entity import entity_blueprint
+from auth import auth_blueprint
