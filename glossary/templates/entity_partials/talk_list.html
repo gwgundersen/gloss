@@ -1,4 +1,11 @@
 <table class='table'>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Speakers</th>
+            <th>Date/Time</th>
+        </tr>
+    </thead>
     {% for talk in entities %}
     <tr>
         <td>
@@ -8,6 +15,11 @@
             <a href='{{ talk.endpoint }}/{{ talk.id }}'>
                 {{ talk.title }}
             </a>
+        </td>
+        <td>
+            {% with authors = talk.authors %}
+                {% include 'entity_partials/author_list.html' %}
+            {% endwith %}
         </td>
         <td>{{ talk.timestamp|datetime_str }}</td>
     </tr>

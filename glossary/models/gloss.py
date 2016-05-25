@@ -52,10 +52,3 @@ class Todo(Gloss):
     __mapper_args__ = {
         'polymorphic_identity': 'todo',
     }
-
-
-class Blog(Gloss):
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'blog',
-    }

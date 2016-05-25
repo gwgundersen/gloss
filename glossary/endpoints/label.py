@@ -81,5 +81,6 @@ def render_blog():
     glosses = db.session.query(models.Gloss)\
         .join(models.Label, models.Gloss.labels)\
         .filter(models.Label.name == 'blog')\
+        .order_by(models.Gloss.timestamp.desc())\
         .all()
     return render_template('blog.html', glosses=glosses)

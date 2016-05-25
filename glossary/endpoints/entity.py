@@ -60,7 +60,6 @@ def create_entity(type_):
     args = _process_arguments(**request.form)
     instance = model(**args)
     instance = _get_or_create_authors(instance)
-    instance = _get_or_create_labels(instance)
     instance = _get_or_create_journal(instance)
     db.session.add(instance)
     db.session.commit()
@@ -92,17 +91,6 @@ def _get_or_create_authors(instance):
     return instance
 
 
-def _get_or_create_labels(instance):
-    """Get or create labels and attach to instance if necessary."""
-    if 'labels' in request.form:
-        labels = []
-        for l in request.form.get('labels').split(','):
-            label = get_or_create(models.Label, name=l.strip())
-            labels.append(label)
-        instance.labels = labels
-    return instance
-
-
 def _get_or_create_journal(instance):
     """Create journal and attach to instance if necessary."""
     if 'journal' in request.form:
@@ -119,8 +107,6 @@ def _process_arguments(**kwargs):
     # via the ORM.
     if 'authors' in kwargs:
         del kwargs['authors']
-    if 'labels' in kwargs:
-        del kwargs['labels']
     if 'journal' in kwargs:
         del kwargs['journal']
     # Convert plain text to keywords.
@@ -134,6 +120,6 @@ def _process_arguments(**kwargs):
             kwargs[a] = True
         if v == 'false':
             kwargs[a] = False
-        if v == 'null':
+        if v == '' or v == 'null':
             kwargs[a] = None
     return kwargs
