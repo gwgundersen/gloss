@@ -42,7 +42,7 @@ else:
     # Manually set the base tag URL to "/glossary/". Why can"t we use the config
     # value? Because in production, the application runs on the server in the
     # `glossary` directory and the config value is consequently "/".
-    app.config.base_tag_url = "/glossary/"
+    app.config.base_tag_url = "/"
 
 
 # Server endpoints
