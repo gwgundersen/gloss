@@ -234,7 +234,7 @@ ol {
 
   #controls {
     border-bottom: 1px solid @color-menu-pressed;
-    height: 30px;
+    height: 37px;
     padding-left: @dim-menu-width;
 
     .control {
@@ -243,7 +243,10 @@ ol {
       position: relative;
       top: 7px;
     }
-
+    select.control {
+      position: relative;
+      top: 9px;
+    }
     #archive-action {
       margin-right: 30px;
     }
@@ -392,7 +395,7 @@ blockquote {
 
 #gloss-page,
 .entity-page {
-  .crud-controls {
+  .controls {
     padding-top: 10px;
     a {
       margin-bottom: 5px;
@@ -575,5 +578,14 @@ blockquote {
     border-top: 1px solid #eee;
     padding-top: 10px;
     margin-top: 100px;
+  }
+}
+
+#entity-add-menu-page {
+  li {
+    margin: 10px 0;
+    a {
+      font-size: 16px;
+    }
   }
 }

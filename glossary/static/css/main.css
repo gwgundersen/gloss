@@ -197,7 +197,7 @@ ol ol {
 }
 #nav #controls {
   border-bottom: 1px solid #eee;
-  height: 30px;
+  height: 37px;
   padding-left: 150px;
 }
 #nav #controls .control {
@@ -205,6 +205,10 @@ ol ol {
   margin-right: 10px;
   position: relative;
   top: 7px;
+}
+#nav #controls select.control {
+  position: relative;
+  top: 9px;
 }
 #nav #controls #archive-action {
   margin-right: 30px;
@@ -325,16 +329,16 @@ blockquote {
   padding: 5px 0;
   margin: 10px 0;
 }
-#gloss-page .crud-controls,
-.entity-page .crud-controls {
+#gloss-page .controls,
+.entity-page .controls {
   padding-top: 10px;
 }
-#gloss-page .crud-controls a,
-.entity-page .crud-controls a {
+#gloss-page .controls a,
+.entity-page .controls a {
   margin-bottom: 5px;
 }
-#gloss-page .crud-controls input,
-.entity-page .crud-controls input {
+#gloss-page .controls input,
+.entity-page .controls input {
   border-radius: 2px;
   margin-top: 10px;
 }
@@ -466,4 +470,10 @@ blockquote {
   border-top: 1px solid #eee;
   padding-top: 10px;
   margin-top: 100px;
+}
+#entity-add-menu-page li {
+  margin: 10px 0;
+}
+#entity-add-menu-page li a {
+  font-size: 16px;
 }

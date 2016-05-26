@@ -40,7 +40,7 @@ def render_entity_by_id(type_, entity_id):
 
 
 @entity_blueprint.route('/create', defaults={'type_': None}, methods=['GET'])
-@entity_blueprint.route('/create/<string:type_>', methods=['GET'])
+@entity_blueprint.route('/<string:type_>/create', methods=['GET'])
 @login_required
 def render_add_specific_entity_page(type_):
     """Render page for adding a specific entity, e.g. Idea versus Book."""

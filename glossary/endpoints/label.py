@@ -33,8 +33,9 @@ def render_all_with_label(label_name):
         .join(models.Label, models.Gloss.labels)\
         .filter(models.Label.name == label_name)\
         .all()
-    return render_template('label/label.html', label_name=label_name,
-                           glosses=glosses)
+    labels = db.session.query(models.Label).all()
+    return render_template('index_private.html', glosses=glosses,
+                           show_nav_controls=True, labels=labels)
 
 
 @label_blueprint.route('/delete', methods=['POST'])
@@ -67,12 +68,15 @@ def label_glosses():
     for id_ in gloss_ids:
         id_ = int(id_)
         gloss = db.session.query(models.Gloss).get(id_)
+        if label in gloss.labels:
+            continue
         gloss.labels.append(label)
         db.session.merge(gloss)
         db.session.commit()
-    return jsonify({
-        'status': 'success'
-    })
+
+    if request.form.get('is_js', None):
+        return jsonify({'status': 'success'})
+    return redirect(request.referrer)
 
 
 @label_blueprint.route('/create', methods=['POST'])

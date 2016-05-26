@@ -10,24 +10,15 @@
             </div>
             <div class="clear"></div>
         </div>
-        {% if is_index_page %}
+        {% if show_nav_controls %}
             <div id="controls">
-                <button class="control" id="archive-action">Archive</button>
+                <button class="btn control" id="archive-action">Archive</button>
                 <select class="control" id="label">
                     {% for label in labels %}
                         <option value="{{ label.id }}">{{ label.name }}</option>
                     {% endfor %}
                 </select>
-                <button class="control" id="label-action">Label</button>
-            </div>
-        {% elif is_gloss_page %}
-            <div id="controls">
-                <select class="control" id="label">
-                    {% for label in labels %}
-                        <option value="{{ label.id }}">{{ label.name }}</option>
-                    {% endfor %}
-                </select>
-                <button class="control" id="label-action">Label</button>
+                <button class="btn control" id="label-action">Label</button>
             </div>
         {% endif %}
     </div>

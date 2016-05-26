@@ -25,11 +25,11 @@ def render_index_page():
             .filter_by(archive=False)\
             .order_by(models.Gloss.timestamp.desc())
         return render_template('index_private.html', glosses=glosses,
-                               is_index_page=True, labels=labels)
+                               show_nav_controls=True, labels=labels)
     else:
         results = _get_glosses_by_keyword(keyword)
         return render_template('index_private.html', glosses=results,
-                               is_index_page=True, labels=labels)
+                               show_nav_controls=True, labels=labels)
 
 
 def _get_glosses_by_keyword(keyword):

@@ -35,14 +35,8 @@ with app.app_context():
     db.create_all()
     db.session.commit()
 
-if config.getboolean("mode", "debug"):
-    # Add a trailing slash, so the base tag URL will be "/glossary/"
-    app.config.base_tag_url = "%s/" % config.get("url", "base")
-else:
-    # Manually set the base tag URL to "/glossary/". Why can"t we use the config
-    # value? Because in production, the application runs on the server in the
-    # `glossary` directory and the config value is consequently "/".
-    app.config.base_tag_url = "/"
+
+app.config.base_tag_url = "/"
 
 
 # Server endpoints
@@ -103,5 +97,4 @@ def method_not_allowed(e):
 # Set binary location for pandoc. This is important because Flask and Apache
 # both run as special users and cannot find the binaries otherwise.
 # ----------------------------------------------------------------------------
-# TODO: Read from config since this will be different in production.
 os.environ.setdefault("PYPANDOC_PANDOC", config.get('general', 'pandoc_path'))

@@ -40,7 +40,7 @@
     </div>
 
     {% if g.user.is_authenticated %}
-        <div class="crud-controls">
+        <div class="controls">
             <form action="entity/delete/{{ entity.id }}" method="post">
                 <input type="submit" class="btn" value="Delete {{ entity.type_ }}"
                        onclick="return confirm('Are you sure you want to delete this item?');"/>
