@@ -98,5 +98,5 @@ def method_not_allowed(e):
 # both run as special users and cannot find the binaries otherwise.
 # ----------------------------------------------------------------------------
 os.environ.setdefault("PYPANDOC_PANDOC", config.get('path', 'pandoc'))
-if not config.get('mode', 'debug'):
+if not config.getboolean('mode', 'debug'):
     os.environ.setdefault("LD_LIBRARY_PATH", config.get('path', 'ld_library'))
