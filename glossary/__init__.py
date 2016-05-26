@@ -97,6 +97,7 @@ def method_not_allowed(e):
 # Set binary location for pandoc. This is important because Flask and Apache
 # both run as special users and cannot find the binaries otherwise.
 # ----------------------------------------------------------------------------
-os.environ.setdefault("PYPANDOC_PANDOC", config.get('path', 'pandoc'))
-if not config.getboolean('mode', 'debug'):
-    os.environ.setdefault("LD_LIBRARY_PATH", config.get('path', 'ld_library'))
+os.environ.setdefault("PYPANDOC_PANDOC", config.get("path", "pandoc"))
+if not config.getboolean("mode", "debug"):
+    os.environ.setdefault("HOME", config.get("path", "home"))
+    os.environ.setdefault("LD_LIBRARY_PATH", config.get("path", "ld_library"))
