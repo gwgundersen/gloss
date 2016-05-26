@@ -104,4 +104,4 @@ def method_not_allowed(e):
 # both run as special users and cannot find the binaries otherwise.
 # ----------------------------------------------------------------------------
 # TODO: Read from config since this will be different in production.
-os.environ.setdefault("PYPANDOC_PANDOC", "/usr/local/bin/pandoc")
+os.environ.setdefault("PYPANDOC_PANDOC", config.get('general', 'pandoc_path'))
