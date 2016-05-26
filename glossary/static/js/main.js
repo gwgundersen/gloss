@@ -6,7 +6,7 @@ $(function() {
         index_page();
     } else if (get_page() == 'gloss') {
         gloss_page();
-    } else if (get_page() == 'entity') {
+    } else if (get_page() == 'create') {
          add_entity_select();
     }
 
