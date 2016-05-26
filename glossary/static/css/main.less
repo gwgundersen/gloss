@@ -178,9 +178,7 @@ ol {
  * -------------------- */
 #nav {
   #header {
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #e5e5e5;
-    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+    border-bottom: 3px solid #e5e5e5;
     font-family: @font-family-base;
     height: 45px;
     /* z-index only works with certain positions:
@@ -200,13 +198,18 @@ ol {
         color: @color-charcoal;
         font-family: @font-family-accent;
         font-size: 18px;
-        font-weight: 300;
+        font-weight: bold;
         text-decoration: none;
 
         &:hover {
           opacity: .8;
           text-decoration: none;
         }
+      }
+      .btn-back {
+        display: inline-block;
+        font-size: 11px;
+        margin-left: 10px;
       }
     }
 
@@ -218,7 +221,7 @@ ol {
         padding: 5px;
         position: relative;
         top: 8px;
-        left: 52px;
+        left: 59px;
         width: 200px;
       }
       button {
@@ -368,6 +371,7 @@ blockquote {
       a {
         font-family: @font-family-accent;
         font-size: 16px;
+        font-weight: 300;
       }
     }
   }
@@ -445,6 +449,26 @@ blockquote {
   }
   .gloss-list {
     margin-top: 10px;
+  }
+}
+
+#book-page,
+#paper-page {
+  .stats-table {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+
+    tr {
+      td:first-child {
+        font-weight: bold;
+        width: 110px;
+      }
+      &:first-child {
+        td {
+          border-top: none;
+        }
+      }
+    }
   }
 }
 

@@ -12,7 +12,20 @@
 {% endwith %}
 
 <div id='{{ type_ }}-page' class='page'>
+
+    {% if stats %}
+        <table class="table stats-table">
+            {% for s in stats %}
+                <tr>
+                    <td>{{ s.key }}</td>
+                    <td>{{ s.value }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
     {% include 'entity_partials/%s_list.html' % type_ %}
+
 </div>
 
 </body>

@@ -7,15 +7,15 @@
 
 <link rel="stylesheet" href="static/css/blog.css"/>
 
-<div id="blog-page" class="page container">
-    <h1>Blog</h1>
-    <div id="blog-menu">
-        <a href="">Back</a>
+<div id="nav">
+    <div id="header">
+        <h1><a href="blog">Blog</a><a href="" class="btn-back">&#8810; Back</a></h1>
     </div>
+</div>
+<div id="blog-page" class="page container">
     <div class="gloss-list">
         {% for gloss in glosses %}
             <div class="gloss {{ gloss.type_ }}">
-                <h4>{{ gloss.entity.title }}</h4>
                 <h3 class="type">{{ gloss.timestamp|datetime_str }}</h3>
                 <div>{{ gloss.text_|markdown|safe }}</div>
             </div>

@@ -55,6 +55,7 @@ app.register_blueprint(endpoints.label_blueprint)
 app.register_blueprint(endpoints.author_blueprint)
 app.register_blueprint(endpoints.entity_blueprint)
 app.register_blueprint(endpoints.auth_blueprint)
+app.register_blueprint(endpoints.blog_blueprint)
 
 
 # Login session management

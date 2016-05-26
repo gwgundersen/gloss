@@ -30,3 +30,10 @@ type_to_class = {
     'paper': Paper,
     'talk': Talk
 }
+
+type_to_order = {
+    'book': Book.ended,
+    'idea': Idea.title,
+    'paper': Paper.date_read,
+    'talk': Talk.timestamp
+}

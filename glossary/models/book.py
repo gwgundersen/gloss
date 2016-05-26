@@ -1,6 +1,10 @@
 """Represent a scientific publication."""
 
+from datetime import datetime
+from sqlalchemy.sql import func
+
 from glossary import db
+from author import Author
 from entity import Entity
 
 
@@ -19,10 +23,7 @@ class Book(Entity):
     ended       = db.Column(db.Date)
     format      = db.Column(db.String(255))
     source      = db.Column(db.String(255))
-    is_female   = db.Column(db.Boolean)
-    is_poc      = db.Column(db.Boolean)
     buy         = db.Column(db.Boolean)
-    nationality = db.Column(db.String(255))
 
     __mapper_args__ = {
         'polymorphic_identity': 'book',
@@ -38,3 +39,49 @@ class Book(Entity):
     @property
     def endpoint(self):
         return 'entity/book'
+
+    @classmethod
+    def stats(cls):
+        """Return statistics on books read."""
+        first_book = db.session.query(cls).order_by(Book.started.asc())\
+            .all()[0]
+        started = datetime.combine(first_book.started, datetime.min.time())
+        now = datetime.utcnow()
+        days_record = (now - started).days
+        books_read = db.session.query(cls).count()
+
+        pages_read = db.session.query(func.max(cls.pages_read)).one()[0]
+        pages_per_day = round(float(pages_read) / days_record, 2)
+        books_per_month = round(books_read / (days_record / 30.42))
+
+        num_authors = db.session.query(Author)\
+            .distinct(Author.id)\
+            .join(cls, Author.books)\
+            .filter(cls.finished)\
+            .count()
+
+        num_poc = db.session.query(Author)\
+            .distinct(Author.id)\
+            .filter(Author.is_poc)\
+            .join(cls, Author.books)\
+            .filter(cls.finished)\
+            .count()
+        pct_poc = round(float(num_poc) / num_authors, 2)
+
+        num_female = db.session.query(Author)\
+            .distinct(Author.id)\
+            .filter(Author.is_female)\
+            .join(cls, Author.books)\
+            .filter(cls.finished)\
+            .count()
+        pct_female = round(float(num_female) / num_authors, 2)
+
+        return [
+            {'key': 'Days recorded',    'value': days_record},
+            {'key': 'Books read',       'value': books_read},
+            {'key': 'Total pages read', 'value': pages_read},
+            {'key': 'Pages per day',    'value': pages_per_day},
+            {'key': 'Books per month',  'value': books_per_month},
+            {'key': '% female',         'value': '%s%%' % pct_female},
+            {'key': '% POC',            'value': '%s%%' % pct_poc}
+        ]

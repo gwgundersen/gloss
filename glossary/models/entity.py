@@ -16,6 +16,10 @@ class Entity(db.Model):
         'polymorphic_on': type_
     }
 
+    @classmethod
+    def stats(cls):
+        return None
+
     @property
     def labels(self):
         label_names = []

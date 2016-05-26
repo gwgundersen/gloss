@@ -148,9 +148,7 @@ ol ol {
 /* Structural elements.
  * -------------------- */
 #nav #header {
-  background-color: #f1f1f1;
-  border-bottom: 1px solid #e5e5e5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #e5e5e5;
   font-family: arial, sans-serif;
   height: 45px;
   /* z-index only works with certain positions:
@@ -170,12 +168,17 @@ ol ol {
   color: #444;
   font-family: 'Roboto';
   font-size: 18px;
-  font-weight: 300;
+  font-weight: bold;
   text-decoration: none;
 }
 #nav #header h1 a:hover {
   opacity: .8;
   text-decoration: none;
+}
+#nav #header h1 .btn-back {
+  display: inline-block;
+  font-size: 11px;
+  margin-left: 10px;
 }
 #nav #header #search input {
   border: 1px solid #bbb;
@@ -184,7 +187,7 @@ ol ol {
   padding: 5px;
   position: relative;
   top: 8px;
-  left: 52px;
+  left: 59px;
   width: 200px;
 }
 #nav #header #search button {
@@ -310,6 +313,7 @@ blockquote {
 #index-public-page ul li a {
   font-family: 'Roboto';
   font-size: 16px;
+  font-weight: 300;
 }
 #gloss-page .entity-link {
   font-weight: bold;
@@ -368,6 +372,20 @@ blockquote {
 }
 .entity-page .gloss-list {
   margin-top: 10px;
+}
+#book-page .stats-table,
+#paper-page .stats-table {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+#book-page .stats-table tr td:first-child,
+#paper-page .stats-table tr td:first-child {
+  font-weight: bold;
+  width: 110px;
+}
+#book-page .stats-table tr:first-child td,
+#paper-page .stats-table tr:first-child td {
+  border-top: none;
 }
 #entity-add-page .form-group {
   padding: 5px 0;

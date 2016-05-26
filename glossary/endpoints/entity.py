@@ -19,10 +19,13 @@ def render_entities(type_):
     if not current_user.is_authenticated and type_ == 'idea':
         return redirect(url_for('index.render_index_page'))
     Class_ = models.type_to_class[type_]
-    entities = db.session.query(Class_).all()
+    order_fn = models.type_to_order[type_]
+    print(order_fn)
+    entities = db.session.query(Class_).order_by(order_fn.desc()).all()
     return render_template('entity/entities.html',
                            type_=type_,
-                           entities=entities)
+                           entities=entities,
+                           stats=Class_.stats())
 
 
 @entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])
@@ -86,12 +89,16 @@ def _get_or_create_authors(instance):
     """Get or create authors and attach to instance if necesary."""
     if 'authors' in request.form:
         authors = []
-        for a in request.form.get('authors').split(','):
-            t = a.strip().split(' ')
-            fn = t[0].capitalize()
-            ln = t[1].capitalize()
+        for a in request.form.get('authors').split(';'):
+            parts = a.split(',')
+            name = parts[0].strip().split(' ')
+            fn = name[0].capitalize()
+            ln = name[1].capitalize()
+            is_female = parts[1].strip() == 'female'
+            is_poc = parts[2].strip() == 'poc'
             author = get_or_create(models.Author, first_name=fn,
-                                   last_name=ln)
+                                   last_name=ln, is_female=is_female,
+                                   is_poc=is_poc)
             authors.append(author)
         instance.authors = authors
     return instance

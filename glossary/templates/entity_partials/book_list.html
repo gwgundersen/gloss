@@ -1,12 +1,14 @@
 <table class='table'>
     <thead>
         <tr>
+            <th>Date Finished</th>
             <th>Title</th>
             <th>Authors</th>
         </tr>
     </thead>
     {% for book in entities %}
     <tr>
+        <td>{{ book.ended }}</td>
         <td>
             {% with labels = book.labels %}
                 {% include 'entity_partials/label_list.html' %}

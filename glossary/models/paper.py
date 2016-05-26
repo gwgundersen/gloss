@@ -16,6 +16,7 @@ class Paper(Entity):
     year         = db.Column(db.Integer)
     min_required = db.Column(db.Float)
     journal_fk   = db.Column('journal_fk', db.Integer, db.ForeignKey('journal.id'))
+    link         = db.Column(db.String(255), nullable=True)
 
     journal      = db.relationship('Journal', backref='papers')
 
@@ -34,3 +35,10 @@ class Paper(Entity):
     @property
     def endpoint(self):
         return 'entity/paper'
+
+    @classmethod
+    def stats(cls):
+        papers_read = db.session.query(cls).count()
+        return [
+            {'key': 'Papers read', 'value': papers_read}
+        ]

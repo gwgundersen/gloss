@@ -22,12 +22,12 @@ def render_labels():
 
 
 @label_blueprint.route('/<string:label_name>', methods=['GET'])
+@login_required
 def render_all_with_label(label_name):
     """Render all entities and glosses with label."""
-    if label_name == 'blog':
-        return render_blog()
     if not current_user.is_authenticated:
         return redirect(url_for('index.render_index_page'))
+
     label_name = label_name.lower()
     glosses = db.session.query(models.Gloss)\
         .join(models.Label, models.Gloss.labels)\
@@ -81,13 +81,3 @@ def create_label():
     """Create new label."""
     dbutils.get_or_create_labels(request)
     return redirect(request.referrer)
-
-
-def render_blog():
-    """Renders glosses for blog."""
-    glosses = db.session.query(models.Gloss)\
-        .join(models.Label, models.Gloss.labels)\
-        .filter(models.Label.name == 'blog')\
-        .order_by(models.Gloss.timestamp.desc())\
-        .all()
-    return render_template('blog.html', glosses=glosses)

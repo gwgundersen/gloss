@@ -23,7 +23,7 @@
                 <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
                 <h4>{{ gloss.entity.title }}</h4>
                 <div>{{ gloss.text_|markdown|safe }}</div>
-                <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
+                <a class="btn-edit" href="gloss/{{ gloss.id }}">&#8811;</a>
             </div>
         {% endfor %}
     </div>
