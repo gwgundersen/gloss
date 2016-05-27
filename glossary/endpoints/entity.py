@@ -16,16 +16,18 @@ entity_blueprint = Blueprint('entity',
 @entity_blueprint.route('/<string:type_>', methods=['GET'])
 def render_entities(type_):
     """Render entity by ID."""
-    if not current_user.is_authenticated and type_ == 'idea':
+    # TODO: Manually checking the type_ here is poor design!
+    auth = current_user.is_authenticated
+    if not auth and type_ == 'idea':
         return redirect(url_for('index.render_index_page'))
     Class_ = models.type_to_class[type_]
     order_fn = models.type_to_order[type_]
-    print(order_fn)
     entities = db.session.query(Class_).order_by(order_fn.desc()).all()
     return render_template('entity/entities.html',
                            type_=type_,
                            entities=entities,
-                           stats=Class_.stats())
+                           stats=Class_.stats(),
+                           is_private=auth)
 
 
 @entity_blueprint.route('/<int:entity_id>', methods=['GET'])
@@ -35,7 +37,8 @@ def render_entity_by_just_id(entity_id):
     if not entity:
         return redirect('404.html')
     return render_template('entity/entity.html',
-                           entity=entity)
+                           entity=entity,
+                           is_private=current_user.is_authenticated)
 
 
 @entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])
@@ -104,8 +107,12 @@ def _get_or_create_authors(instance):
             name = parts[0].strip().split(' ')
             fn = name[0].capitalize()
             ln = name[1].capitalize()
-            is_female = parts[1].strip() == 'female'
-            is_poc = parts[2].strip() == 'poc'
+            if len(parts) > 1:
+                is_female = parts[1].strip() == 'female'
+                is_poc = parts[2].strip() == 'poc'
+            else:
+                is_female = None
+                is_poc = None
             author = get_or_create(models.Author, first_name=fn,
                                    last_name=ln, is_female=is_female,
                                    is_poc=is_poc)

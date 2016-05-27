@@ -16,7 +16,3 @@ class Idea(Entity):
                           primary_key=True)
     title     = db.Column(db.String(255))
     url       = db.Column(db.String(255))
-
-    @property
-    def endpoint(self):
-        return 'entity/idea'

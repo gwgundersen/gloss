@@ -263,6 +263,10 @@ ol ol {
   margin-left: 170px;
   margin-right: 20px;
   margin-top: 20px;
+  /* Non-GWG users will not see a nav. Account for this. */
+}
+.page-wrapper.public {
+  margin-left: 20px;
 }
 .page-wrapper h1 {
   color: #444;
@@ -498,4 +502,11 @@ blockquote {
 #blog-page {
   margin-left: 20px;
   width: 700px;
+}
+.error-page {
+  margin-left: 20px;
+}
+.error-page p {
+  color: #C93756;
+  font-weight: bold;
 }

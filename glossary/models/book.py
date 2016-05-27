@@ -36,10 +36,6 @@ class Book(Entity):
             return '%s et al' % a.last_name
         return '%s %s' % (a.first_name, a.last_name)
 
-    @property
-    def endpoint(self):
-        return 'entity/book'
-
     @classmethod
     def stats(cls):
         """Return statistics on books read."""

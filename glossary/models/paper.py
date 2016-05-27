@@ -32,10 +32,6 @@ class Paper(Entity):
     def last_author(self):
         return self.authors[-1]
 
-    @property
-    def endpoint(self):
-        return 'entity/paper'
-
     @classmethod
     def stats(cls):
         papers_read = db.session.query(cls).count()

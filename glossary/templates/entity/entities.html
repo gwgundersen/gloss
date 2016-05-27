@@ -11,7 +11,7 @@
     {% include "structural_partials/menu.html" %}
 {% endwith %}
 
-<div id="{{ type_ }}-page" class="page-wrapper">
+<div id="{{ type_ }}-page" class="page-wrapper entities-page {{ 'public' if not is_private else '' }}">
     <div class="page">
 
         {% if stats %}

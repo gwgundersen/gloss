@@ -1,31 +1,33 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/nav.html' %}
+{% include "structural_partials/nav.html" %}
 
-{% include 'structural_partials/menu.html' %}
+{% include "structural_partials/menu.html" %}
 
-<div id='gloss-add-page' class='page container'>
-    <h1>Add gloss to:</h1>
-    <p>{{ entity.title }}</p>
-    <form action='gloss/create' method='post'>
-        <input type='hidden' name='entity_id' class='form-group' value='{{ entity.id }}'/>
-        <select name='type_'>
-            <option value=''>(Select type)</option>
-            <option value='question'>Question</option>
-            <option value='summary'>Summary</option>
-            <option value='thought'>Thought</option>
-            <option value='todo'>Todo</option>
-        </select>
-        <div class='form-group'>
-            <textarea type='text' name='text_' class='form-control'></textarea>
-        </div>
-        <button type='submit' class='btn btn-default'>Add gloss</button>
-    </form>
+<div id="gloss-add-page" class="page-wrapper">
+    <div class="page">
+        <h1>Add gloss to:</h1>
+        <p>{{ entity.title }}</p>
+        <form action="gloss/create" method="post">
+            <input type="hidden" name="entity_id" class="form-group" value="{{ entity.id }}"/>
+            <select name="type_">
+                <option value="">(Select type)</option>
+                <option value="question">Question</option>
+                <option value="summary">Summary</option>
+                <option value="thought">Thought</option>
+                <option value="todo">Todo</option>
+            </select>
+            <div class="form-group">
+                <textarea type="text" name="text_" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Add gloss</button>
+        </form>
+    </div>
 </div>
 
 </body>

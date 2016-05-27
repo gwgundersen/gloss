@@ -16,7 +16,3 @@ class Talk(Entity):
     __mapper_args__ = {
         'polymorphic_identity': 'talk',
     }
-
-    @property
-    def endpoint(self):
-        return 'entity/talk'

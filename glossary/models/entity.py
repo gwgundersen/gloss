@@ -16,6 +16,10 @@ class Entity(db.Model):
         'polymorphic_on': type_
     }
 
+    @property
+    def endpoint(self):
+        return 'entity'
+
     @classmethod
     def stats(cls):
         return None

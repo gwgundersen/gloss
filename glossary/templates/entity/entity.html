@@ -11,7 +11,7 @@
     {% include "structural_partials/menu.html" %}
 {% endwith %}
 
-<div id="{{ entity.type_ }}-page" class="page-wrapper entity-page">
+<div id="{{ entity.type_ }}-page" class="page-wrapper entity-page {{ 'public' if not g.user.is_authenticated else '' }}">
     <div class="page">
 
         <table class="table metadata-table">
