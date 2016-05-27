@@ -28,7 +28,6 @@
                 <td>
                     <a href="{{ book.endpoint }}">{{ book.title }}</a>
                 </td>
-                <td>Book</td>
             </tr>
             {% endfor %}
         {% endif %}
@@ -38,8 +37,10 @@
             <tr>
                 <td>
                     <a href="{{ paper.endpoint }}">{{ paper.title }}</a>
+                    {% if paper.link %}
+                        <a class="paper-link" href="{{ paper.link }}">PDF</a>
+                    {% endif %}
                 </td>
-                <td>Paper</td>
             </tr>
             {% endfor %}
         {% endif %}
@@ -50,7 +51,6 @@
                 <td>
                     <a href="{{ talk.endpoint }}">{{ talk.title }}</a>
                 </td>
-                <td>Talk</td>
             </tr>
             {% endfor %}
         {% endif %}

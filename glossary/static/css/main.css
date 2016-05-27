@@ -438,6 +438,12 @@ blockquote {
   display: inline-block;
   margin-left: 5px;
 }
+#author-page .paper-link {
+  color: #C93756;
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 10px;
+}
 .gloss.question {
   background-color: #f9f7fb !important;
   border-left: 2px solid #875F9A !important;
