@@ -17,5 +17,4 @@ def render_all_authors(author_id):
     author = db.session.query(models.Author)\
         .filter_by(id=author_id)\
         .one()
-    return render_template('author.html',
-                           author=author)
+    return render_template('author.html', author=author)
