@@ -263,10 +263,6 @@ ol ol {
   margin-left: 170px;
   margin-right: 20px;
   margin-top: 20px;
-  /* Non-GWG users will not see a nav. Account for this. */
-}
-.page-wrapper.public {
-  margin-left: 20px;
 }
 .page-wrapper h1 {
   color: #444;
@@ -334,18 +330,6 @@ blockquote {
   overflow: hidden;
   white-space: nowrap;
   width: 100px;
-}
-#index-public-page {
-  margin-left: 20px;
-  margin-top: 20px;
-}
-#index-public-page ul li {
-  height: 30px;
-}
-#index-public-page ul li a {
-  font-family: 'Roboto';
-  font-size: 16px;
-  font-weight: 300;
 }
 #gloss-page .entity-link {
   font-weight: bold;

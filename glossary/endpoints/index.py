@@ -1,8 +1,8 @@
 """Render landing page."""
 
 from sqlalchemy import text
-from flask import Blueprint, redirect, render_template, request, url_for
-from flask.ext.login import current_user, login_required
+from flask import Blueprint, render_template, request
+from flask.ext.login import login_required
 
 from glossary import db, models
 from glossary.config import config
@@ -14,10 +14,9 @@ index_blueprint = Blueprint('index',
 
 
 @index_blueprint.route('/', methods=['GET'])
+@login_required
 def render_index_page():
     """Render index page."""
-    if not current_user.is_authenticated:
-        return render_template('index_public.html')
     keyword = request.args.get('q')
     labels = db.session.query(models.Label).all()
     if not keyword:

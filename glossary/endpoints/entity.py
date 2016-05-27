@@ -1,7 +1,7 @@
 """Render individual entity-related pages."""
 
 from flask import Blueprint, request, render_template, redirect, url_for
-from flask.ext.login import current_user, login_required
+from flask.ext.login import login_required
 
 from glossary import db, models
 from glossary.config import config
@@ -14,34 +14,31 @@ entity_blueprint = Blueprint('entity',
 
 
 @entity_blueprint.route('/<string:type_>', methods=['GET'])
+@login_required
 def render_entities(type_):
     """Render entity by ID."""
-    # TODO: Manually checking the type_ here is poor design!
-    auth = current_user.is_authenticated
-    if not auth and type_ == 'idea':
-        return redirect(url_for('index.render_index_page'))
     Class_ = models.type_to_class[type_]
     order_fn = models.type_to_order[type_]
     entities = db.session.query(Class_).order_by(order_fn.desc()).all()
     return render_template('entity/entities.html',
                            type_=type_,
                            entities=entities,
-                           stats=Class_.stats(),
-                           is_private=auth)
+                           stats=Class_.stats())
 
 
 @entity_blueprint.route('/<int:entity_id>', methods=['GET'])
+@login_required
 def render_entity_by_just_id(entity_id):
     """Render entity by ID."""
     entity = db.session.query(models.Entity).get(entity_id)
     if not entity:
         return redirect('404.html')
     return render_template('entity/entity.html',
-                           entity=entity,
-                           is_private=current_user.is_authenticated)
+                           entity=entity)
 
 
 @entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])
+@login_required
 def render_entity_by_id(type_, entity_id):
     """Render entity by ID."""
     Class_ = models.type_to_class[type_]

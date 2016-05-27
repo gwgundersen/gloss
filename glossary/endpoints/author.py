@@ -1,6 +1,7 @@
 """Render author-related pages."""
 
 from flask import Blueprint, render_template
+from flask.ext.login import login_required
 
 from glossary import db, models
 from glossary.config import config
@@ -12,6 +13,7 @@ author_blueprint = Blueprint('author',
 
 
 @author_blueprint.route('/<int:author_id>', methods=['GET'])
+@login_required
 def render_all_authors(author_id):
     """Render all authors."""
     author = db.session.query(models.Author)\

@@ -312,10 +312,6 @@ ol {
   margin-right: @dim-default-margin;
   margin-top: @dim-default-margin;
 
-  /* Non-GWG users will not see a nav. Account for this. */
-  &.public {
-    margin-left: @dim-default-margin;
-  }
   h1 {
     color: @color-charcoal;
     font-size: 20px;
@@ -393,22 +389,6 @@ blockquote {
             width: 100px;
           }
         }
-      }
-    }
-  }
-}
-
-#index-public-page {
-  margin-left: @dim-default-margin;
-  margin-top: @dim-default-margin;
-
-  ul {
-    li {
-      height: 30px;
-      a {
-        font-family: @font-family-accent;
-        font-size: 16px;
-        font-weight: 300;
       }
     }
   }
