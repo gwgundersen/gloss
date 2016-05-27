@@ -26,6 +26,7 @@ def render_all_glosses():
 
 
 @gloss_blueprint.route('/<int:gloss_id>', methods=['GET'])
+@login_required
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
