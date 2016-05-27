@@ -1,4 +1,4 @@
-<table class='table'>
+<table class="table">
     <thead>
         <tr>
             <th>Date Finished</th>
@@ -11,15 +11,15 @@
         <td>{{ book.ended }}</td>
         <td>
             {% with labels = book.labels %}
-                {% include 'entity_partials/label_list.html' %}
+                {% include "entity_partials/label_list.html" %}
             {% endwith %}
-            <a href='{{ book.endpoint }}/{{ book.id }}'>
+            <a href="{{ book.endpoint }}">
                 {{ book.title }}
             </a>
         </td>
         <td>
             {% with authors = book.authors %}
-                {% include 'entity_partials/author_list.html' %}
+                {% include "entity_partials/author_list.html" %}
             {% endwith %}
         </td>
     </tr>

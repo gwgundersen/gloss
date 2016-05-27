@@ -1,4 +1,4 @@
-<table class='table'>
+<table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -10,15 +10,15 @@
         <tr>
             <td>
                 {% with labels = paper.labels %}
-                    {% include 'entity_partials/label_list.html' %}
+                    {% include "entity_partials/label_list.html" %}
                 {% endwith %}
-                <a href='{{ paper.endpoint }}/{{ paper.id }}'>
+                <a href="{{ paper.endpoint }}">
                     {{ paper.title }}
                 </a>
             </td>
             <td>
             {% with authors = paper.authors %}
-                {% include 'entity_partials/author_list.html' %}
+                {% include "entity_partials/author_list.html" %}
             {% endwith %}
             </td>
             <td>{{ paper.year }}</td>

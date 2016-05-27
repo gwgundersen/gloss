@@ -11,13 +11,11 @@ author_blueprint = Blueprint('author',
                              url_prefix='%s/author' % config.get('url', 'base'))
 
 
-@author_blueprint.route('/<string:author_name>', methods=['GET'])
-def render_all_authors(author_name):
+@author_blueprint.route('/<int:author_id>', methods=['GET'])
+def render_all_authors(author_id):
     """Render all authors."""
-    parts = author_name.split('_')
     author = db.session.query(models.Author)\
-        .filter_by(first_name=parts[0])\
-        .filter_by(last_name=parts[1])\
+        .filter_by(id=author_id)\
         .one()
     return render_template('author.html',
                            author=author)

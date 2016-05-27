@@ -18,7 +18,7 @@ class Entity(db.Model):
 
     @property
     def endpoint(self):
-        return 'entity'
+        return 'entity/%s' % self.id
 
     @classmethod
     def stats(cls):

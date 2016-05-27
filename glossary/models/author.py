@@ -22,11 +22,7 @@ class Author(db.Model):
 
     @property
     def endpoint(self):
-        return 'author'
-
-    @property
-    def name_as_url(self):
-        return '%s_%s' % (self.first_name, self.last_name)
+        return 'author/%s' % self.id
 
     @property
     def full_name(self):

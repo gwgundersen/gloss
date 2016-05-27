@@ -19,32 +19,43 @@
                 </span>
             {% endif %}
         </h1>
+
+        <table class="table">
+
         {% if author.books|length > 0 %}
-        <div>
-            <h2>Books</h2>
-            {% with entities = author.books %}
-                {% include "entity_partials/book_list.html" %}
-            {% endwith %}
-        </div>
+            {% for book in author.books %}
+            <tr>
+                <td>
+                    <a href="{{ book.endpoint }}">{{ book.title }}</a>
+                </td>
+                <td>Book</td>
+            </tr>
+            {% endfor %}
         {% endif %}
 
         {% if author.papers|length > 0 %}
-        <div>
-            <h2>Papers</h2>
-            {% with entities = author.papers %}
-                {% include "entity_partials/paper_list.html" %}
-            {% endwith %}
-        </div>
+            {% for paper in author.papers %}
+            <tr>
+                <td>
+                    <a href="{{ paper.endpoint }}">{{ paper.title }}</a>
+                </td>
+                <td>Paper</td>
+            </tr>
+            {% endfor %}
         {% endif %}
 
         {% if author.talks|length > 0 %}
-        <div>
-            <h2>Talks</h2>
-            {% with entities = author.talks %}
-                {% include "entity_partials/talk_list.html" %}
-            {% endwith %}
-        </div>
+            {% for talk in author.talks %}
+            <tr>
+                <td>
+                    <a href="{{ talk.endpoint }}">{{ talk.title }}</a>
+                </td>
+                <td>Talk</td>
+            </tr>
+            {% endfor %}
         {% endif %}
+
+        </table>
     </div>
 </div>
 

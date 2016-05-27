@@ -1,7 +1,7 @@
-<ul class='list-unstyled'>
+<ul class="list-unstyled">
 {% for author in authors %}
     <li>
-        <a href='{{ author.endpoint }}/{{ author.name_as_url }}'>
+        <a href="{{ author.endpoint }}">
             {{ author.full_name }}
         </a>
     </li>

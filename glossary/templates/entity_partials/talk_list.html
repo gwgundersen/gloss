@@ -1,4 +1,4 @@
-<table class='table'>
+<table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -10,15 +10,15 @@
     <tr>
         <td>
             {% with labels = talk.labels %}
-                {% include 'entity_partials/label_list.html' %}
+                {% include "entity_partials/label_list.html" %}
             {% endwith %}
-            <a href='{{ talk.endpoint }}/{{ talk.id }}'>
+            <a href="{{ talk.endpoint }}">
                 {{ talk.title }}
             </a>
         </td>
         <td>
             {% with authors = talk.authors %}
-                {% include 'entity_partials/author_list.html' %}
+                {% include "entity_partials/author_list.html" %}
             {% endwith %}
         </td>
         <td>{{ talk.timestamp|datetime_str }}</td>

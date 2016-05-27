@@ -1,4 +1,4 @@
-<table class='table'>
+<table class="table">
     <thead>
         <tr>
             <th>Idea</th>
@@ -8,9 +8,9 @@
     <tr>
         <td>
             {% with labels = idea.labels %}
-                {% include 'entity_partials/label_list.html' %}
+                {% include "entity_partials/label_list.html" %}
             {% endwith %}
-            <a href='{{ idea.endpoint }}/{{ idea.id }}'>
+            <a href="{{ idea.endpoint }}">
                 {{ idea.title }}
             </a>
         </td>
