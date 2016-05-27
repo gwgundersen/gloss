@@ -1,43 +1,45 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/nav.html' %}
+{% include "structural_partials/nav.html" %}
 
-{% include 'structural_partials/menu.html' %}
+{% include "structural_partials/menu.html" %}
 
-<div id='gloss-add-page' class='page container'>
-    <h1>Add gloss</h1>
-    <form action='gloss/create' method='post'>
-        <div>
-            <select name='entity_id'>
-                <option value=''>(Select entity)</option>
-                {% for entity in entities %}
-                <option value='{{ entity.id }}'>
-                    {{ entity.title }}
-                </option>
-                {% endfor %}
-            </select>
-        </div>
-        <div id="type-select">
-            <select name='type_'>
-                <option value=''>(Select type)</option>
-                <option value='question'>Question</option>
-                <option value='summary'>Summary</option>
-                <option value='thought'>Thought</option>
-                <option value='todo'>Todo</option>
-            </select>
-        </div>
-        <div id="labels">
-            <label>Labels, comma-separated</label>
-            <input type='text' name='labels'/>
-        </div>
-        <textarea type='text' name='text_'></textarea>
-        <button type='submit' class='btn'>Add gloss</button>
-    </form>
+<div id="gloss-add-page" class="page-wrapper">
+    <div class="page">
+        <h1>Add gloss</h1>
+        <form action="gloss/create" method="post">
+            <div>
+                <select name="entity_id">
+                    <option value="">(Select entity)</option>
+                    {% for entity in entities %}
+                    <option value="{{ entity.id }}">
+                        {{ entity.title }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="type-select">
+                <select name="type_">
+                    <option value="">(Select type)</option>
+                    <option value="question">Question</option>
+                    <option value="summary">Summary</option>
+                    <option value="thought">Thought</option>
+                    <option value="todo">Todo</option>
+                </select>
+            </div>
+            <div id="labels">
+                <label>Labels, comma-separated</label>
+                <input type="text" name="labels"/>
+            </div>
+            <textarea type="text" name="text_"></textarea>
+            <button type="submit" class="btn">Add gloss</button>
+        </form>
+    </div>
 </div>
 
 </body>

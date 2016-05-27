@@ -44,7 +44,7 @@ def render_gloss_type(gloss_type):
         .filter_by(type_=gloss_type)\
         .order_by(models.Gloss.timestamp.desc())\
         .all()
-    return render_template('gloss/glosses.html', glosses=glosses,
+    return render_template('index_private.html', glosses=glosses,
                            type_=gloss_type)
 
 

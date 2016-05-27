@@ -9,24 +9,33 @@
 
 {% include "structural_partials/menu.html" %}
 
-<div id="index-private-page" class="page">
-    <div id="glossary">
-        <table class="table">
-        {% for gloss in glosses %}
-            <tr>
-                <td><input type="checkbox" name="{{ gloss.id }}"/></td>
-                <td><a href="gloss/{{ gloss.type_ }}">{{ gloss.type_|capitalize }}</a></td>
-                <td class="ellipsis">
-                    {% with labels = gloss.labels, gloss_id = gloss.id %}
-                        {% include 'entity_partials/label_list.html' %}
-                    {% endwith %}
-                    <div class="gloss {{ gloss.type_ }}">
-                        <a href="gloss/{{ gloss.id }}">{{ gloss.text }}</a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        <table>
+<div id="index-private-page" class="page-wrapper">
+    <div class="page">
+        <div id="glossary">
+            <table class="table">
+            {% for gloss in glosses %}
+                <tr>
+                    <td><input type="checkbox" name="{{ gloss.id }}"/></td>
+                    <td class="entity-title">
+                        <span>
+                            <a href="{{ gloss.entity.endpoint }}/{{ gloss.entity.id }}">
+                                {{ gloss.entity.title }}
+                            </a>
+                        </span>
+                    </td>
+                    <td><a href="gloss/{{ gloss.type_ }}">{{ gloss.type_|capitalize }}</a></td>
+                    <td class="ellipsis">
+                        {% with labels = gloss.labels, gloss_id = gloss.id %}
+                            {% include 'entity_partials/label_list.html' %}
+                        {% endwith %}
+                        <div class="gloss {{ gloss.type_ }}">
+                            <a href="gloss/{{ gloss.id }}">{{ gloss.text }}</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            <table>
+        </div>
     </div>
 </div>
 

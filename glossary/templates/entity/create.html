@@ -1,37 +1,39 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/nav.html' %}
+{% include "structural_partials/nav.html" %}
 
-{% include 'structural_partials/menu.html' %}
+{% include "structural_partials/menu.html" %}
 
-<div id='entity-add-page' class='page container'>
-    <h1>Add {{ type_ }}</h1>
-    <form action='entity/create/{{ type_ }}' method='post'>
-        {% if type_ != 'idea' %}
-            <div class='form-group'>
-                <label>authors, comma-separated</label>
-                <input type='text' name='authors'/>
+<div id="entity-add-page" class="page-wrapper">
+    <div class="page">
+        <h1>Add {{ type_ }}</h1>
+        <form action="entity/create/{{ type_ }}" method="post">
+            {% if type_ != "idea" %}
+                <div class="form-group">
+                    <label>authors, comma-separated</label>
+                    <input type="text" name="authors"/>
+                </div>
+            {% endif %}
+            {% if type_ == "paper" %}
+                <div class="form-group">
+                    <label>journal</label>
+                    <input type="text" name="journal"/>
+                </div>
+            {% endif %}
+            {% for attr in attrs %}
+            <div class="form-group">
+                <label>{{ attr.name }} - {{ attr.type_ }}</label>
+                <input type="text" name="{{ attr.name }}"/>
             </div>
-        {% endif %}
-        {% if type_ == 'paper' %}
-            <div class='form-group'>
-                <label>journal</label>
-                <input type='text' name='journal'/>
-            </div>
-        {% endif %}
-        {% for attr in attrs %}
-        <div class='form-group'>
-            <label>{{ attr.name }} - {{ attr.type_ }}</label>
-            <input type='text' name='{{ attr.name }}'/>
-        </div>
-        {% endfor %}
-        <button type='submit' class='btn'>Add entity</button>
-    </form>
+            {% endfor %}
+            <button type="submit" class="btn">Add entity</button>
+        </form>
+    </div>
 </div>
 
 </body>

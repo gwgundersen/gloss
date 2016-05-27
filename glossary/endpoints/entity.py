@@ -28,6 +28,16 @@ def render_entities(type_):
                            stats=Class_.stats())
 
 
+@entity_blueprint.route('/<int:entity_id>', methods=['GET'])
+def render_entity_by_just_id(entity_id):
+    """Render entity by ID."""
+    entity = db.session.query(models.Entity).get(entity_id)
+    if not entity:
+        return redirect('404.html')
+    return render_template('entity/entity.html',
+                           entity=entity)
+
+
 @entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])
 def render_entity_by_id(type_, entity_id):
     """Render entity by ID."""

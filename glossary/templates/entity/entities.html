@@ -1,31 +1,33 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/nav.html' %}
+{% include "structural_partials/nav.html" %}
 
 {% with page = type_ %}
-    {% include 'structural_partials/menu.html' %}
+    {% include "structural_partials/menu.html" %}
 {% endwith %}
 
-<div id='{{ type_ }}-page' class='page'>
+<div id="{{ type_ }}-page" class="page-wrapper">
+    <div class="page">
 
-    {% if stats %}
-        <table class="table stats-table">
-            {% for s in stats %}
-                <tr>
-                    <td>{{ s.key }}</td>
-                    <td>{{ s.value }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% endif %}
+        {% if stats %}
+            <table class="table stats-table">
+                {% for s in stats %}
+                    <tr>
+                        <td>{{ s.key }}</td>
+                        <td>{{ s.value }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
 
-    {% include 'entity_partials/%s_list.html' % type_ %}
+        {% include "entity_partials/%s_list.html" % type_ %}
 
+    </div>
 </div>
 
 </body>

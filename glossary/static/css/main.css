@@ -259,24 +259,25 @@ ol ol {
   font-size: 16px;
   padding-left: 20px;
 }
-.page {
-  float: left;
+.page-wrapper {
+  margin-left: 170px;
+  margin-right: 20px;
   margin-top: 20px;
-  max-width: 1000px;
-  padding-left: 20px;
-  width: 100%;
 }
-.page h1 {
+.page-wrapper h1 {
   color: #444;
   font-size: 20px;
   margin-top: 0;
 }
-.page h2 {
+.page-wrapper h2 {
   color: #444;
   font-size: 18px;
 }
-.page h2:first-child {
+.page-wrapper h2:first-child {
   margin-top: 0;
+}
+.page-wrapper .page {
+  margin-right: 20px;
 }
 /* Content that spans pages.
  * ------------------------- */
@@ -302,14 +303,37 @@ blockquote {
   height: 18px;
   margin-bottom: 4px;
 }
-#glossary {
-  overflow: hidden;
-}
 /* Pages.
  * ------ */
+.page-wrapper {
+  width: 700px;
+}
 #index-private-page {
   margin: 0;
   padding: 0;
+  width: 100%;
+}
+#index-private-page #glossary {
+  overflow: hidden;
+}
+#index-private-page #glossary .gloss {
+  padding: 4px;
+}
+#index-private-page #glossary table tr:first-child td {
+  border-top: none;
+}
+#index-private-page #glossary table tr td.entity-title {
+  border-right: 1px solid #eee;
+}
+#index-private-page #glossary table tr td.entity-title span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100px;
+}
+#index-public-page {
+  margin-left: 20px;
+  margin-top: 20px;
 }
 #index-public-page ul li {
   height: 30px;
@@ -447,12 +471,6 @@ blockquote {
   display: inline-block;
   font-weight: bold;
 }
-#glossary .gloss {
-  padding: 4px;
-}
-#glossary table tr:first-child td {
-  border-top: none;
-}
 #labels-page #create-labels-form {
   border-top: 1px solid #eee;
   margin-top: 10px;
@@ -476,4 +494,8 @@ blockquote {
 }
 #entity-add-menu-page li a {
   font-size: 16px;
+}
+#blog-page {
+  margin-left: 20px;
+  width: 700px;
 }

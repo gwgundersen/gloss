@@ -307,12 +307,10 @@ ol {
   }
 }
 
-.page {
-  float: left;
-  margin-top: 20px;
-  max-width: @dim-page-width;
-  padding-left: 20px;
-  width: 100%;
+.page-wrapper {
+  margin-left: @dim-menu-width + @dim-default-margin;
+  margin-right: @dim-default-margin;
+  margin-top: @dim-default-margin;
 
   h1 {
     color: @color-charcoal;
@@ -326,6 +324,9 @@ ol {
     &:first-child {
       margin-top: 0;
     }
+  }
+  .page {
+    margin-right: @dim-default-margin;
   }
 }
 
@@ -356,18 +357,47 @@ blockquote {
   margin-bottom: 4px;
 }
 
-#glossary {
-  overflow: hidden;
-}
-
 /* Pages.
  * ------ */
+.page-wrapper {
+  width: @dim-page-width;
+}
+
 #index-private-page {
   margin: 0;
   padding: 0;
+  width: 100%;
+
+  #glossary {
+    overflow: hidden;
+    .gloss {
+      padding: 4px;
+    }
+    table {
+      tr {
+        &:first-child {
+          td {
+            border-top: none;
+          }
+        }
+        td.entity-title {
+          border-right: 1px solid #eee;
+          span {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
 }
 
 #index-public-page {
+  margin-left: @dim-default-margin;
+  margin-top: @dim-default-margin;
+
   ul {
     li {
       height: 30px;
@@ -459,7 +489,7 @@ blockquote {
 #paper-page {
   .stats-table {
     border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+    margin-bottom: @dim-default-margin;
 
     tr {
       td:first-child {
@@ -544,19 +574,6 @@ blockquote {
   }
 }
 
-#glossary {
-  .gloss {
-    padding: 4px;
-  }
-  table {
-    tr:first-child {
-      td {
-        border-top: none;
-      }
-    }
-  }
-}
-
 #labels-page {
   #create-labels-form {
     border-top: 1px solid #eee;
@@ -588,4 +605,9 @@ blockquote {
       font-size: 16px;
     }
   }
+}
+
+#blog-page {
+  margin-left: @dim-default-margin;
+  width: @dim-page-width;
 }

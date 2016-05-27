@@ -1,33 +1,35 @@
-<!DOCTYPE HTML PUBLIC=''>
+<!DOCTYPE HTML PUBLIC="">
 <html>
 
-{% include 'structural_partials/head.html' %}
+{% include "structural_partials/head.html" %}
 
 <body>
 
-{% include 'structural_partials/nav.html' %}
+{% include "structural_partials/nav.html" %}
 
-{% include 'structural_partials/menu.html' %}
+{% include "structural_partials/menu.html" %}
 
-<div id='labels-page' class='page container'>
-    <ul class='list-unstyled'>
-    {% for label in labels %}
-        <li class='label'>
-            <a href='{{ label.endpoint }}/{{ label.name }}'>{{ label.name }}</a>
-            <form action="label/delete" method="post">
-                <input type="hidden" name="label_id" value="{{ label.id }}"/>
-                <input type="submit" value="x"/>
-            </form>
-        </li>
-    {% endfor %}
-    </ul>
-    <form id="create-labels-form" action="label/create" method="post">
-        <div id="labels">
-            <label>Labels, comma-separated</label>
-            <input type='text' name='labels'/>
-        </div>
-        <button type='submit' class='btn'>Create label</button>
-    </form>
+<div id="labels-page" class="page-wrapper">
+    <div class="page">
+        <ul class="list-unstyled">
+        {% for label in labels %}
+            <li class="label">
+                <a href="{{ label.endpoint }}/{{ label.name }}">{{ label.name }}</a>
+                <form action="label/delete" method="post">
+                    <input type="hidden" name="label_id" value="{{ label.id }}"/>
+                    <input type="submit" value="x"/>
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+        <form id="create-labels-form" action="label/create" method="post">
+            <div id="labels">
+                <label>Labels, comma-separated</label>
+                <input type="text" name="labels"/>
+            </div>
+            <button type="submit" class="btn">Create label</button>
+        </form>
+    </div>
 </div>
 
 </body>

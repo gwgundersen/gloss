@@ -12,14 +12,16 @@
         <h1><a href="blog">Blog</a><a href="" class="btn-back">&#8810; Back</a></h1>
     </div>
 </div>
-<div id="blog-page" class="page container">
-    <div class="gloss-list">
-        {% for gloss in glosses %}
-            <div class="gloss {{ gloss.type_ }}">
-                <h3 class="type">{{ gloss.timestamp|datetime_str }}</h3>
-                <div>{{ gloss.text_|markdown|safe }}</div>
-            </div>
-        {% endfor %}
+<div id="blog-page" class="page-wrapper">
+    <div class="page">
+        <div class="gloss-list">
+            {% for gloss in glosses %}
+                <div class="gloss {{ gloss.type_ }}">
+                    <h3 class="type">{{ gloss.timestamp|datetime_str }}</h3>
+                    <div>{{ gloss.text_|markdown|safe }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 
