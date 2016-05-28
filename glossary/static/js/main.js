@@ -14,6 +14,16 @@ $(function() {
                 }
             });
         });
+        $('#nav #controls button#archive-action').click(function() {
+            var gloss_ids = get_checked_gloss_ids();
+            $.post('gloss/archive', { gloss_ids: gloss_ids }, function(data) {
+                if (data.status == 'success') {
+                    window.location.reload();
+                } else {
+                    alert('Unknown error.');
+                }
+            });
+        });
         $('#nav #controls button#label-action').click(function() {
             var gloss_ids = get_checked_gloss_ids(),
                 label_id = $('#nav #controls select#label').val(),

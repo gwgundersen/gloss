@@ -411,6 +411,9 @@ blockquote {
   height: 25px;
   width: 100%;
 }
+#entity-add-page button {
+  margin-top: 20px;
+}
 #author-page h2 {
   font-size: 16px;
 }

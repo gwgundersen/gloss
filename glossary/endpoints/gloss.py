@@ -30,8 +30,6 @@ def render_all_glosses():
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    if gloss.is_private and not current_user.is_authenticated:
-        return render_template('error/405.html')
     labels = db.session.query(models.Label).all()
     return render_template('gloss/gloss.html', gloss=gloss, is_gloss_page=True,
                            labels=labels)
@@ -59,20 +57,17 @@ def render_add_gloss_page(entity_id):
         return render_template('gloss/add_to_specific_entity.html',
                                entity=entity)
     entities = db.session.query(models.Entity).all()
-    for e in entities:
-        print(e.title)
     return render_template('gloss/create.html',
                            entities=entities)
 
 
 @gloss_blueprint.route('/create', methods=['POST'])
 @login_required
-def add_gloss():
-    """Add new gloss."""
+def create_gloss():
+    """Create new gloss."""
     entity_id = request.form.get('entity_id')
-    print(entity_id)
-    text_ = request.form.get('text_', '')
-    type_ = request.form.get('type_', 'thought')
+    text_ = request.form.get('text_') or ''
+    type_ = request.form.get('type_') or 'thought'
     now = datetime.now()
     gloss = models.Gloss(text_=text_, type_=type_, timestamp=now)
     dbutils.get_or_create_labels(request, gloss)

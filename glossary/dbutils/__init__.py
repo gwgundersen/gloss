@@ -17,10 +17,11 @@ def get_or_create(model, **kwargs):
 
 def get_or_create_labels(request, gloss=None):
     """Get or create labels and attach to instance if necessary."""
-    if 'labels' not in request.form:
+    label_names = request.form.get('labels')
+    if label_names == '':
         return
     labels = []
-    for l in request.form.get('labels').split(','):
+    for l in label_names.split(','):
         label = get_or_create(models.Label, name=l.strip())
         labels.append(label)
     if gloss:

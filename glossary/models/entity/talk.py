@@ -1,7 +1,7 @@
 """Represent a talk, presentation, course lecture, etc."""
 
 from glossary import db
-from entity import Entity
+from glossary.models.entity.entity import Entity
 
 
 class Talk(Entity):

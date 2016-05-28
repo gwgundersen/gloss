@@ -4,8 +4,8 @@ from datetime import datetime
 from sqlalchemy.sql import func
 
 from glossary import db
-from author import Author
-from entity import Entity
+from glossary.models.author import Author
+from glossary.models.entity.entity import Entity
 
 
 class Book(Entity):

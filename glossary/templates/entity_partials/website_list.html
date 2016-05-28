@@ -1,0 +1,19 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Website</th>
+        </tr>
+    </thead>
+    {% for idea in entities %}
+    <tr>
+        <td>
+            {% with labels = idea.labels %}
+                {% include "entity_partials/label_list.html" %}
+            {% endwith %}
+            <a href="{{ idea.endpoint }}">
+                {{ idea.title }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

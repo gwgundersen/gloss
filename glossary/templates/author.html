@@ -9,7 +9,7 @@
 
 {% include "structural_partials/menu.html" %}
 
-<div id="author-page" class="page-wrapper {{ 'public' if not g.user.is_authenticated else '' }}">
+<div id="author-page" class="page-wrapper">
     <div class="page">
         <h1>
             {{ author.full_name }}
