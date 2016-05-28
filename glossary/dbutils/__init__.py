@@ -18,7 +18,7 @@ def get_or_create(model, **kwargs):
 def get_or_create_labels(request, gloss=None):
     """Get or create labels and attach to instance if necessary."""
     label_names = request.form.get('labels')
-    if label_names == '':
+    if label_names == '' or not label_names:
         return
     labels = []
     for l in label_names.split(','):
