@@ -8,9 +8,8 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from glossary.config import config
 
 
-# Database connection and app initialization
-# ----------------------------------------------------------------------------
-
+""" Database configuration and app initialization
+    -----------------------------------------------------------------------"""
 # Create db first. Models all import this.
 db = SQLAlchemy()
 
@@ -36,13 +35,21 @@ with app.app_context():
     db.session.commit()
 
 
-# URL configuration
-# ----------------------------------------------------------------------------
+""" URL configuration
+    -----------------------------------------------------------------------"""
 app.config.base_tag_url = "/"
 
 
-# Server endpoints
-# ----------------------------------------------------------------------------
+""" Debugging
+    -----------------------------------------------------------------------"""
+# It's impossible to debug a 500 error in production without seeing an error
+# message.
+app.config["DEBUG"] = True
+app.config["PROPAGATE_EXCEPTIONS"] = True
+
+
+""" Server endpoints
+    -----------------------------------------------------------------------"""
 from glossary import endpoints
 app.register_blueprint(endpoints.jinjafilters)
 app.register_blueprint(endpoints.gloss_blueprint)
@@ -54,8 +61,8 @@ app.register_blueprint(endpoints.auth_blueprint)
 app.register_blueprint(endpoints.blog_blueprint)
 
 
-# Login session management
-# ----------------------------------------------------------------------------
+""" Login session management
+    -----------------------------------------------------------------------"""
 # Change this key to force all users to re-authenticate.
 app.secret_key = config.get("cookies", "secret_key")
 
@@ -82,8 +89,8 @@ def make_session_permanent():
     flask_session.permanent = True
 
 
-# Error handling
-# ----------------------------------------------------------------------------
+""" Error handling
+    -----------------------------------------------------------------------"""
 @app.errorhandler(404)
 def page_not_found(e):
     """Handles all 404 requests."""
@@ -96,9 +103,10 @@ def method_not_allowed(e):
     return render_template("error/405.html")
 
 
+""" Pandoc configuration
+    -----------------------------------------------------------------------"""
 # Set binary location for pandoc. This is important because Flask and Apache
 # both run as special users and cannot find the binaries otherwise.
-# ----------------------------------------------------------------------------
 os.environ.setdefault("PYPANDOC_PANDOC", config.get("path", "pandoc"))
 if not config.getboolean("mode", "debug"):
     os.environ.setdefault("HOME", config.get("path", "home"))
