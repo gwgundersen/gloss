@@ -36,7 +36,16 @@ with app.app_context():
     db.session.commit()
 
 
-app.config.base_tag_url = "/"
+# URL configuration
+# ----------------------------------------------------------------------------
+if config.getboolean("mode", "debug"):
+    # Add a trailing slash, so the <base> tag URL will be "/glossary/"
+    app.config.base_tag_url = "%s/" % config.get("url", "base")
+else:
+    # Manually set the base tag URL to "/glossary/". Why can"t we use the config
+    # value? Because in production, the application runs on the server in the
+    # `glossary` directory and the config value is consequently "/".
+    app.config.base_tag_url = "/glossary/"
 
 
 # Server endpoints
