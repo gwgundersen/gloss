@@ -97,7 +97,8 @@ def delete_entity(entity_id):
 
 def _get_or_create_authors(instance):
     """Get or create authors and attach to instance if necesary."""
-    if 'authors' in request.form:
+    author_names = request.form.get('authors')
+    if author_names and author_names != '':
         authors = []
         for a in request.form.get('authors').split(';'):
             parts = a.split(',')
