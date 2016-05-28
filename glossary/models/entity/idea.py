@@ -15,4 +15,3 @@ class Idea(Entity):
     entity_fk = db.Column(db.Integer, db.ForeignKey('entity.id'),
                           primary_key=True)
     title     = db.Column(db.String(255))
-    url       = db.Column(db.String(255))
