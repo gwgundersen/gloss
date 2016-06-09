@@ -26,11 +26,15 @@ class Paper(Entity):
 
     @property
     def first_author(self):
-        return self.authors[0]
+        if self.authors:
+            return self.authors[0]
+        return None
 
     @property
     def last_author(self):
-        return self.authors[-1]
+        if self.authors:
+            return self.authors[-1]
+        return None
 
     @classmethod
     def stats(cls):

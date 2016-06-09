@@ -281,14 +281,6 @@ ol ol {
 }
 /* Content that spans pages.
  * ------------------------- */
-blockquote {
-  background-color: #f9f9f9;
-  border-left: 2px solid #aaa;
-  font-family: serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 5px;
-}
 .metadata-tabletable {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -318,6 +310,10 @@ blockquote {
 }
 #index-private-page #glossary .gloss {
   padding: 4px;
+}
+#index-private-page #glossary .gloss .MathJax_Preview,
+#index-private-page #glossary .gloss .MJXc-display {
+  display: none;
 }
 #index-private-page #glossary table tr:first-child td {
   border-top: none;
@@ -431,21 +427,39 @@ blockquote {
   font-weight: bold;
   margin-left: 10px;
 }
+.gloss blockquote {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ddd;
+  margin: 0;
+  padding: 0 10px;
+}
 .gloss.question {
   background-color: #f9f7fb !important;
-  border-left: 2px solid #875F9A !important;
+  border-color: #875F9A !important;
+}
+.gloss.question blockquote {
+  border-color: #875F9A !important;
 }
 .gloss.thought {
   background-color: #eefaff !important;
-  border-left: 2px solid #044F67 !important;
+  border-color: #044F67 !important;
+}
+.gloss.thought blockquote {
+  border-color: #044F67 !important;
 }
 .gloss.todo {
   background-color: #fff1ee !important;
-  border-left: 2px solid #FF4E20 !important;
+  border-color: #FF4E20 !important;
+}
+.gloss.todo blockquote {
+  border-color: #FF4E20 !important;
 }
 .gloss.summary {
   background-color: #fcf9ee !important;
-  border-left: 2px solid #E2B13C !important;
+  border-color: #E2B13C !important;
+}
+.gloss.summary blockquote {
+  border-color: #E2B13C !important;
 }
 .gloss-list .gloss {
   padding: 10px;

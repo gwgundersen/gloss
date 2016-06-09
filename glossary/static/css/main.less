@@ -332,15 +332,6 @@ ol {
 
 /* Content that spans pages.
  * ------------------------- */
-blockquote {
-  background-color: #f9f9f9;
-  border-left: 2px solid #aaa;
-  font-family: serif;
-  font-size: 14px;
-  margin: 0;
-  padding: 5px;
-}
-
 .metadata-tabletable {
   background-color: #f9f9f9;
   border: 1px solid #ddd;  /* Matches Bootstrap. */
@@ -372,6 +363,10 @@ blockquote {
     overflow: hidden;
     .gloss {
       padding: 4px;
+      .MathJax_Preview,
+      .MJXc-display {
+        display: none;
+      }
     }
     table {
       tr {
@@ -524,21 +519,40 @@ blockquote {
 }
 
 .gloss {
+  blockquote {
+    background-color: rgba(255,255,255,.8);
+    border: 1px solid #ddd;
+    margin: 0;
+    padding: 0 10px;
+  }
+
   &.question {
     background-color: #f9f7fb !important;
-    border-left: 2px solid #875F9A !important;
+    border-color: #875F9A !important;
+    blockquote {
+      border-color: #875F9A !important;
+    }
   }
   &.thought {
     background-color: #eefaff !important;
-    border-left: 2px solid #044F67 !important;
+    border-color: #044F67 !important;
+    blockquote {
+      border-color: #044F67 !important;
+    }
   }
   &.todo {
     background-color: #fff1ee !important;
-    border-left: 2px solid #FF4E20 !important;
+    border-color: #FF4E20 !important;
+    blockquote {
+      border-color: #FF4E20 !important;
+    }
   }
   &.summary {
     background-color: #fcf9ee !important;
-    border-left: 2px solid #E2B13C !important;
+    border-color: #E2B13C !important;
+    blockquote {
+      border-color: #E2B13C !important;
+    }
   }
 }
 

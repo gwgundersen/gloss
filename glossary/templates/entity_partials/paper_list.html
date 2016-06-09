@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>Title</th>
-            <th>Authors</th>
+            <th>First author</th>
             <th>Year</th>
         </tr>
     </thead>
@@ -17,9 +17,9 @@
                 </a>
             </td>
             <td>
-            {% with authors = paper.authors %}
-                {% include "entity_partials/author_list.html" %}
-            {% endwith %}
+                <a href="{{ paper.first_author.endpoint }}">
+                    {{ paper.first_author.full_name }}
+                </a>
             </td>
             <td>{{ paper.year }}</td>
         </tr>

@@ -11,14 +11,12 @@ jinjafilters = Blueprint('filters', __name__)
 @jinja2.contextfilter
 @jinjafilters.app_template_filter('markdown')
 def to_markdown(context, value):
-    # try:
-    #     output = pypandoc.convert(value, to='html5', format='md',
-    #                               extra_args=['--mathjax'])
-    # except:
-    #     output = value
-    # return output
-    return pypandoc.convert(value, to='html5', format='md',
-                            extra_args=['--mathjax'])
+    try:
+        output = pypandoc.convert(value, to='html5', format='md',
+                                  extra_args=['--mathjax'])
+    except:
+        output = value
+    return output
 
 
 @jinja2.contextfilter

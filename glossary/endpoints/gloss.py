@@ -31,8 +31,12 @@ def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
     labels = db.session.query(models.Label).all()
+    # Technically, this does not enumerate all *possible* types but in
+    # practice it does.
+    query = db.session.execute('SELECT DISTINCT type_ FROM gloss')
+    types = [r[0] for r in query]
     return render_template('gloss/gloss.html', gloss=gloss, is_gloss_page=True,
-                           labels=labels)
+                           labels=labels, types=types)
 
 
 @gloss_blueprint.route('/<string:gloss_type>', methods=['GET'])
@@ -100,9 +104,21 @@ def edit_gloss(gloss_id):
         return render_template('gloss/edit.html', gloss=gloss)
     else:
         gloss.text_= request.form.get('text_')
+        gloss.timestamp = datetime.now()
         db.session.merge(gloss)
         db.session.commit()
         return redirect(url_for('gloss.render_gloss', gloss_id=gloss_id))
+
+
+@gloss_blueprint.route('/type/<int:gloss_id>', methods=['POST'])
+@login_required
+def type_gloss(gloss_id):
+    """Edit gloss."""
+    gloss = db.session.query(models.Gloss).get(gloss_id)
+    gloss.type_ = request.form.get('gloss_type')
+    db.session.merge(gloss)
+    db.session.commit()
+    return redirect(url_for('gloss.render_gloss', gloss_id=gloss_id))
 
 
 @gloss_blueprint.route('/archive', methods=['POST'])
