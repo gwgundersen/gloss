@@ -427,6 +427,10 @@ ol ol {
   font-weight: bold;
   margin-left: 10px;
 }
+.gloss pre {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+}
 .gloss blockquote {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #ddd;
