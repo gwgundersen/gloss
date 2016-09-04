@@ -33,8 +33,8 @@ class Book(Entity):
     def author_info(self):
         a = self.authors[0]
         if len(self.authors) > 1:
-            return '%s et al' % a.last_name
-        return '%s %s' % (a.first_name, a.last_name)
+            return '%s et al' % a.name
+        return a.name
 
     @classmethod
     def stats(cls):
