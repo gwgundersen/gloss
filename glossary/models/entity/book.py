@@ -46,7 +46,7 @@ class Book(Entity):
         days_record = (now - started).days
         books_read = db.session.query(cls).count()
 
-        pages_read = db.session.query(func.max(cls.pages_read)).one()[0]
+        pages_read = db.session.query(func.sum(cls.pages_read)).one()[0]
         pages_per_day = round(float(pages_read) / days_record, 2)
         books_per_month = round(books_read / (days_record / 30.42))
 
