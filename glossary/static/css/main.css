@@ -259,10 +259,14 @@ ol ol {
   font-size: 16px;
   padding-left: 20px;
 }
+/* Content that spans pages.
+ * ------------------------- */
 .page-wrapper {
+  overflow: hidden;
   margin-left: 170px;
   margin-right: 20px;
   margin-top: 20px;
+  width: auto;
 }
 .page-wrapper h1 {
   color: #444;
@@ -279,8 +283,6 @@ ol ol {
 .page-wrapper .page {
   margin-right: 20px;
 }
-/* Content that spans pages.
- * ------------------------- */
 .metadata-tabletable {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
@@ -297,13 +299,9 @@ ol ol {
 }
 /* Pages.
  * ------ */
-.page-wrapper {
-  width: 700px;
-}
 #index-private-page {
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 #index-private-page #glossary {
   overflow: hidden;

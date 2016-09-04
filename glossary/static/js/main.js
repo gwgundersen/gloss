@@ -2,6 +2,7 @@ $(function() {
 
     setup_search();
     setup_nav_controls();
+    setup_datatables();
 
     function setup_nav_controls() {
         $('#nav #controls button#archive-action').click(function() {
@@ -55,5 +56,9 @@ $(function() {
             gloss_ids.push($(this).attr('name'));
         });
         return gloss_ids;
+    }
+
+    function setup_datatables() {
+        $('.dtable').DataTable();
     }
 });
