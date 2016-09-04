@@ -24,11 +24,11 @@ def render_index_page():
             .filter((models.Gloss.archive == False) |
                     (models.Gloss.type_ == 'todo'))\
             .order_by(models.Gloss.timestamp.desc())
-        return render_template('index_private.html', glosses=glosses,
+        return render_template('index.html', glosses=glosses,
                                show_nav_controls=True, labels=labels)
     else:
         results = _get_glosses_by_keyword(keyword)
-        return render_template('index_private.html', glosses=results,
+        return render_template('index.html', glosses=results,
                                show_nav_controls=True, labels=labels)
 
 

@@ -36,7 +36,7 @@ def render_all_with_label(label_name):
         .filter(models.Label.name == label_name)\
         .all()
     labels = db.session.query(models.Label).all()
-    return render_template('index_private.html', glosses=glosses,
+    return render_template('index.html', glosses=glosses,
                            show_nav_controls=True, labels=labels)
 
 
