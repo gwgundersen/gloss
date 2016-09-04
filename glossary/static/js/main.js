@@ -3,6 +3,7 @@ $(function() {
     setup_search();
     setup_nav_controls();
     setup_datatables();
+    setup_tooltips();
 
     function setup_nav_controls() {
         $('#nav #controls button#archive-action').click(function() {
@@ -60,5 +61,26 @@ $(function() {
 
     function setup_datatables() {
         $('.dtable').DataTable();
+    }
+
+    function setup_tooltips() {
+        var $elem;
+
+        function mouseIn() {
+            var value = $(this).attr('data-tooltip'),
+                pos = $(this).position();
+            $elem = $('' +
+                '<div class="tooltip" ' +
+                '     style="top: ' + pos.top + ' left: ' + pos.left + '"' +
+                '>' + value + '</div>'
+            );
+            $(this).append($elem);
+        }
+
+        function mouseOut() {
+            $elem.remove();
+        }
+
+        $('*[data-tooltip]').hover(mouseIn, mouseOut);
     }
 });
