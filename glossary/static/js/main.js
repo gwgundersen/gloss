@@ -2,8 +2,46 @@ $(function() {
 
     setup_search();
     setup_nav_controls();
-    setup_datatables();
+    //setup_datatables();
     setup_tooltips();
+    setup_add_image_button();
+
+    function setup_add_image_button() {
+        $('#add-image-btn').click(function(evt) {
+            evt.preventDefault();
+            $('#image-upload-btn').trigger('click');
+            $(':file').change(function(evt) {
+                debugger;
+                var file = this.files[0],
+                    name = file.name,
+                    formData;
+                formData = new FormData();
+                formData.append('file', $('#image-uploader input[type="file"]')[0].files[0]);
+                $.ajax({
+                    url: '/image/upload',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        console.log('Success:');
+                        add_uploaded_image_name(data);
+                    },
+                    error: function(data) {
+                        console.log('Error:');
+                        console.log(data);
+                    }
+                }, 'json');
+            });
+        });
+    }
+
+    function add_uploaded_image_name(filename) {
+        $('#uploaded-image-names').append(
+            '<li>' + filename + '</li>'
+        );
+    }
 
     function setup_nav_controls() {
         $('#nav #controls button#archive-action').click(function() {
