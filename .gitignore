@@ -7,3 +7,4 @@ glossary/config.ini
 *.pyc
 info.log
 .idea/
+glossary/static/image/upload/
