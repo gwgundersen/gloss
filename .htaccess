@@ -1,5 +1,5 @@
 Options +ExecCGI
 AddHandler fcgid-script .fcgi
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !=/home1/gregoso6/public_html/glossary/glossary.fcgi
+RewriteCond %{REQUEST_FILENAME} !=/home3/gregoso6/public_html/glossary/glossary.fcgi
 RewriteRule ^(.*)$ glossary.fcgi/$1 [QSA,L]
