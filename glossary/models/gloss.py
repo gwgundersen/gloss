@@ -15,7 +15,7 @@ class Gloss(db.Model):
     text_      = db.Column(db.Text)
     timestamp  = db.Column(db.DateTime)
     archive    = db.Column(db.Boolean, nullable=False, default=False)
-    labels     = db.relationship('Label', backref='glosses',
+    _labels    = db.relationship('Label', backref='glosses',
                                  secondary='label_to_gloss')
     is_private = db.Column(db.Boolean, nullable=False, default=True)
 
@@ -33,6 +33,10 @@ class Gloss(db.Model):
     @property
     def endpoint(self):
         return 'gloss'
+
+    @property
+    def labels(self):
+        return sorted(self._labels, key=lambda x: x.name)
 
 
 class Question(Gloss):

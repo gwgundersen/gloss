@@ -15,7 +15,7 @@
         <form action="entity/create/{{ type_ }}" method="post">
             {% if type_ != "idea" %}
                 <div class="form-group">
-                    <label>authors, comma-separated</label>
+                    <label>authors, semicolon-separated list</label>
                     <input type="text" name="authors"/>
                 </div>
             {% endif %}

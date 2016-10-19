@@ -33,8 +33,8 @@ class Book(Entity):
     def author_info(self):
         a = self.authors[0]
         if len(self.authors) > 1:
-            return '%s et al' % a.last_name
-        return '%s %s' % (a.first_name, a.last_name)
+            return '%s et al' % a.name
+        return a.name
 
     @classmethod
     def stats(cls):
@@ -46,7 +46,7 @@ class Book(Entity):
         days_record = (now - started).days
         books_read = db.session.query(cls).count()
 
-        pages_read = db.session.query(func.max(cls.pages_read)).one()[0]
+        pages_read = db.session.query(func.sum(cls.pages_read)).one()[0]
         pages_per_day = round(float(pages_read) / days_record, 2)
         books_per_month = round(books_read / (days_record / 30.42))
 

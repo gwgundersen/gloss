@@ -49,6 +49,14 @@ table {
   padding: 0;
 }
 
+.tooltip {
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
+  background-color: @color-charcoal;
+  color: white;
+  padding: 5px;
+  position: absolute;
+}
+
 .btn {
   background-color: @color-medium-crimson;
   border: none;
@@ -307,10 +315,14 @@ ol {
   }
 }
 
+/* Content that spans pages.
+ * ------------------------- */
 .page-wrapper {
+  overflow: hidden;
   margin-left: @dim-menu-width + @dim-default-margin;
   margin-right: @dim-default-margin;
   margin-top: @dim-default-margin;
+  width: auto;
 
   h1 {
     color: @color-charcoal;
@@ -330,8 +342,6 @@ ol {
   }
 }
 
-/* Content that spans pages.
- * ------------------------- */
 .metadata-tabletable {
   background-color: #f9f9f9;
   border: 1px solid #ddd;  /* Matches Bootstrap. */
@@ -350,14 +360,10 @@ ol {
 
 /* Pages.
  * ------ */
-.page-wrapper {
-  width: @dim-page-width;
-}
 
 #index-private-page {
   margin: 0;
   padding: 0;
-  width: 100%;
 
   #glossary {
     overflow: hidden;

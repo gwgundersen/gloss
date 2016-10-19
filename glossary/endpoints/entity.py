@@ -102,18 +102,15 @@ def _get_or_create_authors(instance):
         authors = []
         for a in request.form.get('authors').split(';'):
             parts = a.split(',')
-            name = parts[0].strip().split(' ')
-            fn = name[0].capitalize()
-            ln = name[1].capitalize()
+            name = parts[0].strip().capitalize()
             if len(parts) > 1:
                 is_female = parts[1].strip() == 'female'
                 is_poc = parts[2].strip() == 'poc'
             else:
                 is_female = None
                 is_poc = None
-            author = get_or_create(models.Author, first_name=fn,
-                                   last_name=ln, is_female=is_female,
-                                   is_poc=is_poc)
+            author = get_or_create(models.Author, name=name,
+                                   is_female=is_female, is_poc=is_poc)
             authors.append(author)
         instance.authors = authors
     return instance

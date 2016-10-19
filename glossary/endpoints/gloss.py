@@ -20,8 +20,9 @@ gloss_blueprint = Blueprint('gloss',
 def render_all_glosses():
     """Render all glosses."""
     glosses = db.session.query(models.Gloss).all()
-    labels = db.session.query(models.Label).all()
-    return render_template('/index_private.html', glosses=glosses, labels=labels,
+    labels = db.session.query(models.Label)\
+        .order_by(models.Label.name.asc()).all()
+    return render_template('/index.html', glosses=glosses, labels=labels,
                            is_index_page=True)
 
 
@@ -30,7 +31,8 @@ def render_all_glosses():
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    labels = db.session.query(models.Label).all()
+    labels = db.session.query(models.Label)\
+        .order_by(models.Label.name.asc()).all()
     # Technically, this does not enumerate all *possible* types but in
     # practice it does.
     query = db.session.execute('SELECT DISTINCT type_ FROM gloss')
@@ -47,7 +49,7 @@ def render_gloss_type(gloss_type):
         .filter_by(type_=gloss_type)\
         .order_by(models.Gloss.timestamp.desc())\
         .all()
-    return render_template('index_private.html', glosses=glosses,
+    return render_template('index.html', glosses=glosses,
                            type_=gloss_type)
 
 

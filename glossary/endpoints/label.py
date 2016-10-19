@@ -16,7 +16,9 @@ label_blueprint = Blueprint('label',
 @label_blueprint.route('/', methods=['GET'])
 @login_required
 def render_labels():
-    labels = db.session.query(models.Label).all()
+    labels = db.session.query(models.Label)\
+        .order_by(models.Label.name.asc())\
+        .all()
     return render_template('label/labels.html',
                            labels=labels)
 
@@ -34,7 +36,7 @@ def render_all_with_label(label_name):
         .filter(models.Label.name == label_name)\
         .all()
     labels = db.session.query(models.Label).all()
-    return render_template('index_private.html', glosses=glosses,
+    return render_template('index.html', glosses=glosses,
                            show_nav_controls=True, labels=labels)
 
 

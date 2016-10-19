@@ -7,8 +7,7 @@ class Author(db.Model):
 
     __tablename__ = 'author'
     id         = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(255))
-    last_name  = db.Column(db.String(255))
+    name       = db.Column(db.String(255))
     is_female  = db.Column(db.Boolean)
     is_poc     = db.Column(db.Boolean)
     bio_link   = db.Column(db.String(255))
@@ -23,7 +22,3 @@ class Author(db.Model):
     @property
     def endpoint(self):
         return 'author/%s' % self.id
-
-    @property
-    def full_name(self):
-        return '%s %s' % (self.first_name, self.last_name)
