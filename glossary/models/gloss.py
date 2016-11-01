@@ -8,14 +8,14 @@ from glossary import db
 class Gloss(db.Model):
 
     __tablename__ = 'gloss'
-    id         = db.Column(db.Integer, primary_key=True)
-    type_      = db.Column(db.String(50))
-    entity_fk  = db.Column(db.Integer, db.ForeignKey('entity.id'),
+    id        = db.Column(db.Integer, primary_key=True)
+    type_     = db.Column(db.String(50))
+    entity_fk = db.Column(db.Integer, db.ForeignKey('entity.id'),
                            nullable=True)
-    text_      = db.Column(db.Text)
-    timestamp  = db.Column(db.DateTime)
-    archive    = db.Column(db.Boolean, nullable=False, default=False)
-    _labels    = db.relationship('Label', backref='glosses',
+    text_     = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime)
+    archive   = db.Column(db.Boolean, nullable=False, default=False)
+    labels    = db.relationship('Label', backref='glosses',
                                  secondary='label_to_gloss')
     is_private = db.Column(db.Boolean, nullable=False, default=True)
 
@@ -35,8 +35,8 @@ class Gloss(db.Model):
         return 'gloss'
 
     @property
-    def labels(self):
-        return sorted(self._labels, key=lambda x: x.name)
+    def labels_alpha(self):
+        return sorted(self.labels, key=lambda x: x.name)
 
 
 class Question(Gloss):

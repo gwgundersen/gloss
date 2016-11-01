@@ -25,7 +25,7 @@
             <div class="gloss {{ gloss.type_ }}">
                 <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
 
-                {% with labels = gloss.labels, gloss_id = gloss.id %}
+                {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
                     {% include "entity_partials/label_list.html" %}
                 {% endwith %}
 
