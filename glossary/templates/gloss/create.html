@@ -12,11 +12,9 @@
 <div id="gloss-add-page" class="page-wrapper">
     <div class="page">
         <h1>Add gloss</h1>
-        <button id="add-image-btn">Add image</button>
-        <div id="image-uploader">
-            <input type="file" id="image-upload-btn" style="display: none;"/>
-            <ul id="uploaded-image-names"></ul>
-        </div>
+
+        {% include "components/image_uploader.html" %}
+
         <form action="gloss/create" method="post">
             <div>
                 <select name="entity_id">

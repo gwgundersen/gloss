@@ -11,7 +11,6 @@ $(function() {
             evt.preventDefault();
             $('#image-upload-btn').trigger('click');
             $(':file').change(function(evt) {
-                debugger;
                 var file = this.files[0],
                     name = file.name,
                     formData;
@@ -26,7 +25,7 @@ $(function() {
                     contentType: false,
                     success: function(data) {
                         console.log('Success:');
-                        add_uploaded_image_name(data);
+                        add_uploaded_image_tag(data);
                     },
                     error: function(data) {
                         console.log('Error:');
@@ -37,9 +36,9 @@ $(function() {
         });
     }
 
-    function add_uploaded_image_name(filename) {
+    function add_uploaded_image_tag(imgTag) {
         $('#uploaded-image-names').append(
-            '<li>' + filename + '</li>'
+            '<li>' + escapeHtml(imgTag) + '</li>'
         );
     }
 
@@ -120,5 +119,19 @@ $(function() {
         }
 
         $('*[data-tooltip]').hover(mouseIn, mouseOut);
+    }
+
+    function escapeHtml(string) {
+        var entityMap = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': '&quot;',
+            "'": '&#39;',
+            "/": '&#x2F;'
+        };
+        return String(string).replace(/[&<>"'\/]/g, function (s) {
+            return entityMap[s];
+        });
     }
 });

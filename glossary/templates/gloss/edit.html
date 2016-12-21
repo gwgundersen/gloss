@@ -12,6 +12,9 @@
 <div id="gloss-edit-page" class="page-wrapper">
     <div class="page">
         <h1>Edit gloss</h1>
+
+        {% include "components/image_uploader.html" %}
+
         <form action="gloss/edit/{{ gloss.id }}" method="post">
             <textarea type="text" name="text_" class="form-control">{{ gloss.text_ }}</textarea>
             <button type="submit" class="btn btn-warning">Edit gloss</button>

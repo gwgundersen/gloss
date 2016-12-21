@@ -15,7 +15,7 @@ image_blueprint = Blueprint('image',
 UPLOADS_FOLDER = '%s/%s' % (app.static_folder, 'image/upload')
 
 
-@image_blueprint.route('/upload/<string:fname>', methods=['GET'])
+@image_blueprint.route('/<string:fname>', methods=['GET'])
 def serve_image(fname):
     """Server all images by hash (randomly generated name)."""
     path = '%s/%s' % (UPLOADS_FOLDER, fname)
@@ -24,18 +24,15 @@ def serve_image(fname):
 
 @image_blueprint.route('/upload', methods=['POST'])
 def upload_image():
-    """
-    """
+    """Uploads an image."""
     f = request.files.get('file')
     fname = random_filename()
     path = '%s/%s' % (UPLOADS_FOLDER, fname)
     f.save(path)
-    url = 'image/upload/%s' % fname
-    return url
+    url = 'image/%s' % fname
+    return '<img src="%s" alt="Drawing" style="width: 100%%;"/>' % url
 
 
 def random_filename():
-    """
-    """
-    # TODO: Improve this
-    return str(random.random())[2:] + '.png'
+    """Generate random filename."""
+    return '%s.png' % str(random.random())[2:]
