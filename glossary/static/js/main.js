@@ -2,7 +2,7 @@ $(function() {
 
     setup_search();
     setup_nav_controls();
-    //setup_datatables();
+    watch_edit_button();
     setup_tooltips();
     setup_add_image_button();
 
@@ -38,7 +38,7 @@ $(function() {
 
     function add_uploaded_image_tag(imgTag) {
         $('#uploaded-image-names').append(
-            '<li>' + escapeHtml(imgTag) + '</li>'
+            '<li>' + escape_html(imgTag) + '</li>'
         );
     }
 
@@ -121,7 +121,27 @@ $(function() {
         $('*[data-tooltip]').hover(mouseIn, mouseOut);
     }
 
-    function escapeHtml(string) {
+    function watch_edit_button() {
+        var $text = $('textarea#edit-field'),
+            $preview = $('#edit-preview');
+
+        $text.change(function() {
+            var text = $('textarea').val();
+            $.ajax({
+                url: 'gloss/preview',
+                type: 'POST',
+                data: {
+                    text: $text.val()
+                },
+                success: function(data) {
+                    $preview.html(data);
+                    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+                }
+            });
+        });
+    }
+
+    function escape_html(string) {
         var entityMap = {
             "&": "&amp;",
             "<": "&lt;",

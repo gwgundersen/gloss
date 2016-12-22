@@ -2,7 +2,7 @@
 
 from flask import Blueprint
 import jinja2
-import pypandoc
+from glossary import render
 
 
 jinjafilters = Blueprint('filters', __name__)
@@ -11,12 +11,7 @@ jinjafilters = Blueprint('filters', __name__)
 @jinja2.contextfilter
 @jinjafilters.app_template_filter('markdown')
 def to_markdown(context, value):
-    try:
-        output = pypandoc.convert(value, to='html5', format='md',
-                                  extra_args=['--mathjax'])
-    except:
-        output = value
-    return output
+    return render.render_markdown(value)
 
 
 @jinja2.contextfilter

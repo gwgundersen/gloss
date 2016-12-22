@@ -3,11 +3,11 @@
 from datetime import datetime
 from flask import Blueprint, jsonify, redirect, request, render_template, \
     url_for
-from flask.ext.login import current_user, login_required
+from flask.ext.login import login_required
 
 from glossary import db, models
 from glossary.config import config
-from glossary import dbutils
+from glossary import dbutils, render
 
 
 gloss_blueprint = Blueprint('gloss',
@@ -39,6 +39,14 @@ def render_gloss(gloss_id):
     types = [r[0] for r in query]
     return render_template('gloss/gloss.html', gloss=gloss, is_gloss_page=True,
                            labels=labels, types=types)
+
+
+@gloss_blueprint.route('/preview', methods=['POST'])
+@login_required
+def preview_gloss():
+    """Preview gloss by ID for editing UI."""
+    text = request.form.get('text')
+    return render.render_markdown(text)
 
 
 @gloss_blueprint.route('/<string:gloss_type>', methods=['GET'])
