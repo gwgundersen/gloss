@@ -125,7 +125,12 @@ $(function() {
         var $text = $('textarea#edit-field'),
             $preview = $('#edit-preview');
 
-        $text.change(function() {
+        refresh_edit_preview();
+
+        $text.change(refresh_edit_preview);
+        $text.keyup(debounce(refresh_edit_preview, 1000));
+
+        function refresh_edit_preview() {
             var text = $('textarea').val();
             $.ajax({
                 url: 'gloss/preview',
@@ -138,7 +143,7 @@ $(function() {
                     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
                 }
             });
-        });
+        }
     }
 
     function escape_html(string) {
@@ -154,4 +159,21 @@ $(function() {
             return entityMap[s];
         });
     }
+
+    /* Credit: https://davidwalsh.name/javascript-debounce-function.
+     */
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
 });

@@ -1,9 +1,4 @@
-#public-page {
-  font-family: 'Roboto';
-}
 #public-page.page-wrapper {
-  width: 600px;
-}
-#public-page .gloss-wrapper {
-  width: 600px;
+  margin: 50px auto;
+  width: 900px;
 }

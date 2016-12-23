@@ -306,41 +306,42 @@ ol ol {
 }
 /* Pages.
  * ------ */
-#index-private-page {
+#index-page {
   margin: 0;
   padding: 0;
 }
-#index-private-page #glossary {
+#index-page #glossary {
   overflow: hidden;
 }
-#index-private-page #glossary .gloss {
-  padding: 4px;
-}
-#index-private-page #glossary .gloss .MathJax_Preview,
-#index-private-page #glossary .gloss .MJXc-display {
+#index-page #glossary .gloss .MathJax_Preview,
+#index-page #glossary .gloss .MJXc-display {
   display: none;
 }
-#index-private-page #glossary table tr:first-child td {
+#index-page #glossary table tr:first-child td {
   border-top: none;
 }
-#index-private-page #glossary table tr td.entity-title {
+#index-page #glossary table tr td.entity-title {
   border-right: 1px solid #eee;
 }
-#index-private-page #glossary table tr td.entity-title span {
+#index-page #glossary table tr td.entity-title span {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   width: 100px;
 }
+#gloss-page {
+  /* Markdown itself is handled in Markdown.less. */
+}
 #gloss-page .entity-link {
   font-weight: bold;
   margin-bottom: 10px;
 }
-#gloss-page .gloss-wrapper {
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
-  padding: 5px 0;
-  margin: 10px 0;
+#gloss-page .gloss {
+  margin: 20px 0;
+  padding: 10px 0;
+  border-bottom: 2px solid #eee;
+  border-top: 2px solid #eee;
+  width: 800px;
 }
 #gloss-page .controls,
 .entity-page .controls {
@@ -355,6 +356,10 @@ ol ol {
   border-radius: 2px;
   margin-top: 10px;
 }
+#gloss-add-page,
+#gloss-edit-page {
+  width: 800px;
+}
 #gloss-add-page textarea,
 #gloss-edit-page textarea {
   border: 1px solid #ddd;
@@ -362,13 +367,48 @@ ol ol {
   height: 300px;
   padding: 10px;
   width: 100%;
+  margin-bottom: 50px;
+}
+#gloss-add-page #controls #add-image-btn {
   margin-bottom: 10px;
+}
+#gloss-add-page #controls #uploaded-image-names li {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
+}
+#gloss-add-page select {
+  width: 200px;
+}
+#gloss-add-page #edit-preview {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-top: 1px dotted #c8ccd0;
+  border-bottom: 1px dotted #c8ccd0;
+}
+#gloss-edit-page #controls {
+  margin-bottom: 20px;
+}
+#gloss-edit-page #controls #add-image-btn {
+  margin-bottom: 10px;
+}
+#gloss-edit-page #controls #uploaded-image-names li {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
+}
+#gloss-edit-page #edit-preview {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-top: 1px dotted #c8ccd0;
+  border-bottom: 1px dotted #c8ccd0;
 }
 #gloss-add-page textarea {
   margin-top: 10px;
 }
-#gloss-add-page #labels,
-#gloss-add-page #type-select {
+#gloss-add-page #labels {
   margin-top: 5px;
 }
 #label-page h2 {
@@ -386,9 +426,6 @@ ol ol {
 .entity-page .list-labels > li {
   display: inline-block;
   padding-right: 5px;
-}
-.entity-page .gloss-list {
-  margin-top: 10px;
 }
 #book-page .stats-table,
 #paper-page .stats-table {
@@ -431,36 +468,6 @@ ol ol {
   display: inline-block;
   font-weight: bold;
   margin-left: 10px;
-}
-.gloss pre {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 10px;
-}
-.gloss blockquote {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid #ddd;
-  margin: 3px 0;
-  padding: 0 10px;
-}
-.gloss-list .gloss {
-  padding: 10px;
-  background-color: #f9f9f9;
-  margin: 5px 0;
-  border-left: 2px solid #eee;
-}
-.gloss-list .gloss h3 {
-  margin: 0 0 10px 0;
-}
-.gloss-list .gloss h4 {
-  font-size: 12px;
-  font-style: italic;
-  font-weight: normal;
-  margin: 2px 0 10px 0;
-}
-.gloss-list .gloss .btn-edit {
-  color: black;
-  display: inline-block;
-  font-weight: bold;
 }
 #labels-page #create-labels-form {
   border-top: 1px solid #eee;

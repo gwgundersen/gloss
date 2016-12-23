@@ -30,7 +30,7 @@ def upload_image():
     path = '%s/%s' % (UPLOADS_FOLDER, fname)
     f.save(path)
     url = 'image/%s' % fname
-    return '<img src="%s" alt="Drawing" style="width: 100%%;"/>' % url
+    return '<img src="%s" alt="" style="width: 100%%;"/>' % url
 
 
 def random_filename():

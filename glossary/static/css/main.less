@@ -344,7 +344,7 @@ ol {
 
 .metadata-tabletable {
   background-color: #f9f9f9;
-  border: 1px solid #ddd;  /* Matches Bootstrap. */
+  border: 1px solid #ddd; /* Matches Bootstrap. */
 }
 
 .list-unstyled {
@@ -361,14 +361,13 @@ ol {
 /* Pages.
  * ------ */
 
-#index-private-page {
+#index-page {
   margin: 0;
   padding: 0;
 
   #glossary {
     overflow: hidden;
     .gloss {
-      padding: 4px;
       .MathJax_Preview,
       .MJXc-display {
         display: none;
@@ -400,11 +399,13 @@ ol {
     font-weight: bold;
     margin-bottom: 10px;
   }
-  .gloss-wrapper {
-    border-bottom: 1px solid #eee;
-    border-top: 1px solid #eee;
-    padding: 5px 0;
-    margin: 10px 0;
+  /* Markdown itself is handled in Markdown.less. */
+  .gloss {
+    margin: 20px 0;
+    padding: 10px 0;
+    border-bottom: 2px solid #eee;
+    border-top: 2px solid #eee;
+    width: @dim-gloss-width;
   }
 }
 
@@ -424,13 +425,63 @@ ol {
 
 #gloss-add-page,
 #gloss-edit-page {
+  width: @dim-gloss-width;
+
   textarea {
     border: 1px solid #ddd;
     font-size: @font-size-base;
     height: 300px;
     padding: 10px;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+  }
+}
+
+#gloss-add-page {
+  #controls {
+    #add-image-btn {
+      margin-bottom: 10px;
+    }
+    #uploaded-image-names {
+      li {
+        font-family: monospace;
+        background-color: #eee;
+        padding: 10px;
+        margin: 10px 0;
+      }
+    }
+  }
+  select {
+    width: 200px;
+  }
+  #edit-preview {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-top: 1px dotted #c8ccd0;
+    border-bottom: 1px dotted #c8ccd0;
+  }
+}
+
+#gloss-edit-page {
+  #controls {
+    margin-bottom: 20px;
+    #add-image-btn {
+      margin-bottom: 10px;
+    }
+    #uploaded-image-names {
+      li {
+        font-family: monospace;
+        background-color: #eee;
+        padding: 10px;
+        margin: 10px 0;
+      }
+    }
+  }
+  #edit-preview {
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-top: 1px dotted #c8ccd0;
+    border-bottom: 1px dotted #c8ccd0;
   }
 }
 
@@ -438,8 +489,7 @@ ol {
   textarea {
     margin-top: 10px;
   }
-  #labels,
-  #type-select {
+  #labels {
     margin-top: 5px;
   }
 }
@@ -464,9 +514,6 @@ ol {
       display: inline-block;
       padding-right: 5px;
     }
-  }
-  .gloss-list {
-    margin-top: 10px;
   }
 }
 
@@ -521,45 +568,6 @@ ol {
     display: inline-block;
     font-weight: bold;
     margin-left: 10px;
-  }
-}
-
-.gloss {
-  pre {
-    background-color: rgba(255,255,255,.8);
-    padding: 10px;
-  }
-
-  blockquote {
-    background-color: rgba(255,255,255,.8);
-    border: 1px solid #ddd;
-    // Margin to keep them separate from each other.
-    margin: 3px 0;
-    padding: 0 10px;
-  }
-}
-
-.gloss-list {
-  .gloss {
-    padding: 10px;
-    background-color: #f9f9f9;
-    margin: 5px 0;
-    border-left: 2px solid #eee;
-
-    h3 {
-      margin: 0 0 10px 0;
-    }
-    h4 {
-      font-size: 12px;
-      font-style: italic;
-      font-weight: normal;
-      margin: 2px 0 10px 0;
-    }
-    .btn-edit {
-      color: black;
-      display: inline-block;
-      font-weight: bold;
-    }
   }
 }
 

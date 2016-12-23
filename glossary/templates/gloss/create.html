@@ -13,34 +13,26 @@
     <div class="page">
         <h1>Add gloss</h1>
 
-        {% include "components/image_uploader.html" %}
+        <div id="controls">
+            {% include "components/image_uploader.html" %}
+        </div>
 
         <form action="gloss/create" method="post">
-            <div>
-                <select name="entity_id">
-                    <option value="">(Select entity)</option>
-                    {% for entity in entities %}
-                    <option value="{{ entity.id }}">
-                        {{ entity.title }}
-                    </option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div id="type-select">
-                <select name="type_">
-                    <option value="">(Select type)</option>
-                    <option value="question">Question</option>
-                    <option value="summary">Summary</option>
-                    <option value="thought">Thought</option>
-                    <option value="todo">Todo</option>
-                </select>
-            </div>
+            <select name="entity_id">
+                <option value="">(Select entity)</option>
+                {% for entity in entities %}
+                <option value="{{ entity.id }}">
+                    {{ entity.title }}
+                </option>
+                {% endfor %}
+            </select>
             <div id="labels">
                 <label>Labels, comma-separated</label>
                 <input type="text" name="labels"/>
             </div>
-            <textarea type="text" name="text_"></textarea>
-            <button type="submit" class="btn">Add gloss</button>
+            <textarea id="edit-field" type="text" name="text_" class="form-control"></textarea>
+            <div id="edit-preview" class="markdown-body"></div>
+            <button type="submit" class="btn btn-warning">Create gloss</button>
         </form>
     </div>
 </div>

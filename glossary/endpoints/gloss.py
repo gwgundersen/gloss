@@ -30,9 +30,7 @@ def render_all_glosses():
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    labels = db.session.query(models.Label)\
-        .order_by(models.Label.name.asc()).all()
-    return render_template('gloss/gloss.html', gloss=gloss, labels=labels)
+    return render_template('gloss/gloss.html', gloss=gloss)
 
 
 @gloss_blueprint.route('/preview', methods=['POST'])
@@ -92,7 +90,9 @@ def edit_gloss(gloss_id):
     """Edit gloss."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
     if request.method == 'GET':
-        return render_template('gloss/edit.html', gloss=gloss)
+        labels = db.session.query(models.Label)\
+            .order_by(models.Label.name.asc()).all()
+        return render_template('gloss/edit.html', gloss=gloss, labels=labels)
     else:
         gloss.text_= request.form.get('text_')
         gloss.timestamp = datetime.now()

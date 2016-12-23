@@ -12,15 +12,31 @@
 <div id="gloss-edit-page" class="page-wrapper">
     <div class="page">
         <h1>Edit gloss</h1>
+        <div id="controls">
+            {% include "components/image_uploader.html" %}
+            <form action="label/add" method="post">
+                <input type="hidden" name="gloss_id" value="{{ gloss.id }}"/>
+                <select class="control" name="label_id">
+                    {% for label in labels %}
+                        <option value="{{ label.id }}">{{ label.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn" id="label-action">Label</button>
+            </form>
 
-        {% include "components/image_uploader.html" %}
-
+            {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
+                {% include 'entity_partials/label_list.html' %}
+            {% endwith %}
+        </div>
         <form action="gloss/edit/{{ gloss.id }}" method="post">
             <textarea id="edit-field" type="text" name="text_" class="form-control">{{ gloss.text_ }}</textarea>
-            <button type="submit" class="btn btn-warning">Edit gloss</button>
+            <div id="edit-preview" class="markdown-body"></div>
+            <button type="submit" class="btn btn-warning">Edit text</button>
         </form>
-
-        <div id="edit-preview"></div>
+        <form action="gloss/delete/{{ gloss.id }}" method="post">
+            <input type="submit" class="btn" value="Delete"
+                   onclick="return confirm('Are you sure you want to delete this item?');"/>
+        </form>
     </div>
 </div>
 
