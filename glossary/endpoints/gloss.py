@@ -33,12 +33,8 @@ def render_gloss(gloss_id):
     gloss = db.session.query(models.Gloss).get(gloss_id)
     labels = db.session.query(models.Label)\
         .order_by(models.Label.name.asc()).all()
-    # Technically, this does not enumerate all *possible* types but in
-    # practice it does.
-    query = db.session.execute('SELECT DISTINCT type_ FROM gloss')
-    types = [r[0] for r in query]
     return render_template('gloss/gloss.html', gloss=gloss, is_gloss_page=True,
-                           labels=labels, types=types)
+                           labels=labels)
 
 
 @gloss_blueprint.route('/preview', methods=['POST'])
@@ -47,18 +43,6 @@ def preview_gloss():
     """Preview gloss by ID for editing UI."""
     text = request.form.get('text')
     return render.render_markdown(text)
-
-
-@gloss_blueprint.route('/<string:gloss_type>', methods=['GET'])
-@login_required
-def render_gloss_type(gloss_type):
-    """Render all glosses of a type."""
-    glosses = db.session.query(models.Gloss)\
-        .filter_by(type_=gloss_type)\
-        .order_by(models.Gloss.timestamp.desc())\
-        .all()
-    return render_template('index.html', glosses=glosses,
-                           type_=gloss_type)
 
 
 @gloss_blueprint.route('/create', defaults={'entity_id': None}, methods=['GET'])
@@ -81,9 +65,8 @@ def create_gloss():
     """Create new gloss."""
     entity_id = request.form.get('entity_id')
     text_ = request.form.get('text_') or ''
-    type_ = request.form.get('type_') or 'thought'
     now = datetime.now()
-    gloss = models.Gloss(text_=text_, type_=type_, timestamp=now)
+    gloss = models.Gloss(text_=text_, timestamp=now)
     dbutils.get_or_create_labels(request, gloss)
     if entity_id:
         entity = db.session.query(models.Entity).get(entity_id)
