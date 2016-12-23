@@ -4,14 +4,14 @@
             <th>Website</th>
         </tr>
     </thead>
-    {% for idea in entities %}
+    {% for website in entities %}
     <tr>
         <td>
-            {% with labels = idea.labels %}
+            {% with labels = website.labels %}
                 {% include "entity_partials/label_list.html" %}
             {% endwith %}
-            <a href="{{ idea.endpoint }}">
-                {{ idea.title }}
+            <a href="{{ website.endpoint }}">
+                {{ website.title }}
             </a>
         </td>
     </tr>

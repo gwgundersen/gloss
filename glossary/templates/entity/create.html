@@ -13,12 +13,10 @@
     <div class="page">
         <h1>Add {{ type_ }}</h1>
         <form action="entity/create/{{ type_ }}" method="post">
-            {% if type_ != "idea" %}
-                <div class="form-group">
-                    <label>authors, semicolon-separated list</label>
-                    <input type="text" name="authors"/>
-                </div>
-            {% endif %}
+            <div class="form-group">
+                <label>authors, semicolon-separated list</label>
+                <input type="text" name="authors"/>
+            </div>
             {% if type_ == "paper" %}
                 <div class="form-group">
                     <label>journal</label>

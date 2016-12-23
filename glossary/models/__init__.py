@@ -8,8 +8,6 @@ from glossary.models.gloss import Gloss
 # Entities
 from glossary.models.entity.entity import Entity
 from glossary.models.entity.book import Book
-from glossary.models.entity.event import Event
-from glossary.models.entity.idea import Idea
 from glossary.models.entity.paper import Paper
 from glossary.models.entity.talk import Talk
 from glossary.models.entity.website import Website
@@ -28,8 +26,6 @@ from label_to_gloss import label_to_gloss
 
 type_to_class = {
     'book': Book,
-    'event': Event,
-    'idea': Idea,
     'paper': Paper,
     'talk': Talk,
     'website': Website
@@ -37,8 +33,6 @@ type_to_class = {
 
 type_to_order = {
     'book': Book.ended,
-    'event': Event.title,
-    'idea': Idea.title,
     'paper': Paper.date_read,
     'talk': Talk.timestamp,
     'website': Website.title
