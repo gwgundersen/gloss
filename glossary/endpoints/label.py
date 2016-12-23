@@ -27,9 +27,6 @@ def render_labels():
 @login_required
 def render_all_with_label(label_name):
     """Render all entities and glosses with label."""
-    if not current_user.is_authenticated:
-        return redirect(url_for('index.render_index_page'))
-
     label_name = label_name.lower()
     glosses = db.session.query(models.Gloss)\
         .join(models.Label, models.Gloss.labels)\

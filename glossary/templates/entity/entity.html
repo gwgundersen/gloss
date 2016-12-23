@@ -31,9 +31,7 @@
 
                 <div>{{ gloss.text_|markdown|safe }}</div>
 
-                {% if g.user.is_authenticated %}
-                    <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
-                {% endif %}
+                <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
             </div>
         {% endfor %}
         </div>

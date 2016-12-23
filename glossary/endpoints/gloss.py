@@ -22,8 +22,7 @@ def render_all_glosses():
     glosses = db.session.query(models.Gloss).all()
     labels = db.session.query(models.Label)\
         .order_by(models.Label.name.asc()).all()
-    return render_template('/index.html', glosses=glosses, labels=labels,
-                           is_index_page=True)
+    return render_template('/index.html', glosses=glosses, labels=labels)
 
 
 @gloss_blueprint.route('/<int:gloss_id>', methods=['GET'])
@@ -33,8 +32,7 @@ def render_gloss(gloss_id):
     gloss = db.session.query(models.Gloss).get(gloss_id)
     labels = db.session.query(models.Label)\
         .order_by(models.Label.name.asc()).all()
-    return render_template('gloss/gloss.html', gloss=gloss, is_gloss_page=True,
-                           labels=labels)
+    return render_template('gloss/gloss.html', gloss=gloss, labels=labels)
 
 
 @gloss_blueprint.route('/preview', methods=['POST'])

@@ -18,6 +18,10 @@
             </h1>
         {% endif %}
 
+        <p>
+            Public URL: <a href="{{ gloss.public_url }}">{{ gloss.public_url }}</a>
+        </p>
+
         {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
             {% include 'entity_partials/label_list.html' %}
         {% endwith %}

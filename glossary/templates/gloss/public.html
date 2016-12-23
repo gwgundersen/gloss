@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<link rel='stylesheet' href='static/css/public.css'/>
+
+<body>
+
+<div id="public-page" class="page-wrapper">
+    <div class="gloss-wrapper">
+        <h1>{{ gloss.entity.title }}</h1>
+        <div class="gloss">
+            {{ gloss.text_|markdown|safe }}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

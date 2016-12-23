@@ -1,31 +1,23 @@
-{% if g.user.is_authenticated %}
-    <div id="nav">
-        <div id="header">
-            <div>
-                <h1><a href="">Glossary</a></h1>
-                <form id="search">
-                    <input type="text" class="form-control" placeholder="Search..."/>
-                    <button type="submit" class="control" id="search-action">Go</button>
-                </form>
-            </div>
-            <div class="clear"></div>
-        </div>
-        {% if show_nav_controls %}
-            <div id="controls">
-                <button class="btn control" id="archive-action">Archive</button>
-                <select class="control" id="label">
-                    {% for label in labels %}
-                        <option value="{{ label.id }}">{{ label.name }}</option>
-                    {% endfor %}
-                </select>
-                <button class="btn control" id="label-action">Label</button>
-            </div>
-        {% endif %}
-    </div>
-{% else %}
-    <div id="nav">
-        <div id="header">
+<div id="nav">
+    <div id="header">
+        <div>
             <h1><a href="">Glossary</a></h1>
+            <form id="search">
+                <input type="text" class="form-control" placeholder="Search..."/>
+                <button type="submit" class="control" id="search-action">Go</button>
+            </form>
         </div>
+        <div class="clear"></div>
     </div>
-{% endif %}
+    {% if show_nav_controls %}
+        <div id="controls">
+            <button class="btn control" id="archive-action">Archive</button>
+            <select class="control" id="label">
+                {% for label in labels %}
+                    <option value="{{ label.id }}">{{ label.name }}</option>
+                {% endfor %}
+            </select>
+            <button class="btn control" id="label-action">Label</button>
+        </div>
+    {% endif %}
+</div>
