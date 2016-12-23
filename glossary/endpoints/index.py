@@ -18,7 +18,9 @@ index_blueprint = Blueprint('index',
 def render_index_page():
     """Render index page."""
     keyword = request.args.get('q')
-    labels = db.session.query(models.Label).all()
+    labels = db.session.query(models.Label)\
+        .order_by(models.Label.name)\
+        .all()
     if not keyword:
         glosses = db.session.query(models.Gloss)\
             .filter((models.Gloss.archive == False))\

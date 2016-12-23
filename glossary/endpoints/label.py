@@ -13,16 +13,6 @@ label_blueprint = Blueprint('label',
                             url_prefix='%s/label' % config.get('url', 'base'))
 
 
-@label_blueprint.route('/', methods=['GET'])
-@login_required
-def render_labels():
-    labels = db.session.query(models.Label)\
-        .order_by(models.Label.name.asc())\
-        .all()
-    return render_template('label/labels.html',
-                           labels=labels)
-
-
 @label_blueprint.route('/<string:label_name>', methods=['GET'])
 @login_required
 def render_all_with_label(label_name):

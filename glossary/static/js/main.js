@@ -5,6 +5,7 @@ $(function() {
     watch_edit_button();
     setup_tooltips();
     setup_add_image_button();
+    toggle_label_visibility();
 
     function setup_add_image_button() {
         $('#add-image-btn').click(function(evt) {
@@ -122,28 +123,28 @@ $(function() {
     }
 
     function watch_edit_button() {
-        var $text = $('textarea#edit-field'),
-            $preview = $('#edit-preview');
-
-        refresh_edit_preview();
-
-        $text.change(refresh_edit_preview);
-        $text.keyup(debounce(refresh_edit_preview, 1000));
-
-        function refresh_edit_preview() {
-            var text = $('textarea').val();
-            $.ajax({
-                url: 'gloss/preview',
-                type: 'POST',
-                data: {
-                    text: $text.val()
-                },
-                success: function(data) {
-                    $preview.html(data);
-                    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-                }
-            });
-        }
+        //var $text = $('textarea#edit-field'),
+        //    $preview = $('#edit-preview');
+        //
+        //refresh_edit_preview();
+        //
+        //$text.change(refresh_edit_preview);
+        //$text.keyup(debounce(refresh_edit_preview, 1000));
+        //
+        //function refresh_edit_preview() {
+        //    var text = $('textarea').val();
+        //    $.ajax({
+        //        url: 'gloss/preview',
+        //        type: 'POST',
+        //        data: {
+        //            text: $text.val()
+        //        },
+        //        success: function(data) {
+        //            $preview.html(data);
+        //            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+        //        }
+        //    });
+        //}
     }
 
     function escape_html(string) {
@@ -157,6 +158,22 @@ $(function() {
         };
         return String(string).replace(/[&<>"'\/]/g, function (s) {
             return entityMap[s];
+        });
+    }
+
+    function toggle_label_visibility() {
+        var $button = $('#btn-show-labels button'),
+            $list = $('#menu-label-list'),
+            isHidden = true;
+        $button.click(function() {
+            isHidden = !isHidden;
+            if (isHidden) {
+                $list.addClass('hidden');
+                $button.text('Show Labels');
+            } else {
+                $list.removeClass('hidden');
+                $button.text('Hide Labels');
+            }
         });
     }
 

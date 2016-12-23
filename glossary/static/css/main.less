@@ -77,52 +77,54 @@ table {
   }
 }
 
-.label {
-  display: inline-block;
+.list-labels {
+  .label {
+    display: inline-block;
 
-  a,
-  input {
-    color: white;
-    height: 12px;
-    padding: 3px 6px;
-  }
-  input {
-    background-color: transparent;
-  }
-  a,
-  form {
-    background-color: @color-bellflower;
-    float: left;
-    margin: 0;
-  }
-  a,
-  input {
-    padding: 3px 6px;
-  }
-  a {
-    font-size: 12px;
-
-    &:hover {
-      background-color: @color-bellflower-hover;
-      color: white;
-      text-decoration: none;
-    }
-  }
-  form,
-  input {
-    &:hover {
-      background-color: @color-medium-crimson;
-      cursor: pointer;
-    }
-  }
-  form {
-    /* 12px + 6px padding */
-    height: 18px;
-
+    a,
     input {
-      border: none;
-      font-size: 10px;
-      height: 100%;
+      color: white;
+      height: 12px;
+      padding: 3px 6px;
+    }
+    input {
+      background-color: transparent;
+    }
+    a,
+    form {
+      background-color: @color-bellflower;
+      float: left;
+      margin: 0;
+    }
+    a,
+    input {
+      padding: 3px 6px;
+    }
+    a {
+      font-size: 12px;
+
+      &:hover {
+        background-color: @color-bellflower-hover;
+        color: white;
+        text-decoration: none;
+      }
+    }
+    form,
+    input {
+      &:hover {
+        background-color: @color-medium-crimson;
+        cursor: pointer;
+      }
+    }
+    form {
+      /* 12px + 6px padding */
+      height: 18px;
+
+      input {
+        border: none;
+        font-size: 10px;
+        height: 100%;
+      }
     }
   }
 }
@@ -262,8 +264,7 @@ ol {
 }
 
 #menu {
-  background-color: @color-menu-gray;
-  border-right: 1px solid #f1f1f1;
+  //border-right: 1px solid #f1f1f1;
   float: left;
   height: 100%;
   width: @dim-menu-width;
@@ -311,6 +312,35 @@ ol {
     h2 {
       font-size: 16px;
       padding-left: 20px;
+    }
+  }
+
+  #btn-show-labels {
+    margin-top: 15px;
+  }
+  #btn-show-labels,
+  #menu-label-list {
+    padding-left: 20px;
+  }
+
+  #menu-label-list {
+    margin: 15px 0;
+
+    li {
+      margin: 10px 0;
+
+      a {
+        height: 12px;
+        padding: 3px 6px;
+        color: white;
+        background-color: @color-bellflower;
+
+        &:hover {
+          background-color: @color-bellflower-hover;
+          color: white;
+          text-decoration: none;
+        }
+      }
     }
   }
 }
@@ -367,6 +397,11 @@ ol {
 
   #glossary {
     overflow: hidden;
+
+    border-right: 1px solid #f1f1f1;
+    border-left: 1px solid #f1f1f1;
+    border-bottom: 1px solid #f1f1f1;
+
     .gloss {
       .MathJax_Preview,
       .MJXc-display {
@@ -615,4 +650,8 @@ ol {
     color: @color-medium-crimson;
     font-weight: bold;
   }
+}
+
+.hidden {
+  display: none;
 }

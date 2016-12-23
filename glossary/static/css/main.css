@@ -63,46 +63,46 @@ table {
   cursor: pointer;
   text-decoration: none;
 }
-.label {
+.list-labels .label {
   display: inline-block;
 }
-.label a,
-.label input {
+.list-labels .label a,
+.list-labels .label input {
   color: white;
   height: 12px;
   padding: 3px 6px;
 }
-.label input {
+.list-labels .label input {
   background-color: transparent;
 }
-.label a,
-.label form {
+.list-labels .label a,
+.list-labels .label form {
   background-color: #5D3F6A;
   float: left;
   margin: 0;
 }
-.label a,
-.label input {
+.list-labels .label a,
+.list-labels .label input {
   padding: 3px 6px;
 }
-.label a {
+.list-labels .label a {
   font-size: 12px;
 }
-.label a:hover {
+.list-labels .label a:hover {
   background-color: #3A243B;
   color: white;
   text-decoration: none;
 }
-.label form:hover,
-.label input:hover {
+.list-labels .label form:hover,
+.list-labels .label input:hover {
   background-color: #C93756;
   cursor: pointer;
 }
-.label form {
+.list-labels .label form {
   /* 12px + 6px padding */
   height: 18px;
 }
-.label form input {
+.list-labels .label form input {
   border: none;
   font-size: 10px;
   height: 100%;
@@ -221,8 +221,6 @@ ol ol {
   margin-right: 30px;
 }
 #menu {
-  background-color: #f9f9f9;
-  border-right: 1px solid #f1f1f1;
   float: left;
   height: 100%;
   width: 150px;
@@ -265,6 +263,30 @@ ol ol {
 #menu ul h2 {
   font-size: 16px;
   padding-left: 20px;
+}
+#menu #btn-show-labels {
+  margin-top: 15px;
+}
+#menu #btn-show-labels,
+#menu #menu-label-list {
+  padding-left: 20px;
+}
+#menu #menu-label-list {
+  margin: 15px 0;
+}
+#menu #menu-label-list li {
+  margin: 10px 0;
+}
+#menu #menu-label-list li a {
+  height: 12px;
+  padding: 3px 6px;
+  color: white;
+  background-color: #5D3F6A;
+}
+#menu #menu-label-list li a:hover {
+  background-color: #3A243B;
+  color: white;
+  text-decoration: none;
 }
 /* Content that spans pages.
  * ------------------------- */
@@ -312,6 +334,9 @@ ol ol {
 }
 #index-page #glossary {
   overflow: hidden;
+  border-right: 1px solid #f1f1f1;
+  border-left: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
 }
 #index-page #glossary .gloss .MathJax_Preview,
 #index-page #glossary .gloss .MJXc-display {
@@ -503,4 +528,7 @@ ol ol {
 .error-page p {
   color: #C93756;
   font-weight: bold;
+}
+.hidden {
+  display: none;
 }

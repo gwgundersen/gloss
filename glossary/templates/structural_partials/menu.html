@@ -16,24 +16,19 @@
             </a>
         </li>
         <li class="btn-menu">
-            <a href="label">
-                <span>Labels</span>
-            </a>
+            <a href="entity/TODO"><span>Entities</span></a>
         </li>
-        <li class="btn-menu section-start">
-            <a href="entity/book"><span>Books</span></a>
-        </li>
-        <li class="btn-menu">
-            <a href="entity/paper"><span>Papers</span></a>
-        </li>
-        <li class="btn-menu">
-            <a href="entity/talk"><span>Talks</span></a>
-        </li>
-        <li class="btn-menu">
-            <a href="entity/website"><span>Websites</span></a>
-        </li>
-        <li class="btn-menu section-start">
-            <a href="blog"><span>Blog</span></a>
+        <li class="section-start">
+            <div id="btn-show-labels">
+                <button class="btn">Show Labels</button>
+            </div>
+            <ul class="list-unstyled hidden" id="menu-label-list">
+                {% for label in labels %}
+                    <li class="label">
+                        <a href="{{ label.endpoint }}/{{ label.name }}">{{ label.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
         </li>
     </ul>
 </div>
