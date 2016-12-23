@@ -442,34 +442,6 @@ ol ol {
   margin: 3px 0;
   padding: 0 10px;
 }
-.gloss.question {
-  background-color: #f9f7fb !important;
-  border-color: #875F9A !important;
-}
-.gloss.question blockquote {
-  border-color: #875F9A !important;
-}
-.gloss.thought {
-  background-color: #eefaff !important;
-  border-color: #044F67 !important;
-}
-.gloss.thought blockquote {
-  border-color: #044F67 !important;
-}
-.gloss.todo {
-  background-color: #fff1ee !important;
-  border-color: #FF4E20 !important;
-}
-.gloss.todo blockquote {
-  border-color: #FF4E20 !important;
-}
-.gloss.summary {
-  background-color: #fcf9ee !important;
-  border-color: #E2B13C !important;
-}
-.gloss.summary blockquote {
-  border-color: #E2B13C !important;
-}
 .gloss-list .gloss {
   padding: 10px;
   background-color: #f9f9f9;

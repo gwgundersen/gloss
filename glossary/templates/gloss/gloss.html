@@ -23,7 +23,7 @@
         {% endwith %}
 
         <div class="gloss-wrapper">
-            <div class="gloss {{ gloss.type_ }}">
+            <div class="gloss">
                 {{ gloss.text_|markdown|safe }}
             </div>
         </div>
@@ -38,20 +38,6 @@
                         {% endfor %}
                     </select>
                     <button type="submit" class="btn" id="label-action">Label</button>
-                </form>
-            </div>
-            <div>
-                <form action="gloss/type/{{ gloss.id }}" method="post">
-                    <input type="hidden" name="gloss_id" value="{{ gloss.id }}"/>
-                    <select class="control" name="gloss_type">
-                        <option value="{{ gloss.type_ }}">{{ gloss.type_ }}</option>
-                        {% for type_ in types %}
-                            {% if type_ != gloss.type_ %}
-                                <option value="{{ type_ }}">{{ type_ }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                    <button type="submit" class="btn" id="type-action">Type</button>
                 </form>
             </div>
             <div>

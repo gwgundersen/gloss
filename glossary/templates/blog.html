@@ -16,7 +16,7 @@
     <div class="page">
         <div class="gloss-list">
             {% for gloss in glosses %}
-                <div class="gloss {{ gloss.type_ }}">
+                <div class="gloss">
                     <h3 class="type">{{ gloss.timestamp|datetime_str }}</h3>
                     <div>{{ gloss.text_|markdown|safe }}</div>
                 </div>

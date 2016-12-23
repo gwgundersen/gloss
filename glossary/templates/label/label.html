@@ -14,8 +14,8 @@
         <h1>{{ label_name }}</h1>
         <div class="gloss-list">
             {% for gloss in glosses %}
-                <div class="gloss {{ gloss.type_ }}">
-                    <h3 class="type">{{ gloss.type_|capitalize }}{{ gloss.timestamp|date_str }}</h3>
+                <div class="gloss">
+                    <h3 class="type">{{ gloss.timestamp|date_str }}</h3>
                     <h4>{{ gloss.entity.title }}</h4>
                     <div>{{ gloss.text_|markdown|safe }}</div>
                     <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>

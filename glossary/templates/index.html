@@ -23,12 +23,11 @@
                             </a>
                         </span>
                     </td>
-                    <td><a href="gloss/{{ gloss.type_ }}">{{ gloss.type_|capitalize }}</a></td>
                     <td class="ellipsis">
                         {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
                             {% include 'entity_partials/label_list.html' %}
                         {% endwith %}
-                        <div class="gloss {{ gloss.type_ }}">
+                        <div class="gloss">
                             <a href="gloss/{{ gloss.id }}">{{ gloss.text }}</a>
                         </div>
                     </td>

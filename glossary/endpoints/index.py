@@ -21,8 +21,7 @@ def render_index_page():
     labels = db.session.query(models.Label).all()
     if not keyword:
         glosses = db.session.query(models.Gloss)\
-            .filter((models.Gloss.archive == False) |
-                    (models.Gloss.type_ == 'todo'))\
+            .filter((models.Gloss.archive == False))\
             .order_by(models.Gloss.timestamp.desc())
         return render_template('index.html', glosses=glosses,
                                show_nav_controls=True, labels=labels)

@@ -120,17 +120,6 @@ def edit_gloss(gloss_id):
         return redirect(url_for('gloss.render_gloss', gloss_id=gloss_id))
 
 
-@gloss_blueprint.route('/type/<int:gloss_id>', methods=['POST'])
-@login_required
-def type_gloss(gloss_id):
-    """Edit gloss."""
-    gloss = db.session.query(models.Gloss).get(gloss_id)
-    gloss.type_ = request.form.get('gloss_type')
-    db.session.merge(gloss)
-    db.session.commit()
-    return redirect(url_for('gloss.render_gloss', gloss_id=gloss_id))
-
-
 @gloss_blueprint.route('/archive', methods=['POST'])
 @login_required
 def archive_glosses():

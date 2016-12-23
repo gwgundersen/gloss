@@ -9,7 +9,6 @@ class Gloss(db.Model):
 
     __tablename__ = 'gloss'
     id        = db.Column(db.Integer, primary_key=True)
-    type_     = db.Column(db.String(50))
     entity_fk = db.Column(db.Integer, db.ForeignKey('entity.id'),
                            nullable=True)
     text_     = db.Column(db.Text)
@@ -18,11 +17,6 @@ class Gloss(db.Model):
     labels    = db.relationship('Label', backref='glosses',
                                  secondary='label_to_gloss')
     is_private = db.Column(db.Boolean, nullable=False, default=True)
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'gloss',
-        'polymorphic_on': type_
-    }
 
     @property
     def text(self):
@@ -37,31 +31,3 @@ class Gloss(db.Model):
     @property
     def labels_alpha(self):
         return sorted(self.labels, key=lambda x: x.name)
-
-
-class Question(Gloss):
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'question',
-    }
-
-
-class Summary(Gloss):
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'summary',
-    }
-
-
-class Thought(Gloss):
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'thought',
-    }
-
-
-class Todo(Gloss):
-
-    __mapper_args__ = {
-        'polymorphic_identity': 'todo',
-    }
