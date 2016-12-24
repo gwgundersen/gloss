@@ -25,12 +25,19 @@ def render_index_page():
         glosses = db.session.query(models.Gloss)\
             .filter((models.Gloss.archive == False))\
             .order_by(models.Gloss.timestamp.desc())
-        return render_template('index.html', glosses=glosses,
-                               show_nav_controls=True, labels=labels)
+    elif keyword == 'all':
+        glosses = db.session.query(models.Gloss).all()
+    # E.g. the label search for "ai": "?q=label.ai".
+    elif keyword.startswith('label.'):
+        label_name = keyword.split('.')[1]
+        glosses = db.session.query(models.Gloss)\
+            .join(models.Label, models.Gloss.labels)\
+            .filter(models.Label.name == label_name)\
+            .all()
+        labels = db.session.query(models.Label).all()
     else:
-        results = _get_glosses_by_keyword(keyword)
-        return render_template('index.html', glosses=results,
-                               show_nav_controls=True, labels=labels)
+        glosses = _get_glosses_by_keyword(keyword)
+    return render_template('index.html', glosses=glosses, labels=labels)
 
 
 def _get_glosses_by_keyword(keyword):

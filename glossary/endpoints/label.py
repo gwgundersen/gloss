@@ -13,20 +13,6 @@ label_blueprint = Blueprint('label',
                             url_prefix='%s/label' % config.get('url', 'base'))
 
 
-@label_blueprint.route('/<string:label_name>', methods=['GET'])
-@login_required
-def render_all_with_label(label_name):
-    """Render all entities and glosses with label."""
-    label_name = label_name.lower()
-    glosses = db.session.query(models.Gloss)\
-        .join(models.Label, models.Gloss.labels)\
-        .filter(models.Label.name == label_name)\
-        .all()
-    labels = db.session.query(models.Label).all()
-    return render_template('index.html', glosses=glosses,
-                           show_nav_controls=True, labels=labels)
-
-
 @label_blueprint.route('/delete', methods=['POST'])
 @login_required
 def delete_label_on_gloss():

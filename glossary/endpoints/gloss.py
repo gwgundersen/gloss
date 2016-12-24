@@ -15,16 +15,6 @@ gloss_blueprint = Blueprint('gloss',
                             url_prefix='%s/gloss' % config.get('url', 'base'))
 
 
-@gloss_blueprint.route('/', methods=['GET'])
-@login_required
-def render_all_glosses():
-    """Render all glosses."""
-    glosses = db.session.query(models.Gloss).all()
-    labels = db.session.query(models.Label)\
-        .order_by(models.Label.name.asc()).all()
-    return render_template('/index.html', glosses=glosses, labels=labels)
-
-
 @gloss_blueprint.route('/<int:gloss_id>', methods=['GET'])
 @login_required
 def render_gloss(gloss_id):

@@ -354,6 +354,19 @@ ol ol {
   white-space: nowrap;
   width: 100px;
 }
+#index-page #glossary table tr a .entity-title {
+  color: #444;
+}
+#index-page #glossary table tr a .gloss-title {
+  color: #444;
+}
+#index-page #glossary table tr a .gloss-text-preview {
+  color: #777;
+}
+#index-page #glossary table tr a .gloss-title:hover,
+#index-page #glossary table tr a .gloss-text-preview:hover {
+  color: #777;
+}
 #gloss-page {
   /* Markdown itself is handled in Markdown.less. */
 }

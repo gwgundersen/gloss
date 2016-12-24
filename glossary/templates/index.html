@@ -28,7 +28,16 @@
                             {% include 'entity_partials/label_list.html' %}
                         {% endwith %}
                         <div class="gloss">
-                            <a href="gloss/{{ gloss.id }}">{{ gloss.text_ }}</a>
+                            {% if gloss.title %}
+                                <a href="gloss/{{ gloss.id }}">
+                                    <span class="gloss-title">{{ gloss.title }}</span>
+                                    <span class="gloss-text-preview"> - {{ gloss.text_ }}</span>
+                                </a>
+                            {% else %}
+                                <a href="gloss/{{ gloss.id }}">
+                                    <span class="gloss-text-preview">{{ gloss.text_ }}</span>
+                                </a>
+                            {% endif %}
                         </div>
                     </td>
                 </tr>
