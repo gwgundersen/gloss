@@ -33,8 +33,7 @@ def render_entity_by_just_id(entity_id):
     entity = db.session.query(models.Entity).get(entity_id)
     if not entity:
         return redirect('404.html')
-    return render_template('entity/entity.html',
-                           entity=entity)
+    return render_template('index.html', glosses=entity.glosses, entity=entity)
 
 
 @entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])

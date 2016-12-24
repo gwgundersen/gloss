@@ -10,12 +10,20 @@ body {
 body {
   font-family: arial, sans-serif;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto';
+}
 a {
-  color: #003171;
+  color: #4078c0;
   text-decoration: none;
 }
 a:hover {
-  color: #003171;
+  color: #4078c0;
   text-decoration: underline;
 }
 input,
@@ -39,7 +47,6 @@ table {
   padding: 0;
 }
 .tooltip {
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
   background-color: #444;
   color: white;
   padding: 5px;
@@ -129,7 +136,7 @@ ol ol {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 5px;
+  padding: 5px 10px;
   vertical-align: middle;
   border-top: 1px solid #eee;
 }
@@ -221,6 +228,7 @@ ol ol {
   margin-right: 30px;
 }
 #menu {
+  border-top: 1px solid #f1f1f1;
   float: left;
   height: 100%;
   width: 150px;
@@ -312,11 +320,6 @@ ol ol {
 .page-wrapper .page {
   margin-right: 20px;
 }
-.metadata-tabletable {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  /* Matches Bootstrap. */
-}
 .list-unstyled {
   list-style: none;
   margin: 0;
@@ -332,11 +335,24 @@ ol ol {
   margin: 0;
   padding: 0;
 }
+#index-page .entity-type-title {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  padding: 10px 0;
+}
+#index-page .entity-type-title h3 {
+  padding-left: 10px;
+  text-transform: capitalize;
+  margin: 0;
+}
+#index-page .metadata-table {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 2px solid #eee;
+}
 #index-page #glossary {
   overflow: hidden;
-  border-right: 1px solid #f1f1f1;
-  border-left: 1px solid #f1f1f1;
-  border-bottom: 1px solid #f1f1f1;
+  border: 1px solid #eee;
 }
 #index-page #glossary .gloss .MathJax_Preview,
 #index-page #glossary .gloss .MJXc-display {
@@ -354,7 +370,7 @@ ol ol {
   white-space: nowrap;
   width: 100px;
 }
-#index-page #glossary table tr a .entity-title {
+#index-page #glossary table tr td.entity-title a {
   color: #444;
 }
 #index-page #glossary table tr a .gloss-title {

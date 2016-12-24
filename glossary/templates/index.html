@@ -11,38 +11,23 @@
 
 <div id="index-page" class="page-wrapper">
     <div class="page">
-        <div id="glossary">
-            <table class="table">
-            {% for gloss in glosses %}
-                <tr>
-                    <td><input type="checkbox" name="{{ gloss.id }}"/></td>
-                    <td class="entity-title">
-                        <span data-tooltip="{{ gloss.entity.title }}">
-                            <a href="{{ gloss.entity.endpoint }}">
-                                {{ gloss.entity.title }}
-                            </a>
-                        </span>
-                    </td>
-                    <td class="ellipsis">
-                        {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
-                            {% include 'entity_partials/label_list.html' %}
-                        {% endwith %}
-                        <div class="gloss">
-                            {% if gloss.title %}
-                                <a href="gloss/{{ gloss.id }}">
-                                    <span class="gloss-title">{{ gloss.title }}</span>
-                                    <span class="gloss-text-preview"> - {{ gloss.text_ }}</span>
-                                </a>
-                            {% else %}
-                                <a href="gloss/{{ gloss.id }}">
-                                    <span class="gloss-text-preview">{{ gloss.text_ }}</span>
-                                </a>
-                            {% endif %}
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
+
+        {% if entity %}
+            <div class="entity-type-title">
+                <h3>{{ entity.type_ }}</h3>
+            </div>
+            <table class="table metadata-table">
+            {% with entity = entity %}
+                {% include "entity_partials/%s_metadata.html" % entity.type_ %}
+            {% endwith %}
             </table>
+        {% endif %}
+
+        <div id="glossary">
+
+
+
+            {% include 'index_table.html' %}
         </div>
     </div>
 </div>
