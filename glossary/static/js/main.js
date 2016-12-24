@@ -2,7 +2,7 @@ $(function() {
 
     setup_search();
     setup_nav_controls();
-    watch_edit_button();
+    watch_for_edits();
     setup_tooltips();
     setup_add_image_button();
     toggle_label_visibility();
@@ -122,29 +122,29 @@ $(function() {
         $('*[data-tooltip]').hover(mouseIn, mouseOut);
     }
 
-    function watch_edit_button() {
-        //var $text = $('textarea#edit-field'),
-        //    $preview = $('#edit-preview');
-        //
-        //refresh_edit_preview();
-        //
-        //$text.change(refresh_edit_preview);
-        //$text.keyup(debounce(refresh_edit_preview, 1000));
-        //
-        //function refresh_edit_preview() {
-        //    var text = $('textarea').val();
-        //    $.ajax({
-        //        url: 'gloss/preview',
-        //        type: 'POST',
-        //        data: {
-        //            text: $text.val()
-        //        },
-        //        success: function(data) {
-        //            $preview.html(data);
-        //            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-        //        }
-        //    });
-        //}
+    function watch_for_edits() {
+        var $text = $('textarea#edit-field'),
+            $preview = $('#edit-preview');
+
+        refresh_edit_preview();
+
+        $text.change(refresh_edit_preview);
+        $text.keyup(debounce(refresh_edit_preview, 1000));
+
+        function refresh_edit_preview() {
+            var text = $('textarea').val();
+            $.ajax({
+                url: 'gloss/preview',
+                type: 'POST',
+                data: {
+                    text: $text.val()
+                },
+                success: function(data) {
+                    $preview.html(data);
+                    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+                }
+            });
+        }
     }
 
     function escape_html(string) {
