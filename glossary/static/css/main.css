@@ -387,10 +387,6 @@ ol ol {
 #gloss-page {
   /* Markdown itself is handled in Markdown.less. */
 }
-#gloss-page .entity-link {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
 #gloss-page .gloss {
   margin: 20px 0;
   padding: 10px 0;

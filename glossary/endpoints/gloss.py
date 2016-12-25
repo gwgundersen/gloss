@@ -51,9 +51,11 @@ def render_add_gloss_page(entity_id):
 def create_gloss():
     """Create new gloss."""
     entity_id = request.form.get('entity_id')
+    title = request.form.get('title') or ''
+    print(title)
     text_ = request.form.get('text_') or ''
     now = datetime.now()
-    gloss = models.Gloss(text_=text_, timestamp=now)
+    gloss = models.Gloss(text_=text_, title=title, timestamp=now)
     dbutils.get_or_create_labels(request, gloss)
     if entity_id:
         entity = db.session.query(models.Entity).get(entity_id)

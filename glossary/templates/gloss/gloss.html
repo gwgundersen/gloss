@@ -11,15 +11,19 @@
 
 <div id="gloss-page" class="page-wrapper">
 
+    {% if gloss.title %}
+        <h1>{{ gloss.title }}</h1>
+    {% endif %}
+
     {% if gloss.entity.type_ %}
-        <h1 class="entity-link">
-            <a href="entity/{{ gloss.entity.type_ }}/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a>
-        </h1>
+        <p class="entity-link">
+            <strong>Associated with:</strong> <a href="entity/{{ gloss.entity.type_ }}/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a>
+        </p>
     {% endif %}
 
     {% if gloss.public_url %}
         <p>
-            Public URL: <a href="{{ gloss.public_url }}">{{ gloss.public_url }}</a>
+            <strong>Public URL:</strong> <a href="{{ gloss.public_url }}">{{ gloss.public_url }}</a>
         </p>
     {% endif %}
 
