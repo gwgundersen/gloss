@@ -13,6 +13,12 @@ entity_blueprint = Blueprint('entity',
                              url_prefix='%s/entity' % config.get('url', 'base'))
 
 
+@entity_blueprint.route('/', methods=['GET'])
+@login_required
+def render_entity_options():
+    return render_template('entity/list.html')
+
+
 @entity_blueprint.route('/<string:type_>', methods=['GET'])
 @login_required
 def render_entities(type_):

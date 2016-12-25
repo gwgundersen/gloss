@@ -242,6 +242,7 @@ ol ol {
   height: 40px;
 }
 #menu ul .btn-menu a {
+  border-right: 1px solid #f1f1f1;
   color: #444;
   display: block;
   font-family: arial, sans-serif;
