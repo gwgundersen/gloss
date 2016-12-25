@@ -41,8 +41,9 @@ def render_add_gloss_page(entity_id):
         return render_template('gloss/add_to_specific_entity.html',
                                entity=entity)
     entities = db.session.query(models.Entity).all()
-    return render_template('gloss/create.html',
-                           entities=entities)
+    labels = db.session.query(models.Label).all()
+    return render_template('gloss/create.html', entities=entities,
+                           labels=labels)
 
 
 @gloss_blueprint.route('/create', methods=['POST'])
