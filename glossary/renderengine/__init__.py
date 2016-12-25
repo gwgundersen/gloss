@@ -7,8 +7,7 @@ import pypandoc
 def render_markdown(value):
     """Render Markdown"""
     try:
-        output = pypandoc.convert(value, to='html5', format='md',
-                                  extra_args=['--mathjax'])
+        output = pypandoc.convert_text(value, to='html5', format='md', extra_args=['--mathjax'])
     except RuntimeError:
         output = value
     return output

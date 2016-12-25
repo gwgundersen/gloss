@@ -2,7 +2,7 @@
 
 from flask import Blueprint
 import jinja2
-from glossary import render
+from glossary import renderengine
 
 
 jinjafilters = Blueprint('filters', __name__)
@@ -11,7 +11,7 @@ jinjafilters = Blueprint('filters', __name__)
 @jinja2.contextfilter
 @jinjafilters.app_template_filter('markdown')
 def to_markdown(context, value):
-    return render.render_markdown(value)
+    return renderengine.render_markdown(value)
 
 
 @jinja2.contextfilter

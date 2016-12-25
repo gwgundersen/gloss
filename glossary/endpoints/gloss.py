@@ -7,7 +7,7 @@ from flask.ext.login import login_required
 
 from glossary import db, models
 from glossary.config import config
-from glossary import dbutils, render
+from glossary import dbutils, renderengine
 
 
 gloss_blueprint = Blueprint('gloss',
@@ -28,7 +28,7 @@ def render_gloss(gloss_id):
 def preview_gloss():
     """Preview gloss by ID for editing UI."""
     text = request.form.get('text')
-    return render.render_markdown(text)
+    return renderengine.render_markdown(text)
 
 
 @gloss_blueprint.route('/create', defaults={'entity_id': None}, methods=['GET'])
