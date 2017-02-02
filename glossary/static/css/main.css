@@ -407,6 +407,9 @@ ol ol {
   border-radius: 2px;
   margin-top: 10px;
 }
+#public-page .gloss-wrapper h1 {
+  font-size: 30px;
+}
 #gloss-add-page,
 #gloss-edit-page {
   width: 800px;

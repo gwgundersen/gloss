@@ -9,7 +9,11 @@
 
 <div id="public-page" class="page-wrapper">
     <div class="gloss-wrapper">
-        <h1>{{ gloss.entity.title }}</h1>
+        {% if gloss.entity.title %}
+            <h1>{{ gloss.entity.title }}</h1>
+        {% else %}
+            <h1>{{ gloss.title }}</h1>
+        {% endif %}
         <div class="gloss markdown-body">
             {{ gloss.text_|markdown|safe }}
         </div>
