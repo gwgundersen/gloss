@@ -23,7 +23,7 @@
         <div class="gloss-list">
         {% for gloss in entity.glosses %}
             <div class="gloss">
-                <h3 class="type">{{ gloss.timestamp|date_str }}</h3>
+                <h3>{{ gloss.timestamp|date_str }}</h3>
 
                 {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
                     {% include "entity_partials/label_list.html" %}

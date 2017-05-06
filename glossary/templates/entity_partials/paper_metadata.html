@@ -1,4 +1,8 @@
 <tr>
+    <td>Title</td>
+    <td>{{ entity.title }}</td>
+</tr>
+<tr>
     <td>Authors</td>
     <td>
     {% with authors = entity.authors %}
@@ -7,8 +11,8 @@
     </td>
 </tr>
 <tr>
-    <td>Title</td>
-    <td>{{ entity.title }}</td>
+    <td>Journal</td>
+    <td>{{ entity.journal.name }}</td>
 </tr>
 <tr>
     <td>Reason</td>
@@ -19,20 +23,16 @@
     <td>{{ entity.date_read }}</td>
 </tr>
 <tr>
-    <td>Depth (1-3)</td>
+    <td>Depth (1&ndash;3)</td>
     <td>{{ entity.depth }}</td>
 </tr>
-{% if entity.min_required %}
-    <tr>
-        <td>Minutes Required</td>
-        <td>{{ entity.min_required }}</td>
-    </tr>
-{% endif %}
 <tr>
     <td>Year</td>
     <td>{{ entity.year }}</td>
 </tr>
-<tr>
-    <td>Journal</td>
-    <td>{{ entity.journal.name }}</td>
-</tr>
+{% if entity.min_required %}
+    <tr>
+        <td>Time required (minutes)</td>
+        <td>{{ entity.min_required }}</td>
+    </tr>
+{% endif %}

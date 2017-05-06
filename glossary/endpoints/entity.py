@@ -58,27 +58,10 @@ def render_entity_by_id(type_, entity_id):
 @entity_blueprint.route('/<string:type_>/create', methods=['GET'])
 @login_required
 def render_add_specific_entity_page(type_):
-    """Render page for adding a specific entity, e.g. Idea versus Book."""
+    """Render page for adding a specific entity, e.g. Paper versus Book."""
     if not type_:
         return render_template('entity/create_menu.html')
-    Class_ = models.type_to_class[type_]
-    attrs = []
-    if type_ == 'book':
-        for c in models.Author.__table__.columns:
-            attrs.append({
-                'name': c.name,
-                'type_': c.type
-            })
-    for c in Class_.__table__.columns:
-        if c.name == 'id' or c.name.endswith('_fk'):
-            continue
-        attrs.append({
-            'name': c.name,
-            'type_': c.type
-        })
-    return render_template('entity/create.html',
-                           type_=type_,
-                           attrs=attrs)
+    return render_template('entity/create_%s.html' % type_)
 
 
 @entity_blueprint.route('/create/<string:type_>', methods=['POST'])
@@ -152,9 +135,9 @@ def _process_arguments(**kwargs):
         if type(v) == list:
             kwargs[a] = v[0]
         v = kwargs[a]
-        if v == 'true':
+        if v == 'true' or v == 'True' or v == 1:
             kwargs[a] = True
-        if v == 'false':
+        if v == 'false' or v == 'False' or v == 0:
             kwargs[a] = False
         if v == '' or v == 'null':
             kwargs[a] = None

@@ -19,7 +19,7 @@ def to_markdown(context, value):
 def to_date_str(context, value):
     if not value:
         return ''
-    return ' - ' + value.strftime('%Y-%m-%d')
+    return value.strftime('%Y-%m-%d')
 
 
 @jinja2.contextfilter

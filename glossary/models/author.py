@@ -10,7 +10,6 @@ class Author(db.Model):
     name       = db.Column(db.String(255))
     is_female  = db.Column(db.Boolean)
     is_poc     = db.Column(db.Boolean)
-    bio_link   = db.Column(db.String(255))
 
     books  = db.relationship('Book', backref='authors',
                              secondary='author_to_book')
