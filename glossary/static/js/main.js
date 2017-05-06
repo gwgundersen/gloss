@@ -126,6 +126,9 @@ $(function() {
         var $text = $('textarea#edit-field'),
             $preview = $('#edit-preview');
 
+        if ($text.length == 0) {
+            return;
+        }
         refresh_edit_preview();
 
         $text.change(refresh_edit_preview);
