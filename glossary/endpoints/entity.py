@@ -63,6 +63,12 @@ def render_add_specific_entity_page(type_):
         return render_template('entity/create_menu.html')
     Class_ = models.type_to_class[type_]
     attrs = []
+    if type_ == 'book':
+        for c in models.Author.__table__.columns:
+            attrs.append({
+                'name': c.name,
+                'type_': c.type
+            })
     for c in Class_.__table__.columns:
         if c.name == 'id' or c.name.endswith('_fk'):
             continue
@@ -107,7 +113,7 @@ def _get_or_create_authors(instance):
         authors = []
         for a in request.form.get('authors').split(';'):
             parts = a.split(',')
-            name = parts[0].strip().capitalize()
+            name = parts[0].strip()
             if len(parts) > 1:
                 is_female = parts[1].strip() == 'female'
                 is_poc = parts[2].strip() == 'poc'
