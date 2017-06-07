@@ -1,0 +1,20 @@
+<tr>
+    <td>Authors</td>
+    <td>
+    {% with authors = entity.authors %}
+        {% include 'entity_partials/author_list.html' %}
+    {% endwith %}
+    </td>
+</tr>
+<tr>
+    <td>Title</td>
+    <td>{{ entity.title }}</td>
+</tr>
+<tr>
+    <td>Date and Time</td>
+    <td>{{ entity.timestamp|datetime_str }}</td>
+</tr>
+<tr>
+    <td>Location</td>
+    <td>{{ entity.location }}</td>
+</tr>

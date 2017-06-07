@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="label-page" class="page-wrapper">
+    <div class="page">
+        <h1>{{ label_name }}</h1>
+        <div class="gloss-list">
+            {% for gloss in glosses %}
+                <div class="gloss">
+                    <h3 class="type">{{ gloss.timestamp|date_str }}</h3>
+                    <h4>{{ gloss.entity.title }}</h4>
+                    <div>{{ gloss.text_|markdown|safe }}</div>
+                    <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

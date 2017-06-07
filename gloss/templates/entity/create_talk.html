@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="entity-add-page" class="page-wrapper">
+    <div class="page">
+        <h1>Add paper</h1>
+        <form action="entity/create/book" method="post">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title"/>
+            </div>
+            <div class="form-group">
+                <label>Speaker</label>
+                <input type="text" name="speaker"/>
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" name="location"/>
+            </div>
+            <button type="submit" class="btn">Add talk</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<ul class="list-unstyled author-list">
+{% for author in authors %}
+    <li>
+        <a href="{{ author.endpoint }}">
+            {{ author.name }}
+        </a>
+    </li>
+{% endfor %}
+</ul>

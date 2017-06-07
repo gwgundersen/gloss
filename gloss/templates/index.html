@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="index-page" class="page-wrapper">
+    <div class="page">
+
+        {% if entity %}
+            <div class="entity-type-title">
+                <h3>{{ entity.type_ }}</h3>
+            </div>
+            <table class="table metadata-table">
+            {% with entity = entity %}
+                {% include "entity_partials/%s_metadata.html" % entity.type_ %}
+            {% endwith %}
+            </table>
+        {% endif %}
+
+        <div id="glossary">
+            {% include 'index_table.html' %}
+        </div>
+    </div>
+</div>
+
+<div class="clear"></div>
+
+</body>
+</html>
