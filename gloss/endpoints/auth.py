@@ -24,7 +24,7 @@ def login():
     registered_user = models.User.get(username, password)
     if registered_user is None:
         logout_user()
-        return render_template('auth.html')
+        return redirect(url_for('auth.render_auth_page'))
     login_user(registered_user)
     return redirect(url_for('index.render_index_page'))
 
@@ -34,4 +34,4 @@ def login():
 def logout():
     logout_user()
     g.user = None
-    return redirect(url_for('index.render_index_page'))
+    return redirect(url_for('auth.render_auth_page'))
