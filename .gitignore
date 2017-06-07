@@ -3,8 +3,8 @@
 .DS_Store
 db.conf
 venv/
-glossary/config.ini
+gloss/config.ini
 *.pyc
 info.log
 .idea/
-glossary/static/image/upload/
+gloss/static/image/upload/
