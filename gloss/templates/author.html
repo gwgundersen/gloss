@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="author-page" class="page-wrapper">
+    <div class="page">
+        <h1>
+            {{ author.name }}
+            {% if author.bio_link %}
+                <span class="author-bio-link">
+                    <a href="{{ author.bio_link }}" target="_blank">bio</a>
+                </span>
+            {% endif %}
+        </h1>
+
+        <table class="table">
+
+        {% if author.books|length > 0 %}
+            {% for book in author.books %}
+            <tr>
+                <td>
+                    <a href="{{ book.endpoint }}">{{ book.title }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+
+        {% if author.papers|length > 0 %}
+            {% for paper in author.papers %}
+            <tr>
+                <td>
+                    <a href="{{ paper.endpoint }}">{{ paper.title }}</a>
+                    {% if paper.link %}
+                        <a class="paper-link" href="{{ paper.link }}">Link</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+
+        {% if author.talks|length > 0 %}
+            {% for talk in author.talks %}
+            <tr>
+                <td>
+                    <a href="{{ talk.endpoint }}">{{ talk.title }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

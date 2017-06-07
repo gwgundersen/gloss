@@ -1,0 +1,563 @@
+/* Reset
+ * ----- */
+html,
+body {
+  margin: 0;
+  font-size: 13px;
+}
+/* Tag and general class selectors.
+ * -------------------------------- */
+body {
+  font-family: arial, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto';
+}
+a {
+  color: #4078c0;
+  text-decoration: none;
+}
+a:hover {
+  color: #4078c0;
+  text-decoration: underline;
+}
+input,
+textarea {
+  border-radius: 0;
+}
+table {
+  font-size: 13px;
+}
+.clear {
+  clear: both;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+.list-unstyled {
+  list-style: none;
+  padding: 0;
+}
+.tooltip {
+  background-color: #444;
+  color: white;
+  padding: 5px;
+  position: absolute;
+}
+.btn {
+  background-color: #C93756;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-family: arial, sans-serif;
+  font-size: 13px;
+  padding: 4px 6px;
+  text-align: left;
+}
+.btn:active,
+.btn:focus,
+.btn:hover {
+  background-color: #9D2933;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.list-labels .label {
+  display: inline-block;
+}
+.list-labels .label a,
+.list-labels .label input {
+  color: white;
+  height: 12px;
+  padding: 3px 6px;
+}
+.list-labels .label input {
+  background-color: transparent;
+}
+.list-labels .label a,
+.list-labels .label form {
+  background-color: #5D3F6A;
+  float: left;
+  margin: 0;
+}
+.list-labels .label a,
+.list-labels .label input {
+  padding: 3px 6px;
+}
+.list-labels .label a {
+  font-size: 12px;
+}
+.list-labels .label a:hover {
+  background-color: #3A243B;
+  color: white;
+  text-decoration: none;
+}
+.list-labels .label form:hover,
+.list-labels .label input:hover {
+  background-color: #C93756;
+  cursor: pointer;
+}
+.list-labels .label form {
+  /* 12px + 6px padding */
+  height: 18px;
+}
+.list-labels .label form input {
+  border: none;
+  font-size: 10px;
+  height: 100%;
+}
+ul,
+ol {
+  margin-top: 0;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-bottom: 0;
+}
+.table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 5px 10px;
+  vertical-align: middle;
+  border-top: 1px solid #eee;
+}
+.table > thead > tr > th {
+  vertical-align: middle;
+  text-align: left;
+  border-bottom: 2px solid #eee;
+}
+.table > caption + thead > tr:first-child > th,
+.table > colgroup + thead > tr:first-child > th,
+.table > thead:first-child > tr:first-child > th,
+.table > caption + thead > tr:first-child > td,
+.table > colgroup + thead > tr:first-child > td,
+.table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+.table > tbody + tbody {
+  border-top: 2px solid #aaa;
+}
+.table .table {
+  background-color: white;
+}
+/* Structural elements.
+ * -------------------- */
+#nav #header {
+  border-bottom: 3px solid #e5e5e5;
+  font-family: arial, sans-serif;
+  height: 45px;
+  /* z-index only works with certain positions:
+     * http://stackoverflow.com/a/3259067
+     */
+  position: relative;
+  z-index: 999;
+}
+#nav #header h1 {
+  float: left;
+  margin: 0;
+  padding-left: 20px;
+  position: relative;
+  top: 12px;
+}
+#nav #header h1 a {
+  color: #444;
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+#nav #header h1 a:hover {
+  opacity: .8;
+  text-decoration: none;
+}
+#nav #header h1 .btn-back {
+  display: inline-block;
+  font-size: 11px;
+  margin-left: 10px;
+}
+#nav #header #search input {
+  border: 1px solid #bbb;
+  font-size: 13px;
+  height: 30px;
+  padding: 5px;
+  position: relative;
+  top: 8px;
+  left: 59px;
+  width: 200px;
+}
+#nav #header #search button {
+  position: relative;
+  left: 70px;
+  top: 7px;
+}
+#nav #controls {
+  border-bottom: 1px solid #eee;
+  height: 37px;
+  padding-left: 150px;
+}
+#nav #controls .control {
+  float: left;
+  margin-right: 10px;
+  position: relative;
+  top: 7px;
+}
+#nav #controls select.control {
+  position: relative;
+  top: 9px;
+}
+#nav #controls #archive-action {
+  margin-right: 30px;
+}
+#menu {
+  border-top: 1px solid #f1f1f1;
+  float: left;
+  height: 100%;
+  width: 150px;
+}
+#menu ul {
+  margin: 0;
+}
+#menu ul .btn-menu {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  height: 40px;
+}
+#menu ul .btn-menu a {
+  border-right: 1px solid #f1f1f1;
+  color: #444;
+  display: block;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  height: 100%;
+  width: 100%;
+  /* Little weird, but this allows the menu buttons to be full-width. */
+}
+#menu ul .btn-menu a span {
+  display: inline-block;
+  padding-left: 20px;
+  padding-top: 12px;
+}
+#menu ul .btn-menu a span.active {
+  color: #C93756;
+  font-weight: bold;
+}
+#menu ul .btn-menu a span.highlight {
+  font-weight: bold;
+}
+#menu ul .btn-menu:hover {
+  background-color: #eee;
+}
+#menu ul .btn-menu.section-start {
+  border-top: 2px solid #ddd;
+}
+#menu ul h2 {
+  font-size: 16px;
+  padding-left: 20px;
+}
+#menu #btn-show-labels {
+  margin-top: 15px;
+}
+#menu #btn-show-labels,
+#menu #menu-label-list {
+  padding-left: 20px;
+}
+#menu #menu-label-list {
+  margin: 15px 0;
+}
+#menu #menu-label-list li {
+  margin: 10px 0;
+}
+#menu #menu-label-list li a {
+  height: 12px;
+  padding: 3px 6px;
+  color: white;
+  background-color: #5D3F6A;
+}
+#menu #menu-label-list li a:hover {
+  background-color: #3A243B;
+  color: white;
+  text-decoration: none;
+}
+/* Content that spans pages.
+ * ------------------------- */
+.page-wrapper {
+  overflow: hidden;
+  margin-left: 170px;
+  margin-right: 20px;
+  margin-top: 20px;
+  width: auto;
+}
+.page-wrapper h1 {
+  color: #444;
+  font-size: 20px;
+  margin-top: 0;
+}
+.page-wrapper h2 {
+  color: #444;
+  font-size: 18px;
+}
+.page-wrapper h2:first-child {
+  margin-top: 0;
+}
+.page-wrapper .page {
+  margin-right: 20px;
+}
+.list-unstyled {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.list-labels {
+  height: 18px;
+  margin-bottom: 4px;
+}
+/* Pages.
+ * ------ */
+#index-page {
+  margin: 0;
+  padding: 0;
+}
+#index-page .entity-type-title {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  padding: 10px 0;
+}
+#index-page .entity-type-title h3 {
+  padding-left: 10px;
+  text-transform: capitalize;
+  margin: 0;
+}
+#index-page .metadata-table {
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 2px solid #eee;
+}
+#index-page #glossary {
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+#index-page #glossary .gloss .MathJax_Preview,
+#index-page #glossary .gloss .MJXc-display {
+  display: none;
+}
+#index-page #glossary table tr:first-child td {
+  border-top: none;
+}
+#index-page #glossary table tr td.entity-title {
+  border-right: 1px solid #eee;
+}
+#index-page #glossary table tr td.entity-title span {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100px;
+}
+#index-page #glossary table tr td.entity-title a {
+  color: #444;
+}
+#index-page #glossary table tr a .gloss-title {
+  color: #444;
+}
+#index-page #glossary table tr a .gloss-text-preview {
+  color: #777;
+}
+#index-page #glossary table tr a .gloss-title:hover,
+#index-page #glossary table tr a .gloss-text-preview:hover {
+  color: #777;
+}
+#gloss-page {
+  /* Markdown itself is handled in Markdown.less. */
+}
+#gloss-page .gloss {
+  margin: 20px 0;
+  padding: 10px 0;
+  border-bottom: 2px solid #eee;
+  border-top: 2px solid #eee;
+  width: 800px;
+}
+#gloss-page .controls,
+.entity-page .controls {
+  padding-top: 10px;
+}
+#gloss-page .controls a,
+.entity-page .controls a {
+  margin-bottom: 5px;
+}
+#gloss-page .controls input,
+.entity-page .controls input {
+  border-radius: 2px;
+  margin-top: 10px;
+}
+#public-page .gloss-wrapper h1 {
+  font-size: 30px;
+}
+#gloss-add-page,
+#gloss-edit-page {
+  width: 800px;
+}
+#gloss-add-page textarea,
+#gloss-edit-page textarea {
+  border: 1px solid #ddd;
+  font-size: 13px;
+  height: 300px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+#gloss-add-page #controls #add-image-btn {
+  margin-bottom: 10px;
+}
+#gloss-add-page #controls #uploaded-image-names li {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
+}
+#gloss-add-page select {
+  width: 200px;
+}
+#gloss-add-page #edit-preview {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-top: 1px dotted #c8ccd0;
+  border-bottom: 1px dotted #c8ccd0;
+}
+#gloss-edit-page #controls {
+  margin-bottom: 20px;
+}
+#gloss-edit-page #controls #add-image-btn {
+  margin-bottom: 10px;
+}
+#gloss-edit-page #controls #uploaded-image-names li {
+  font-family: monospace;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
+}
+#gloss-edit-page #edit-preview {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-top: 1px dotted #c8ccd0;
+  border-bottom: 1px dotted #c8ccd0;
+}
+#gloss-add-page textarea {
+  margin-top: 10px;
+}
+#gloss-add-page #labels {
+  margin-top: 5px;
+}
+#label-page h2 {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2px;
+}
+#label-page table {
+  margin-bottom: 40px;
+}
+.entity-page .list-labels {
+  margin-bottom: 10px;
+  padding-left: 0;
+  list-style: none;
+}
+.entity-page .list-labels > li {
+  display: inline-block;
+  padding-right: 5px;
+}
+#book-page .stats-table,
+#paper-page .stats-table {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+#book-page .stats-table tr td:first-child,
+#paper-page .stats-table tr td:first-child {
+  font-weight: bold;
+  width: 110px;
+}
+#book-page .stats-table tr:first-child td,
+#paper-page .stats-table tr:first-child td {
+  border-top: none;
+}
+#entity-add-page .form-group {
+  padding: 5px 0;
+}
+#entity-add-page .form-group input {
+  font-size: 13px;
+  height: 25px;
+  width: 100%;
+}
+#entity-add-page button {
+  margin-top: 20px;
+}
+#author-page h2 {
+  font-size: 16px;
+}
+#author-page .author-list {
+  margin-bottom: 0;
+}
+#author-page .author-bio-link {
+  font-size: 11px;
+  display: inline-block;
+  margin-left: 5px;
+}
+#author-page .paper-link {
+  color: #C93756;
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 10px;
+}
+#labels-page #create-labels-form {
+  border-top: 1px solid #eee;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+#labels-page #create-labels-form button {
+  margin-top: 10px;
+}
+#auth-page input {
+  border: 1px solid #eee;
+  padding: 5px;
+  margin: 5px 0;
+}
+#auth-page #logout-section {
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+  margin-top: 100px;
+}
+#entity-add-menu-page li {
+  margin: 10px 0;
+}
+#entity-add-menu-page li a {
+  font-size: 16px;
+}
+#blog-page {
+  margin-left: 20px;
+  width: 700px;
+}
+.error-page {
+  margin-left: 20px;
+}
+.error-page p {
+  color: #C93756;
+  font-weight: bold;
+}
+.hidden {
+  display: none;
+}

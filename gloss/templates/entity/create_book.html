@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="entity-add-page" class="page-wrapper">
+    <div class="page">
+        <h1>Add paper</h1>
+        <form action="entity/create/book" method="post">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title"/>
+            </div>
+            <div class="form-group">
+                <label>Authors (Comma-separated)</label>
+                <input type="text" name="authors"/>
+            </div>
+            <div class="form-group">
+                <label>Author is female (1 | 0)</label>
+                <input type="text" name="is_female"/>
+            </div>
+            <div class="form-group">
+                <label>Author is POC (1 | 0)</label>
+                <input type="text" name="is_poc"/>
+            </div>
+            <div class="form-group">
+                <label>Reason</label>
+                <input type="text" name="reason"/>
+            </div>
+            <div class="form-group">
+                <label>Date started (YYYY-MM-DD)</label>
+                <input type="text" name="started"/>
+            </div>
+            <div class="form-group">
+                <label>Date finished (YYYY-MM-DD)</label>
+                <input type="text" name="ended"/>
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                <input type="text" name="year"/>
+            </div>
+            <div class="form-group">
+                <label>Fiction or nonfiction</label>
+                <input type="text" name="genre"/>
+            </div>
+            <div class="form-group">
+                <label>Source (library | own | borrow)</label>
+                <input type="text" name="source"/>
+            </div>
+            <div class="form-group">
+                <label>Buy (0 | 1)</label>
+                <input type="text" name="buy"/>
+            </div>
+            <div class="form-group">
+                <label>Nationality</label>
+                <input type="text" name="nationality"/>
+            </div>
+            <button type="submit" class="btn">Add entity</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

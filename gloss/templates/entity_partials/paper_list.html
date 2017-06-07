@@ -1,0 +1,27 @@
+<table class="table display dtable">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>First author</th>
+            <th>Year</th>
+        </tr>
+    </thead>
+    {% for paper in entities %}
+        <tr>
+            <td>
+                {% with labels = paper.labels %}
+                    {% include "entity_partials/label_list.html" %}
+                {% endwith %}
+                <a href="{{ paper.endpoint }}">
+                    {{ paper.title }}
+                </a>
+            </td>
+            <td>
+                <a href="{{ paper.first_author.endpoint }}">
+                    {{ paper.first_author.name }}
+                </a>
+            </td>
+            <td>{{ paper.year }}</td>
+        </tr>
+    {% endfor %}
+</table>
