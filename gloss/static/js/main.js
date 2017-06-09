@@ -46,7 +46,7 @@ $(function() {
     function setup_nav_controls() {
         $('#nav #controls button#archive-action').click(function() {
             var gloss_ids = get_checked_gloss_ids();
-            $.post('gloss/archive', { gloss_ids: gloss_ids }, function(data) {
+            $.post('/gloss/archive', { gloss_ids: gloss_ids }, function(data) {
                 if (data.status == 'success') {
                     window.location.reload();
                 } else {
@@ -56,7 +56,7 @@ $(function() {
         });
         $('#nav #controls button#archive-action').click(function() {
             var gloss_ids = get_checked_gloss_ids();
-            $.post('gloss/archive', { gloss_ids: gloss_ids }, function(data) {
+            $.post('/gloss/archive', { gloss_ids: gloss_ids }, function(data) {
                 if (data.status == 'success') {
                     window.location.reload();
                 } else {
@@ -68,7 +68,7 @@ $(function() {
             var gloss_ids = get_checked_gloss_ids(),
                 label_id = $('#nav #controls select#label').val(),
                 payload = { gloss_ids: gloss_ids, label_id: label_id, is_js: true };
-            $.post('label/add', payload, function(data) {
+            $.post('/label/add', payload, function(data) {
                 if (data.status == 'success') {
                     window.location.reload();
                 } else {
@@ -137,7 +137,7 @@ $(function() {
         function refresh_edit_preview() {
             var text = $('textarea').val();
             $.ajax({
-                url: 'gloss/preview',
+                url: '/gloss/preview',
                 type: 'POST',
                 data: {
                     text: $text.val()

@@ -17,7 +17,7 @@
             {% include "components/image_uploader.html" %}
         </div>
 
-        <form action="gloss/create" method="post">
+        <form action="/gloss/create" method="post">
             <select name="entity_id">
                 <option value="">(Select entity)</option>
                 {% for entity in entities %}
