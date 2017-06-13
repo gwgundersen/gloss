@@ -19,11 +19,11 @@
                     {% if gloss.title %}
                         <a href="/gloss/{{ gloss.id }}">
                             <span class="gloss-title">{{ gloss.title }}</span>
-                            <span class="gloss-text-preview"> - {{ gloss.text_ }}</span>
+                            <span class="gloss-text-preview"> - {{ gloss.text_|preview }}</span>
                         </a>
                     {% else %}
                         <a href="/gloss/{{ gloss.id }}">
-                            <span class="gloss-text-preview">{{ gloss.text_ }}</span>
+                            <span class="gloss-text-preview">{{ gloss.text_|preview }}</span>
                         </a>
                     {% endif %}
                 </div>

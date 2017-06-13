@@ -11,13 +11,27 @@
     </div>
     {% if labels %}
         <div id="controls">
-            <button class="btn control" id="archive-action">Archive</button>
-            <select class="control" id="label">
-                {% for label in labels %}
-                    <option value="{{ label.id }}">{{ label.name }}</option>
-                {% endfor %}
-            </select>
-            <button class="btn control" id="label-action">Label</button>
+            <div>
+                <button class="btn control" id="archive-action">Archive</button>
+                <select class="control" id="label">
+                    {% for label in labels %}
+                        <option value="{{ label.id }}">{{ label.name }}</option>
+                    {% endfor %}
+                </select>
+                <button class="btn control" id="label-action">Label</button>
+            </div>
+            {% if c_prev is not none and c_next is not none %}
+                <div>
+                    {% if q %}
+                        <a href="/?q={{ q }}&c={{ c_prev }}" class="btn control">Prev</a>
+                        <a href="/?q={{ q }}&c={{ c_next }}" class="btn control">Next</a>
+                    {% else %}
+                        <a href="" class="btn control">Prev</a>
+                        <a href="" class="btn control">Next</a>
+                    {% endif %}
+                </div>
+            {% endif %}
         </div>
+
     {% endif %}
 </div>

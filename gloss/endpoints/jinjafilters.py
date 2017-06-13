@@ -15,6 +15,12 @@ def to_markdown(context, value):
 
 
 @jinja2.contextfilter
+@jinjafilters.app_template_filter('preview')
+def to_markdown(context, value):
+    return value[:200] + '...'
+
+
+@jinja2.contextfilter
 @jinjafilters.app_template_filter('date_str')
 def to_date_str(context, value):
     if not value:
