@@ -20,17 +20,22 @@
                 </select>
                 <button class="btn control" id="label-action">Label</button>
             </div>
-            {% if c_prev is not none and c_next is not none %}
-                <div>
+            <div>
+                {% if c_prev is not none %}
                     {% if q %}
                         <a href="/?q={{ q }}&c={{ c_prev }}" class="btn control">Prev</a>
-                        <a href="/?q={{ q }}&c={{ c_next }}" class="btn control">Next</a>
                     {% else %}
                         <a href="" class="btn control">Prev</a>
+                    {% endif %}
+                {% endif %}
+                {% if c_next is not none %}
+                    {% if q %}
+                        <a href="/?q={{ q }}&c={{ c_next }}" class="btn control">Next</a>
+                    {% else %}
                         <a href="" class="btn control">Next</a>
                     {% endif %}
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
 
     {% endif %}

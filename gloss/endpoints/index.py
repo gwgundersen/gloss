@@ -47,9 +47,12 @@ def render_index_page():
         glosses = _get_glosses_by_keyword(keyword)
 
     if len(glosses) > MAX_PER_PAGE:
-        glosses = glosses[cursor: cursor+MAX_PER_PAGE]
         c_prev = max(0, cursor - MAX_PER_PAGE)
-        c_next = cursor + MAX_PER_PAGE
+        if len(glosses) - cursor <= MAX_PER_PAGE:
+            c_next = None
+        else:
+            c_next = cursor + MAX_PER_PAGE
+        glosses = glosses[cursor: cursor+MAX_PER_PAGE]
     else:
         c_prev = c_next = None
     return render_template('index.html', glosses=glosses, labels=labels,
