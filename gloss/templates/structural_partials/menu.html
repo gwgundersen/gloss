@@ -1,6 +1,6 @@
 <div id="menu">
     <ul class="list-unstyled">
-        <li class="btn-menu" >
+        <li class="btn-menu">
             <a href="/gloss/create">
                 <span>Add gloss</span>
             </a>
@@ -18,5 +18,19 @@
         <li class="btn-menu">
             <a href="/entity"><span>Entities</span></a>
         </li>
+        {% if labels %}
+            <li class="section-start">
+                <div id="btn-show-labels">
+                    <button class="btn">Show Labels</button>
+                </div>
+                <ul class="list-unstyled hidden" id="menu-label-list">
+                    {% for label in labels %}
+                        <li class="label">
+                            <a href="/?q=label.{{ label.name }}">{{ label.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
     </ul>
 </div>

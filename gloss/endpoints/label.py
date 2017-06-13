@@ -1,6 +1,6 @@
 """Render label-related pages."""
 
-from flask import Blueprint, jsonify, redirect, request
+from flask import Blueprint, jsonify, redirect, request, render_template
 from flask.ext.login import login_required
 
 from gloss import db, models

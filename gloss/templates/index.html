@@ -5,7 +5,9 @@
 
 <body>
 
-{% include "structural_partials/nav.html" %}
+{% with labels = labels %}
+    {% include "structural_partials/nav.html" %}
+{% endwith %}
 
 {% include "structural_partials/menu.html" %}
 
