@@ -31,6 +31,14 @@
                     {% endfor %}
                 </ul>
             </li>
+            <li>
+                <form id="create-label-form" action="/label/create" method="post">
+                    <div id="labels">
+                        <input type="text" name="labels" placeholder="Label name"/>
+                    </div>
+                    <button type="submit" class="btn">Create label</button>
+                </form>
+            </li>
         {% endif %}
     </ul>
 </div>

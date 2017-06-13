@@ -277,8 +277,16 @@ ol ol {
   margin-top: 15px;
 }
 #menu #btn-show-labels,
-#menu #menu-label-list {
+#menu #menu-label-list,
+#menu #create-label-form {
   padding-left: 20px;
+}
+#menu #create-label-form {
+  margin-top: 20px;
+}
+#menu #create-label-form input {
+  margin-bottom: 5px;
+  width: 110px;
 }
 #menu #menu-label-list {
   margin: 15px 0;
