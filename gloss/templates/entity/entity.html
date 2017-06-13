@@ -15,25 +15,25 @@
     <div class="page">
 
         <table class="table metadata-table">
-        {% with entity = entity %}
-            {% include "entity_partials/%s_metadata.html" % entity.type_ %}
-        {% endwith %}
+            {% with entity = entity %}
+                {% include "entity_partials/%s_metadata.html" % entity.type_ %}
+            {% endwith %}
         </table>
 
         <div class="gloss-list">
-        {% for gloss in entity.glosses %}
-            <div class="gloss">
-                <h3>{{ gloss.timestamp|date_str }}</h3>
+            {% for gloss in entity.glosses %}
+                <div class="gloss">
+                    <h3>{{ gloss.timestamp|date_str }}</h3>
 
-                {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
-                    {% include "entity_partials/label_list.html" %}
-                {% endwith %}
+                    {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
+                        {% include "entity_partials/label_list.html" %}
+                    {% endwith %}
 
-                <div>{{ gloss.text_|markdown|safe }}</div>
+                    <div>{{ gloss.text_|markdown|safe }}</div>
 
-                <a class="btn-edit" href="gloss/{{ gloss.id }}">&raquo;</a>
-            </div>
-        {% endfor %}
+                    <a class="btn-edit" href="/gloss/{{ gloss.id }}">&raquo;</a>
+                </div>
+            {% endfor %}
         </div>
 
         <div class="controls">

@@ -12,7 +12,7 @@
             {% with labels = talk.labels %}
                 {% include "entity_partials/label_list.html" %}
             {% endwith %}
-            <a href="{{ talk.endpoint }}">
+            <a href="/{{ talk.endpoint }}">
                 {{ talk.title }}
             </a>
         </td>

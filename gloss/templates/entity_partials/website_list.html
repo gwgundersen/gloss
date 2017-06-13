@@ -10,7 +10,7 @@
             {% with labels = website.labels %}
                 {% include "entity_partials/label_list.html" %}
             {% endwith %}
-            <a href="{{ website.endpoint }}">
+            <a href="/{{ website.endpoint }}">
                 {{ website.title }}
             </a>
         </td>

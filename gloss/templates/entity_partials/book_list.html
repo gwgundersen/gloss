@@ -13,7 +13,7 @@
             {% with labels = book.labels %}
                 {% include 'entity_partials/label_list.html' %}
             {% endwith %}
-            <a href='{{ book.endpoint }}'>
+            <a href='/{{ book.endpoint }}'>
                 {{ book.title }}
             </a>
         </td>

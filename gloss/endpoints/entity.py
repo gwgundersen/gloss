@@ -97,18 +97,12 @@ def _get_or_create_authors(instance, is_book):
     if author_names and author_names != '':
         authors = []
         for name in request.form.get('authors').split(','):
+            author = get_or_create(models.Author, name=name)
             if is_book:
-                is_female   = request.form.get('is_female')
-                is_poc      = request.form.get('is_poc')
-                nationality = request.form.get('nationality')
-                print(is_female, is_poc, nationality)
-            else:
-                is_female   = None
-                is_poc      = None
-                nationality = None
-            author = get_or_create(models.Author, name=name,
-                                   is_female=is_female, is_poc=is_poc,
-                                   nationality=nationality)
+                author.is_female   = request.form.get('is_female')
+                author.is_poc      = request.form.get('is_poc')
+                author.nationality = request.form.get('nationality')
+            db.session.merge(author)
             authors.append(author)
         instance.authors = authors
     return instance

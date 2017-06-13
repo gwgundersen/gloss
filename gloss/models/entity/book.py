@@ -62,7 +62,7 @@ class Book(Entity):
             .join(cls, Author.books)\
             .filter(cls.finished)\
             .count()
-        pct_poc = round(float(num_poc) / num_authors, 2)
+        pct_poc = round(float(num_poc) / num_authors, 2) * 100
 
         num_female = db.session.query(Author)\
             .distinct(Author.id)\
@@ -70,7 +70,7 @@ class Book(Entity):
             .join(cls, Author.books)\
             .filter(cls.finished)\
             .count()
-        pct_female = round(float(num_female) / num_authors, 2)
+        pct_female = round(float(num_female) / num_authors, 2) * 100
 
         return [
             {'key': 'Days recorded',    'value': days_record},

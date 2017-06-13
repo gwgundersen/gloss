@@ -12,12 +12,12 @@
                 {% with labels = paper.labels %}
                     {% include "entity_partials/label_list.html" %}
                 {% endwith %}
-                <a href="{{ paper.endpoint }}">
+                <a href="/{{ paper.endpoint }}">
                     {{ paper.title }}
                 </a>
             </td>
             <td>
-                <a href="{{ paper.first_author.endpoint }}">
+                <a href="/{{ paper.first_author.endpoint }}">
                     {{ paper.first_author.name }}
                 </a>
             </td>
