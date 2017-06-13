@@ -1,12 +1,25 @@
 """Update author names.
 """
 
+import argparse
 from flask_sqlalchemy import SQLAlchemy
+from gloss import models, app
 
 
 db = SQLAlchemy()
 
-from gloss import models, app
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--user',     required=True,  type=str)
+parser.add_argument('--passwd',   required=True,  type=str)
+parser.add_argument('--host',     required=True,  type=str)
+parser.add_argument('--database', required=True,  type=str)
+args = parser.parse_args()
+
+
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://%s:%s@%s:3306/%s" % (
+    args.user, args.passwd, args.host, args.database
+)
 
 
 with app.app_context():
