@@ -68,10 +68,12 @@ def render_add_specific_entity_page(type_):
 @login_required
 def create_entity(type_):
     """Add entity to database."""
+    import pdb; pdb.set_trace()
     model = models.type_to_class[type_]
     args = _process_arguments(**request.form)
     instance = model(**args)
-    instance = _get_or_create_authors(instance)
+    is_book = type_ == 'book'
+    instance = _get_or_create_authors(instance, is_book)
     instance = _get_or_create_journal(instance)
     db.session.add(instance)
     db.session.commit()
@@ -89,22 +91,24 @@ def delete_entity(entity_id):
     return redirect(url_for('index.render_index_page'))
 
 
-def _get_or_create_authors(instance):
+def _get_or_create_authors(instance, is_book):
     """Get or create authors and attach to instance if necesary."""
     author_names = request.form.get('authors')
     if author_names and author_names != '':
         authors = []
-        for a in request.form.get('authors').split(';'):
-            parts = a.split(',')
-            name = parts[0].strip()
-            if len(parts) > 1:
-                is_female = parts[1].strip() == 'female'
-                is_poc = parts[2].strip() == 'poc'
+        for name in request.form.get('authors').split(','):
+            if is_book:
+                is_female   = request.form.get('is_female')
+                is_poc      = request.form.get('is_poc')
+                nationality = request.form.get('nationality')
+                print(is_female, is_poc, nationality)
             else:
-                is_female = None
-                is_poc = None
+                is_female   = None
+                is_poc      = None
+                nationality = None
             author = get_or_create(models.Author, name=name,
-                                   is_female=is_female, is_poc=is_poc)
+                                   is_female=is_female, is_poc=is_poc,
+                                   nationality=nationality)
             authors.append(author)
         instance.authors = authors
     return instance
@@ -113,9 +117,9 @@ def _get_or_create_authors(instance):
 def _get_or_create_journal(instance):
     """Create journal and attach to instance if necessary."""
     if 'journal' in request.form:
-        j = request.form.get('journal')
-        j = j.strip().capitalize()
-        journal = get_or_create(models.Journal, name=j)
+        name = request.form.get('journal')
+        name = name.strip()
+        journal = get_or_create(models.Journal, name=name)
         instance.journal = journal
     return instance
 
@@ -124,10 +128,9 @@ def _process_arguments(**kwargs):
     """Process arguments in preparation to be used to create model."""
     # Remove attributes that will be created as separate objects and added
     # via the ORM.
-    if 'authors' in kwargs:
-        del kwargs['authors']
-    if 'journal' in kwargs:
-        del kwargs['journal']
+    for key in ['authors', 'journal', 'is_female', 'is_poc', 'nationality']:
+        if key in kwargs:
+            del kwargs[key]
     # Convert plain text to keywords.
     for a in kwargs:
         v = kwargs[a]

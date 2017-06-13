@@ -12,7 +12,7 @@
 <div id="entity-add-page" class="page-wrapper">
     <div class="page">
         <h1>Add paper</h1>
-        <form action="entity/create/book" method="post">
+        <form action="/entity/create/book" method="post">
             <div class="form-group">
                 <label>Title</label>
                 <input type="text" name="title"/>
@@ -22,11 +22,11 @@
                 <input type="text" name="authors"/>
             </div>
             <div class="form-group">
-                <label>Author is female (1 | 0)</label>
+                <label>Author is female (0 | 1)</label>
                 <input type="text" name="is_female"/>
             </div>
             <div class="form-group">
-                <label>Author is POC (1 | 0)</label>
+                <label>Author is POC (0 | 1)</label>
                 <input type="text" name="is_poc"/>
             </div>
             <div class="form-group">
@@ -46,7 +46,7 @@
                 <input type="text" name="year"/>
             </div>
             <div class="form-group">
-                <label>Fiction or nonfiction</label>
+                <label>Genre (fiction | nonfiction)</label>
                 <input type="text" name="genre"/>
             </div>
             <div class="form-group">

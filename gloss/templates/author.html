@@ -11,51 +11,75 @@
 
 <div id="author-page" class="page-wrapper">
     <div class="page">
-        <h1>
-            {{ author.name }}
-            {% if author.bio_link %}
-                <span class="author-bio-link">
-                    <a href="{{ author.bio_link }}" target="_blank">bio</a>
-                </span>
+        <div class="author-details">
+            <h1>
+                {{ author.name }}
+                {% if author.bio_link %}
+                    <span class="author-bio-link">
+                        <a href="{{ author.bio_link }}" target="_blank">bio</a>
+                    </span>
+                {% endif %}
+            </h1>
+            <table class="table">
+                {% if author.is_female is not none %}
+                    <tr>
+                        <td>Is female</td>
+                        <td>{{ author.is_female }}</td>
+                    </tr>
+                {% endif %}
+                {% if author.is_poc is not none %}
+                    <tr>
+                        <td>Is POC</td>
+                        <td>{{ author.is_poc }}</td>
+                    </tr>
+                {% endif %}
+                {% if author.nationality is not none %}
+                    <tr>
+                        <td>Nationality</td>
+                        <td>{{ author.nationality }}</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+        <div class="author-works">
+            <h1>Works</h1>
+            <table class="table">
+
+            {% if author.books|length > 0 %}
+                {% for book in author.books %}
+                <tr>
+                    <td>
+                        <a href="/{{ book.endpoint }}">{{ book.title }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
             {% endif %}
-        </h1>
 
-        <table class="table">
+            {% if author.papers|length > 0 %}
+                {% for paper in author.papers %}
+                <tr>
+                    <td>
+                        <a href="/{{ paper.endpoint }}">{{ paper.title }}</a>
+                        {% if paper.link %}
+                            <a class="paper-link" href="{{ paper.link }}">Link</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
 
-        {% if author.books|length > 0 %}
-            {% for book in author.books %}
-            <tr>
-                <td>
-                    <a href="{{ book.endpoint }}">{{ book.title }}</a>
-                </td>
-            </tr>
-            {% endfor %}
-        {% endif %}
+            {% if author.talks|length > 0 %}
+                {% for talk in author.talks %}
+                <tr>
+                    <td>
+                        <a href="/{{ talk.endpoint }}">{{ talk.title }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
 
-        {% if author.papers|length > 0 %}
-            {% for paper in author.papers %}
-            <tr>
-                <td>
-                    <a href="{{ paper.endpoint }}">{{ paper.title }}</a>
-                    {% if paper.link %}
-                        <a class="paper-link" href="{{ paper.link }}">Link</a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        {% endif %}
-
-        {% if author.talks|length > 0 %}
-            {% for talk in author.talks %}
-            <tr>
-                <td>
-                    <a href="{{ talk.endpoint }}">{{ talk.title }}</a>
-                </td>
-            </tr>
-            {% endfor %}
-        {% endif %}
-
-        </table>
+            </table>
+        </div>
     </div>
 </div>
 

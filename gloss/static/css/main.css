@@ -531,6 +531,9 @@ ol ol {
   font-weight: bold;
   margin-left: 10px;
 }
+#author-page .author-works {
+  margin-top: 20px;
+}
 #labels-page #create-labels-form {
   border-top: 1px solid #eee;
   margin-top: 10px;
