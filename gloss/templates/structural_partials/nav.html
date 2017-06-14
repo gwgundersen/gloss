@@ -15,7 +15,7 @@
                 <button class="btn control" id="archive-action">Archive</button>
                 <select class="control" id="label">
                     {% for label in labels %}
-                        <option value="{{ label.id }}">{{ label.name }}</option>
+                        <option value="{{ label.id }}">{{ label.description }}</option>
                     {% endfor %}
                 </select>
                 <button class="btn control" id="label-action">Label</button>

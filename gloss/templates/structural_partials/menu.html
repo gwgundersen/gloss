@@ -26,7 +26,10 @@
                 <ul class="list-unstyled hidden" id="menu-label-list">
                     {% for label in labels %}
                         <li class="label">
-                            <a href="/?q=label.{{ label.name }}">{{ label.name }}</a>
+                            <a href="/?q=label.{{ label.name }}"
+                               data-tooltip="{{ label.description }}">
+                                {{ label.name }}
+                            </a>
                         </li>
                     {% endfor %}
                 </ul>
