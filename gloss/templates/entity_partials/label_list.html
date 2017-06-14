@@ -2,7 +2,10 @@
     <ul class="list-unstyled list-labels">
         {% for label in labels %}
             <li class="label">
-                <a href="?q=label.{{ label.name }}">{{ label.name }}</a>
+                <a href="?q=label.{{ label.name }}"
+                   data-tooltip="{{ label.description }}">
+                    {{ label.name }}
+                </a>
 
                 {# When viewing an entity, you cannot directly delete a label
                  # Because we do not know to which gloss(es) the label applies.
