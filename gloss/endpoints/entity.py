@@ -95,7 +95,11 @@ def _get_or_create_authors(instance, is_book):
     author_names = request.form.get('authors')
     if author_names and author_names != '':
         authors = []
-        for name in request.form.get('authors').split(','):
+        if ',' in author_names:
+            parts = author_names.split(',')
+        else:
+            parts = author_names.split(';')
+        for name in parts:
             author = get_or_create(models.Author, name=name)
             if is_book:
                 author.is_female   = request.form.get('is_female')
