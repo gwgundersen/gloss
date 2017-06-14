@@ -26,6 +26,7 @@ with app.app_context():
     glosses = db.session.query(models.Gloss).all()
     for gloss in glosses:
         text = gloss.text_
-        print(text)
+	text = text.replace('<img src="image', '<img src="/image')
+	gloss.text_ = text
         db.session.merge(gloss)
     db.session.commit()
