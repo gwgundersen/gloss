@@ -11,7 +11,7 @@
                  # Because we do not know to which gloss(es) the label applies.
                  #}
                 {% if gloss_id %}
-                    <form action="label/delete" method="post">
+                    <form action="/label/delete" method="post">
                         <input type="hidden" name="label_id" value="{{ label.id }}"/>
                         <input type="hidden" name="gloss_id" value="{{ gloss_id }}"/>
                         <input type="submit" value="x"/>
