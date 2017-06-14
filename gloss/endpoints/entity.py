@@ -122,7 +122,7 @@ def _process_arguments(**kwargs):
     """Process arguments in preparation to be used to create model."""
     # Remove attributes that will be created as separate objects and added
     # via the ORM.
-    for key in ['authors', 'journal', 'is_female', 'is_poc', 'nationality']:
+    for key in ['referer', 'authors', 'journal', 'is_female', 'is_poc', 'nationality']:
         if key in kwargs:
             del kwargs[key]
     # Convert plain text to keywords.
