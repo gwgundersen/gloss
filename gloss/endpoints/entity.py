@@ -68,7 +68,6 @@ def render_add_specific_entity_page(type_):
 @login_required
 def create_entity(type_):
     """Add entity to database."""
-    import pdb; pdb.set_trace()
     model = models.type_to_class[type_]
     args = _process_arguments(**request.form)
     instance = model(**args)
@@ -122,7 +121,7 @@ def _process_arguments(**kwargs):
     """Process arguments in preparation to be used to create model."""
     # Remove attributes that will be created as separate objects and added
     # via the ORM.
-    for key in ['referer', 'authors', 'journal', 'is_female', 'is_poc', 'nationality']:
+    for key in ['authors', 'journal', 'is_female', 'is_poc', 'nationality']:
         if key in kwargs:
             del kwargs[key]
     # Convert plain text to keywords.
