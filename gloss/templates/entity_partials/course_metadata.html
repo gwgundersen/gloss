@@ -1,0 +1,26 @@
+<tr>
+    <td>Name</td>
+    <td>{{ entity.title }}</td>
+</tr>
+<tr>
+    <td>Lecturers</td>
+    <td>
+    {% with authors = entity.authors %}
+        {% include 'entity_partials/author_list.html' %}
+    {% endwith %}
+    </td>
+</tr>
+<tr>
+    <td>Year</td>
+    <td>{{ entity.year }}</td>
+</tr>
+{% if entity.url %}
+<tr>
+    <td>URL</td>
+    <td>
+        <a href='{{ entity.url }}' target='_blank'>
+            {{ entity.url }}
+        </a>
+    </td>
+</tr>
+{% endif %}

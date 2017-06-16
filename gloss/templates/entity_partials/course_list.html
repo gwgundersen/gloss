@@ -1,0 +1,19 @@
+<table class="table display dtable">
+    <thead>
+        <tr>
+            <th>Course</th>
+        </tr>
+    </thead>
+    {% for course in entities %}
+    <tr>
+        <td>
+            {% with labels = course.labels %}
+                {% include "entity_partials/label_list.html" %}
+            {% endwith %}
+            <a href="/{{ course.endpoint }}">
+                {{ course.title }}
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

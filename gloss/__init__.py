@@ -29,6 +29,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://%s:%s@%s:3306/%s" % (
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 1800  # Recycle every 30 min.
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+app.config["SQLALCHEMY_ECHO"] = True
+
 db.init_app(app)
 with app.app_context():
     db.create_all()

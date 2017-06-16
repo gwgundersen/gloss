@@ -12,10 +12,21 @@ author_blueprint = Blueprint('author',
                              url_prefix='%s/author' % config.get('url', 'base'))
 
 
+
+@author_blueprint.route('/', methods=['GET'])
+@login_required
+def render_all_authors():
+    """Render all authors."""
+    authors = db.session.query(models.Author)\
+        .order_by(models.Author.name)\
+        .all()
+    return render_template('authors.html', authors=authors)
+
+
 @author_blueprint.route('/<int:author_id>', methods=['GET'])
 @login_required
-def render_all_authors(author_id):
-    """Render all authors."""
+def render_author(author_id):
+    """Render author by ID."""
     author = db.session.query(models.Author)\
         .filter_by(id=author_id)\
         .one()

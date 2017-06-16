@@ -25,9 +25,12 @@
             </table>
         {% endif %}
 
-        <div id="glossary">
-            {% include 'index_table.html' %}
-        </div>
+        <!-- Don't show entity over and over on index_table if only one entity. -->
+        {% with entity = entity %}
+            <div id="glossary">
+                {% include 'index_table.html' %}
+            </div>
+        {% endwith %}
     </div>
 </div>
 

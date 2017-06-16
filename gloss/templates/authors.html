@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="all-authors-page" class="page-wrapper">
+    <tr class="page">
+        <h1>Authors</h1>
+        <table class="table">
+            {% for author in authors %}
+                {% if loop.index0 % 3 == 0 %}
+                    <tr>
+                {% endif %}
+                    <td>
+                        <a href="/author/{{ author.id }}">
+                            {{ author.name }}
+                        </a>
+                    </td>
+                {% if loop.index0 % 3 == 2 or loop.last %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="entity-add-page" class="page-wrapper">
+    <div class="page">
+        <h1>Add course</h1>
+        <form action="/entity/create/course" method="post">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title"/>
+            </div>
+            <div class="form-group">
+                <label>Lecturer(s)</label>
+                <input type="text" name="authors"/>
+            </div>
+            <div class="form-group">
+                <label>Year</label>
+                <input type="text" name="year"/>
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input type="text" name="url"/>
+            </div>
+            <button type="submit" class="btn">Add course</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,16 +1,18 @@
 <table class="table">
     {% for gloss in glosses %}
         <tr>
-            <td>
-                <input type="checkbox" name="{{ gloss.id }}"/>
-            </td>
-            <td class="entity-title">
-                <span data-tooltip="{{ gloss.entity.title }}">
-                    <a href="/{{ gloss.entity.endpoint }}">
-                        {{ gloss.entity.title }}
-                    </a>
-                </span>
-            </td>
+            {% if not entity %}
+                <td>
+                    <input type="checkbox" name="{{ gloss.id }}"/>
+                </td>
+                <td class="entity-title">
+                    <span data-tooltip="{{ gloss.entity.title }}">
+                        <a href="/{{ gloss.entity.endpoint }}">
+                            {{ gloss.entity.title }}
+                        </a>
+                    </span>
+                </td>
+            {% endif %}
             <td class="ellipsis">
                 {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
                     {% include 'entity_partials/label_list.html' %}

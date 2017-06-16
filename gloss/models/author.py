@@ -14,6 +14,8 @@ class Author(db.Model):
 
     books    = db.relationship('Book', backref='authors',
                                secondary='author_to_book')
+    courses  = db.relationship('Course', backref='authors',
+                               secondary='author_to_course')
     papers   = db.relationship('Paper', backref='authors',
                                secondary='author_to_paper')
     talks    = db.relationship('Talk', backref='authors',

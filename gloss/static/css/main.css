@@ -534,6 +534,16 @@ ol ol {
 #author-page .author-works {
   margin-top: 20px;
 }
+#author-page .table-subheader {
+  font-size: 16px;
+  font-weight: bold;
+}
+#author-page .table-subheader td {
+  padding-left: 0;
+}
+#all-authors-page {
+  margin-bottom: 50px;
+}
 #labels-page #create-labels-form {
   border-top: 1px solid #eee;
   margin-top: 10px;

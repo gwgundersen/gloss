@@ -42,10 +42,12 @@
             </table>
         </div>
         <div class="author-works">
-            <h1>Works</h1>
             <table class="table">
 
             {% if author.books|length > 0 %}
+                <tr class='table-subheader'>
+                    <td rowspan='1'>Books</td>
+                </tr>
                 {% for book in author.books %}
                 <tr>
                     <td>
@@ -55,7 +57,23 @@
                 {% endfor %}
             {% endif %}
 
+            {% if author.courses|length > 0 %}
+                <tr class='table-subheader'>
+                    <td rowspan='1'>Courses</td>
+                </tr>
+                {% for course in author.courses %}
+                <tr>
+                    <td>
+                        <a href="/{{ course.endpoint }}">{{ course.title }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+
             {% if author.papers|length > 0 %}
+                <tr class='table-subheader'>
+                    <td rowspan='1'>Papers</td>
+                </tr>
                 {% for paper in author.papers %}
                 <tr>
                     <td>
@@ -69,6 +87,9 @@
             {% endif %}
 
             {% if author.talks|length > 0 %}
+                <tr class='table-subheader'>
+                    <td rowspan='1'>Talks</td>
+                </tr>
                 {% for talk in author.talks %}
                 <tr>
                     <td>
@@ -79,6 +100,9 @@
             {% endif %}
 
             {% if author.websites|length > 0 %}
+                <tr class='table-subheader'>
+                    <td rowspan='1'>Websites</td>
+                </tr>
                 {% for website in author.websites %}
                 <tr>
                     <td>
