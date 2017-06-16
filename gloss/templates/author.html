@@ -78,6 +78,16 @@
                 {% endfor %}
             {% endif %}
 
+            {% if author.websites|length > 0 %}
+                {% for website in author.websites %}
+                <tr>
+                    <td>
+                        <a href="/{{ website.endpoint }}">{{ website.title }}</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+
             </table>
         </div>
     </div>

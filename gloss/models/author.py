@@ -12,12 +12,14 @@ class Author(db.Model):
     is_poc      = db.Column(db.Boolean)
     nationality = db.Column(db.String(255))
 
-    books  = db.relationship('Book', backref='authors',
-                             secondary='author_to_book')
-    papers = db.relationship('Paper', backref='authors',
-                             secondary='author_to_paper')
-    talks  = db.relationship('Talk', backref='authors',
-                             secondary='author_to_talk')
+    books    = db.relationship('Book', backref='authors',
+                               secondary='author_to_book')
+    papers   = db.relationship('Paper', backref='authors',
+                               secondary='author_to_paper')
+    talks    = db.relationship('Talk', backref='authors',
+                               secondary='author_to_talk')
+    websites = db.relationship('Website', backref='authors',
+                               secondary='author_to_website')
 
     @property
     def endpoint(self):

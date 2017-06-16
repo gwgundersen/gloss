@@ -10,7 +10,28 @@
 {% include "structural_partials/menu.html" %}
 
 <div id="entity-add-page" class="page-wrapper">
-    <p>todo.</p>
+    <div class="page">
+        <h1>Add website</h1>
+        <form action="/entity/create/website" method="post">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title"/>
+            </div>
+            <div class="form-group">
+                <label>Author(s)</label>
+                <input type="text" name="authors"/>
+            </div>
+            <div class="form-group">
+                <label>Date accessed (YYYY-MM-DD)</label>
+                <input type="text" name="timestamp"/>
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input type="text" name="url"/>
+            </div>
+            <button type="submit" class="btn">Add website</button>
+        </form>
+    </div>
 </div>
 
 </body>

@@ -21,6 +21,7 @@ from user import User
 from author_to_book import author_to_book
 from author_to_paper import author_to_paper
 from author_to_talk import author_to_talk
+from author_to_website import author_to_website
 
 from label_to_gloss import label_to_gloss
 

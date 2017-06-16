@@ -2,6 +2,14 @@
     <td>Name</td>
     <td>{{ entity.title }}</td>
 </tr>
+<tr>
+    <td>Authors</td>
+    <td>
+    {% with authors = entity.authors %}
+        {% include 'entity_partials/author_list.html' %}
+    {% endwith %}
+    </td>
+</tr>
 {% if entity.url %}
 <tr>
     <td>URL</td>
