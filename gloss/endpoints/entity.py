@@ -42,18 +42,6 @@ def render_entity_by_just_id(entity_id):
     return render_template('index.html', glosses=entity.glosses, entity=entity)
 
 
-@entity_blueprint.route('/<string:type_>/<int:entity_id>', methods=['GET'])
-@login_required
-def render_entity_by_id(type_, entity_id):
-    """Render entity by ID."""
-    Class_ = models.type_to_class[type_]
-    entity = db.session.query(Class_).get(entity_id)
-    if not entity:
-        return redirect('404.html')
-    return render_template('entity/entity.html',
-                           entity=entity)
-
-
 @entity_blueprint.route('/create', defaults={'type_': None}, methods=['GET'])
 @entity_blueprint.route('/<string:type_>/create', methods=['GET'])
 @login_required
