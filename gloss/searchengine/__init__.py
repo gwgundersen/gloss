@@ -1,15 +1,12 @@
 """Search engine for glosses.
 """
 
-from sqlalchemy import text
-
 from gloss import db, models
 
 
 def find_glosses_by_keyword(keyword):
     """Return glosses based on keyword matches."""
     keyword = _preprocess_keyword(keyword)
-    print(keyword)
     ids = []
     ids += _find_gloss_ids_by_text(keyword)
     ids += _find_gloss_ids_by_author(keyword)
@@ -26,10 +23,10 @@ def find_glosses_by_keyword(keyword):
 def _find_gloss_ids_by_text(keyword):
     """Return gloss IDs based on keyword matches in text.
     """
-    sql = 'SELECT id FROM gloss WHERE MATCH (text_) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    return [int(g[0]) for g in t]
+    ids = db.session.query(models.Gloss.id)\
+        .filter(models.Gloss.text_.match(keyword))\
+        .all()
+    return [t[0] for t in ids]
 
 
 def _find_gloss_ids_by_titles(keyword):
@@ -37,35 +34,27 @@ def _find_gloss_ids_by_titles(keyword):
     """
     ids = []
 
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN book ON book.entity_fk = gloss.entity_fk '\
-          'WHERE MATCH (book.title) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Book)\
+        .filter(models.Book.title.match(keyword))\
+        .all()
 
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN paper ON paper.entity_fk = gloss.entity_fk '\
-          'WHERE MATCH (paper.title) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Paper)\
+        .filter(models.Paper.title.match(keyword))\
+        .all()
 
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN talk ON talk.entity_fk = gloss.entity_fk '\
-          'WHERE MATCH (talk.title) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Talk)\
+        .filter(models.Talk.title.match(keyword))\
+        .all()
 
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN website ON website.entity_fk = gloss.entity_fk '\
-          'WHERE MATCH (website.title) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Website)\
+        .filter(models.Website.title.match(keyword))\
+        .all()
 
-    return ids
+    return [t[0] for t in ids]
 
 
 def _find_gloss_ids_by_author(keyword):
@@ -74,47 +63,42 @@ def _find_gloss_ids_by_author(keyword):
     ids = []
 
     # Find authors of books.
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN author_to_book ON author_to_book.book_fk = gloss.entity_fk '\
-          '  JOIN author ON author.id = author_to_book.author_fk '\
-          'WHERE MATCH (author.name) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Book)\
+        .join(models.author_to_book)\
+        .join(models.Author)\
+        .filter(models.Author.name.match(keyword))\
+        .all()
 
     # Find authors of papers.
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN author_to_paper ON author_to_paper.paper_fk = gloss.entity_fk '\
-          '  JOIN author ON author.id = author_to_paper.author_fk '\
-          'WHERE MATCH (author.name) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Paper)\
+        .join(models.author_to_paper)\
+        .join(models.Author)\
+        .filter(models.Author.name.match(keyword))\
+        .all()
 
     # Find authors of talks.
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN author_to_talk ON author_to_talk.talk_fk = gloss.entity_fk '\
-          '  JOIN author ON author.id = author_to_talk.author_fk '\
-          'WHERE MATCH (author.name) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Talk)\
+        .join(models.author_to_talk)\
+        .join(models.Author)\
+        .filter(models.Author.name.match(keyword))\
+        .all()
 
     # Find authors of websites.
-    sql = 'SELECT gloss.id FROM gloss '\
-          '  JOIN author_to_website ON author_to_website.website_fk = gloss.entity_fk '\
-          '  JOIN author ON author.id = author_to_website.author_fk '\
-          'WHERE MATCH (author.name) AGAINST (:keyword IN BOOLEAN MODE)'
-    conn = db.engine.connect()
-    t = conn.execute(text(sql), keyword=keyword)
-    ids += [int(g[0]) for g in t]
-    return ids
+    ids += db.session.query(models.Gloss.id)\
+        .join(models.Website)\
+        .join(models.author_to_website)\
+        .join(models.Author)\
+        .filter(models.Author.name.match(keyword))\
+        .all()
+
+    return [t[0] for t in ids]
 
 
 def _preprocess_keyword(keyword):
     """Prepare keyword for IN BOOLEAN MODE.
     """
-    # parts = ['+' + x for x in keyword.split()]
-    # return ' '.join(parts)
-    return keyword
+    return '"' + keyword + '"'
 
