@@ -11,6 +11,7 @@ public_blueprint = Blueprint('public',
                              url_prefix=url_prefix)
 
 
+@public_blueprint.route('/<int:gloss_id>/', defaults={'title': None}, methods=['GET'])
 @public_blueprint.route('/<int:gloss_id>/<string:title>', methods=['GET'])
 def render_public_gloss(gloss_id, title):
     """Render gloss by ID. We don't care about the title. It is just sugar,
