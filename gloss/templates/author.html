@@ -24,13 +24,13 @@
                 {% if author.is_female is not none %}
                     <tr>
                         <td>Is female</td>
-                        <td>{{ author.is_female }}</td>
+                        <td>{{ 'Yes' if author.is_female else 'No' }}</td>
                     </tr>
                 {% endif %}
                 {% if author.is_poc is not none %}
                     <tr>
                         <td>Is POC</td>
-                        <td>{{ author.is_poc }}</td>
+                        <td>{{ 'Yes' if author.is_poc else 'No' }}</td>
                     </tr>
                 {% endif %}
                 {% if author.nationality is not none %}
