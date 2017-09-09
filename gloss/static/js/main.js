@@ -1,34 +1,59 @@
+window.onload = function() {
+    $('#all-images-page table').fadeIn(2000);
+}
+
 $(function() {
 
     setup_search();
     setup_nav_controls();
     watch_for_edits();
     setup_tooltips();
-    setup_add_image_button();
+    setup_add_image_buttons();
     toggle_label_visibility();
 
-    function setup_add_image_button() {
-        $('#add-image-btn').click(function(evt) {
+    function setup_add_image_buttons() {
+        $('.image-uploader button').click(function(evt) {
             evt.preventDefault();
-            $('#image-upload-btn').trigger('click');
-            $(':file').change(function(evt) {
-                var file = this.files[0],
-                    name = file.name,
+            var $uploader = $(evt.target).parent(),
+                $input = $uploader.find('input.image-upload-btn'),
+                action = $uploader.attr('data-action'),
+                id = $uploader.attr('data-id'),
+                isImagesPage = window.location.pathname == '/image/',
+                url,
+                userCancelled;
+
+            if (action === 'replace') {
+                url = '/image/replace/' + id
+            } else {
+                url = '/image/add'
+            }
+
+            $(':file').unbind('change');
+            $input.trigger('click');
+
+            $(':file').change(function () {
+                var file = $input[0].files[0],
                     formData;
                 formData = new FormData();
-                formData.append('file', $('#image-uploader input[type="file"]')[0].files[0]);
+                formData.append('file', file);
                 $.ajax({
-                    url: '/image/upload',
+                    url: url,
                     type: 'POST',
                     data: formData,
                     cache: false,
                     processData: false,
                     contentType: false,
-                    success: function(data) {
+                    success: function (data) {
                         console.log('Success:');
-                        add_uploaded_image_tag(data);
+                        if (action === 'add' && !isImagesPage) {
+                            // Otherwise, the action is `replace` and the image
+                            // should just be replaced on the back end.
+                            add_uploaded_image_tag(data);
+                        } else {
+                            window.location.reload();
+                        }
                     },
-                    error: function(data) {
+                    error: function (data) {
                         console.log('Error:');
                         console.log(data);
                     }

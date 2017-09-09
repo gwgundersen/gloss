@@ -18,7 +18,7 @@ from gloss import models
 
 app = Flask(__name__,
             static_url_path="%s/static" % config.get("url", "base"),
-            static_folder="static")
+            static_folder=config.get('folder', 'static'))
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://%s:%s@%s:3306/%s" % (
     config.get("db", "user"),

@@ -548,6 +548,47 @@ ol ol {
 #all-authors-page {
   margin-bottom: 50px;
 }
+#all-images-page #image-uploader-1 {
+  padding-bottom: 10px;
+}
+#all-images-page table {
+  display: none;
+  border: 1px solid #ddd;
+}
+#all-images-page table td {
+  border-top: none;
+  padding: 0;
+}
+#all-images-page .image-container {
+  border: 1px solid #ddd;
+  height: 300px;
+  padding: 10px;
+  position: relative;
+}
+#all-images-page .image-container .image-id {
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+#all-images-page .image-container .image-wrapper {
+  overflow: hidden;
+  height: 100%;
+}
+#all-images-page .image-container .image-wrapper img {
+  height: auto;
+  width: 100%;
+}
+#all-images-page .image-container .controls {
+  position: absolute;
+  bottom: 2px;
+  left: 14px;
+}
+#all-images-page .image-container .controls .image-uploader,
+#all-images-page .image-container .controls .image-delete-btn {
+  float: left;
+}
+#all-images-page .image-container .controls .image-delete-btn {
+  padding-left: 5px;
+}
 #labels-page #create-labels-form {
   border-top: 1px solid #eee;
   margin-top: 10px;

@@ -1,7 +1,17 @@
-<div>
-    <button id="add-image-btn" class="btn">Add image</button>
-</div>
-<div id="image-uploader">
-    <input type="file" id="image-upload-btn" style="display: none;"/>
-    <ul id="uploaded-image-names" class="list-unstyled"></ul>
+{% set id = image_id if image_id else '1' %}
+{% set button_text = 'Replace' if replace else 'Add image' %}
+{% set data_action = 'replace' if replace else 'add' %}
+
+<div id="image-uploader-{{ id }}"
+     class="image-uploader"
+     data-action="{{ data_action }}"
+     data-id="{{ id }}"
+>
+    <button class="add-image-btn btn">{{ button_text }}</button>
+    <input type="file"
+           class="image-upload-btn"
+           style="display: none;"/>
+    {% if not replace %}
+        <ul id="uploaded-image-names" class="list-unstyled"></ul>
+    {% endif %}
 </div>

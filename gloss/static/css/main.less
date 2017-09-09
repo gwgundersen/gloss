@@ -674,6 +674,59 @@ ol {
   margin-bottom: 50px;
 }
 
+#all-images-page {
+
+  #image-uploader-1 {
+    padding-bottom: 10px;
+  }
+
+  table {
+    display: none;
+    border: 1px solid #ddd;
+
+    td {
+      border-top: none;
+      padding: 0;
+    }
+  }
+
+  .image-container {
+    border: 1px solid #ddd;
+    height: 300px;
+    padding: 10px;
+    position: relative;
+
+    .image-id {
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
+
+    .image-wrapper {
+      overflow: hidden;
+      height: 100%;
+
+      img {
+        height: auto;
+        width: 100%;
+      }
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 2px;
+      left: 14px;
+
+      .image-uploader,
+      .image-delete-btn {
+        float: left;
+      }
+      .image-delete-btn {
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
 #labels-page {
   #create-labels-form {
     border-top: 1px solid #eee;

@@ -17,6 +17,7 @@ from gloss.models.entity.website import Website
 from author import Author
 from journal import Journal
 from user import User
+from image import Image
 
 # Joins
 from author_to_book import author_to_book

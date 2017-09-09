@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC="">
+<html>
+
+{% include "structural_partials/head.html" %}
+
+<body>
+
+{% include "structural_partials/nav.html" %}
+
+{% include "structural_partials/menu.html" %}
+
+<div id="all-images-page" class="page-wrapper">
+    <tr class="page">
+        <h1>Images</h1>
+        <div>
+            {% with image_id=None, replace=False %}
+                {% include "components/image_uploader.html" %}
+            {% endwith %}
+        </div>
+        <table class="table">
+            {% for image in images %}
+                {% if loop.index0 % 3 == 0 %}
+                    <tr>
+                {% endif %}
+                    <td>
+                        <div class="image-container">
+                            <div class="image-wrapper">
+                                <img src="{{ image.url }}"/>
+                            </div>
+                            <div class="controls">
+                                <div class="image-id">
+                                    {{ image.fname }}
+                                </div>
+                                {% with image_id=image.id_, replace=True %}
+                                    {% include "components/image_uploader.html" %}
+                                {% endwith %}
+                                <form class="image-delete-btn" action="/image/delete/{{ image.id_ }}" method="post">
+                                    <input type='submit'
+                                           onclick='return confirm("Are you sure?")'
+                                           class='btn'
+                                           value='Delete'/>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                {% if loop.index0 % 3 == 2 or loop.last %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
