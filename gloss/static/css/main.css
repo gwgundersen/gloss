@@ -435,15 +435,6 @@ ol ol {
   width: 100%;
   margin-bottom: 50px;
 }
-#gloss-add-page #controls #add-image-btn {
-  margin-bottom: 10px;
-}
-#gloss-add-page #controls #uploaded-image-names li {
-  font-family: monospace;
-  background-color: #eee;
-  padding: 10px;
-  margin: 10px 0;
-}
 #gloss-add-page select {
   width: 200px;
 }
@@ -626,4 +617,14 @@ ol ol {
 }
 .hidden {
   display: none;
+}
+.image-uploader button {
+  margin-bottom: 10px;
+}
+.image-uploader #uploaded-image-tag {
+  display: none;
+  font-family: monospace;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
 }

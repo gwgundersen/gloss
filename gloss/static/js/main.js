@@ -29,6 +29,7 @@ $(function() {
             }
 
             $(':file').unbind('change');
+            $('#uploaded-image-tag').empty();
             $input.trigger('click');
 
             $(':file').change(function () {
@@ -63,9 +64,7 @@ $(function() {
     }
 
     function add_uploaded_image_tag(imgTag) {
-        $('#uploaded-image-names').append(
-            '<li>' + escape_html(imgTag) + '</li>'
-        );
+        $('#uploaded-image-tag').show().append(escape_html(imgTag));
     }
 
     function setup_nav_controls() {
