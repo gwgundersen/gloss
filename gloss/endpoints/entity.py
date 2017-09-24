@@ -88,6 +88,7 @@ def _get_or_create_authors(instance, is_book):
         else:
             parts = author_names.split(';')
         for name in parts:
+            name = name.strip()
             author = get_or_create(models.Author, name=name)
             if is_book:
                 author.is_female   = request.form.get('is_female')
