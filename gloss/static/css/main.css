@@ -32,6 +32,7 @@ textarea {
 }
 table {
   font-size: 13px;
+  width: 100%;
 }
 .clear {
   clear: both;
