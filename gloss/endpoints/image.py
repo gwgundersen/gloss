@@ -17,6 +17,15 @@ def render_image_page():
     """
     """
     images = models.Image.get_all_images()
+    images = images[:9]
+    return render_template('images.html', images=images)
+
+
+@image_blueprint.route('/all', methods=['GET'])
+def render_all_image_page():
+    """
+    """
+    images = models.Image.get_all_images()
     return render_template('images.html', images=images)
 
 
