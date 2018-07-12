@@ -396,14 +396,16 @@ ol ol {
 #gloss-page {
   /* Markdown itself is handled in Markdown.less. */
   margin: 50px auto;
-  width: 800px;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 800px;
 }
 #gloss-page .gloss {
   margin: 20px 0;
   padding: 10px 0;
   border-bottom: 2px solid #eee;
   border-top: 2px solid #eee;
-  width: 800px;
+  max-width: 800px;
 }
 #gloss-page .controls,
 .entity-page .controls {

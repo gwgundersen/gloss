@@ -480,14 +480,16 @@ ol {
 #gloss-page {
   /* Markdown itself is handled in Markdown.less. */
   margin: 50px auto;
-  width: @dim-gloss-width;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: @dim-gloss-width;
 
   .gloss {
     margin: 20px 0;
     padding: 10px 0;
     border-bottom: 2px solid #eee;
     border-top: 2px solid #eee;
-    width: @dim-gloss-width;
+    max-width: @dim-gloss-width;
   }
 }
 
