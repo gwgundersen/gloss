@@ -7,7 +7,7 @@
 
 {% include "structural_partials/nav.html" %}
 
-{% include "structural_partials/menu.html" %}
+{#{% include "structural_partials/menu.html" %}#}
 
 <div id="gloss-edit-page" class="page-wrapper">
     <div class="page">
@@ -31,7 +31,7 @@
         <form action="/gloss/edit/{{ gloss.id }}" method="post">
             <textarea id="edit-field" type="text" name="text_" class="form-control">{{ gloss.text_ }}</textarea>
             <div id="edit-preview" class="markdown-body"></div>
-            <button type="submit" class="btn btn-warning">Edit text</button>
+            <button type="submit" class="btn btn-warning" id="edit-submit-btn">Edit text</button>
         </form>
         <form action="/gloss/delete/{{ gloss.id }}" method="post">
             <input type="submit" class="btn" value="Delete"

@@ -395,6 +395,8 @@ ol ol {
 }
 #gloss-page {
   /* Markdown itself is handled in Markdown.less. */
+  margin: 50px auto;
+  width: 800px;
 }
 #gloss-page .gloss {
   margin: 20px 0;
@@ -423,12 +425,10 @@ ol ol {
 #public-page .gloss-wrapper h1 {
   font-size: 30px;
 }
-#gloss-add-page,
-#gloss-edit-page {
+#gloss-add-page {
   width: 800px;
 }
-#gloss-add-page textarea,
-#gloss-edit-page textarea {
+#gloss-add-page textarea {
   border: 1px solid #ddd;
   font-size: 13px;
   height: 300px;
@@ -445,6 +445,12 @@ ol ol {
   border-top: 1px dotted #c8ccd0;
   border-bottom: 1px dotted #c8ccd0;
 }
+#gloss-edit-page {
+  margin-left: 20px;
+}
+#gloss-edit-page .page {
+  margin: 0;
+}
 #gloss-edit-page #controls {
   margin-bottom: 20px;
 }
@@ -457,11 +463,29 @@ ol ol {
   padding: 10px;
   margin: 10px 0;
 }
+#gloss-edit-page #edit-field,
 #gloss-edit-page #edit-preview {
-  padding: 10px 0;
-  margin-bottom: 20px;
-  border-top: 1px dotted #c8ccd0;
-  border-bottom: 1px dotted #c8ccd0;
+  width: 49%;
+}
+#gloss-edit-page #edit-field {
+  height: 502px;
+  float: left;
+}
+#gloss-edit-page #edit-preview {
+  height: 500px;
+  float: right;
+}
+#gloss-edit-page #edit-field {
+  border: 1px solid #c8ccd0;
+  font-size: 13px;
+}
+#gloss-edit-page #edit-submit-btn {
+  margin-top: 30px;
+}
+#gloss-edit-page #edit-preview {
+  margin-left: 5px;
+  border: 1px solid #c8ccd0;
+  overflow-y: scroll;
 }
 #gloss-add-page textarea {
   margin-top: 10px;

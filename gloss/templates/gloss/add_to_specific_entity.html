@@ -15,13 +15,6 @@
         <p>{{ entity.title }}</p>
         <form action="/gloss/create" method="post">
             <input type="hidden" name="entity_id" class="form-group" value="{{ entity.id }}"/>
-            <select name="type_">
-                <option value="">(Select type)</option>
-                <option value="question">Question</option>
-                <option value="summary">Summary</option>
-                <option value="thought">Thought</option>
-                <option value="todo">Todo</option>
-            </select>
             <div class="form-group">
                 <textarea type="text" name="text_" class="form-control"></textarea>
             </div>

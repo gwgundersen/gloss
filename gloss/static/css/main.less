@@ -479,6 +479,9 @@ ol {
 
 #gloss-page {
   /* Markdown itself is handled in Markdown.less. */
+  margin: 50px auto;
+  width: @dim-gloss-width;
+
   .gloss {
     margin: 20px 0;
     padding: 10px 0;
@@ -513,8 +516,7 @@ ol {
   }
 }
 
-#gloss-add-page,
-#gloss-edit-page {
+#gloss-add-page {
   width: @dim-gloss-width;
 
   textarea {
@@ -540,6 +542,13 @@ ol {
 }
 
 #gloss-edit-page {
+
+  .page {
+    margin: 0;
+  }
+
+  margin-left: 20px;
+
   #controls {
     margin-bottom: 20px;
     #add-image-btn {
@@ -554,11 +563,29 @@ ol {
       }
     }
   }
+  #edit-field,
   #edit-preview {
-    padding: 10px 0;
-    margin-bottom: 20px;
-    border-top: 1px dotted #c8ccd0;
-    border-bottom: 1px dotted #c8ccd0;
+    width: 49%;
+  }
+  #edit-field {
+    height: 502px;
+    float: left;
+  }
+  #edit-preview {
+    height: 500px;
+    float: right;
+  }
+  #edit-field {
+    border: 1px solid #c8ccd0;
+    font-size: @font-size-base;
+  }
+  #edit-submit-btn {
+    margin-top: 30px;
+  }
+  #edit-preview {
+    margin-left: 5px;
+    border: 1px solid #c8ccd0;
+    overflow-y: scroll;
   }
 }
 
