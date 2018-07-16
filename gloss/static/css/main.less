@@ -387,9 +387,6 @@ ol {
       margin-top: 0;
     }
   }
-  .page {
-    margin-right: @dim-default-margin;
-  }
 }
 
 .list-unstyled {
@@ -409,6 +406,10 @@ ol {
 #index-page {
   margin: 0;
   padding: 0;
+
+  .page {
+    margin-right: @dim-default-margin;
+  }
 
   .entity-type-title {
     border-left: 1px solid #eee;
@@ -519,7 +520,7 @@ ol {
 }
 
 #gloss-add-page {
-  width: @dim-gloss-width;
+  max-width: @dim-gloss-width;
 
   textarea {
     border: 1px solid #ddd;

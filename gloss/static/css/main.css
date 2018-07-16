@@ -327,9 +327,6 @@ ol ol {
 .page-wrapper h2:first-child {
   margin-top: 0;
 }
-.page-wrapper .page {
-  margin-right: 20px;
-}
 .list-unstyled {
   list-style: none;
   margin: 0;
@@ -344,6 +341,9 @@ ol ol {
 #index-page {
   margin: 0;
   padding: 0;
+}
+#index-page .page {
+  margin-right: 20px;
 }
 #index-page .entity-type-title {
   border-left: 1px solid #eee;
@@ -428,7 +428,7 @@ ol ol {
   font-size: 30px;
 }
 #gloss-add-page {
-  width: 800px;
+  max-width: 800px;
 }
 #gloss-add-page textarea {
   border: 1px solid #ddd;
