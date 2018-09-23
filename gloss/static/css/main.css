@@ -465,6 +465,22 @@ ol ol {
   padding: 10px;
   margin: 10px 0;
 }
+#gloss-edit-page #latex-shortcuts {
+  margin-bottom: 20px;
+}
+#gloss-edit-page #latex-shortcuts ul {
+  padding-left: 0;
+  font-family: monospace;
+}
+#gloss-edit-page #latex-shortcuts ul li {
+  background-color: #eee;
+  list-style: none;
+  float: left;
+  margin-right: 20px;
+}
+#gloss-edit-page #latex-shortcuts #detexify {
+  margin-bottom: 10px;
+}
 #gloss-edit-page #edit-field,
 #gloss-edit-page #edit-preview {
   width: 49%;

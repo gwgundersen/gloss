@@ -28,6 +28,20 @@
                 {% include 'entity_partials/label_list.html' %}
             {% endwith %}
         </div>
+        <div id="latex-shortcuts" class="tex2jax_ignore">
+            <div id="detexify">
+                <a href="http://detexify.kirelabs.org/classify.html" target="_blank">Detexify</a>
+            </div>
+            <ul>
+                <li>
+                    \begin{align}\end{align}
+                </li>
+                <li>
+                    \begin{bmatrix}\end{bmatrix}
+                </li>
+            </ul>
+            <div class="clear"></div>
+        </div>
         <form action="/gloss/edit/{{ gloss.id }}" method="post">
             <textarea id="edit-field" type="text" name="text_" class="form-control">{{ gloss.text_ }}</textarea>
             <div id="edit-preview" class="markdown-body"></div>
