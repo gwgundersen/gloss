@@ -1,7 +1,7 @@
 """Render individual entity-related pages."""
 
 from flask import Blueprint, request, render_template, redirect, url_for
-from flask.ext.login import login_required
+from flask_login import login_required
 
 from gloss import db, models
 from gloss.config import config

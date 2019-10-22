@@ -2,8 +2,8 @@
 
 import os
 from flask import Flask, session as flask_session, render_template
-from flask.ext.login import LoginManager
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
 
 from gloss.config import config
 

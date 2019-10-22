@@ -3,7 +3,7 @@
 from datetime import datetime
 from flask import Blueprint, jsonify, redirect, request, render_template, \
     url_for
-from flask.ext.login import login_required
+from flask_login import login_required
 
 from gloss import db, models
 from gloss.config import config

@@ -44,8 +44,9 @@ class User(db.Model):
         """
         Returns True if the candidate password is correct, False otherwise.
         """
-        return hashlib.sha512(candidate + self.salt)\
-                   .hexdigest() == self.hashed_pw
+        candidate = candidate.encode('utf-8')
+        salt = self.salt.encode('utf-8')
+        return hashlib.sha512(candidate + salt).hexdigest() == self.hashed_pw
 
     @staticmethod
     def hash_password(password):

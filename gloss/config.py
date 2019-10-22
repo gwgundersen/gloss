@@ -1,7 +1,7 @@
 """Handles application-wide configurations.
 """
 
-from ConfigParser import ConfigParser
+from configparser import ConfigParser
 
 
 config = ConfigParser()

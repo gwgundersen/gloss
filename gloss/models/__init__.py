@@ -1,6 +1,6 @@
 """Define all primary objects in program."""
 
-from label import Label
+from gloss.models.label import Label
 
 # Glosses
 from gloss.models.gloss_ import Gloss
@@ -14,19 +14,19 @@ from gloss.models.entity.talk import Talk
 from gloss.models.entity.website import Website
 
 # Misc
-from author import Author
-from journal import Journal
-from user import User
-from image import Image
+from gloss.models.author import Author
+from gloss.models.journal import Journal
+from gloss.models.user import User
+from gloss.models.image import Image
 
 # Joins
-from author_to_book import author_to_book
-from author_to_course import author_to_course
-from author_to_paper import author_to_paper
-from author_to_talk import author_to_talk
-from author_to_website import author_to_website
+from gloss.models.author_to_book import author_to_book
+from gloss.models.author_to_course import author_to_course
+from gloss.models.author_to_paper import author_to_paper
+from gloss.models.author_to_talk import author_to_talk
+from gloss.models.author_to_website import author_to_website
 
-from label_to_gloss import label_to_gloss
+from gloss.models.label_to_gloss import label_to_gloss
 
 type_to_class = {
     'book': Book,

@@ -1,7 +1,7 @@
 """Render landing page."""
 
 from flask import Blueprint, render_template, request
-from flask.ext.login import login_required
+from flask_login import login_required
 
 from gloss import db, models, searchengine
 from gloss.config import config
