@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request
 from flask_login import login_required
 
 from gloss import db, models, searchengine
+from gloss.renderengine import parse_metadata
 from gloss.config import config
 
 
@@ -54,5 +55,12 @@ def render_index_page():
         glosses = glosses[cursor: cursor+MAX_PER_PAGE]
     else:
         c_prev = c_next = None
-    return render_template('index.html', glosses=glosses, labels=labels,
-                           q=keyword, c_prev=c_prev, c_next=c_next)
+
+    metas = [parse_metadata(g.text_) for g in glosses]
+    return render_template('index.html',
+                           glosses=glosses,
+                           metas=metas,
+                           labels=labels,
+                           q=keyword,
+                           c_prev=c_prev,
+                           c_next=c_next)

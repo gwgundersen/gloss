@@ -1,9 +1,14 @@
 """Render gloss pages."""
 
 from datetime import datetime
-from flask import Blueprint, jsonify, redirect, request, render_template, \
-    url_for
+from flask import (Blueprint,
+                   jsonify,
+                   redirect,
+                   request,
+                   render_template,
+                   url_for)
 from flask_login import login_required
+import re
 
 from gloss import db, models
 from gloss.config import config
@@ -20,7 +25,10 @@ gloss_blueprint = Blueprint('gloss',
 def render_gloss(gloss_id):
     """Render gloss by ID."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
-    return render_template('gloss/gloss.html', gloss=gloss)
+    meta = renderengine.parse_metadata(gloss.text_)
+    return render_template('gloss/gloss.html',
+                           gloss=gloss,
+                           meta=meta)
 
 
 @gloss_blueprint.route('/preview', methods=['POST'])
@@ -52,7 +60,6 @@ def create_gloss():
     """Create new gloss."""
     entity_id = request.form.get('entity_id')
     title = request.form.get('title') or ''
-    print(title)
     text_ = request.form.get('text_') or ''
     now = datetime.now()
     gloss = models.Gloss(text_=text_, title=title, timestamp=now)
@@ -82,16 +89,22 @@ def delete_gloss(gloss_id):
 def edit_gloss(gloss_id):
     """Edit gloss."""
     gloss = db.session.query(models.Gloss).get(gloss_id)
+    meta = renderengine.parse_metadata(gloss.text_)
     if request.method == 'GET':
         labels = db.session.query(models.Label)\
             .order_by(models.Label.name.asc()).all()
-        return render_template('gloss/edit.html', gloss=gloss, labels=labels)
+        return render_template('gloss/edit.html',
+                               gloss=gloss,
+                               labels=labels,
+                               meta=meta)
     else:
         gloss.text_= request.form.get('text_')
         gloss.timestamp = datetime.now()
         db.session.merge(gloss)
         db.session.commit()
-        return redirect(url_for('gloss.render_gloss', gloss_id=gloss_id))
+        return redirect(url_for('gloss.render_gloss',
+                                gloss_id=gloss_id,
+                                meta=meta))
 
 
 @gloss_blueprint.route('/archive', methods=['POST'])

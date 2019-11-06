@@ -6,6 +6,7 @@ from flask_login import login_required
 from gloss import db, models
 from gloss.config import config
 from gloss.dbutils import get_or_create
+from gloss.renderengine import parse_metadata
 
 
 entity_blueprint = Blueprint('entity',
@@ -39,7 +40,11 @@ def render_entity_by_just_id(entity_id):
     entity = db.session.query(models.Entity).get(entity_id)
     if not entity:
         return redirect('404.html')
-    return render_template('index.html', glosses=entity.glosses, entity=entity)
+    metas = [parse_metadata(g.text_) for g in entity.glosses]
+    return render_template('index.html',
+                           glosses=entity.glosses,
+                           metas=metas,
+                           entity=entity)
 
 
 @entity_blueprint.route('/create', defaults={'type_': None}, methods=['GET'])

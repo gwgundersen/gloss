@@ -2,6 +2,7 @@
 """
 
 import pypandoc
+import re
 
 
 def render_markdown(value):
@@ -11,3 +12,13 @@ def render_markdown(value):
     except RuntimeError:
         output = value
     return output
+
+
+def parse_metadata(text):
+    query = re.search(r'---\r\n(.*)\r\n---', text, re.DOTALL)
+    if query:
+        meta_raw = query.group(1)
+        parts = meta_raw.split('\r\n')
+        meta = {x[0]: x[1] for x in [x.split(':') for x in parts]}
+        return meta
+    return {}

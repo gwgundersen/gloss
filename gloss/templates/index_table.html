@@ -1,35 +1,34 @@
 <table class="table">
-    {% for gloss in glosses %}
+    {% for gloss, meta in zip(glosses, metas) %}
         <tr>
-            {% if not entity %}
+            <td>
+                <input type="checkbox" name="{{ gloss.id }}"/>
+            </td>
+            <td class="entity-title">
+                <span data-tooltip="{{ gloss.entity.title }}">
+                    <a href="/{{ gloss.entity.endpoint }}">
+                        {{ gloss.entity.title }}
+                    </a>
+                </span>
+            </td>
+            {% if meta.date %}
+                <td>{{ meta.date }}</td>
+            {% else %}
+                <td></td>
+            {% endif %}
+            {% if gloss.title %}
                 <td>
-                    <input type="checkbox" name="{{ gloss.id }}"/>
+                    <a href="/gloss/{{ gloss.id }}">
+                        <span class="gloss-title">{{ meta.title or gloss.title }}</span>
+                    </a>
                 </td>
-                <td class="entity-title">
-                    <span data-tooltip="{{ gloss.entity.title }}">
-                        <a href="/{{ gloss.entity.endpoint }}">
-                            {{ gloss.entity.title }}
-                        </a>
-                    </span>
+            {% else %}
+                <td class="ellipsis">
+                    <a href="/gloss/{{ gloss.id }}">
+                        <span class="gloss-text-preview">{{ gloss.text_|preview }}</span>
+                    </a>
                 </td>
             {% endif %}
-            <td class="ellipsis">
-                {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
-                    {% include 'entity_partials/label_list.html' %}
-                {% endwith %}
-                <div class="gloss">
-                    {% if gloss.title %}
-                        <a href="/gloss/{{ gloss.id }}">
-                            <span class="gloss-title">{{ gloss.title }}</span>
-                            <span class="gloss-text-preview"> - {{ gloss.text_|preview }}</span>
-                        </a>
-                    {% else %}
-                        <a href="/gloss/{{ gloss.id }}">
-                            <span class="gloss-text-preview">{{ gloss.text_|preview }}</span>
-                        </a>
-                    {% endif %}
-                </div>
-            </td>
         </tr>
     {% endfor %}
     </table>

@@ -5,35 +5,19 @@
 
 <body>
 
-{% include "structural_partials/nav.html" %}
-
-{#{% include "structural_partials/menu.html" %}#}
+{% with gloss_id = gloss.id %}
+    {% include "structural_partials/nav.html" %}
+{% endwith %}
 
 <div id="gloss-page" class="page-wrapper">
-
-    {% if gloss.title %}
-        <h1>{{ gloss.title }}</h1>
-    {% endif %}
-
-    {% if gloss.entity.type_ %}
-        <p class="entity-link">
-            <strong>Associated with:</strong> <a href="/entity/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a>
-        </p>
-    {% endif %}
-
-    {% if gloss.public_url %}
-        <p>
-            <strong>Public URL:</strong> <a href="/{{ gloss.public_url }}">{{ gloss.public_url }}</a>
-        </p>
-    {% endif %}
-
-    {% with labels = gloss.labels_alpha, gloss_id = gloss.id %}
-        {% include 'entity_partials/label_list.html' %}
-    {% endwith %}
-
-    <div class="controls">
-        <div>
-            <a class="btn" href="/gloss/edit/{{ gloss.id }}">Edit</a>
+    <div class="title-wrapper">
+        <div class="title">
+            <h1>{{ meta.title or gloss.title }}</h1>
+            <p>{{ meta.subtitle }}</p>
+            <p class="date">{{ meta.date }}</p>
+            {% if gloss.entity.type_ %}
+                <p><a href="/entity/{{ gloss.entity.id }}">{{ gloss.entity.title }}</a></p>
+            {% endif %}
         </div>
     </div>
     <div class="gloss markdown-body">

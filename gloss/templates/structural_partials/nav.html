@@ -1,42 +1,6 @@
 <div id="nav">
     <div id="header">
-        <div>
-            <h1><a href="/">Gloss</a></h1>
-            <form id="search">
-                <input type="text" class="form-control" placeholder="Search..."/>
-                <button type="submit" class="control btn" id="search-action">Go</button>
-            </form>
-        </div>
-        <div class="clear"></div>
+        <a href="/">Home</a>
+        <a href="/gloss/edit/{{ gloss_id }}">Edit</a>
     </div>
-    {% if labels %}
-        <div id="controls">
-            <div>
-                <button class="btn control" id="archive-action">Archive</button>
-                <select class="control" id="label">
-                    {% for label in labels %}
-                        <option value="{{ label.id }}">{{ label.description }}</option>
-                    {% endfor %}
-                </select>
-                <button class="btn control" id="label-action">Label</button>
-            </div>
-            <div>
-                {% if c_prev is not none %}
-                    {% if q %}
-                        <a href="/?q={{ q }}&c={{ c_prev }}" class="btn control">Prev</a>
-                    {% else %}
-                        <a href="" class="btn control">Prev</a>
-                    {% endif %}
-                {% endif %}
-                {% if c_next is not none %}
-                    {% if q %}
-                        <a href="/?q={{ q }}&c={{ c_next }}" class="btn control">Next</a>
-                    {% else %}
-                        <a href="" class="btn control">Next</a>
-                    {% endif %}
-                {% endif %}
-            </div>
-        </div>
-
-    {% endif %}
 </div>

@@ -88,18 +88,6 @@ $(function() {
                 }
             });
         });
-        $('#nav #controls button#label-action').click(function() {
-            var gloss_ids = get_checked_gloss_ids(),
-                label_id = $('#nav #controls select#label').val(),
-                payload = { gloss_ids: gloss_ids, label_id: label_id, is_js: true };
-            $.post('/label/add', payload, function(data) {
-                if (data.status == 'success') {
-                    window.location.reload();
-                } else {
-                    alert('Unknown error.');
-                }
-            });
-        });
     }
 
     function setup_search() {

@@ -37,6 +37,12 @@ with app.app_context():
     db.session.commit()
 
 
+""" Jinja configuration
+    -----------------------------------------------------------------------"""
+# Add `zip` function to Jinja environment.
+app.jinja_env.globals.update(zip=zip)
+
+
 """ URL configuration
     -----------------------------------------------------------------------"""
 app.config.base_tag_url = config.get('url', 'base') + '/'
